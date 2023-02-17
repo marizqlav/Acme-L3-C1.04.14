@@ -23,7 +23,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.ismael-favourite-link" action="https://elchapuzasinformatico.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.ale-favourite-link" action="https://www.youtube.com/watch?v=xvFZjo5PgG0"/>
 			<acme:menu-suboption code="master.menu.anonymous.alberto-favourite-link" action="https://forocoches.com/"/>
-
+			<acme:menu-suboption code="master.menu.anonymous.mario-favourite-link" action="http://letrinaheridos.blogspot.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.marcos-favourite-link" action="https://www.youtube.com/channel/UCi8z8yRzPpHWPs-TfUEkvEQ?app=desktop"/>
 
 		</acme:menu-option>
