@@ -1,4 +1,5 @@
-![alt text](https://github.com/marizqlav/Acme-L3-D01/reports/UML.drawio.png?raw=true)
+![Alt text](https://github.com/marizqlav/Acme-L3-D01/reports/UML.drawio.png?raw=true)
+![Alt text](./reports/UML.drawio.png?raw=true "UML")
 
 # README.txt
 #
