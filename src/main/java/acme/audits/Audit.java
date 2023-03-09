@@ -38,6 +38,8 @@ public class Audit extends AbstractEntity {
 	String	weakPoints;
 	
 	Boolean draftMode = true;
+
+	//Relation with course
 	
 	@OneToMany(mappedBy = "audit")
 	private List<AuditingRecords> auditingRecords;
