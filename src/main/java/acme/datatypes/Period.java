@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Past;
 
 import acme.framework.data.AbstractDatatype;
@@ -21,9 +23,11 @@ public class Period extends AbstractDatatype {
 	private static final long serialVersionUID	= 1L;
 
 	@Past
+	@Temporal(TemporalType.TIMESTAMP)
 	Date firstDate;
 
 	@Past
+	@Temporal(TemporalType.TIMESTAMP)
 	Date lastDate;
 	
 	Duration getDuration() {
