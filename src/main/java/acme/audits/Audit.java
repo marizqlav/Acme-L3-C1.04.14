@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -41,6 +42,7 @@ public class Audit extends AbstractEntity {
 	@OneToMany(mappedBy = "audit")
 	private List<AuditingRecords> auditingRecords;
 
+	@Transient
 	public String mark() {
 		Map<String, Long> marks = auditingRecords.stream()
 			.map(x -> x.mark)
