@@ -1,2 +1,3 @@
 key,almaMater,resume,qualifications,link,key:userAccount
-lecturer-01,Universidad de Sevilla,antonio edad 32 etc,"backend, bases de datos, java, python",https://es.linkedin.com/,user-account-lecturer-01
+lecturer1,Universidad de Sevilla,Diego edad 27 etc,"frontend, jsp, java, python",https://es.linkedin.com/,user-account-lecturer-01
+lecturer2,Universidad de Sevilla,Jose edad 32 etc,"backend, bases de datos, java, python",https://es.linkedin.com/,user-account-lecturer-02

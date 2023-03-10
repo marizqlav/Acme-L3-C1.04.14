@@ -2,7 +2,6 @@
 package acme.entities.courselectures;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import acme.entities.courses.Course;
@@ -26,11 +25,9 @@ public class CourseLecture extends AbstractEntity {
 	// Relationships ----------------------------------------------------------
 
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "course_id")
 	protected Course			course;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "lecture_id")
+	@ManyToOne(optional = true)
 	protected Lecture			lecture;
 
 }

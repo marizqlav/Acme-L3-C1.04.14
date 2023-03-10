@@ -2,14 +2,16 @@
 package acme.entities.lectures;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Positive;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
 import acme.framework.data.AbstractEntity;
+import acme.roles.Lecturer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,10 +34,11 @@ public class Lecture extends AbstractEntity {
 	@Length(max = 101)
 	protected String			resumen;
 
-	@Enumerated(EnumType.STRING)
+	@NotNull
 	protected LectureType		lectureType;
 
-	@Positive
+	@Min(1)
+	@NotNull
 	protected Double			estimatedTime;
 
 	@Length(max = 101)
@@ -44,5 +47,8 @@ public class Lecture extends AbstractEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	//relacion con profesor
+	@Valid
+	@ManyToOne(optional = false)
+	protected Lecturer			lecturer;
+
 }

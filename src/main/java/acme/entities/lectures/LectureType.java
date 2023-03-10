@@ -3,6 +3,6 @@ package acme.entities.lectures;
 
 public enum LectureType {
 
-	THEORY, HANDSON
+	THEORY, HANDSON, BALANCED
 
 }

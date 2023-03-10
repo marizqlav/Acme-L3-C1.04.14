@@ -1,2 +1,2 @@
-key,code,title,resumen,retail-price,link,course-type,key:lecturer
-course-01,AA588,Course Title,resumen del curso,59.99,https://www.informatica.us.es/index.php/estudios,HANDSON,lecturer-01
+key,code,title,resumen,retail-price,link,key:lecturer
+course-01,AA588,Course Title,resumen del curso,59.99,https://www.informatica.us.es/index.php/estudios,lecturer1

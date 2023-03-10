@@ -5,9 +5,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -41,14 +41,13 @@ public class Course extends AbstractEntity {
 	@Length(max = 101)
 	protected String			resumen;
 
-	@PositiveOrZero
+	@Min(0)
 	protected Double			retailPrice;
 
 	@URL
 	protected String			link;
 	// Derived attributes -----------------------------------------------------
 
-	protected CourseType		courseType;
 	// Relationships ----------------------------------------------------------
 	@Valid
 	@ManyToOne(optional = false)

@@ -39,7 +39,7 @@ public class Note extends AbstractEntity {
 	protected String			title;
 
 	@NotBlank
-	@Pattern(regexp = "[a-zA-Z]{5,60} - [a-zA-Z]{3,20}, [a-zA-Z]{3,20}")
+	@Pattern(regexp = "[a-zA-Z]{5,26} - [a-zA-Z]{3,25}, [a-zA-Z]{3,25}")
 	@Length(max = 76)
 	protected String			author;
 

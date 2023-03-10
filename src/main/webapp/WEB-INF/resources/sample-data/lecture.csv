@@ -1,2 +1,2 @@
-key,title,resumen,lecture-type,estimated-time,body
-lecture-01,Lecture Title,resumen de la lecture,HANDSON,01.30,este es el cuerpo de la lecture
+key,title,resumen,lecture-type,estimated-time,body,key:lecturer
+lecture-01,Lecture Title,resumen de la lecture,HANDSON,01.30,este es el cuerpo de la lecture,lecturer1
