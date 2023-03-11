@@ -3,6 +3,8 @@ package acme.entities.courselectures;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import acme.entities.courses.Course;
 import acme.entities.lectures.Lecture;
@@ -24,9 +26,13 @@ public class CourseLecture extends AbstractEntity {
 
 	// Relationships ----------------------------------------------------------
 
+	@Valid
+	@NotNull
 	@ManyToOne(optional = false)
 	protected Course			course;
 
+	@Valid
+	@NotNull
 	@ManyToOne(optional = true)
 	protected Lecture			lecture;
 

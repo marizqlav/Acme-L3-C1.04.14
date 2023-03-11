@@ -7,6 +7,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
@@ -50,6 +51,7 @@ public class Course extends AbstractEntity {
 
 	// Relationships ----------------------------------------------------------
 	@Valid
+	@NotNull
 	@ManyToOne(optional = false)
 	protected Lecturer			lecturer;
 

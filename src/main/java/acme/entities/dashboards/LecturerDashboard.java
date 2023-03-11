@@ -4,8 +4,15 @@ package acme.entities.dashboards;
 import java.util.Date;
 import java.util.Map;
 
-import acme.framework.data.AbstractEntity;
+import javax.persistence.Entity;
 
+import acme.framework.data.AbstractEntity;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Getter
+@Setter
 public class LecturerDashboard extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------

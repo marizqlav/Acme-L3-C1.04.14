@@ -48,6 +48,7 @@ public class Lecture extends AbstractEntity {
 	// Relationships ----------------------------------------------------------
 
 	@Valid
+	@NotNull
 	@ManyToOne(optional = false)
 	protected Lecturer			lecturer;
 
