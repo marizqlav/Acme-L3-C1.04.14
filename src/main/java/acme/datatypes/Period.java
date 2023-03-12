@@ -23,11 +23,9 @@ public class Period extends AbstractDatatype {
 	private static final long serialVersionUID	= 1L;
 
 	@Past
-	@Temporal(TemporalType.TIMESTAMP)
 	Date firstDate;
 
 	@Past
-	@Temporal(TemporalType.TIMESTAMP)
 	Date lastDate;
 	
 	Duration getDuration() {
