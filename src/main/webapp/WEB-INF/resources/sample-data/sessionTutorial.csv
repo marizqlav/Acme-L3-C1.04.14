@@ -1,2 +1,2 @@
-key,title,description,sessionType,startDate,endDate, link, key:tutorial
-sessionTutorial-01, titulo, descripción, THEORY, 2020/02/12 10:20, 2020/02/12 10:21, https://google.com, tutorial-01
+key,title,description,sessionType,startDate,endDate,link,key:tutorial
+sessionTutorial-01, titulo, descripción, THEORY, 2020/02/12 10:20, 2020/02/12 10:21,https://google.com,tutorial-01
