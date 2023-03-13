@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.URL;
+
 import acme.framework.data.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -47,6 +49,6 @@ public class Bulletin extends AbstractEntity {
 	@NotNull
 	protected Boolean			critical;
 
-	@Column(name = "link")
+	@URL
 	protected String			link;
 }
