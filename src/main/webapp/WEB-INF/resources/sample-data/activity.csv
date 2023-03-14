@@ -1,0 +1,4 @@
+key,title,abstractResumen,activityType,timePeriodInitial,timePeriodFinal,link,key:enrolment
+activity-01,"Actividad 1","Abstracto 1",THEORY,2010/02/03 00:00,2010/03/03 00:00,"https://github.com/",enrolment-01
+activity-02,"Actividad 2","Abstracto 2",HANDS_ON,2022/02/03 09:00,2022/02/03 10:00,"https://github.com/",enrolment-01
+activity-03,"Actividad 3","Abstracto 3",THEORY,2022/06/06 13:21,2022/06/06 16:27,"https://github.com/",enrolment-02
