@@ -66,6 +66,7 @@ public class Activity extends AbstractEntity {
 	// Relationships ----------------------------------------------------------
 
 
+	@NotNull
 	@Valid
 	@ManyToOne()
 	protected Enrolment enrolment;

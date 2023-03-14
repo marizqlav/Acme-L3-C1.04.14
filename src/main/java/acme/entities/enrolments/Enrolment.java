@@ -50,11 +50,14 @@ public class Enrolment extends AbstractEntity {
 
 	// Relationships ----------------------------------------------------------
 
+	@NotNull
 	@Valid
 	@ManyToOne()
 	protected Student			student;
 
 	/*
+	 * @NotNull
+	 * 
 	 * @Valid
 	 * 
 	 * @ManyToOne()
