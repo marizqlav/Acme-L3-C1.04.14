@@ -11,6 +11,7 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 
+import acme.entities.courses.Course;
 import acme.framework.data.AbstractEntity;
 import acme.roles.Student;
 import lombok.Getter;
@@ -27,7 +28,7 @@ public class Enrolment extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	@Pattern(regexp = "[A-Z]{1,3}[0-9][0-9]{3}")
+	@Pattern(regexp = "[A-Z]{1,3}[0-9]{3}")
 	@Column(unique = true)
 	@NotBlank
 	@NotNull
@@ -55,13 +56,9 @@ public class Enrolment extends AbstractEntity {
 	@ManyToOne()
 	protected Student			student;
 
-	/*
-	 * @NotNull
-	 * 
-	 * @Valid
-	 * 
-	 * @ManyToOne()
-	 * protected Course course;
-	 */
+	@NotNull
+	@Valid
+	@ManyToOne()
+	protected Course			course;
 
 }
