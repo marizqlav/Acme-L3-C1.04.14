@@ -1,4 +1,4 @@
-key,code,motivation,someGoals,key:student
-enrolment-01,"AAA1133","Motivation 1","Learn and learn",student-01
-enrolment-02,"AAA1134","Motivation 2","Learn and learn 2",student-01
-enrolment-03,"AAA1135","Motivation 3","Learn and learn 3",student-01
+key,code,motivation,someGoals,key:student,key:course
+enrolment-01,"AAA133","Motivation 1","Learn and learn",student-01,course-01
+enrolment-02,"AAA134","Motivation 2","Learn and learn 2",student-01,course-02
+enrolment-03,"AAA135","Motivation 3","Learn and learn 3",student-02,course-01
