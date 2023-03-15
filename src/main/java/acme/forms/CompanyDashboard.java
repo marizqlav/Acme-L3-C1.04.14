@@ -12,11 +12,10 @@ import lombok.Setter;
 @Setter
 public class CompanyDashboard extends AbstractForm {
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long		serialVersionUID	= 1L;
 
-	Map<String, Integer>		nPracticumOfTheoryCoursesByMonthLastYear;
-	Map<String, Integer>		nPracticumOfHandsOnCoursesByMonthLastYear;
-	Map<String, Date>			statisticsPeriodLengthOfTheSessionsInTheirPractica;
-	Map<String, Date>			statisticsPeriodLengthOfTheirPractica;
+	protected Map<String, Integer>	nPracticumByMonthLastYear;
+	protected Map<String, Date>		statisticsPeriodLengthOfTheSessionsInTheirPractica;
+	protected Map<String, Date>		statisticsPeriodLengthOfTheirPractica;
 
 }
