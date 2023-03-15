@@ -1,0 +1,4 @@
+key,title,resumen,lecture-type,estimated-time,body,key:lecturer
+lecture-01,Lecture Title,resumen de la lecture,HANDSON,01.30,este es el cuerpo de la lecture,lecturer1
+lecture-02,Lecture Title,resumen de la lecture,HANDSON,04.00,este es el cuerpo de la lecture,lecturer1
+lecture-03,Lecture Title,resumen de la lecture,HANDSON,01.00,este es el cuerpo de la lecture,lecturer2

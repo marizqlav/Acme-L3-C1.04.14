@@ -1,0 +1,4 @@
+key,instantiation-moment,title,author,message,email,link
+note-01,2020/02/13 20:30,Note Title,"someuser - surname, name",Esto es una nota,nota@gmail.com,https://dle.rae.es/nota
+note-02,2022/07/30 00:00,N,"sOmeUser - suRname, name",Esto es una nota,null,null
+note-03,2021/04/28 16:30,este es el titulo de una nota que se usa para probar el limite de caracteres,"someuser - surname, name",これはメモです,nota@gmail.com,https://dle.rae.es/nota

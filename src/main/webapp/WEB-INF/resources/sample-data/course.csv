@@ -1,0 +1,14 @@
+key,code,title,resumen,retail-price,link,key:lecturer
+course-01,A878,Course Title 1,resumen del curso,59.99,https://www.informatica.us.es/index.php/estudios,lecturer1
+course-02,AB324,Course Title 2,resumen del curso,39.99,https://www.informatica.us.es/index.php/estudios,lecturer1
+course-03,ABC935,Course Title 3,resumen del curso,40.00,null,lecturer1
+course-04,CC564,ນີ້ແມ່ນຫົວຂໍ້ຫຼັກສູດທີ່ຫວັງວ່າຈະບັນລຸ 76 ຕົວອັກສອນໃນຂະນະທີ່ສືບຕໍ່ຢູ່ໃນແປ້ນພ,resumen del curso,59.99,https://www.informatica.us.es/index.php/estudios,lecturer1
+course-05,DS136,Course Title 5,resumen del curso,69.99,https://www.informatica.us.es/index.php/estudios,lecturer1
+course-06,HYE138,Course Title 6,resumen del curso,0.0,null,lecturer1
+course-07,KJ247,Course Title 7,resumen del curso,15.00,https://www.informatica.us.es/index.php/estudios,lecturer2
+course-08,YWT648,Course Title 8,resumen del curso,59.99,https://www.informatica.us.es/index.php/estudios,lecturer2
+course-09,RR124,Course Title 9,resumen del curso,15.50,null,lecturer2
+course-10,GN420,Course Title 10,resumen del curso,20.60,https://www.informatica.us.es/index.php/estudios,lecturer2
+course-11,ER690,Course Title 11,resumen del curso,25.30,https://www.informatica.us.es/index.php/estudios,lecturer2
+course-12,QQ169,Course Title 12,resumen del curso,40.50,null,lecturer2
+course-13,JX777,Course Title 13,resumen del curso,49.99,https://www.informatica.us.es/index.php/estudios,lecturer2

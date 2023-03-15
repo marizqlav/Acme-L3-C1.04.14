@@ -1,0 +1,14 @@
+key,code,title,abstractPracticum,someGoals,draftMode,key:company,key:course
+practicum-01,A9990,Calvo,Resumen Practica,Top cuarenta,true,company-01,course-01
+practicum-02,A9991,ສະເໜີ,Resumen Practica,Top cuarenta,true,company-01,course-02
+practicum-03,A9992,Calvo,ສະເໜີ,Top cuarenta,true,company-01,course-03
+practicum-04,A9993,Calvo,Resumen Practica,ສະເໜີ,true,company-01,course-04
+practicum-05,A9994,<h1>hola</h1>,Resumen Practica,Top cuarenta,true,company-01,course-05
+practicum-06,A9995,Calvo,<h1>hola</h1>,Top cuarenta,true,company-01,course-06
+practicum-07,A9996,Calvo,Resumen Practica,<h1>hola</h1>,true,company-01,course-07
+practicum-08,A9997,<script>alert('Practicum')</script>,Resumen Practica,Top cuarenta,true,company-01,course-08
+practicum-09,A9998,Calvo,<script>alert('Practicum')</script>,Top cuarenta,true,company-01,course-09
+practicum-10,A9999,Calvo,Resumen Practica,<script>alert('Practicum')</script>,true,company-01,course-10
+practicum-11,A9902,El titulo de esta practica va a ocupar setenta y seis caracteres como maximo,Resumen Practica,Top cuarenta,true,company-01,course-11
+practicum-12,A9919,Calvo,El abstract del Practicum va a ocupar ciento uno caracteres y para que se valide como maximo tiene101,Top cuarenta,true,company-01,course-12
+practicum-13,A9922,Calvo,Resumen Practica,el someGoals del Practicum va a ocupar ciento uno caracteres para que se valide como maximo tiene 101,true,company-01,course-13
