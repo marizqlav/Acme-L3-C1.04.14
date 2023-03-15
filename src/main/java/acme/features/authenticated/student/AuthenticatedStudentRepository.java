@@ -1,5 +1,5 @@
 /*
- * AuthenticatedCompanyRepository.java
+ * AuthenticatedStudentRepository.java
  *
  * Copyright (C) 2012-2023 Rafael Corchuelo.
  *
@@ -10,22 +10,22 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.company;
+package acme.features.authenticated.student;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.framework.components.accounts.UserAccount;
 import acme.framework.repositories.AbstractRepository;
-import acme.roles.Company;
+import acme.roles.Student;
 
 @Repository
-public interface AuthenticatedCompanyRepository extends AbstractRepository {
+public interface AuthenticatedStudentRepository extends AbstractRepository {
 
 	@Query("select ua from UserAccount ua where ua.id = :id")
 	UserAccount findOneUserAccountById(int id);
 
-	@Query("select c from Company c where c.userAccount.id = :id")
-	Company findOneCompanyByUserAccountId(int id);
+	@Query("select s from Student s where s.userAccount.id = :id")
+	Student findOneStudentByUserAccountId(int id);
 
 }

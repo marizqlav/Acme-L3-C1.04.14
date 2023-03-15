@@ -1,41 +1,48 @@
 
-package acme.entities.sessionPracticum;
+package acme.entities.tutorial;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
-import acme.entities.practicum.Practicum;
+import acme.entities.lectures.LectureType;
 import acme.framework.data.AbstractEntity;
-import acme.framework.helpers.MomentHelper;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
-public class SessionPracticum extends AbstractEntity {
+@Entity
+public class SessionTutorial extends AbstractEntity {
 
-	private static final long	serialVersionUID	= 1L;
+	// Serialisation identifier -----------------------------------------------
+
+	protected static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
+
+	@Column(name = "title")
 	@NotBlank
-	@Length(max = 76)
+	@Size(max = 76)
 	protected String			title;
 
 	@NotBlank
 	@Length(max = 101)
-	protected String			abstractSessionPracticum;
+	protected String			description;
+
+	@NotNull
+	protected LectureType		sessionType;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
@@ -43,24 +50,16 @@ public class SessionPracticum extends AbstractEntity {
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	protected Date				finishDate;
+	protected Date				endDate;
 
 	@URL
 	protected String			link;
 
-	// Derived attributes -----------------------------------------------------
-
-
-	@Transient
-	public Double getTimePeriod() {
-		return (double) (MomentHelper.computeDuration(this.finishDate, this.startDate).toMinutes() / 60);
-	}
-
 	// Relationships ----------------------------------------------------------
-
 
 	@Valid
 	@NotNull
 	@ManyToOne(optional = false)
-	protected Practicum practicum;
+	protected Tutorial			tutorial;
+
 }

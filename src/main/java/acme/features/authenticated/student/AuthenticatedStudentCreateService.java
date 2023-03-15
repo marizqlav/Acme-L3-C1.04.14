@@ -1,5 +1,5 @@
 /*
- * AuthenticatedCompanyCreateService.java
+ * AuthenticatedStudentCreateService.java
  *
  * Copyright (C) 2012-2023 Rafael Corchuelo.
  *
@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.company;
+package acme.features.authenticated.student;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,24 +22,24 @@ import acme.framework.components.models.Tuple;
 import acme.framework.controllers.HttpMethod;
 import acme.framework.helpers.PrincipalHelper;
 import acme.framework.services.AbstractService;
-import acme.roles.Company;
+import acme.roles.Student;
 
 @Service
-public class AuthenticatedCompanyCreateService extends AbstractService<Authenticated, Company> {
+public class AuthenticatedStudentCreateService extends AbstractService<Authenticated, Student> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AuthenticatedCompanyRepository repository;
+	protected AuthenticatedStudentRepository repository;
 
-	// AbstractService<Authenticated, Company> ---------------------------
+	// AbstractService<Authenticated, Student> ---------------------------
 
 
 	@Override
 	public void authorise() {
 		boolean status;
 
-		status = !super.getRequest().getPrincipal().hasRole(Company.class);
+		status = !super.getRequest().getPrincipal().hasRole(Student.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -51,7 +51,7 @@ public class AuthenticatedCompanyCreateService extends AbstractService<Authentic
 
 	@Override
 	public void load() {
-		Company object;
+		Student object;
 		Principal principal;
 		int userAccountId;
 		UserAccount userAccount;
@@ -60,36 +60,36 @@ public class AuthenticatedCompanyCreateService extends AbstractService<Authentic
 		userAccountId = principal.getAccountId();
 		userAccount = this.repository.findOneUserAccountById(userAccountId);
 
-		object = new Company();
+		object = new Student();
 		object.setUserAccount(userAccount);
 
 		super.getBuffer().setData(object);
 	}
 
 	@Override
-	public void bind(final Company object) {
+	public void bind(final Student object) {
 		assert object != null;
 
-		super.bind(object, "company", "sector");
+		super.bind(object, "statement", "listStrongFeatures", "listWeakFeatures", "link");
 	}
 
 	@Override
-	public void validate(final Company object) {
+	public void validate(final Student object) {
 		assert object != null;
 	}
 
 	@Override
-	public void perform(final Company object) {
+	public void perform(final Student object) {
 		assert object != null;
 
 		this.repository.save(object);
 	}
 
 	@Override
-	public void unbind(final Company object) {
+	public void unbind(final Student object) {
 		Tuple tuple;
 
-		tuple = super.unbind(object, "company", "sector");
+		tuple = super.unbind(object, "statement", "listStrongFeatures", "listWeakFeatures", "link");
 
 		super.getResponse().setData(tuple);
 	}

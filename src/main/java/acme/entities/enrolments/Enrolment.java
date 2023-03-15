@@ -1,10 +1,9 @@
 
-package acme.entities.practicum;
+package acme.entities.enrolments;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -14,29 +13,31 @@ import org.hibernate.validator.constraints.Length;
 
 import acme.entities.courses.Course;
 import acme.framework.data.AbstractEntity;
-import acme.roles.Company;
+import acme.roles.Student;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Practicum extends AbstractEntity {
+public class Enrolment extends AbstractEntity {
+
+	// Serialisation identifier -----------------------------------------------
 
 	protected static final long	serialVersionUID	= 1L;
 
-	@NotBlank
-	@Column(unique = true)
+	// Attributes -------------------------------------------------------------
+
 	@Pattern(regexp = "[A-Z]{1,3}[0-9]{3}")
+	@Column(unique = true)
+	@NotBlank
+	@NotNull
 	protected String			code;
 
 	@NotBlank
+	@NotNull
 	@Length(max = 76)
-	protected String			title;
-
-	@NotBlank
-	@Length(max = 101)
-	protected String			abstractPracticum;
+	protected String			motivation;
 
 	@NotBlank
 	@Length(max = 101)
@@ -44,14 +45,20 @@ public class Practicum extends AbstractEntity {
 
 	protected boolean			draftMode;
 
-	@Valid
-	@NotNull
-	@ManyToOne(optional = false)
-	protected Company			company;
+	// Derived attributes -----------------------------------------------------
 
-	@Valid
+	//workTime must be implemented on service
+
+	// Relationships ----------------------------------------------------------
+
 	@NotNull
-	@OneToOne
+	@Valid
+	@ManyToOne()
+	protected Student			student;
+
+	@NotNull
+	@Valid
+	@ManyToOne()
 	protected Course			course;
 
 }
