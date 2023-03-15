@@ -1,5 +1,5 @@
 
-package acme.audits;
+package acme.entities.audits;
 
 import java.util.List;
 import java.util.Map;
@@ -16,6 +16,7 @@ import javax.validation.constraints.Size;
 import acme.framework.data.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
+import acme.entities.audits.AuditingRecords;
 
 @Entity
 @Getter
@@ -29,12 +30,15 @@ public class Audit extends AbstractEntity {
 	String	code;
 
 	@Size(max = 101)
+	@NotBlank
 	String	conclusion;
 
 	@Size(max = 101)
+	@NotBlank
 	String	strongPoints;
 
 	@Size(max = 101)
+	@NotBlank
 	String	weakPoints;
 	
 	Boolean draftMode = true;

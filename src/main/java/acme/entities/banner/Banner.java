@@ -1,4 +1,4 @@
-package acme.miscEntities;
+package acme.entities.banner;
 
 import java.util.Date;
 

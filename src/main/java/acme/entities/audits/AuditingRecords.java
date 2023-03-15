@@ -1,5 +1,5 @@
 
-package acme.audits;
+package acme.entities.audits;
 
 
 import javax.persistence.Entity;
@@ -22,11 +22,11 @@ public class AuditingRecords extends AbstractEntity {
 
 	@NotBlank
 	@Size(max = 76)
-	String	subject;
+	String subject;
 
 	@NotBlank
 	@Size(max = 101)
-	String	assesment;
+	String assesment;
 
 	Period auditionPeriod;
 	

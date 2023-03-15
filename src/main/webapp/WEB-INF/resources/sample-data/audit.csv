@@ -1,0 +1,4 @@
+key,code,conclusion,strongPoints,weakPoints,draftMode
+audit-01,ATG635,tamaño de texto normal, texto normal, texto normal, true
+audit-02,Y635,eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeste texto son 101 chars, texto normal, texto normal, true
+audit-03,TH335,a, texto normal, texto normal, true

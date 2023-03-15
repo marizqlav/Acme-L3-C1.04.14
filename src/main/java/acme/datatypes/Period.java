@@ -1,12 +1,16 @@
 
 package acme.datatypes;
 
-import java.sql.Date;
+import java.util.Date;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import acme.framework.data.AbstractDatatype;
@@ -20,12 +24,17 @@ public class Period extends AbstractDatatype {
 
 	private static final long	serialVersionUID	= 1L;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	@Past
-	Date firstDate;
+	@NotNull
+	protected Date firstDate;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	@Past
-	Date lastDate;
+	@NotNull
+	protected Date lastDate;
 	
+	@Transient
 	Duration getDuration() {
 		final LocalDateTime d1 = this.firstDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
 		final LocalDateTime d2 = this.lastDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
