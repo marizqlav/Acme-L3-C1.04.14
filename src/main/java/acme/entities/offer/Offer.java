@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -15,6 +16,7 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.framework.components.datatypes.Money;
 import acme.framework.data.AbstractEntity;
+import acme.framework.helpers.MomentHelper;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -51,4 +53,11 @@ public class Offer extends AbstractEntity {
 
 	@URL
 	protected String			link;
+
+
+	@Transient
+	public Double getTimePeriod() {
+		return (double) (MomentHelper.computeDuration(this.availabilityPeriodFinal, this.availabilityPeriodInitial).toMinutes() / 60);
+	}
+
 }
