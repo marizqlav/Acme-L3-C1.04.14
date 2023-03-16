@@ -56,7 +56,7 @@ public class Offer extends AbstractEntity {
 
 
 	@Transient
-	public Double getTimePeriod() {
+	public Double getAvailabilityPeriod() {
 		return (double) (MomentHelper.computeDuration(this.availabilityPeriodFinal, this.availabilityPeriodInitial).toMinutes() / 60);
 	}
 
