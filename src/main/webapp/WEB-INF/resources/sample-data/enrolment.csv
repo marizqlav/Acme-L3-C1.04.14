@@ -6,6 +6,6 @@ enrolment-04,"AAA003","تحفيز","Nice code bro",true,student-01,course-04
 enrolment-05,"AAA004","YES FULL MOTIVATION","هدف",false,student-01,course-12
 enrolment-06,"AAA005","中国酷迪罗","<h2>Get your goals</h2>",false,student-02,course-01
 enrolment-07,"AAA006","gogogogoogogo!!!!!","Conocer nuevas personas",true,student-02,course-02
-enrolment-08,"AAA007","Descubrir nuevos intereses","<script>alert("goalllllls")</script>",true,student-02,course-03
+enrolment-08,"AAA007","Descubrir nuevos intereses","<script>alert('goalllllls')</script>",true,student-02,course-03
 enrolment-09,"AAA008","Aprender a utilizar herramientas de desarrollo como Git y JIRA","Flexibilidad de horarios",true,student-02,course-12
-enrolment-10,"AAA009","<script>alert("motivation++")</script>","OKEYYYYYYYYY!!!!!$$$$$===",false,student-02,course-07
+enrolment-10,"AAA009","<script>alert('motivation')</script>","OKEYYYYYYYYY!!!!!$$$$$===",false,student-02,course-07
