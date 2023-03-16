@@ -21,12 +21,12 @@ public class Auditor extends AbstractRole {
 
 	@NotBlank
 	@Size(max = 76)
-	String conclusion;
+	String firm;
 
 	@NotBlank
 	@Size(max = 26)
 	@Column(unique = true)
-	String profesionalID;
+	String professionalID;
 
 	@NotBlank
 	@Size(max = 101)

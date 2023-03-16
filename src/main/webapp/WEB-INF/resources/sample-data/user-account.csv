@@ -3,3 +3,5 @@ user-account-lecturer-01,true,"UserIdentity{name: 'Diego', surname: 'Brando', em
 user-account-lecturer-02,true,"UserIdentity{name: 'Jose', surname: 'Garcia', email: 'josgar@acme.com'}",lecturer2,lecturer2
 user-account-assistant-01,true,"UserIdentity{name: 'Marcos', surname: 'Brando', email: 'marolmar@acme.com'}",assistant1,assistant1
 user-account-assistant-02,true,"UserIdentity{name: 'SAAS', surname: 'Sando', email: 'sando@acme.com'}",assistant2,assistant2
+user-account-auditor-01,true,"UserIdentity{name: 'Segismundo', surname: 'García', email: 'segisgar@acme.com'}",auditor1,auditor1
+user-account-auditor-02,true,"UserIdentity{name: 'Edward', surname: 'García', email: 'edwardgar@acme.com'}",auditor2,auditor2
