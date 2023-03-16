@@ -1,4 +1,11 @@
-key,code,motivation,someGoals,key:student,key:course
-enrolment-01,"AAA133","Motivation 1","Learn and learn",student-01,course-01
-enrolment-02,"AAA134","Motivation 2","Learn and learn 2",student-01,course-02
-enrolment-03,"AAA135","Motivation 3","Learn and learn 3",student-02,course-01
+key,code,motivation,someGoals,draftMode,key:student,key:course
+enrolment-01,"AAA000","Ampliar conocimientos","Learn and learn",true,student-01,course-01
+enrolment-02,"AAA001","<h1>Lorem ipsum</h1>","Aprender los conceptos básicos de programación",true,student-01,course-02
+enrolment-03,"AAA002","Aumentar tu confianza: Aprender algo nuevo","Dominar el uso de lenguajes de programación populares como Python o JavaScript",false,student-01,course-13
+enrolment-04,"AAA003","تحفيز","Nice code bro",true,student-01,course-04
+enrolment-05,"AAA004","YES FULL MOTIVATION","هدف",false,student-01,course-12
+enrolment-06,"AAA005","中国酷迪罗","<h2>Get your goals</h2>",false,student-02,course-01
+enrolment-07,"AAA006","gogogogoogogo!!!!!","Conocer nuevas personas",true,student-02,course-02
+enrolment-08,"AAA007","Descubrir nuevos intereses","<script>alert("goalllllls")</script>",true,student-02,course-03
+enrolment-09,"AAA008","Aprender a utilizar herramientas de desarrollo como Git y JIRA","Flexibilidad de horarios",true,student-02,course-12
+enrolment-10,"AAA009","<script>alert("motivation++")</script>","OKEYYYYYYYYY!!!!!$$$$$===",false,student-02,course-07
