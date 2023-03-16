@@ -48,8 +48,6 @@ public class SessionPracticum extends AbstractEntity {
 	@URL
 	protected String			link;
 
-	// Derived attributes -----------------------------------------------------
-
 
 	@Transient
 	public Double getTimePeriod() {
