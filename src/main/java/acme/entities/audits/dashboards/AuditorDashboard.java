@@ -1,4 +1,4 @@
-package acme.audits.dashboards;
+package acme.entities.audits.dashboards;
 
 import java.util.Map;
 
