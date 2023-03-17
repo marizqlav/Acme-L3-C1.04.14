@@ -5,3 +5,7 @@ user-account-assistant-01,true,"UserIdentity{name: 'Marcos', surname: 'Brando', 
 user-account-assistant-02,true,"UserIdentity{name: 'SAAS', surname: 'Sando', email: 'sando@acme.com'}",assistant2,assistant2
 user-account-auditor-01,true,"UserIdentity{name: 'Segismundo', surname: 'García', email: 'segisgar@acme.com'}",auditor1,auditor1
 user-account-auditor-02,true,"UserIdentity{name: 'Edward', surname: 'García', email: 'edwardgar@acme.com'}",auditor2,auditor2
+user-account-company-01,true,"UserIdentity{name: 'Company1', surname: 'company1', email: 'company1@acme.com'}",company1,company1
+user-account-company-02,true,"UserIdentity{name: 'Company2', surname: 'company2', email: 'company2@acme.com'}",company2,company2
+user-account-student-01,true,"UserIdentity{name: 'Student1', surname: 'Student1', email: 'student1@acme.com'}",student1,student1
+user-account-student-02,true,"UserIdentity{name: 'Student2', surname: 'Student2', email: 'student2@acme.com'}",student2,student2
