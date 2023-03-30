@@ -16,11 +16,11 @@
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="authenticated.student.form.label.statement" path="statement"/>
-	<acme:input-textbox code="authenticated.student.form.label.listStrongFeatures" path="listStrongFeatures"/>
-	<acme:input-textbox code="authenticated.student.form.label.listWeakFeatures" path="listWeakFeatures"/>
-	<acme:input-textbox code="authenticated.student.form.label.link" path="link"/>
+	<acme:input-textbox code="authenticated.auditor.form.label.firm" path="firm"/>
+	<acme:input-textbox code="authenticated.auditor.form.label.professionalID" path="professionalID"/>
+	<acme:input-textbox code="authenticated.auditor.form.label.listOfCertifications" path="listOfCertifications"/>
+	<acme:input-textbox code="authenticated.auditor.form.label.link" path="link"/>
 	
-	<acme:submit test="${_command == 'create'}" code="authenticated.student.form.button.create" action="/authenticated/student/create"/>
-	<acme:submit test="${_command == 'update'}" code="authenticated.student.form.button.update" action="/authenticated/student/update"/>
+	<acme:submit test="${_command == 'create'}" code="authenticated.auditor.form.button.create" action="/authenticated/auditor/create"/>
+	<acme:submit test="${_command == 'update'}" code="authenticated.auditor.form.button.update" action="/authenticated/auditor/update"/>
 </acme:form>
