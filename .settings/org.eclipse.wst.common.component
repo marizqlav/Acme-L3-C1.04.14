@@ -258,6 +258,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-test-sources/test-annotations"/>
                 
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_generated"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_generated_tests"/>
                                                                                                                                                                                                                                                                                                                                                         
         
         
