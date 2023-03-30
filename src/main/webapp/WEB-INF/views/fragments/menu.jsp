@@ -50,6 +50,9 @@
 			<acme:menu-suboption code="master.menu.student.favourite-link" action="https://www.informatica.us.es/"/>
 			<acme:menu-separator/>	
 			<acme:menu-suboption code="master.menu.student.list.courses" action="/student/course/list"/>
+		<acme:menu-separator/>	
+		<acme:menu-suboption code="master.menu.student.my.enrolments" action="/student/enrolment/list-mine"/>
+		
 		</acme:menu-option>
 	</acme:menu-left>
 
