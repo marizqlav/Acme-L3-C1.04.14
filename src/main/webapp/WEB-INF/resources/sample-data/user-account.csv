@@ -9,3 +9,5 @@ user-account-company-01,true,"UserIdentity{name: 'Company1', surname: 'company1'
 user-account-company-02,true,"UserIdentity{name: 'Company2', surname: 'company2', email: 'company2@acme.com'}",company2,company2
 user-account-student-01,true,"UserIdentity{name: 'Student1', surname: 'Student1', email: 'student1@acme.com'}",student1,student1
 user-account-student-02,true,"UserIdentity{name: 'Student2', surname: 'Student2', email: 'student2@acme.com'}",student2,student2
+user-account-no-rol-01,true,"UserIdentity{name: 'NoRol1', surname: 'NoRol1', email: 'norol1@acme.com'}",norol1,norol1
+user-account-no-rol-02,true,"UserIdentity{name: 'NoRol2', surname: 'NoRol2', email: 'norol2@acme.com'}",norol2,norol2

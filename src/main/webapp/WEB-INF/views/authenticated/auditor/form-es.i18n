@@ -1,0 +1,6 @@
+authenticated.auditor.form.label.firm = Firma
+authenticated.auditor.form.label.professionalID = ID profesional
+authenticated.auditor.form.label.listOfCertifications = Lista de certificationes
+authenticated.auditor.form.label.link = Link
+authenticated.auditor.form.button.create = Crear
+authenticated.auditor.form.button.update = Actualizar
