@@ -25,10 +25,13 @@
 			<acme:menu-suboption code="master.menu.anonymous.alberto-favourite-link" action="https://forocoches.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.mario-favourite-link" action="http://letrinaheridos.blogspot.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.marcos-favourite-link" action="https://www.youtube.com/channel/UCi8z8yRzPpHWPs-TfUEkvEQ?app=desktop"/>
-
 		</acme:menu-option>
-
-
+		
+		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.offer.list" action="/authenticated/offer/list"/>
+		</acme:menu-option>
+		
+		
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
@@ -51,6 +54,13 @@
 			<acme:menu-separator/>	
 			<acme:menu-suboption code="master.menu.student.list.courses" action="/student/course/list"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.company" access="hasRole('Company')">
+			<acme:menu-suboption code="master.menu.company.favourite-link" action="https://www.informatica.us.es/"/>
+			<acme:menu-separator/>	
+			<acme:menu-suboption code="master.menu.company.list.practicum" action="/company/practicum/list"/>
+		</acme:menu-option>
+		
 	</acme:menu-left>
 
 	<acme:menu-right>
@@ -67,6 +77,8 @@
 			<acme:menu-suboption code="master.menu.user-account.student" action="/authenticated/student/update" access="hasRole('Student')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-auditor" action="/authenticated/auditor/create" access="!hasRole('Auditor')"/>
 			<acme:menu-suboption code="master.menu.user-account.auditor" action="/authenticated/auditor/update" access="hasRole('Auditor')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-company" action="/authenticated/company/create" access="!hasRole('Company')"/>
+			<acme:menu-suboption code="master.menu.user-account.company" action="/authenticated/company/update" access="hasRole('Company')"/>
 
 		</acme:menu-option>
 
