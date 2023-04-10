@@ -27,7 +27,7 @@ import acme.framework.services.AbstractService;
 import acme.roles.Company;
 
 @Service
-public class CompanyPracticumUpdate extends AbstractService<Company, Practicum> {
+public class CompanyPracticumUpdateService extends AbstractService<Company, Practicum> {
 
 	@Autowired
 	protected CompanyPracticumRepository	repository;
@@ -82,7 +82,7 @@ public class CompanyPracticumUpdate extends AbstractService<Company, Practicum> 
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findCourseById(courseId);
 
-		super.bind(object, "code", "title", "abstract$", "goals");
+		super.bind(object, "code", "title", "abstractPracticum", "someGoals");
 		object.setCourse(course);
 	}
 
@@ -109,7 +109,7 @@ public class CompanyPracticumUpdate extends AbstractService<Company, Practicum> 
 		courses = this.repository.findAllCourses();
 		choices = SelectChoices.from(courses, "code", object.getCourse());
 
-		tuple = super.unbind(object, "code", "title", "abstract$", "goals");
+		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals");
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
 

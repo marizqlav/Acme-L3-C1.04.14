@@ -20,18 +20,17 @@ import org.springframework.stereotype.Service;
 import acme.entities.courses.Course;
 import acme.entities.practicum.Practicum;
 import acme.entities.sessionPracticum.SessionPracticum;
+import acme.framework.components.accounts.Principal;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Company;
 
 @Service
-public class CompanyPracticumDelete extends AbstractService<Company, Practicum> {
+public class CompanyPracticumDeleteService extends AbstractService<Company, Practicum> {
 
 	@Autowired
 	protected CompanyPracticumRepository repository;
-
-	// AbstractService interface ----------------------------------------------
 
 
 	@Override
@@ -47,16 +46,15 @@ public class CompanyPracticumDelete extends AbstractService<Company, Practicum> 
 	public void authorise() {
 		final boolean status;
 		Practicum object;
-		//		Principal principal;
+		Principal principal;
 		int practicumId;
 
 		practicumId = super.getRequest().getData("id", int.class);
 		object = this.repository.findPracticumById(practicumId);
-		//		principal = super.getRequest().getPrincipal();
+		principal = super.getRequest().getPrincipal();
 
-		//		status = object.getCompany().getId() == principal.getActiveRoleId();
-
-		super.getResponse().setAuthorised(true);
+		status = object.getCompany().getId() == principal.getActiveRoleId();
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -80,7 +78,7 @@ public class CompanyPracticumDelete extends AbstractService<Company, Practicum> 
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findCourseById(courseId);
 
-		super.bind(object, "code", "title", "abstract$", "goals");
+		super.bind(object, "code", "title", "abstractPracticum", "someGoals");
 		object.setCourse(course);
 	}
 
@@ -111,7 +109,7 @@ public class CompanyPracticumDelete extends AbstractService<Company, Practicum> 
 		courses = this.repository.findAllCourses();
 		choices = SelectChoices.from(courses, "code", object.getCourse());
 
-		tuple = super.unbind(object, "code", "title", "abstract$", "goals");
+		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals");
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
 

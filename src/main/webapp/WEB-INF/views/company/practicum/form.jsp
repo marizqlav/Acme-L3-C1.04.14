@@ -20,8 +20,8 @@
 	<acme:input-select code="company.practicum.form.label.course" path="course" choices="${courses}"/>
 	<acme:input-textbox code="company.practicum.form.label.practicum-code" path="code"/>
 	<acme:input-textbox code="company.practicum.form.label.practicum-title" path="title"/>
-	<acme:input-textbox code="company.practicum.form.label.abstract$" path="abstract$"/>
-	<acme:input-textbox code="company.practicum.form.label.goals" path="goals"/>
+	<acme:input-textbox code="company.practicum.form.label.abstractPracticum" path="abstractPracticum"/>
+	<acme:input-textbox code="company.practicum.form.label.someGoals" path="someGoals"/>
 
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == true}">

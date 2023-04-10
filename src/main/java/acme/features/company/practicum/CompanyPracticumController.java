@@ -33,13 +33,13 @@ public class CompanyPracticumController extends AbstractController<Company, Prac
 	protected CompanyPracticumShowService	showService;
 
 	@Autowired
-	protected CompanyPracticumPost			postService;
+	protected CompanyPracticumCreateService	createService;
 
 	@Autowired
-	protected CompanyPracticumUpdate		updateService;
+	protected CompanyPracticumUpdateService	updateService;
 
 	@Autowired
-	protected CompanyPracticumDelete		deleteService;
+	protected CompanyPracticumDeleteService	deleteService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -48,7 +48,7 @@ public class CompanyPracticumController extends AbstractController<Company, Prac
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
-		//		super.addBasicCommand("post", this.postService);
+		//		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("delete", this.deleteService);
 

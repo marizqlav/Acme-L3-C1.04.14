@@ -17,8 +17,8 @@ company.practicum.list.button.create = Crear
 company.practicum.form.label.course = Curso:
 company.practicum.form.label.practicum-code = Código de la práctica:
 company.practicum.form.label.practicum-title = Título de la práctica:
-company.practicum.form.label.abstract$ = Resumen:
-company.practicum.form.label.goals = Objetivos:
+company.practicum.form.label.abstractPracticum = Resumen:
+company.practicum.form.label.someGoals = Objetivos:
 
 company.practicum.form.button.create = Crear
 company.practicum.form.button.update = Actualizar
