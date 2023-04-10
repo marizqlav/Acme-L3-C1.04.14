@@ -33,6 +33,9 @@ master.menu.administrator.user-accounts = User accounts
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
+master.menu.administrator.system-configuration = Show system configuration
+master.menu.administrator.list-offers = List offers
+
 
 # master.menu.authenticated #######################################################
 
@@ -59,7 +62,7 @@ master.menu.student.list.courses = Course list
 
 master.menu.company = Company
 master.menu.company.favourite-link = Favourite link
-master.menu.company.list.practicum = Practicum list
+master.menu.company.my-practica = Practicum list
 
 # master.menu.user-account ####################################################
 

@@ -17,9 +17,19 @@
 
 
 <acme:form>
-<h1><acme:message code="company.practicum.data"/></h1>
-	<acme:input-textbox code="company.practicum.form.label.code" path="code"/>	
-	<acme:input-textbox code="company.practicum.form.label.title" path="title"/>
-	<acme:input-textarea code="company.practicum.form.retail.abstractPracticum" path="abstractPracticum"/>
-	<acme:input-textarea code="company.practicum.form.label.someGoals" path="someGoals"/>
-</acme:form>
+	<acme:input-select code="company.practicum.form.label.course" path="course" choices="${courses}"/>
+	<acme:input-textbox code="company.practicum.form.label.practicum-code" path="code"/>
+	<acme:input-textbox code="company.practicum.form.label.practicum-title" path="title"/>
+	<acme:input-textbox code="company.practicum.form.label.abstract$" path="abstract$"/>
+	<acme:input-textbox code="company.practicum.form.label.goals" path="goals"/>
+
+	<jstl:choose>
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == true}">
+			<acme:submit code="company.practicum.form.button.update" action="/company/practicum/update"/>
+			<acme:submit code="company.practicum.form.button.delete" action="/company/practicum/delete"/>
+			<acme:submit code="company.practicum.form.button.publish" action="/company/practicum/publish"/>
+		</jstl:when>
+		<jstl:when test="${_command == 'create'}">
+			<acme:submit code="company.practicum.form.button.create" action="/company/practicum/create"/>
+		</jstl:when>		
+	</jstl:choose></acme:form>

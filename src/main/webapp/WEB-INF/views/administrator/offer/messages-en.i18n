@@ -9,7 +9,6 @@
 # they accept any liabilities with respect to them.
 
 administrator.offer.list.label.heading = Heading
-administrator.offer.list.label.summary = Summary
 administrator.offer.list.label.price = Price
 
 administrator.offer.form.label.instantiationMoment = Instantation Moment
@@ -25,7 +24,7 @@ administrator.offer.form.button.update = Update
 administrator.offer.form.button.delete = Delete
 
 administrator.offer.form.error.price = The price must be positive and smaller than 1000000
-administrator.offer.form.error.availabilityPeriodInitial = The start date must be at least a day after the instantiation moment
-administrator.offer.form.error.endPeriod = The end date must be minimum a week after the start date
+administrator.offer.form.error.availabilityPeriodInitial = The availability Period Initial must be at least a day after the instantiation moment
+administrator.offer.form.error.availabilityPeriodFinal = The availability Period Final must be minimum a week after the availability Period Initial
 
 administrator.offer.create = Create offer

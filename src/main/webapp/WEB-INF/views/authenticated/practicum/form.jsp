@@ -1,5 +1,5 @@
 <%--
-- list.jsp
+- form.jsp
 -
 - Copyright (C) 2012-2023 Rafael Corchuelo.
 -
@@ -15,11 +15,10 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
-<acme:list>
-	<acme:list-column code="company.practicum.list.label.practicum-code" path="code"  width="20%"/>
-	<acme:list-column code="company.practicum.list.label.title" path="title"  width="60%"/>
-	<acme:list-column code="company.practicum.list.label.course-code" path="courseCode" width="20%"/>
-</acme:list>
-
-<acme:button code="company.practicum.list.button.create" action="/company/practicum/create"/>
-
+<acme:form readonly = "true">
+	<acme:input-textbox code="authenticated.practicum.form.label.code" path="code"/>
+	<acme:input-textbox code="authenticated.practicum.form.label.title" path="title"/>
+	<acme:input-textbox code="authenticated.practicum.form.label.abstractPracticum" path="abstractPracticum"/>
+	<acme:input-textbox code="authenticated.practicum.form.label.someGoals" path="someGoals"/>
+	<acme:input-textbox code="authenticated.practicum.form.label.company" path="company"/>
+</acme:form>

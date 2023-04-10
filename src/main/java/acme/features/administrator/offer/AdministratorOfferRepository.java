@@ -2,7 +2,6 @@
 package acme.features.administrator.offer;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -17,6 +16,6 @@ public interface AdministratorOfferRepository extends AbstractRepository {
 	Offer findOfferById(int id);
 
 	@Query("select o from Offer o")
-	Collection<Offer> findAllOffer(Date date);
+	Collection<Offer> findAllOffer();
 
 }

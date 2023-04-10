@@ -2,7 +2,6 @@
 package acme.features.administrator.offer;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,8 +9,6 @@ import org.springframework.stereotype.Service;
 import acme.entities.offer.Offer;
 import acme.framework.components.accounts.Administrator;
 import acme.framework.components.models.Tuple;
-import acme.framework.controllers.HttpMethod;
-import acme.framework.helpers.PrincipalHelper;
 import acme.framework.services.AbstractService;
 
 @Service
@@ -34,9 +31,7 @@ public class AdministratorOfferListService extends AbstractService<Administrator
 	@Override
 	public void load() {
 		Collection<Offer> objects;
-		final Date date = new Date();
-		objects = this.offerRepository.findAllOffer(date);
-
+		objects = this.offerRepository.findAllOffer();
 		super.getBuffer().setData(objects);
 	}
 
@@ -44,7 +39,7 @@ public class AdministratorOfferListService extends AbstractService<Administrator
 	public void bind(final Offer object) {
 		assert object != null;
 
-		super.bind(object, "heading", "summary", "price");
+		super.bind(object, "heading", "price");
 	}
 
 	@Override
@@ -65,15 +60,8 @@ public class AdministratorOfferListService extends AbstractService<Administrator
 
 		Tuple tuple;
 
-		tuple = super.unbind(object, "heading", "summary", "price");
+		tuple = super.unbind(object, "heading", "price");
 
 		super.getResponse().setData(tuple);
 	}
-
-	@Override
-	public void onSuccess() {
-		if (super.getRequest().getMethod().equals(HttpMethod.POST))
-			PrincipalHelper.handleUpdate();
-	}
-
 }

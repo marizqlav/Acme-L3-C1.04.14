@@ -39,6 +39,9 @@
 			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/administrator/populate-sample"/>			
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/shut-down"/>
+			
+			<acme:menu-suboption code="master.menu.administrator.system-configuration" action="/administrator/system-configuration/show" access="isAuthenticated()"/>
+			<acme:menu-suboption code="master.menu.administrator.list-offers" action="/administrator/offer/list" access="isAuthenticated()"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">
@@ -58,7 +61,7 @@
 		<acme:menu-option code="master.menu.company" access="hasRole('Company')">
 			<acme:menu-suboption code="master.menu.company.favourite-link" action="https://www.informatica.us.es/"/>
 			<acme:menu-separator/>	
-			<acme:menu-suboption code="master.menu.company.list.practicum" action="/company/practicum/list"/>
+			<acme:menu-suboption code="master.menu.company.my-practica" action="/company/practicum/list"/>
 		</acme:menu-option>
 		
 	</acme:menu-left>

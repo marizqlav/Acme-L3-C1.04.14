@@ -1,5 +1,5 @@
 /*
- * AuthenticatedConsumerController.java
+ * AuthenticatedAnnouncementController.java
  *
  * Copyright (C) 2012-2023 Rafael Corchuelo.
  *
@@ -10,36 +10,36 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.administrator.offer;
+package acme.features.company.practicum;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import acme.entities.offer.Offer;
-import acme.framework.components.accounts.Administrator;
+import acme.entities.practicum.Practicum;
 import acme.framework.controllers.AbstractController;
+import acme.roles.Company;
 
 @Controller
-public class AdministratorOfferController extends AbstractController<Administrator, Offer> {
+public class CompanyPracticumController extends AbstractController<Company, Practicum> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AdministratorOfferListService		listService;
+	protected CompanyPracticumListService	listService;
 
 	@Autowired
-	protected AdministratorOfferShowService		showService;
+	protected CompanyPracticumShowService	showService;
 
 	@Autowired
-	protected AdministratorOfferDeleteService	deleteService;
+	protected CompanyPracticumPost			postService;
 
 	@Autowired
-	protected AdministratorOfferUpdateService	updateService;
+	protected CompanyPracticumUpdate		updateService;
 
 	@Autowired
-	protected AdministratorOfferCreateService		createService;
+	protected CompanyPracticumDelete		deleteService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -48,9 +48,10 @@ public class AdministratorOfferController extends AbstractController<Administrat
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
-		super.addBasicCommand("delete", this.deleteService);
+		//		super.addBasicCommand("post", this.postService);
 		super.addBasicCommand("update", this.updateService);
-		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("delete", this.deleteService);
+
 	}
 
 }

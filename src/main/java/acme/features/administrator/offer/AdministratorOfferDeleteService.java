@@ -26,9 +26,10 @@ public class AdministratorOfferDeleteService extends AbstractService<Administrat
 
 	@Override
 	public void authorise() {
-		final int id = super.getRequest().getData("id", int.class);
-		final Offer object = this.offerRepository.findOfferById(id);
-		super.getResponse().setAuthorised(MomentHelper.getCurrentMoment().before(object.getAvailabilityPeriodInitial()));
+		//		final int id = super.getRequest().getData("id", int.class);
+		//		final Offer object = this.offerRepository.findOfferById(id);
+		//		super.getResponse().setAuthorised(MomentHelper.getCurrentMoment().before(object.getAvailabilityPeriodInitial()));
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -64,7 +65,7 @@ public class AdministratorOfferDeleteService extends AbstractService<Administrat
 	public void unbind(final Offer object) {
 		assert object != null;
 		Tuple tuple;
-		tuple = super.unbind(object, "heading", "summary", "availabilityPeriodInitial", "availabilityPeriodFinal", "price", "link");
+		tuple = super.unbind(object, "instantiationMoment", "heading", "summary", "availabilityPeriodInitial", "availabilityPeriodFinal", "price", "link");
 		final boolean readonly = MomentHelper.getCurrentMoment().after(object.getAvailabilityPeriodInitial());
 		tuple.put("readonly", readonly);
 		super.getResponse().setData(tuple);

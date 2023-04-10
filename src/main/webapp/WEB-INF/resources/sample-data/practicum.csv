@@ -2,7 +2,7 @@ key,code,title,abstractPracticum,someGoals,draftMode,key:company,key:course
 practicum-01,A990,Calvo,Resumen Practica,Top cuarenta,true,company-01,course-01
 practicum-02,A991,ສະເໜີ,Resumen Practica,Top cuarenta,true,company-01,course-02
 practicum-03,A992,Calvo,ສະເໜີ,Top cuarenta,true,company-01,course-03
-practicum-04,A993,Calvo,Resumen Practica,ສະເໜີ,true,company-01,course-04
+practicum-04,A993,Calvo,Resumen Practica,ສະເໜີ,false,company-01,course-04
 practicum-05,A994,<h1>hola</h1>,Resumen Practica,Top cuarenta,true,company-01,course-05
 practicum-06,A995,Calvo,<h1>hola</h1>,Top cuarenta,true,company-01,course-06
 practicum-07,A996,Calvo,Resumen Practica,<h1>hola</h1>,true,company-01,course-07

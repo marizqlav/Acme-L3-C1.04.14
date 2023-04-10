@@ -33,6 +33,9 @@ master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema
+master.menu.administrator.system-configuration = Mostrar configuración del sistema
+master.menu.administrator.list-offers = Lista ofertas
+
 
 # master.menu.authenticated #######################################################
 
@@ -59,7 +62,7 @@ master.menu.student.list.courses = Lista de cursos
 
 master.menu.company = Compañia
 master.menu.company.favourite-link = Enlace favorito
-master.menu.company.list.practicum = Lista de practicas
+master.menu.company.my-practica = Lista de practicas
 
 # master.menu.user-account ####################################################
 

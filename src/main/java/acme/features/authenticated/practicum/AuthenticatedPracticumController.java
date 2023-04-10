@@ -10,47 +10,31 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.administrator.offer;
+package acme.features.authenticated.practicum;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import acme.entities.offer.Offer;
-import acme.framework.components.accounts.Administrator;
+import acme.entities.practicum.Practicum;
+import acme.framework.components.accounts.Authenticated;
 import acme.framework.controllers.AbstractController;
 
 @Controller
-public class AdministratorOfferController extends AbstractController<Administrator, Offer> {
-
-	// Internal state ---------------------------------------------------------
+public class AuthenticatedPracticumController extends AbstractController<Authenticated, Practicum> {
 
 	@Autowired
-	protected AdministratorOfferListService		listService;
+	protected AuthenticatedPracticumListService	listService;
 
 	@Autowired
-	protected AdministratorOfferShowService		showService;
-
-	@Autowired
-	protected AdministratorOfferDeleteService	deleteService;
-
-	@Autowired
-	protected AdministratorOfferUpdateService	updateService;
-
-	@Autowired
-	protected AdministratorOfferCreateService		createService;
-
-	// Constructors -----------------------------------------------------------
+	protected AuthenticatedPracticumShowService	showService;
 
 
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
-		super.addBasicCommand("delete", this.deleteService);
-		super.addBasicCommand("update", this.updateService);
-		super.addBasicCommand("create", this.createService);
 	}
 
 }

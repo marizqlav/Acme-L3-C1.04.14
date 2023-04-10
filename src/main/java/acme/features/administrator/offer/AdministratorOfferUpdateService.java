@@ -7,6 +7,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.components.AssistantService;
 import acme.entities.offer.Offer;
 import acme.framework.components.accounts.Administrator;
 import acme.framework.components.models.Tuple;
@@ -17,9 +18,10 @@ import acme.framework.services.AbstractService;
 public class AdministratorOfferUpdateService extends AbstractService<Administrator, Offer> {
 
 	@Autowired
-	protected AdministratorOfferRepository repository;
+	protected AdministratorOfferRepository	repository;
 
-	// AbstractService<Employer, Job> -------------------------------------
+	@Autowired
+	protected AssistantService				assistantService;
 
 
 	@Override
@@ -55,6 +57,8 @@ public class AdministratorOfferUpdateService extends AbstractService<Administrat
 	public void validate(final Offer object) {
 		assert object != null;
 
+		if (!super.getBuffer().getErrors().hasErrors("price"))
+			super.state(this.assistantService.validatePrice(object.getPrice(), 0, 1000000), "price", "administrator.offer.form.error.price");
 		if (!super.getBuffer().getErrors().hasErrors("availabilityPeriodInitial")) {
 			Date minimumStartDate;
 			minimumStartDate = MomentHelper.deltaFromMoment(object.getInstantiationMoment(), 1, ChronoUnit.DAYS);
