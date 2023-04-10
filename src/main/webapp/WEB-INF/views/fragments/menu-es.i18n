@@ -21,7 +21,6 @@ master.menu.anonymous = Anónimo
 master.menu.anonymous.favourite-link = Enlace favorito
 master.menu.anonymous.ismael-favourite-link = 49389248Z: Herrera Ramirez, Ismael
 master.menu.anonymous.ale-favourite-link = 49852809X: Merino Palma, Alejandro
-
 master.menu.anonymous.alberto-favourite-link = 54181123T: Dominguez-Adame, Alberto
 master.menu.anonymous.marcos-favourite-link = 05934857Y: Olmedo Marin, Marcos
 master.menu.anonymous.mario-favourite-link = 76269995V: Izquierdo Lavado, Mario
@@ -34,6 +33,14 @@ master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema
+master.menu.administrator.system-configuration = Mostrar configuración del sistema
+master.menu.administrator.list-offers = Lista ofertas
+
+
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Authenticated
+master.menu.authenticated.offer.list = Lista oferta
 
 # master.menu.provider ########################################################
 
@@ -51,6 +58,12 @@ master.menu.student = Estudiante
 master.menu.student.favourite-link = Enlace favorito
 master.menu.student.list.courses = Lista de cursos
 
+# master.menu.company ####################################################
+
+master.menu.company = Compañia
+master.menu.company.favourite-link = Enlace favorito
+master.menu.company.my-practica = Lista de practicas
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
@@ -61,5 +74,7 @@ master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
 master.menu.user-account.student = Datos de estudiante
 master.menu.user-account.become-student = Hazte estudiante
-master.menu.user-account.become-auditor = Hazte auditor
 master.menu.user-account.auditor = Datos del perfil de auditor
+master.menu.user-account.become-auditor = Hazte auditor
+master.menu.user-account.company = Datos del perfil de compañia
+master.menu.user-account.become-company = Convertirse compañia
