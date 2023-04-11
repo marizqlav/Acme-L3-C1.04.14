@@ -27,7 +27,8 @@
 			<acme:menu-suboption code="master.menu.anonymous.marcos-favourite-link" action="https://www.youtube.com/channel/UCi8z8yRzPpHWPs-TfUEkvEQ?app=desktop"/>
 
 		</acme:menu-option>
-
+		
+			<acme:menu-option code="master.menu.any.peeps" action="/any/peep/list"/>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
