@@ -21,9 +21,12 @@
 	<acme:input-textbox code="any.peep.form.label.nick" path="nick"/>
 	<acme:input-textbox code="any.peep.form.label.title" path="title"/>	
 	<acme:input-textarea code="any.peep.form.label.message" path="message"/>
+	<jstl:if test="${!moreInfo.isEmpty()}">
 	<acme:input-email code="any.peep.form.label.email" path="moreInfo"/>
+	</jstl:if>
+	<jstl:if test="${!link.isEmpty()}">
 	<acme:input-url code="any.peep.form.label.link" path="link"/>
-
+	</jstl:if>
 	<jstl:choose>
 		<jstl:when test="${!(_command == 'create')}">
 			<acme:input-moment code="any.peep.form.label.instantiation.moment" path="instantiationMoment"/>

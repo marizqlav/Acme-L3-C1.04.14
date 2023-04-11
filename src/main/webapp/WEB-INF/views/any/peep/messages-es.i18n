@@ -20,3 +20,4 @@ any.peep.list.label.nick = Nombre de usuario
 any.peep.list.label.title = Título
 any.shout.form.button.delete = Eliminar
 any.peep.form.label.instantiation.moment = Hora a la que se publicó:
+any.peep.instantiation.moment = Hora a la que se publicó
