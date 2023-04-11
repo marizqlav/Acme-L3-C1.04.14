@@ -16,8 +16,9 @@
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="any.peep.list.label.nick" path="nick" width="20%"/>
-	<acme:list-column code="any.peep.list.label.title" path="title" width="80%"/>
+	<acme:list-column code="any.peep.form.label.instantiation.moment" path="instantiationMoment" width="15%"/>
+	<acme:list-column code="any.peep.list.label.nick" path="nick" width="15%"/>
+	<acme:list-column code="any.peep.list.label.title" path="title" width="70%"/>
 </acme:list>
 
 <acme:button code="any.peep.list.button.create" action="/any/peep/create"/>

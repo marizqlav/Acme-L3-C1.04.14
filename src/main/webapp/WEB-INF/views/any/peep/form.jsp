@@ -23,10 +23,11 @@
 	<acme:input-textarea code="any.peep.form.label.message" path="message"/>
 	<acme:input-email code="any.peep.form.label.email" path="moreInfo"/>
 	<acme:input-url code="any.peep.form.label.link" path="link"/>
-	
 
-	
 	<jstl:choose>
+		<jstl:when test="${!(_command == 'create')}">
+			<acme:input-moment code="any.peep.form.label.instantiation.moment" path="instantiationMoment"/>
+		</jstl:when>	
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="any.peep.form.button.create" action="/any/peep/create"/>
 		</jstl:when>		
