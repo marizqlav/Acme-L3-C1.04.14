@@ -51,6 +51,11 @@
 			<acme:menu-separator/>	
 			<acme:menu-suboption code="master.menu.student.list.courses" action="/student/course/list"/>
 		</acme:menu-option>
+
+		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
+			<acme:menu-suboption code="master.menu.auditor.list.audits" action="/auditor/audit/list"/>
+		</acme:menu-option>
+
 	</acme:menu-left>
 
 	<acme:menu-right>
@@ -68,6 +73,8 @@
 			<acme:menu-suboption code="master.menu.user-account.become-auditor" action="/authenticated/auditor/create" access="!hasRole('Auditor')"/>
 			<acme:menu-suboption code="master.menu.user-account.auditor" action="/authenticated/auditor/update" access="hasRole('Auditor')"/>
 
+			<acme:menu-separator/>	
+			<acme:menu-suboption code="master.menu.list.audits-by-course" action="/auditor/audit/list-by-course"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.sign-out" action="/master/sign-out" access="isAuthenticated()"/>

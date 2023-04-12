@@ -33,7 +33,7 @@ public class Audit extends AbstractEntity {
 	@NotBlank
 	@Pattern(regexp = "[A-Z]{1,3}[0-9]{3}")
 	@Column(unique = true)
-	String	code;
+	String code;
 
 	@Size(max = 101)
 	@NotBlank

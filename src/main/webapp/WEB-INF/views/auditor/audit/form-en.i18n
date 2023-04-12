@@ -1,0 +1,10 @@
+auditors.audit.list.label.code = code
+auditors.audit.list.label.conclusion = conclusion
+auditors.audit.list.label.strongPoints = strong points
+auditors.audit.list.label.weakPoints = weak points
+
+auditor.audit.data = Audit data
+auditor.audit.form.label.code = Code
+auditors.audit.form.label.conclusion = Conclusion
+auditors.audit.form.label.strongPoints = Strong points
+auditors.audit.form.label.weakPoints = Weak points
