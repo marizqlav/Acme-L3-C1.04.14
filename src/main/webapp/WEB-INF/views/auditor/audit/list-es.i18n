@@ -1,0 +1,5 @@
+auditors.audit.list.label.code = código
+auditors.audit.list.label.conclusion = conclusión
+auditors.audit.list.label.strongPoints = puntos fuertes
+auditors.audit.list.label.weakPoints = puntos débiles
+auditors.audit.list.button.create = Crear

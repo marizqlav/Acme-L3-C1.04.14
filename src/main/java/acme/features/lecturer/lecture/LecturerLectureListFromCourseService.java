@@ -1,0 +1,57 @@
+
+package acme.features.lecturer.lecture;
+
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import acme.entities.lectures.Lecture;
+import acme.framework.components.models.Tuple;
+import acme.framework.services.AbstractService;
+import acme.roles.Lecturer;
+
+@Service
+public class LecturerLectureListFromCourseService extends AbstractService<Lecturer, Lecture> {
+
+	// Internal State ------------------------------------------
+	@Autowired
+	protected LecturerLectureRepository repository;
+
+	//AbstractServiceInterface -------------------------------
+
+
+	@Override
+	public void check() {
+		super.getResponse().setChecked(true);
+	}
+
+	@Override
+	public void authorise() {
+		super.getResponse().setAuthorised(true);
+	}
+
+	@Override
+	public void load() {
+		Collection<Lecture> objects;
+		objects = this.repository.findAllLectures();
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		objects = this.repository.findAllLecturesByCourse(id);
+		super.getBuffer().setData(objects);
+
+	}
+
+	@Override
+	public void unbind(final Lecture object) {
+		assert object != null;
+
+		Tuple tuple;
+
+		tuple = super.unbind(object, "title", "resumen", "lectureType", "estimatedTime", "body");
+
+		super.getResponse().setData(tuple);
+	}
+
+}

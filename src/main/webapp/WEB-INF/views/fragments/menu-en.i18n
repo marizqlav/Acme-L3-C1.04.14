@@ -24,6 +24,9 @@ master.menu.anonymous.ale-favourite-link = 49852809X: Merino Palma, Alejandro
 master.menu.anonymous.alberto-favourite-link = 54181123T: Dominguez-Adame, Alberto
 master.menu.anonymous.marcos-favourite-link = 05934857Y: Olmedo Marin, Marcos
 master.menu.anonymous.mario-favourite-link = 76269995V: Izquierdo Lavado, Mario
+
+# master.menu.any #################################################################
+master.menu.any.course = Courses
 master.menu.any.peeps = Peeps
 
 # master.menu.administrator ###################################################
@@ -67,6 +70,13 @@ master.menu.company = Company
 master.menu.company.favourite-link = Favourite link
 master.menu.company.my-practica = Practicum list
 
+# master.menu.lecturer ##########################################################
+
+master.menu.lecturer = Lecturer
+master.menu.lecturer.list.courses = Course List
+master.menu.lecturer.list.lecture = Lecture List
+
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
@@ -80,6 +90,14 @@ master.menu.user-account.become-student = Become a student
 master.menu.user-account.auditor = Auditor profile data
 master.menu.user-account.become-auditor = Become an auditor
 master.menu.user-account.auditor = Auditor profile data
+
+master.menu.auditor = Auditor
+master.menu.auditor.list.audits = My audits
+master.menu.list.audits-by-course = List audits by course
+master.menu.auditor.list.auditingRecords = My auditing records
+
 master.menu.user-account.become-assistant = Become an assistant
 master.menu.user-account.company = Company profile data
 master.menu.user-account.become-company = Become a company
+master.menu.user-account.become-lecturer = Become a lecturer
+master.menu.user-account.lecturer = Lecturer profile data

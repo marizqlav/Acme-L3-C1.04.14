@@ -1,16 +1,9 @@
 
 package acme.entities.audits;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.stream.Collectors;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -19,7 +12,6 @@ import acme.framework.data.AbstractEntity;
 import acme.roles.Auditor;
 import lombok.Getter;
 import lombok.Setter;
-import acme.entities.audits.AuditingRecord;
 import acme.entities.courses.Course;
 
 
@@ -33,7 +25,7 @@ public class Audit extends AbstractEntity {
 	@NotBlank
 	@Pattern(regexp = "[A-Z]{1,3}[0-9]{3}")
 	@Column(unique = true)
-	String	code;
+	String code;
 
 	@Size(max = 101)
 	@NotBlank

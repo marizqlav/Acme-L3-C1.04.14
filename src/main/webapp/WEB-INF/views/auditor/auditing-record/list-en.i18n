@@ -1,0 +1,5 @@
+auditors.auditingRecord.list.label.subject = subject
+auditors.auditingRecord.list.label.assesment = assesment
+auditors.auditingRecord.list.label.firstDate = assesment date
+auditors.auditingRecord.list.label.mark = mark
+auditors.auditingRecord.list.button.create = Create
