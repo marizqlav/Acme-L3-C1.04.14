@@ -1,6 +1,5 @@
-package acme.features.authenticated.audit;
 
-import java.util.List;
+package acme.features.authenticated.audit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +13,9 @@ import acme.framework.services.AbstractService;
 @Service
 public class AuthenticatedAuditListByCourseService extends AbstractService<Authenticated, Audit> {
 
-    @Autowired
-    AuditorAuditRepository repo;
+	@Autowired
+	AuditorAuditRepository repo;
+
 
 	@Override
 	public void check() {
@@ -26,29 +26,29 @@ public class AuthenticatedAuditListByCourseService extends AbstractService<Authe
 		super.getResponse().setChecked(status);
 	}
 
-    @Override
-    public void authorise() {
-        super.getResponse().setAuthorised(true);
-    }
+	@Override
+	public void authorise() {
+		super.getResponse().setAuthorised(true);
+	}
 
-    @Override
-    public void load() {
-        Integer courseId = super.getRequest().getData("courseId", int.class);
+	@Override
+	public void load() {
+		//        Integer courseId = super.getRequest().getData("courseId", int.class);
+		//
+		//        List<Audit> audits = repo.findAllAuditsByCourse(courseId);
 
-        List<Audit> audits = repo.findAllAuditsByCourse(courseId);
+		super.getBuffer().setData(true);
+	}
 
-        super.getBuffer().setData(audits);
-    }
-
-    @Override
-    public void unbind(final Audit audit) {
+	@Override
+	public void unbind(final Audit audit) {
 		assert audit != null;
 
 		Tuple tuple;
 
 		tuple = super.unbind(audit, "code", "conclusion", "strongPoints", "weakPoints");
 
-        super.getResponse().setData(tuple);
-    }
+		super.getResponse().setData(tuple);
+	}
 
 }
