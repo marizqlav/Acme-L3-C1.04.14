@@ -15,8 +15,16 @@ import acme.framework.services.AbstractService;
 public class AuthenticatedPracticumListService extends AbstractService<Authenticated, Practicum> {
 
 	@Autowired
-	protected AuthenticatedPracticumRepository practicumRepository;
+	protected AuthenticatedPracticumRepository pracRepository;
 
+
+	@Override
+	public void check() {
+		boolean status;
+		status = super.getRequest().hasData("id", int.class);
+		super.getResponse().setChecked(status);
+
+	}
 
 	@Override
 	public void authorise() {
@@ -24,44 +32,12 @@ public class AuthenticatedPracticumListService extends AbstractService<Authentic
 	}
 
 	@Override
-	public void check() {
-		boolean status;
-
-		status = super.getRequest().hasData("id", int.class);
-
-		super.getResponse().setChecked(status);
-
-	}
-
-	@Override
 	public void load() {
 		Collection<Practicum> objects;
 		int id;
-
 		id = super.getRequest().getData("id", int.class);
-		objects = this.practicumRepository.findPracticumByCourseId(id);
-
+		objects = this.pracRepository.findPracticaByCourseId(id);
 		super.getBuffer().setData(objects);
-
-	}
-
-	@Override
-	public void bind(final Practicum object) {
-		assert object != null;
-
-		super.bind(object, "code", "title");
-	}
-
-	@Override
-	public void validate(final Practicum object) {
-		assert object != null;
-	}
-
-	@Override
-	public void perform(final Practicum object) {
-		assert object != null;
-
-		this.practicumRepository.save(object);
 	}
 
 	@Override

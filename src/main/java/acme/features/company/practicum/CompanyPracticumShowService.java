@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.courses.Course;
 import acme.entities.practicum.Practicum;
+import acme.framework.components.accounts.Principal;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -48,16 +49,16 @@ public class CompanyPracticumShowService extends AbstractService<Company, Practi
 	public void authorise() {
 		final boolean status;
 		Practicum object;
-		//		Principal principal;
+		Principal principal;
 		int practicumId;
 
 		practicumId = super.getRequest().getData("id", int.class);
 		object = this.repository.findPracticumById(practicumId);
-		//		principal = super.getRequest().getPrincipal();
+		principal = super.getRequest().getPrincipal();
 
-		//		status = object.getCompany().getId() == principal.getActiveRoleId();
+		status = object.getCompany().getId() == principal.getActiveRoleId();
 
-		super.getResponse().setAuthorised(true);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -82,7 +83,7 @@ public class CompanyPracticumShowService extends AbstractService<Company, Practi
 		courses = this.repository.findAllCourses();
 		choices = SelectChoices.from(courses, "code", object.getCourse());
 
-		tuple = super.unbind(object, "code", "title", "abstract$", "goals", "draftMode");
+		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals", "draftMode");
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
 

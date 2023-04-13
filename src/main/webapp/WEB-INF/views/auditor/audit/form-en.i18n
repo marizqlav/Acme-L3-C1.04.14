@@ -1,0 +1,12 @@
+auditor.audit.data = Audit data
+auditor.audit.form.label.code = Code
+auditor.audit.form.label.conclusion = Conclusion
+auditor.audit.form.label.strongPoints = Strong points
+auditor.audit.form.label.weakPoints = Weak points
+auditor.audit.form.button.create = Create
+auditor.audit.form.button.update = Update
+auditor.audit.form.button.delete = Delete
+auditor.audit.form.chooseCourse = Select course id
+auditor.audit.form.course.nullError = The course must exist
+auditor.audit.form.code.repeated = The code must not repeat
+auditor.audit.auditingRecords = Show auditing records

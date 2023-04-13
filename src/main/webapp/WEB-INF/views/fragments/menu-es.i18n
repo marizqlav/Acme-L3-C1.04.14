@@ -24,7 +24,11 @@ master.menu.anonymous.ale-favourite-link = 49852809X: Merino Palma, Alejandro
 master.menu.anonymous.alberto-favourite-link = 54181123T: Dominguez-Adame, Alberto
 master.menu.anonymous.marcos-favourite-link = 05934857Y: Olmedo Marin, Marcos
 master.menu.anonymous.mario-favourite-link = 76269995V: Izquierdo Lavado, Mario
+
+# master.menu.any #################################################################
+master.menu.any.course = Cursos
 master.menu.any.peeps = Publicaciones
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
@@ -41,6 +45,7 @@ master.menu.administrator.list-offers = Lista ofertas
 
 master.menu.authenticated = Authenticated
 master.menu.authenticated.offer.list = Lista oferta
+master.menu.authenticated.practicum.list = Lista practicas 
 
 # master.menu.provider ########################################################
 
@@ -65,6 +70,12 @@ master.menu.company = Compañia
 master.menu.company.favourite-link = Enlace favorito
 master.menu.company.my-practica = Lista de practicas
 
+# master.menu.lecturer ##########################################################
+
+master.menu.lecturer = Profesor
+master.menu.lecturer.list.courses = Lista de Cursos
+master.menu.lecturer.list.lecture = Lista de Clases
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
@@ -77,5 +88,15 @@ master.menu.user-account.student = Datos de estudiante
 master.menu.user-account.become-student = Hazte estudiante
 master.menu.user-account.auditor = Datos del perfil de auditor
 master.menu.user-account.become-auditor = Hazte auditor
+master.menu.user-account.auditor = Datos del perfil de auditor
+
+master.menu.auditor = Auditor
+master.menu.auditor.list.audits = Mis auditorias
+master.menu.list.audits-by-course = Listar auditorias por curso
+master.menu.auditor.list.auditingRecords = Mis registros de auditorias
+
 master.menu.user-account.company = Datos del perfil de compañia
 master.menu.user-account.become-company = Convertirse compañia
+master.menu.user-account.become-lecturer = Conviertete en profesor
+master.menu.user-account.lecturer = Datos del Perfil de profesor
+
