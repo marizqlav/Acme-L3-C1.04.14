@@ -22,4 +22,4 @@
 	<acme:list-column code="auditors.audit.list.label.weakPoints" path="weakPoints"/>
 </acme:list>
 
-
+<acme:button code="auditors.audit.list.button.create" action="/auditor/audit/create"/>

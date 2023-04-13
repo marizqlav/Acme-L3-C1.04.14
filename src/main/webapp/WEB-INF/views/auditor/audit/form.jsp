@@ -17,9 +17,25 @@
 
 
 <acme:form>
-<h1><acme:message code="auditor.audit.data"/></h1>
+
+	<h1><acme:message code="auditor.audit.data"/></h1>
 	<acme:input-textbox code="auditor.audit.form.label.code" path="code"/>	
-	<acme:input-textarea code="auditor.audit.form.label.conclusion" path="conclusions"/>
-	<acme:input-money code="auditor.audit.form.retail.strongPoints" path="strongPoints"/>
-	<acme:input-url code="auditor.audit.form.label.weakPoints" path="weakPoints"/>
+	<acme:input-textarea code="auditor.audit.form.label.conclusion" path="conclusion"/>
+	<acme:input-textarea code="auditor.audit.form.label.strongPoints" path="strongPoints"/>
+	<acme:input-textarea code="auditor.audit.form.label.weakPoints" path="weakPoints"/>
+	
+	<jstl:if test="${_command == 'create'}">
+		<acme:input-double code="auditor.audit.form.chooseCourse" path="courseId"/>
+	</jstl:if>
+
+	<jstl:choose>	 
+		<jstl:when test="${_command == 'create'}">
+			<acme:submit code="auditor.audit.form.button.create" action="/auditor/audit/create"/>
+		</jstl:when>	
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
+			<acme:submit code="auditor.audit.form.button.update" action="/auditor/audit/update"/>
+			<acme:submit code="auditor.audit.form.button.delete" action="/auditor/audit/delete"/>
+		</jstl:when>	
+	</jstl:choose>
+
 </acme:form>

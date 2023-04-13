@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.entities.audits.Audit;
-import acme.features.authenticated.audit.AuthenticatedAuditListByCourseService;
 import acme.framework.controllers.AbstractController;
 import acme.roles.Auditor;
 
@@ -20,16 +19,21 @@ public class AuditorAuditController extends AbstractController<Auditor, Audit> {
     AuditorAuditShowService showService;
 
     @Autowired
-    AuthenticatedAuditListByCourseService listByCourseService;
+    AuditorAuditCreateService createService;
 
     @Autowired
-    AuthenticatedAuditListByCourseService showWithAuditor;
+    AuditorAuditUpdateService updateService;
+
+    @Autowired
+    AuditorAuditDeleteService deleteService;
 
     @PostConstruct
     void initialise() {
         super.addBasicCommand("list", listService);
         super.addBasicCommand("show", showService);
-
+        super.addBasicCommand("create", createService);
+        super.addBasicCommand("update", updateService);
+        super.addBasicCommand("delete", deleteService);
     }
 
 }
