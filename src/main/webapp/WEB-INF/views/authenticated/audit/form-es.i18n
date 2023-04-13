@@ -1,0 +1,17 @@
+auditors.audit.list.label.code = código
+auditors.audit.list.label.conclusion = conclusión
+auditors.audit.list.label.strongPoints = puntos fuertes
+auditors.audit.list.label.weakPoints = puntos débiles
+
+auditor.audit.data = Datos de la auditoría
+auditor.audit.form.label.code = Código
+auditors.audit.form.label.conclusion = Conclusión
+auditors.audit.form.label.strongPoints = PUntos fuertes
+auditors.audit.form.label.weakPoints = Puntos débiles
+
+auditor.audit.auditor.data = Datos del auditor
+auditor.audit.form.label.auditor.userName = Nombre de usuario
+auditor.audit.form.label.auditor.firm = Firma
+auditor.audit.form.label.auditor.professionalID = ID profesional
+auditor.audit.form.label.auditor.listOfCertifications = Lista de certificaciones
+auditor.audit.form.label.auditor.link = Link

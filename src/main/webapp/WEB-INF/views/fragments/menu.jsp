@@ -59,13 +59,15 @@
 		<acme:menu-suboption code="master.menu.student.my.enrolments" action="/student/enrolment/list-mine"/>
 		
 		</acme:menu-option>
+		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
+			<acme:menu-suboption code="master.menu.auditor.list.audits" action="/auditor/audit/list"/>
+		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.company" access="hasRole('Company')">
 			<acme:menu-suboption code="master.menu.company.favourite-link" action="https://www.informatica.us.es/"/>
 			<acme:menu-separator/>	
 			<acme:menu-suboption code="master.menu.company.my-practica" action="/company/practicum/list"/>
 		</acme:menu-option>
-		
 	</acme:menu-left>
 
 	<acme:menu-right>
@@ -82,6 +84,10 @@
 			<acme:menu-suboption code="master.menu.user-account.student" action="/authenticated/student/update" access="hasRole('Student')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-auditor" action="/authenticated/auditor/create" access="!hasRole('Auditor')"/>
 			<acme:menu-suboption code="master.menu.user-account.auditor" action="/authenticated/auditor/update" access="hasRole('Auditor')"/>
+
+			<acme:menu-separator/>	
+			<acme:menu-suboption code="master.menu.list.audits-by-course" action="/auditor/audit/list-by-course"/>
+
 			<acme:menu-suboption code="master.menu.user-account.become-assistant" action="/authenticated/assistant/create" access="!hasRole('Assistant')"/>
 			<acme:menu-suboption code="master.menu.user-account.assistant" action="/authenticated/assistant/update" access="hasRole('Assistant')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-company" action="/authenticated/company/create" access="!hasRole('Company')"/>
