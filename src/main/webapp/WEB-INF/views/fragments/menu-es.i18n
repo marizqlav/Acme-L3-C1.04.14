@@ -89,7 +89,14 @@ master.menu.user-account.become-student = Hazte estudiante
 master.menu.user-account.auditor = Datos del perfil de auditor
 master.menu.user-account.become-auditor = Hazte auditor
 master.menu.user-account.auditor = Datos del perfil de auditor
+
+master.menu.auditor = Auditor
+master.menu.auditor.list.audits = Mis auditorias
+master.menu.list.audits-by-course = Listar auditorias por curso
+master.menu.auditor.list.auditingRecords = Mis registros de auditorias
+
 master.menu.user-account.company = Datos del perfil de compañia
 master.menu.user-account.become-company = Convertirse compañia
 master.menu.user-account.become-lecturer = Conviertete en profesor
 master.menu.user-account.lecturer = Datos del Perfil de profesor
+

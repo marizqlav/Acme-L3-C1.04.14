@@ -1,0 +1,12 @@
+auditor.auditingRecord.data = Auditing record data
+auditor.auditingRecord.form.label.subject = Subject
+auditor.auditingRecord.form.label.assesment = Assesment
+auditor.auditingRecord.form.label.firstDate = Beginning of assesment date
+auditor.auditingRecord.form.label.lastDate = End of assesment date
+auditor.auditingRecord.form.label.mark = Mark
+auditor.auditingRecord.form.button.create = Create
+auditor.auditingRecord.form.button.update = Update
+auditor.auditingRecord.form.button.delete = Delete
+auditor.auditingRecord.form.chooseCourse = Select course id
+auditor.auditingRecord.form.course.nullError = The course must exist
+auditor.auditingRecord.form.code.repeated = The code must not repeat
