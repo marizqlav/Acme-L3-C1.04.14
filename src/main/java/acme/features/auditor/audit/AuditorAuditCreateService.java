@@ -14,8 +14,6 @@ import acme.roles.Auditor;
 @Service
 public class AuditorAuditCreateService extends AbstractService<Auditor, Audit> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	protected AuditorAuditRepository repo;
 

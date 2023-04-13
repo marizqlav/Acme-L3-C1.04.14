@@ -30,6 +30,8 @@ public class AuditorAuditDeleteService extends AbstractService<Auditor, Audit> {
 
 		Audit audit = repo.findAudit(super.getRequest().getData("id", int.class));
 		status = audit != null;
+		
+		status = status && audit.getDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -39,6 +41,7 @@ public class AuditorAuditDeleteService extends AbstractService<Auditor, Audit> {
 		Audit audit;
 
         audit = repo.findAudit(super.getRequest().getData("id", int.class));
+
 
 		super.getBuffer().setData(audit);
 	}
@@ -73,6 +76,8 @@ public class AuditorAuditDeleteService extends AbstractService<Auditor, Audit> {
 		Tuple tuple;
 
 		tuple = super.unbind(audit, "code", "conclusion", "strongPoints", "weakPoints");
+
+		tuple.put("draftMode", audit.getDraftMode());
 
 		super.getResponse().setData(tuple);
 	}

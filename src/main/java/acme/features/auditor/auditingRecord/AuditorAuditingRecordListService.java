@@ -47,7 +47,7 @@ public class AuditorAuditingRecordListService extends AbstractService<Auditor, A
         
 		tuple.put("draftMode", repo.findAudit(super.getRequest().getData("auditId", int.class)).getDraftMode());
         
-        super.getResponse().setData(tuple);
+        super.getResponse().setData("data", tuple);
     }
 
 }
