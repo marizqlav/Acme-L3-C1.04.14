@@ -1,5 +1,5 @@
 /*
- * AuthenticatedAnnouncementShowService.java
+ * EmployerJobDeleteService.java
  *
  * Copyright (C) 2012-2023 Rafael Corchuelo.
  *
@@ -10,27 +10,23 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.student.course;
-
-import java.util.Collection;
+package acme.features.student.enrolment;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.courses.Course;
 import acme.entities.enrolments.Enrolment;
-import acme.entities.lectures.Lecture;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
 
 @Service
-public class StudentCourseShowService extends AbstractService<Student, Course> {
+public class StudentEnrolmentDeleteService extends AbstractService<Student, Enrolment> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected StudentCourseRepository repository;
+	protected StudentEnrolmentRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -47,50 +43,50 @@ public class StudentCourseShowService extends AbstractService<Student, Course> {
 	@Override
 	public void authorise() {
 		boolean status;
-		int id;
-
-		id = super.getRequest().getData("id", int.class);
-
-		status = true;
-
+		final Enrolment enrolment = this.repository.findOneEnrolmentById(super.getRequest().getData("id", int.class));
+		status = !enrolment.isDraftMode() && super.getRequest().getPrincipal().hasRole(Student.class);
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Course object;
+		Enrolment object;
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneCourseById(id);
+		object = this.repository.findOneEnrolmentById(id);
 
 		super.getBuffer().setData(object);
 	}
 
 	@Override
-	public void unbind(final Course object) {
+	public void bind(final Enrolment object) {
+		assert object != null;
+
+		super.bind(object, "code", "motivation", "someGoals", "draftMode");
+	}
+
+	@Override
+	public void validate(final Enrolment object) {
+		assert object != null;
+	}
+
+	@Override
+	public void perform(final Enrolment object) {
+		assert object != null;
+
+		this.repository.delete(object);
+	}
+
+	@Override
+	public void unbind(final Enrolment object) {
 		assert object != null;
 
 		Tuple tuple;
-		final Collection<Lecture> lectures;
-		final Enrolment enrolmented = this.repository.findStudentCourse(super.getRequest().getPrincipal().getActiveRoleId(), object.getId());
-		lectures = this.repository.findLecturesByCourseId(object.getId());
-		tuple = super.unbind(object, "code", "title", "resumen", "retailPrice", "link");
-		tuple.put("lecturerusername", object.getLecturer().getUserAccount().getUsername());
-		tuple.put("lectureralmamater", object.getLecturer().getAlmaMater());
-		tuple.put("lecturerresume", object.getLecturer().getResume());
-		tuple.put("lecturerqualifications", object.getLecturer().getQualifications());
-		tuple.put("lecturerlink", object.getLecturer().getLink());
 
-		if (enrolmented != null)
-			tuple.put("enrolment", "yes");
-		else
-			tuple.put("enrolment", "no");
-
-		tuple.put("lectures", lectures);
+		tuple = super.unbind(object, "code", "motivation", "someGoals", "draftMode");
 
 		super.getResponse().setData(tuple);
-
 	}
 
 }

@@ -1,5 +1,5 @@
 /*
- * AuthenticatedAnnouncementListService.java
+ * AnyJobListService.java
  *
  * Copyright (C) 2012-2023 Rafael Corchuelo.
  *
@@ -10,25 +10,25 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.student.course;
+package acme.features.any.peep;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.courses.Course;
+import acme.entities.peeps.Peep;
+import acme.framework.components.accounts.Any;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
-import acme.roles.Student;
 
 @Service
-public class StudentCourseListService extends AbstractService<Student, Course> {
+public class AnyPeepListService extends AbstractService<Any, Peep> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected StudentCourseRepository repository;
+	protected AnyPeepRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -45,21 +45,18 @@ public class StudentCourseListService extends AbstractService<Student, Course> {
 
 	@Override
 	public void load() {
-		Collection<Course> objects;
-
-		objects = this.repository.findCourses();
-
+		final Collection<Peep> objects;
+		objects = this.repository.findPeeps();
 		super.getBuffer().setData(objects);
 	}
 
 	@Override
-	public void unbind(final Course object) {
+	public void unbind(final Peep object) {
 		assert object != null;
 
 		Tuple tuple;
 
-		tuple = super.unbind(object, "code", "title", "resumen", "retailPrice", "link");
-
+		tuple = super.unbind(object, "instantiationMoment", "title", "nick", "message", "moreInfo", "link");
 		super.getResponse().setData(tuple);
 	}
 

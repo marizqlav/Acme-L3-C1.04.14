@@ -1,0 +1,23 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2023 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+any.peep.new = Publicación
+any.peep.form.label.nick = Nombre de usuario:
+any.peep.form.label.title = Título:
+any.peep.form.label.message = Mensaje:
+any.peep.form.label.email = Más Información:
+any.peep.form.label.link = Enlace:
+any.peep.form.button.create = Crear
+any.peep.list.button.create = Crear
+any.peep.list.label.nick = Nombre de usuario
+any.peep.list.label.title = Título
+any.shout.form.button.delete = Eliminar
+any.peep.form.label.instantiation.moment = Hora a la que se publicó:
+any.peep.instantiation.moment = Hora a la que se publicó

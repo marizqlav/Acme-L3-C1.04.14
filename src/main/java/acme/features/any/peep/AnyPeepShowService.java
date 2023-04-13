@@ -1,5 +1,5 @@
 /*
- * AuthenticatedAnnouncementListService.java
+ * AnyJobShowService.java
  *
  * Copyright (C) 2012-2023 Rafael Corchuelo.
  *
@@ -10,56 +10,67 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.student.course;
-
-import java.util.Collection;
+package acme.features.any.peep;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.courses.Course;
+import acme.entities.peeps.Peep;
+import acme.framework.components.accounts.Any;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
-import acme.roles.Student;
 
 @Service
-public class StudentCourseListService extends AbstractService<Student, Course> {
+public class AnyPeepShowService extends AbstractService<Any, Peep> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected StudentCourseRepository repository;
+	protected AnyPeepRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
 
 	@Override
 	public void check() {
-		super.getResponse().setChecked(true);
+		boolean status;
+
+		status = super.getRequest().hasData("id", int.class);
+
+		super.getResponse().setChecked(status);
 	}
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		Peep object;
+		int peepId;
+
+		peepId = super.getRequest().getData("id", int.class);
+		object = this.repository.findPeepById(peepId);
+		status = false;
+		if (object.getId() != 0)
+			status = true;
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Collection<Course> objects;
+		Peep object;
+		int id;
 
-		objects = this.repository.findCourses();
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findPeepById(id);
 
-		super.getBuffer().setData(objects);
+		super.getBuffer().setData(object);
 	}
 
 	@Override
-	public void unbind(final Course object) {
+	public void unbind(final Peep object) {
 		assert object != null;
-
 		Tuple tuple;
-
-		tuple = super.unbind(object, "code", "title", "resumen", "retailPrice", "link");
-
+		tuple = super.unbind(object, "instantiationMoment", "title", "nick", "message", "moreInfo", "link");
 		super.getResponse().setData(tuple);
 	}
 

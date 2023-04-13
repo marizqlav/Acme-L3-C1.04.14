@@ -1,5 +1,5 @@
 /*
- * AuthenticatedAnnouncementShowService.java
+ * StudentEnrolmentShowService.java
  *
  * Copyright (C) 2012-2023 Rafael Corchuelo.
  *
@@ -10,27 +10,27 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.student.course;
+package acme.features.student.enrolment;
 
-import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.courses.Course;
 import acme.entities.enrolments.Enrolment;
-import acme.entities.lectures.Lecture;
+import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
+import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
 
 @Service
-public class StudentCourseShowService extends AbstractService<Student, Course> {
+public class StudentEnrolmentShowService extends AbstractService<Student, Enrolment> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected StudentCourseRepository repository;
+	protected StudentEnrolmentRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -47,50 +47,42 @@ public class StudentCourseShowService extends AbstractService<Student, Course> {
 	@Override
 	public void authorise() {
 		boolean status;
-		int id;
+		int masterId;
+		Enrolment enrolment;
+		final Student student;
+		Date currentMoment;
 
-		id = super.getRequest().getData("id", int.class);
-
-		status = true;
+		masterId = super.getRequest().getData("id", int.class);
+		enrolment = this.repository.findOneEnrolmentById(masterId);
+		student = enrolment == null ? null : enrolment.getStudent();
+		currentMoment = MomentHelper.getCurrentMoment();
+		status = super.getRequest().getPrincipal().hasRole(student) || enrolment != null && !enrolment.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Course object;
+		Enrolment object;
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneCourseById(id);
+		object = this.repository.findOneEnrolmentById(id);
 
 		super.getBuffer().setData(object);
 	}
 
 	@Override
-	public void unbind(final Course object) {
+	public void unbind(final Enrolment object) {
 		assert object != null;
 
+		final int studentId;
+		final SelectChoices choices;
 		Tuple tuple;
-		final Collection<Lecture> lectures;
-		final Enrolment enrolmented = this.repository.findStudentCourse(super.getRequest().getPrincipal().getActiveRoleId(), object.getId());
-		lectures = this.repository.findLecturesByCourseId(object.getId());
-		tuple = super.unbind(object, "code", "title", "resumen", "retailPrice", "link");
-		tuple.put("lecturerusername", object.getLecturer().getUserAccount().getUsername());
-		tuple.put("lectureralmamater", object.getLecturer().getAlmaMater());
-		tuple.put("lecturerresume", object.getLecturer().getResume());
-		tuple.put("lecturerqualifications", object.getLecturer().getQualifications());
-		tuple.put("lecturerlink", object.getLecturer().getLink());
 
-		if (enrolmented != null)
-			tuple.put("enrolment", "yes");
-		else
-			tuple.put("enrolment", "no");
-
-		tuple.put("lectures", lectures);
+		tuple = super.unbind(object, "code", "motivation", "someGoals", "draftMode");
 
 		super.getResponse().setData(tuple);
-
 	}
 
 }
