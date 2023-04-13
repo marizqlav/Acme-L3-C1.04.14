@@ -12,13 +12,16 @@
 
 package acme.features.student.course;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.courses.Course;
+import acme.entities.enrolments.Enrolment;
+import acme.entities.lectures.Lecture;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
-import acme.roles.Lecturer;
 import acme.roles.Student;
 
 @Service
@@ -69,16 +72,25 @@ public class StudentCourseShowService extends AbstractService<Student, Course> {
 		assert object != null;
 
 		Tuple tuple;
-
-		final Lecturer lecturer = this.repository.findLecturersByCourseId(object.getId());
+		final Collection<Lecture> lectures;
+		final Enrolment enrolmented = this.repository.findStudentCourse(super.getRequest().getPrincipal().getActiveRoleId(), object.getId());
+		lectures = this.repository.findLecturesByCourseId(object.getId());
 		tuple = super.unbind(object, "code", "title", "resumen", "retailPrice", "link");
-		tuple.put("lecturerusername", lecturer.getUserAccount().getUsername());
-		tuple.put("lectureralmamater", lecturer.getAlmaMater());
-		tuple.put("lecturerresume", lecturer.getResume());
-		tuple.put("lecturerqualifications", lecturer.getQualifications());
-		tuple.put("lecturerlink", lecturer.getLink());
+		tuple.put("lecturerusername", object.getLecturer().getUserAccount().getUsername());
+		tuple.put("lectureralmamater", object.getLecturer().getAlmaMater());
+		tuple.put("lecturerresume", object.getLecturer().getResume());
+		tuple.put("lecturerqualifications", object.getLecturer().getQualifications());
+		tuple.put("lecturerlink", object.getLecturer().getLink());
+
+		if (enrolmented != null)
+			tuple.put("enrolment", "yes");
+		else
+			tuple.put("enrolment", "no");
+
+		tuple.put("lectures", lectures);
 
 		super.getResponse().setData(tuple);
+
 	}
 
 }

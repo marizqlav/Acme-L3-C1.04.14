@@ -8,7 +8,6 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-
 authenticated.student.form.label.statement = Declaración
 authenticated.student.form.label.listStrongFeatures = Lista de fortalezas
 authenticated.student.form.label.listWeakFeatures = Lista de debilidades

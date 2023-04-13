@@ -18,15 +18,32 @@
 
 <acme:form>
 <h1><acme:message code="student.course.data"/></h1>
-	<acme:input-textbox code="student.course.form.label.title" path="title"/>	
-	<acme:input-textarea code="student.course.form.label.resumen" path="resumen"/>
-	<acme:input-money code="student.course.form.retail.price" path="retailPrice"/>
-	<acme:input-url code="student.course.form.label.link" path="link"/>
-	
+	<acme:input-textbox code="student.course.form.label.title" readonly="true" path="title"/>	
+	<acme:input-textarea code="student.course.form.label.resumen" readonly="true" path="resumen"/>
+	<acme:input-money code="student.course.form.retail.price" readonly="true" path="retailPrice"/>
+	<jstl:if test="${!link.isEmpty()}">
+		<acme:input-url code="student.course.form.label.link" readonly="true" path="link"/>
+	</jstl:if>
 <h1><acme:message code="student.course.lecturer.data"/></h1>
-	<acme:input-textbox code="student.course.form.label.lecturer.username" path="lecturerusername"/>
-	<acme:input-textarea code="student.course.form.label.lecturer.alma.mater" path="lectureralmamater"/>
-	<acme:input-textarea code="student.course.form.label.lecturer.resume" path="lecturerresume"/>
-	<acme:input-textarea code="student.course.form.label.lecturer.qualifications" path="lecturerqualifications"/>
-	<acme:input-url code="student.course.form.label.lecturer.link" path="lecturerlink"/>
+	<acme:input-textbox code="student.course.form.label.lecturer.username" readonly="true" path="lecturerusername"/>
+	<acme:input-textarea code="student.course.form.label.lecturer.alma.mater" readonly="true" path="lectureralmamater"/>
+	<acme:input-textarea code="student.course.form.label.lecturer.resume" readonly="true" path="lecturerresume"/>
+	<acme:input-textarea code="student.course.form.label.lecturer.qualifications" readonly="true" path="lecturerqualifications"/>
+	<jstl:if test="${!lecturerlink.isEmpty()}">
+	<acme:input-url code="student.course.form.label.lecturer.link" readonly="true" path="lecturerlink"/>
+	</jstl:if>
 	</acme:form>
+	
+<h1><acme:message code="student.course.lectures.data"/></h1>
+<acme:list>
+	<acme:list-column code="student.course.list.label.title" path="lectures.getTitle()" width="100%"/>
+</acme:list>
+
+ <jstl:forEach items="${lectures}" var="lecture">
+<h1><acme:message code="student.course.lectures.data"/></h1>
+
+  </jstl:forEach>
+
+<jstl:if test="${enrolment.equals('no')}">
+<acme:submit code="student.course.form.button.enrolment" action="/student/enrolment/create"/>
+</jstl:if>

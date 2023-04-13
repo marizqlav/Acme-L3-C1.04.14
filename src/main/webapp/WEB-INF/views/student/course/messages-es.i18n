@@ -24,3 +24,5 @@ student.course.form.label.lecturer.alma.mater = Alma Mater:
 student.course.form.label.lecturer.resume = Resumen:
 student.course.form.label.lecturer.qualifications = Calificaciones:
 student.course.form.label.lecturer.link = Enlace: (Opcional)
+student.course.form.button.enrolment = Matricularse
+student.course.lectures.data = Lecciones

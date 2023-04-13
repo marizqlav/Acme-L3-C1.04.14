@@ -4,7 +4,6 @@ package acme.entities.practicum;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -51,7 +50,7 @@ public class Practicum extends AbstractEntity {
 
 	@Valid
 	@NotNull
-	@OneToOne
+	@ManyToOne(optional = false)
 	protected Course			course;
 
 }
