@@ -40,4 +40,9 @@ public interface StudentEnrolmentRepository extends AbstractRepository {
 	@Query("select e.course from Enrolment e where e.id = :id")
 	Course findCourseByEnrolmnetId(int id);
 
+	@Query("select c from Course c where c.id = :id")
+	Course findCourseById(int id);
+
+	@Query("select s from Student s where s.id = :id")
+	Student findStudentById(int id);
 }

@@ -1,5 +1,5 @@
 /*
- * EmployerJobListMineService.java
+ * EmployerDutyCreateService.java
  *
  * Copyright (C) 2012-2023 Rafael Corchuelo.
  *
@@ -12,20 +12,16 @@
 
 package acme.features.student.enrolment;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.courses.Course;
 import acme.entities.enrolments.Enrolment;
-import acme.framework.components.accounts.Principal;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
 
 @Service
-public class StudentEnrolmentListMineService extends AbstractService<Student, Enrolment> {
+public class StudentEnrolmentCreateService extends AbstractService<Student, Enrolment> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -37,23 +33,53 @@ public class StudentEnrolmentListMineService extends AbstractService<Student, En
 
 	@Override
 	public void check() {
-		super.getResponse().setChecked(true);
+		boolean status;
+
+		status = super.getRequest().hasData("id", int.class) && super.getRequest().getPrincipal().hasRole(Student.class);
+
+		super.getResponse().setChecked(status);
 	}
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+
+		status = super.getRequest().getPrincipal().hasRole(Student.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Collection<Enrolment> objects;
-		Principal principal;
+		Enrolment object;
 
-		principal = super.getRequest().getPrincipal();
-		objects = this.repository.findManyEnrolmentsByStudentId(principal.getActiveRoleId());
+		object = new Enrolment();
+		object.setCourse(this.repository.findCourseById(7));
+		object.setStudent(this.repository.findStudentById(super.getRequest().getPrincipal().getActiveRoleId()));
+		object.setCode("AAA500");
+		object.setMotivation("");
+		object.setSomeGoals("");
 
-		super.getBuffer().setData(objects);
+		super.getBuffer().setData(object);
+	}
+
+	@Override
+	public void bind(final Enrolment object) {
+		assert object != null;
+
+		super.bind(object, "code", "motivation", "someGoals");
+	}
+
+	@Override
+	public void validate(final Enrolment object) {
+		assert object != null;
+	}
+
+	@Override
+	public void perform(final Enrolment object) {
+		assert object != null;
+
+		this.repository.save(object);
 	}
 
 	@Override
@@ -61,9 +87,8 @@ public class StudentEnrolmentListMineService extends AbstractService<Student, En
 		assert object != null;
 
 		Tuple tuple;
-		final Course course = this.repository.findCourseByEnrolmnetId(object.getId());
-		tuple = super.unbind(object, "code", "motivation", "someGoals", "draftMode");
-		tuple.put("coursetitle", course.getTitle());
+
+		tuple = super.unbind(object, "code", "motivation", "someGoals");
 
 		super.getResponse().setData(tuple);
 	}

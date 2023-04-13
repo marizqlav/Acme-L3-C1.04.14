@@ -16,13 +16,10 @@
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="employer.job.list.label.code" path="code" width="10%"/>
-	<acme:list-column code="employer.job.list.label.course.title" path="coursetitle" width="80%"/>
-	<acme:list-column code="employer.job.list.label.course.draftMode" path="draftMode" width="10%"/>
+	<acme:list-column code="student.enrolment.list.label.code" path="code" width="10%"/>
+	<acme:list-column code="student.enrolment.list.label.course.title" path="coursetitle" width="80%"/>
+	<acme:list-column code="student.enrolment.list.label.course.draftMode" path="draftMode" width="10%"/>
 </acme:list>
-
-<jstl:if test="${_command == 'list-mine'}">
-	<acme:button code="employer.job.list.button.create" action="/employer/job/create"/>
-</jstl:if>		
+	
 	
 

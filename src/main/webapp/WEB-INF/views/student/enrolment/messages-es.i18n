@@ -8,5 +8,12 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-employer.job.list.label.code = Código
-employer.job.list.label.course.title = Título del curso
+student.enrolment.list.label.code = Código
+student.enrolment.list.label.course.title = Título del curso
+student.enrolment.list.label.course.draftMode = Cerrado
+student.enrolment.form.label.code = Código:
+student.enrolment.form.label.motivation = Motivación:
+student.enrolment.form.label.someGoals = Algunos objetivos:
+student.enrolment.form.label.draftMode = Cerrado:
+student.enrolment.form.button.update = Actualizar
+student.enrolment.form.button.delete = Eliminar
