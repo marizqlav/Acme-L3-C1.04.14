@@ -65,3 +65,4 @@ master.menu.user-account.auditor = Auditor profile data
 master.menu.auditor = Auditor
 master.menu.auditor.list.audits = My audits
 master.menu.list.audits-by-course = List audits by course
+master.menu.auditor.list.auditingRecords = My auditing records

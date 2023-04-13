@@ -1,19 +1,19 @@
-package acme.features.auditor.audit;
+package acme.features.auditor.auditingRecord;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.audits.Audit;
+import acme.entities.audits.AuditingRecord;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorAuditShowService extends AbstractService<Auditor, Audit> {
+public class AuditorAuditingRecordShowService extends AbstractService<Auditor, AuditingRecord> {
 
 
 	@Autowired
-	protected AuditorAuditRepository repo;
+	protected AuditorAuditingRecordRepository repo;
 
 	@Override
 	public void check() {
@@ -31,25 +31,26 @@ public class AuditorAuditShowService extends AbstractService<Auditor, Audit> {
 
 	@Override
 	public void load() {
-		Audit object;
+		AuditingRecord auditingRecord;
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = repo.findAudit(id);
+		auditingRecord = repo.findAuditingRecord(id);
 
-		super.getBuffer().setData(object);
+		super.getBuffer().setData(auditingRecord);
 	}
 
 	@Override
-	public void unbind(final Audit audit) {
-		assert audit != null;
+	public void unbind(final AuditingRecord auditingRecord) {
+		assert auditingRecord != null;
 
 		Tuple tuple;
 
-		tuple = super.unbind(audit, "code", "conclusion", "strongPoints", "weakPoints", "id");
+		tuple = super.unbind(auditingRecord, "subject", "assesment", "firstDate", "lastDate", "mark");
+
+		tuple.put("draftMode", auditingRecord.getAudit().getDraftMode());
 
 		super.getResponse().setData(tuple);
 	}
-
 
 }

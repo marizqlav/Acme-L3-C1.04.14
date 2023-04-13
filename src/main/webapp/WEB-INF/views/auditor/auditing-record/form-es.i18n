@@ -1,0 +1,12 @@
+auditor.auditingRecord.data = Datos del registro de auditoria
+auditors.auditingRecord.form.label.subject = Asignatura
+auditors.auditingRecord.form.label.assesment = Evaluación
+"auditors.auditingRecord.form.label.firstDate = Fecha inicial de evaluación
+"auditors.auditingRecord.form.label.lastDate = Fecha final de evaluación
+auditors.auditingRecord.form.label.mark = Nota
+auditors.auditingRecord.form.button.create = Crear
+auditor.auditingRecord.form.button.update = Actualizar
+auditor.auditingRecord.form.button.delete = Eliminar
+auditor.auditingRecord.form.chooseCourse = Seleccionar ID del curso
+auditor.auditingRecord.form.course.nullError = El curso debe existir
+auditor.auditingRecord.form.code.repeated = El código no puede repetirse

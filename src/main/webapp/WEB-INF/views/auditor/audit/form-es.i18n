@@ -9,3 +9,4 @@ auditor.audit.form.button.delete = Eliminar
 auditor.audit.form.chooseCourse = Seleccionar ID del curso
 auditor.audit.form.course.nullError = El curso debe existir
 auditor.audit.form.code.repeated = El código no puede repetirse
+auditor.audit.auditingRecords = Ver registros de auditoria

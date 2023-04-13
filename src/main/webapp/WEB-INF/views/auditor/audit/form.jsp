@@ -28,7 +28,14 @@
 		<acme:input-double code="auditor.audit.form.chooseCourse" path="courseId"/>
 	</jstl:if>
 
-	<jstl:choose>	 
+	<jstl:if test="${_command == 'show'}">
+		<acme:link code="auditor.audit.auditingRecords" action="/auditor/auditing-record/list?auditId=${id}"/>
+	</jstl:if>
+
+	<br>
+	<br>
+
+	<jstl:choose>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="auditor.audit.form.button.create" action="/auditor/audit/create"/>
 		</jstl:when>	
