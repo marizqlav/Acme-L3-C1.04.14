@@ -42,6 +42,7 @@ master.menu.administrator.list-offers = List offers
 
 master.menu.authenticated = Authenticated
 master.menu.authenticated.offer.list = List offer
+master.menu.authenticated.practicum.list = List practicum
 
 # master.menu.provider ########################################################
 
