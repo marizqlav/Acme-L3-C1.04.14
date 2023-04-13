@@ -9,6 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.Length;
 
 import acme.entities.courses.Course;
@@ -44,6 +45,12 @@ public class Enrolment extends AbstractEntity {
 	protected String			someGoals;
 
 	protected boolean			draftMode;
+
+	@Length(max = 76)
+	protected String			holderName;
+
+	@CreditCardNumber
+	protected String			lowerNibble;
 
 	// Derived attributes -----------------------------------------------------
 

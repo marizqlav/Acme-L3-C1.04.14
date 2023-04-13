@@ -24,6 +24,7 @@ master.menu.anonymous.ale-favourite-link = 49852809X: Merino Palma, Alejandro
 master.menu.anonymous.alberto-favourite-link = 54181123T: Dominguez-Adame, Alberto
 master.menu.anonymous.marcos-favourite-link = 05934857Y: Olmedo Marin, Marcos
 master.menu.anonymous.mario-favourite-link = 76269995V: Izquierdo Lavado, Mario
+master.menu.any.peeps = Peeps
 
 # master.menu.administrator ###################################################
 
@@ -57,6 +58,7 @@ master.menu.consumer.favourite-link = Favourite link
 master.menu.student = Student
 master.menu.student.favourite-link = Favourite link
 master.menu.student.list.courses = Course list
+master.menu.student.my.enrolments = My enrolments
 
 # master.menu.company ####################################################
 

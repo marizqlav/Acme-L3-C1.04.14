@@ -26,12 +26,11 @@
 			<acme:menu-suboption code="master.menu.anonymous.mario-favourite-link" action="http://letrinaheridos.blogspot.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.marcos-favourite-link" action="https://www.youtube.com/channel/UCi8z8yRzPpHWPs-TfUEkvEQ?app=desktop"/>
 		</acme:menu-option>
-		
-		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+				<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.offer.list" action="/authenticated/offer/list"/>
 		</acme:menu-option>
-		
-		
+    <acme:menu-option code="master.menu.any.peeps" action="/any/peep/list"/>
+
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
@@ -56,6 +55,9 @@
 			<acme:menu-suboption code="master.menu.student.favourite-link" action="https://www.informatica.us.es/"/>
 			<acme:menu-separator/>	
 			<acme:menu-suboption code="master.menu.student.list.courses" action="/student/course/list"/>
+		<acme:menu-separator/>	
+		<acme:menu-suboption code="master.menu.student.my.enrolments" action="/student/enrolment/list-mine"/>
+		
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.company" access="hasRole('Company')">

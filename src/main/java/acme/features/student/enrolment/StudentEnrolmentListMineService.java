@@ -1,5 +1,5 @@
 /*
- * AuthenticatedAnnouncementListService.java
+ * EmployerJobListMineService.java
  *
  * Copyright (C) 2012-2023 Rafael Corchuelo.
  *
@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.student.course;
+package acme.features.student.enrolment;
 
 import java.util.Collection;
 
@@ -18,17 +18,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.courses.Course;
+import acme.entities.enrolments.Enrolment;
+import acme.framework.components.accounts.Principal;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
 
 @Service
-public class StudentCourseListService extends AbstractService<Student, Course> {
+public class StudentEnrolmentListMineService extends AbstractService<Student, Enrolment> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected StudentCourseRepository repository;
+	protected StudentEnrolmentRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -45,20 +47,23 @@ public class StudentCourseListService extends AbstractService<Student, Course> {
 
 	@Override
 	public void load() {
-		Collection<Course> objects;
+		Collection<Enrolment> objects;
+		Principal principal;
 
-		objects = this.repository.findCourses();
+		principal = super.getRequest().getPrincipal();
+		objects = this.repository.findManyEnrolmentsByStudentId(principal.getActiveRoleId());
 
 		super.getBuffer().setData(objects);
 	}
 
 	@Override
-	public void unbind(final Course object) {
+	public void unbind(final Enrolment object) {
 		assert object != null;
 
 		Tuple tuple;
-
-		tuple = super.unbind(object, "code", "title", "resumen", "retailPrice", "link");
+		final Course course = this.repository.findCourseByEnrolmnetId(object.getId());
+		tuple = super.unbind(object, "code", "motivation", "someGoals", "draftMode");
+		tuple.put("coursetitle", course.getTitle());
 
 		super.getResponse().setData(tuple);
 	}
