@@ -1,6 +1,6 @@
 key,code,title,resumen,retail-price,link,draftMode,key:lecturer
 course-01,A878,Course Title 1,resumen del curso,59.99,https://www.informatica.us.es/index.php/estudios,true,lecturer1
-course-02,AB324,Course Title 2,resumen del curso,39.99,https://,false,lecturer1
+course-02,AB324,Course Title 2,resumen del curso,39.99,https://,true,lecturer1
 course-03,ABC935,Course Title 3,resumen del curso,40.00,null,false,lecturer1
 course-04,CC564,ນີ້ແມ່ນຫົວຂໍ້ຫຼັກສູດທີ່ຫວັງວ່າຈະບັນລຸ 76 ຕົວອັກສອນໃນຂະນະທີ່ສືບຕໍ່ຢູ່ໃນແປ້ນພ,resumen del curso,59.99,https://www.informatica.us.es/index.php/estudios,true,lecturer1
 course-05,DS136,Course Title 5,resumen del curso,69.99,https://www.ກສອນໃນຂ.com,true,lecturer1

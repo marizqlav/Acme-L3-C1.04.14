@@ -35,14 +35,9 @@
 	</acme:form>
 	
 <h1><acme:message code="student.course.lectures.data"/></h1>
-<acme:list>
-	<acme:list-column code="student.course.list.label.title" path="lectures.getTitle()" width="100%"/>
-</acme:list>
-
- <jstl:forEach items="${lectures}" var="lecture">
-<h1><acme:message code="student.course.lectures.data"/></h1>
-
-  </jstl:forEach>
+  	<jstl:if test="${_command == 'show'}">
+		<acme:link code="student.course.lectures" action="/student/lecture/list?masterId=${id}"/>
+	</jstl:if>
 
 <jstl:if test="${enrolment.equals('no')}">
 <acme:submit code="student.course.form.button.enrolment" action="/student/enrolment/create"/>
