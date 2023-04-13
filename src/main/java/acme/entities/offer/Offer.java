@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -48,6 +49,7 @@ public class Offer extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	protected Date				availabilityPeriodFinal;
 
+	@Valid
 	@NotNull
 	protected Money				price;
 
@@ -56,8 +58,8 @@ public class Offer extends AbstractEntity {
 
 
 	@Transient
-	public Double getAvailabilityPeriod() {
-		return (double) (MomentHelper.computeDuration(this.availabilityPeriodFinal, this.availabilityPeriodInitial).toMinutes() / 60);
+	public Long getAvailabilityPeriod() {
+		return MomentHelper.computeDuration(this.availabilityPeriodFinal, this.availabilityPeriodInitial).toMinutes() / 60;
 	}
 
 }

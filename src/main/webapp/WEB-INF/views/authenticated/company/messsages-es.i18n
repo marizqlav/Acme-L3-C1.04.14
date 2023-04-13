@@ -8,10 +8,10 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-authenticated.student.form.label.statement = Declaración
-authenticated.student.form.label.listStrongFeatures = Lista de fortalezas
-authenticated.student.form.label.listWeakFeatures = Lista de debilidades
-authenticated.student.form.label.link = Enlace
+authenticated.company.form.label.name = Nombre
+authenticated.company.form.label.VATNumber = Numero VAT
+authenticated.company.form.label.summary = Resumen
+authenticated.company.form.label.link = Enlace
 
-authenticated.student.form.button.create = Registrar
-authenticated.student.form.button.update = Actualizar
+authenticated.company.form.button.create = Registrar
+authenticated.company.form.button.update = Actualizar
