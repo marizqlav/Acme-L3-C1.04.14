@@ -38,12 +38,10 @@ public class AdministratorOfferCreateService extends AbstractService<Administrat
 
 	@Override
 	public void load() {
-		//		Offer object;
-		//		object = new Offer();
-		//		final Date actualDate = MomentHelper.getCurrentMoment();
-		//		object.setInstantiationMoment(actualDate);
-		//		super.getBuffer().setData(object);
-		final Offer object = new Offer();
+		Offer object;
+		object = new Offer();
+		final Date actualDate = MomentHelper.getCurrentMoment();
+		object.setInstantiationMoment(actualDate);
 		super.getBuffer().setData(object);
 	}
 
