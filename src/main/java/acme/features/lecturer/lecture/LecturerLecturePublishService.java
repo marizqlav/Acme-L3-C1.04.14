@@ -12,7 +12,7 @@ import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
 
 @Service
-public class LecturerLectureShowService extends AbstractService<Lecturer, Lecture> {
+public class LecturerLecturePublishService extends AbstractService<Lecturer, Lecture> {
 
 	// Internal State ------------------------------------------
 	@Autowired
@@ -39,6 +39,7 @@ public class LecturerLectureShowService extends AbstractService<Lecturer, Lectur
 		id = super.getRequest().getData("id", int.class);
 		lecture = this.repository.findLectureById(id);
 		status = lecture != null;
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -54,18 +55,45 @@ public class LecturerLectureShowService extends AbstractService<Lecturer, Lectur
 	}
 
 	@Override
+	public void bind(final Lecture object) {
+		assert object != null;
+
+		super.bind(object, "title", "resumen", "lectureType", "estimatedTime", "body");
+	}
+
+	@Override
+	public void validate(final Lecture object) {
+		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("estimatedTime"))
+			super.state(object.getEstimatedTime() >= 0.01, "estimatedTime", "lecturer.lecture.form.error.estimatedTime");
+		if (!super.getBuffer().getErrors().hasErrors("lectureType"))
+			super.state(!object.getLectureType().equals(LectureType.BALANCED), "lectureType", "lecturer.lecture.form.error.lectureType");
+	}
+
+	@Override
+	public void perform(final Lecture object) {
+		assert object != null;
+
+		object.setDraftmode(true);
+
+		this.repository.save(object);
+	}
+
+	@Override
 	public void unbind(final Lecture object) {
 		assert object != null;
 
+		SelectChoices choices;
+
 		Tuple tuple;
 
-		SelectChoices choices;
 		choices = SelectChoices.from(LectureType.class, object.getLectureType());
 
 		tuple = super.unbind(object, "title", "resumen", "lectureType", "estimatedTime", "body");
+
 		tuple.put("lectureTypes", choices);
-		tuple.put("draftmode", object.isDraftmode());
 
 		super.getResponse().setData(tuple);
 	}
+
 }

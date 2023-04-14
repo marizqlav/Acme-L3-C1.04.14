@@ -1,5 +1,5 @@
-key,title,resumen,lecture-type,estimated-time,body,key:lecturer
-lecture-01,Lecture Title,r,HANDSON,01.30,este es el cuerpo de la lecture,lecturer1
-lecture-02,L,resumen de la lectureeeeeeeeeeeee,THEORY,04.00,,lecturer1
-lecture-03,$%&/-´`+,resumen de la lecture,HANDSON,01.00,E,lecturer2
-lecture-04,eyi yɛ asɛmti,r,HANDSON,100.00,E,lecturer2
+key,title,resumen,lecture-type,estimated-time,body,draftmode,key:lecturer
+lecture-01,Lecture Title,r,HANDSON,01.30,este es el cuerpo de la lecture,false,lecturer1
+lecture-02,L,resumen de la lectureeeeeeeeeeeee,THEORY,04.00,cuerpooo,false,lecturer1
+lecture-03,$%&/-´`+,resumen de la lecture,HANDSON,01.00,E,true,lecturer2
+lecture-04,eyi yɛ asɛmti,r,HANDSON,100.00,E,true,lecturer2

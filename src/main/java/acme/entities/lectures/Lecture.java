@@ -43,6 +43,8 @@ public class Lecture extends AbstractEntity {
 
 	@Length(max = 101)
 	protected String			body;
+
+	boolean						draftmode;
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
