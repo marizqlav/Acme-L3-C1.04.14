@@ -8,11 +8,11 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-authenticated.practicum.form.label.code = Codigo:
-authenticated.practicum.form.label.title = Titulo:
-authenticated.practicum.form.label.abstractPracticum = Resumen Practica:
-authenticated.practicum.form.label.someGoals = Algunos Objetivos:
-authenticated.practicum.form.label.company.name = Nombre Compañia:
+administrator.config.form.label.currencies = Accepted currencies:
+administrator.config.form.label.currency = System currency: 
+administrator.config.form.label.currency.new = New currency:
 
-authenticated.practicum.list.label.code = Codigo
-authenticated.practicum.list.label.title = Titulo
+administrator.config.form.button.update = Update
+administrator.config.form.button.add = Add new currency
+
+administrator.config.form.error.unavailable = System currency unavailable
