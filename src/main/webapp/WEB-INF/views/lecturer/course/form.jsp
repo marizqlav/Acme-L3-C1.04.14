@@ -23,9 +23,11 @@
 	<acme:input-url code="lecturer.course.form.label.link" path="link"/>
 	<acme:input-textbox code="lecturer.course.form.label.courseType" path="courseType"/>
 	
-	<jstl:choose>	
-		<jstl:when test="${_command == 'show'}">
-				<acme:button code="lecturer.course.form.button.listFromCourse" action="/lecturer/lecture/listFromCourse"/>
-		</jstl:when>
-	</jstl:choose>
+	<jstl:if test="${_command == 'show'}">
+		<acme:button code="lecturer.course.button.lectures" action="/lecturer/lecture/listFromCourse?id=${id}"/>
+		<acme:button code="lecturer.course.button.courseLecture" action="/lecturer/courseLecture/create?id=${id}"/>
+		
+	</jstl:if>
+	
+
 </acme:form>

@@ -1,5 +1,5 @@
 
-package acme.entities.courselectures;
+package acme.entities.courseLectures;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
