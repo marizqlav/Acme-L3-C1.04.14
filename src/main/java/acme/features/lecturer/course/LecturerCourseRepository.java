@@ -21,6 +21,7 @@ import acme.entities.courses.Course;
 import acme.entities.lectures.Lecture;
 import acme.framework.components.accounts.UserAccount;
 import acme.framework.repositories.AbstractRepository;
+import acme.roles.Lecturer;
 
 @Repository
 public interface LecturerCourseRepository extends AbstractRepository {
@@ -39,5 +40,8 @@ public interface LecturerCourseRepository extends AbstractRepository {
 
 	@Query("select cl.lecture from CourseLecture cl where cl.course.id = :id")
 	Collection<Lecture> findAllLecturesByCourse(int id);
+
+	@Query("select l from Lecturer l where l.id = :id")
+	Lecturer findLecturerById(int id);
 
 }

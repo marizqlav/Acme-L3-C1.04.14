@@ -14,16 +14,17 @@ import acme.roles.Lecturer;
 @Service
 public class LecturerLectureListFromCourseService extends AbstractService<Lecturer, Lecture> {
 
-	// Internal State ------------------------------------------
 	@Autowired
-	protected LecturerLectureRepository repository;
-
-	//AbstractServiceInterface -------------------------------
+	LecturerLectureRepository repository;
 
 
 	@Override
 	public void check() {
-		super.getResponse().setChecked(true);
+		boolean status;
+
+		status = super.getRequest().hasData("id", int.class);
+
+		super.getResponse().setChecked(status);
 	}
 
 	@Override
@@ -33,14 +34,9 @@ public class LecturerLectureListFromCourseService extends AbstractService<Lectur
 
 	@Override
 	public void load() {
-		Collection<Lecture> objects;
-		objects = this.repository.findAllLectures();
-		int id;
+		final Collection<Lecture> lectures = this.repository.findAllLecturesByCourse(super.getRequest().getData("id", int.class));
 
-		id = super.getRequest().getData("id", int.class);
-		objects = this.repository.findAllLecturesByCourse(id);
-		super.getBuffer().setData(objects);
-
+		super.getBuffer().setData(lectures);
 	}
 
 	@Override
