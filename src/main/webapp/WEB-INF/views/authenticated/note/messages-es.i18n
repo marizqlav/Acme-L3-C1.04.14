@@ -22,4 +22,6 @@ authenticated.note.list.label.instantiationMoment = Momento de Instanciacion
 authenticated.note.list.label.author = Autor
 authenticated.note.list.label.title = Titutlo
 
+authenticated.note.form.warning.confirmation = No se podrá editar la nota despues de su creación
+
 authenticated.note.list.button.create = Crear nota

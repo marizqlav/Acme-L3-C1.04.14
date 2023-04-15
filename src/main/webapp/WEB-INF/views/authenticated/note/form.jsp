@@ -24,6 +24,7 @@
 	<acme:input-url code="authenticated.note.form.label.link" path="link"/>
 	
 	<jstl:if test="${ _command == 'create'}">
+		<acme:message code="authenticated.note.form.warning.confirmation" />
 		<acme:input-checkbox code="authenticated.note.form.button.confirmation" path="confirmation"/>
 		<acme:submit code="authenticated.note.form.button.create" action="/authenticated/note/create"/>
 	</jstl:if>

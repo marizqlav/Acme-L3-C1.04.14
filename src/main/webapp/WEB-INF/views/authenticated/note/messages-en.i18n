@@ -23,3 +23,5 @@ authenticated.note.list.label.author = Author
 authenticated.note.list.label.title = Title
 
 authenticated.note.list.button.create = Create note
+
+authenticated.note.form.warning.confirmation = You won't be able to edit this note after creating it
