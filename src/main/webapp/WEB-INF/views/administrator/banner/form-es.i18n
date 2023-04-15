@@ -1,0 +1,13 @@
+administrator.banner.data = Datos del banner
+administrator.banner.form.label.slogan = Eslogan
+administrator.banner.form.label.displayPeriodFirstDate = Fecha de inicio de presentación
+administrator.banner.form.label.displayPeriodLastDate = Fecha de final de presentación
+administrator.banner.form.label.instantiationMoment = Momento de instanciación
+administrator.banner.form.label.linkPicture = Link de imagen
+administrator.banner.form.label.linkWeb = Link web
+administrator.banner.form.button.create = Crear
+administrator.banner.form.button.update = Actualizar
+administrator.banner.form.button.delete = Eliminar
+administrator.banner.form.error.displayPeriodFirstDate.notFuture = La fecha de inicio de presentación debe estar en el futuro
+administrator.banner.form.error.displayPeriodLastDate.notFuture = La fecha de final de presentación debe estar después de la fecha de inicio
+administrator.banner.form.error.displayPeriodLastDate.notAWeek = Debe haber al menos una semana entre las fechas de inicio y final de presentación
