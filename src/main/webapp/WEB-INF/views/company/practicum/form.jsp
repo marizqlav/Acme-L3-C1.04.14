@@ -27,9 +27,13 @@
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == true}">
 			<acme:submit code="company.practicum.form.button.update" action="/company/practicum/update"/>
 			<acme:submit code="company.practicum.form.button.delete" action="/company/practicum/delete"/>
-		</jstl:when>
+			<acme:button code="company.practicum.form.button.listFromSessionPracticum" action="/company/session-practicum/listFromSessionPracticum?practicumId=${id}"/>
+		</jstl:when>		
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="company.practicum.form.button.create" action="/company/practicum/create"/>
-		</jstl:when>		
+		</jstl:when>
+		<jstl:when test="${_command == 'show'}">
+			<acme:button code="company.practicum.form.button.listFromSessionPracticum" action="/company/session-practicum/listFromSessionPracticum?practicumId=${id}"/>
+		</jstl:when>
 	</jstl:choose>
 </acme:form>
