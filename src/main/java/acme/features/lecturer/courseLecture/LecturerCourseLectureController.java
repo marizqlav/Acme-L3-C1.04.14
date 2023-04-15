@@ -22,6 +22,7 @@ public class LecturerCourseLectureController extends AbstractController<Lecturer
 
 	@PostConstruct
 	protected void initialise() {
+
 		super.addBasicCommand("create", this.createService);
 	}
 

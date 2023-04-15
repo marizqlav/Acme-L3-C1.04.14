@@ -47,7 +47,7 @@ public class LecturerCourseLectureCreateService extends AbstractService<Lecturer
 	public void bind(final CourseLecture object) {
 		assert object != null;
 
-		super.bind(object, "lecture");
+		super.bind(object, "course", "lecture");
 	}
 
 	@Override
@@ -66,17 +66,22 @@ public class LecturerCourseLectureCreateService extends AbstractService<Lecturer
 	public void unbind(final CourseLecture object) {
 		assert object != null;
 
-		final SelectChoices choices;
-
 		Tuple tuple;
+		int courseId;
+		int lecturerId;
+		Course course;
+		SelectChoices choices;
 
-		//		choices = SelectChoices.from(LectureType.class, object.getLectureType());
+		courseId = super.getRequest().getData("courseId", int.class);
+		lecturerId = super.getRequest().getPrincipal().getActiveRoleId();
+		course = this.repository.findCourseById(courseId);
+		choices = SelectChoices.from(this.repository.findLecturesAvailableForACourse(courseId, lecturerId), "title", object.getLecture());
 
-		tuple = super.unbind(object, "lecture");
-
-		tuple.put("id", object.getId());
-		//		tuple.put("lectureTypes", choices);
-
+		tuple = super.unbind(object, "course", "lecture");
+		tuple.put("lectures", choices);
+		tuple.put("lecture", choices.getSelected().getKey());
+		tuple.put("id", courseId);
+		tuple.put("courseTitle", course.getTitle());
 		super.getResponse().setData(tuple);
 	}
 
