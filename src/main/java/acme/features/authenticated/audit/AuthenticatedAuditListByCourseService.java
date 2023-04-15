@@ -1,11 +1,12 @@
 
 package acme.features.authenticated.audit;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.audits.Audit;
-import acme.features.auditor.audit.AuditorAuditRepository;
 import acme.framework.components.accounts.Authenticated;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -14,7 +15,7 @@ import acme.framework.services.AbstractService;
 public class AuthenticatedAuditListByCourseService extends AbstractService<Authenticated, Audit> {
 
 	@Autowired
-	AuditorAuditRepository repo;
+	AuthenticatedAuditRepository repo;
 
 
 	@Override
@@ -33,11 +34,11 @@ public class AuthenticatedAuditListByCourseService extends AbstractService<Authe
 
 	@Override
 	public void load() {
-		//        Integer courseId = super.getRequest().getData("courseId", int.class);
-		//
-		//        List<Audit> audits = repo.findAllAuditsByCourse(courseId);
+		final Integer courseId = super.getRequest().getData("courseId", int.class);
 
-		super.getBuffer().setData(true);
+		final List<Audit> audits = this.repo.findAllAuditsByCourse(courseId);
+
+		super.getBuffer().setData(audits);
 	}
 
 	@Override
