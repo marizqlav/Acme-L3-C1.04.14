@@ -45,7 +45,7 @@ master.menu.administrator.list-offers = Lista ofertas
 
 master.menu.authenticated = Authenticated
 master.menu.authenticated.offer.list = Lista oferta
-master.menu.authenticated.practicum.list = Lista practicas 
+master.menu.authenticated.course.list = Lista course
 
 # master.menu.provider ########################################################
 
@@ -68,7 +68,7 @@ master.menu.student.my.enrolments = Mis matriculaciones
 
 master.menu.company = Compañia
 master.menu.company.favourite-link = Enlace favorito
-master.menu.company.my-practica = Lista de practicas
+master.menu.company.practicum = Lista de practicas
 
 # master.menu.lecturer ##########################################################
 

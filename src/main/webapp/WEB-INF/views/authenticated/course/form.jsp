@@ -15,10 +15,15 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
-<acme:form readonly = "true">
-	<acme:input-textbox code="authenticated.practicum.form.label.code" path="code"/>
-	<acme:input-textbox code="authenticated.practicum.form.label.title" path="title"/>
-	<acme:input-textbox code="authenticated.practicum.form.label.abstractPracticum" path="abstractPracticum"/>
-	<acme:input-textbox code="authenticated.practicum.form.label.someGoals" path="someGoals"/>
-	<acme:input-textbox code="authenticated.practicum.form.label.company.name" path="company"/>
+
+<acme:form>
+<h1><acme:message code="authenticated.course.data"/></h1>
+	<acme:input-textbox code="authenticated.course.form.label.title" readonly="true" path="title"/>	
+	<acme:input-textarea code="authenticated.course.form.label.resumen" readonly="true" path="resumen"/>
+	<acme:input-money code="authenticated.course.form.retail.price" readonly="true" path="retailPrice"/>
+	<jstl:if test="${!link.isEmpty()}">
+		<acme:input-url code="authenticated.course.form.label.link" readonly="true" path="link"/>
+	</jstl:if>
+	<acme:submit test="${_command == 'show'}" code="authenticated.practicum.form.button.list" action="/authenticated/practicum/list"/>
+	
 </acme:form>

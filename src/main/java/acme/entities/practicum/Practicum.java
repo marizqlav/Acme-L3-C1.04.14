@@ -41,7 +41,8 @@ public class Practicum extends AbstractEntity {
 	@Length(max = 101)
 	protected String			someGoals;
 
-	protected boolean			draftMode;
+	@NotNull
+	protected Boolean			draftMode;
 
 	@Valid
 	@NotNull

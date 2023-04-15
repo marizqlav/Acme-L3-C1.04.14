@@ -10,36 +10,27 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.company.practicum;
+package acme.features.authenticated.course;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import acme.entities.practicum.Practicum;
+import acme.entities.courses.Course;
+import acme.framework.components.accounts.Authenticated;
 import acme.framework.controllers.AbstractController;
-import acme.roles.Company;
 
 @Controller
-public class CompanyPracticumController extends AbstractController<Company, Practicum> {
+public class AuthenticatedCourseController extends AbstractController<Authenticated, Course> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected CompanyPracticumListService	listService;
+	protected AuthenticatedCourseListService	listService;
 
 	@Autowired
-	protected CompanyPracticumShowService	showService;
-
-	@Autowired
-	protected CompanyPracticumCreateService	createService;
-
-	@Autowired
-	protected CompanyPracticumUpdateService	updateService;
-
-	@Autowired
-	protected CompanyPracticumDeleteService	deleteService;
+	protected AuthenticatedCourseShowService	showService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -48,10 +39,6 @@ public class CompanyPracticumController extends AbstractController<Company, Prac
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
-		super.addBasicCommand("create", this.createService);
-		super.addBasicCommand("update", this.updateService);
-		super.addBasicCommand("delete", this.deleteService);
-
 	}
 
 }

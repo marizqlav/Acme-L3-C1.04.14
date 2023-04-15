@@ -20,10 +20,10 @@ public class AuthenticatedPracticumListService extends AbstractService<Authentic
 
 	@Override
 	public void check() {
-		boolean status;
-		status = super.getRequest().hasData("id", int.class);
-		super.getResponse().setChecked(status);
-
+		//		boolean status;
+		//		status = super.getRequest().hasData("id", int.class);
+		//		super.getResponse().setChecked(status);
+		super.getResponse().setChecked(true);
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class AuthenticatedPracticumListService extends AbstractService<Authentic
 		Collection<Practicum> objects;
 		int id;
 		id = super.getRequest().getData("id", int.class);
-		objects = this.pracRepository.findPracticaByCourseId(id);
+		objects = this.pracRepository.findPracticasByCourseId(id);
 		super.getBuffer().setData(objects);
 	}
 

@@ -10,26 +10,25 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.company.practicum;
-
-import java.util.Collection;
+package acme.features.authenticated.course;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.courses.Course;
-import acme.entities.practicum.Practicum;
-import acme.framework.components.accounts.Principal;
-import acme.framework.components.jsp.SelectChoices;
+import acme.framework.components.accounts.Authenticated;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
-import acme.roles.Company;
 
 @Service
-public class CompanyPracticumShowService extends AbstractService<Company, Practicum> {
+public class AuthenticatedCourseShowService extends AbstractService<Authenticated, Course> {
+
+	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected CompanyPracticumRepository repository;
+	protected AuthenticatedCourseRepository repository;
+
+	// AbstractService interface ----------------------------------------------
 
 
 	@Override
@@ -43,46 +42,36 @@ public class CompanyPracticumShowService extends AbstractService<Company, Practi
 
 	@Override
 	public void authorise() {
-		final boolean status;
-		Practicum object;
-		Principal principal;
-		int practicumId;
+		boolean status;
+		int id;
 
-		practicumId = super.getRequest().getData("id", int.class);
-		object = this.repository.findPracticumById(practicumId);
-		principal = super.getRequest().getPrincipal();
+		id = super.getRequest().getData("id", int.class);
 
-		status = object.getCompany().getId() == principal.getActiveRoleId();
+		status = true;
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Practicum object;
+		Course object;
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findPracticumById(id);
+		object = this.repository.findOneCourseById(id);
 
 		super.getBuffer().setData(object);
 	}
 
 	@Override
-	public void unbind(final Practicum object) {
+	public void unbind(final Course object) {
 		assert object != null;
 
-		Collection<Course> courses;
-		SelectChoices choices;
 		Tuple tuple;
-
-		courses = this.repository.findAllCourses();
-		choices = SelectChoices.from(courses, "code", object.getCourse());
-
-		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals", "draftMode");
-		tuple.put("course", choices.getSelected().getKey());
-		tuple.put("courses", choices);
+		tuple = super.unbind(object, "code", "title", "resumen", "retailPrice", "link");
 
 		super.getResponse().setData(tuple);
+
 	}
+
 }

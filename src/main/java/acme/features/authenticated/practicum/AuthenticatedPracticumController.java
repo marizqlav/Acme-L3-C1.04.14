@@ -19,8 +19,6 @@ public class AuthenticatedPracticumController extends AbstractController<Authent
 	@Autowired
 	protected AuthenticatedPracticumShowService	showService;
 
-	// Constructors -----------------------------------------------------------
-
 
 	@PostConstruct
 	protected void initialise() {
