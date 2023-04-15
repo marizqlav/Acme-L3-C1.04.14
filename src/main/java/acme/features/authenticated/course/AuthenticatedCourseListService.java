@@ -10,24 +10,27 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.company.practicum;
+package acme.features.authenticated.course;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.practicum.Practicum;
-import acme.framework.components.accounts.Principal;
+import acme.entities.courses.Course;
+import acme.framework.components.accounts.Authenticated;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
-import acme.roles.Company;
 
 @Service
-public class CompanyPracticumListService extends AbstractService<Company, Practicum> {
+public class AuthenticatedCourseListService extends AbstractService<Authenticated, Course> {
+
+	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected CompanyPracticumRepository repository;
+	protected AuthenticatedCourseRepository repository;
+
+	// AbstractService interface ----------------------------------------------
 
 
 	@Override
@@ -42,23 +45,20 @@ public class CompanyPracticumListService extends AbstractService<Company, Practi
 
 	@Override
 	public void load() {
-		final Collection<Practicum> objects;
-		Principal principal;
+		Collection<Course> objects;
 
-		principal = super.getRequest().getPrincipal();
-		objects = this.repository.findPracticaByCompanyId(principal.getActiveRoleId());
+		objects = this.repository.findCourses();
 
 		super.getBuffer().setData(objects);
 	}
 
 	@Override
-	public void unbind(final Practicum object) {
+	public void unbind(final Course object) {
 		assert object != null;
 
 		Tuple tuple;
 
-		tuple = super.unbind(object, "code", "title");
-		tuple.put("courseCode", object.getCourse().getCode());
+		tuple = super.unbind(object, "code", "title", "resumen", "retailPrice", "link");
 
 		super.getResponse().setData(tuple);
 	}

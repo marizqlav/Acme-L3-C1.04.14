@@ -23,3 +23,4 @@ company.practicum.form.label.someGoals = Objetivos:
 company.practicum.form.button.create = Crear
 company.practicum.form.button.update = Actualizar
 company.practicum.form.button.delete = Eliminar
+company.practicum.form.button.listFromSessionPracticum = Lista de Sesiones de Practicas

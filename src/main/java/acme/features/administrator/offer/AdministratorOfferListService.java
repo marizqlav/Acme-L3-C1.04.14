@@ -36,25 +36,6 @@ public class AdministratorOfferListService extends AbstractService<Administrator
 	}
 
 	@Override
-	public void bind(final Offer object) {
-		assert object != null;
-
-		super.bind(object, "heading", "price");
-	}
-
-	@Override
-	public void validate(final Offer object) {
-		assert object != null;
-	}
-
-	@Override
-	public void perform(final Offer object) {
-		assert object != null;
-
-		this.offerRepository.save(object);
-	}
-
-	@Override
 	public void unbind(final Offer object) {
 		assert object != null;
 
