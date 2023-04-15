@@ -29,8 +29,8 @@ public interface StudentCourseRepository extends AbstractRepository {
 	@Query("select c from Course c where c.id = :id")
 	Course findOneCourseById(int id);
 
-	@Query("select c from Course c where c.draftMode = 1")
-	Collection<Course> findCourses();
+	@Query("select c from Course c where c.draftMode = 0")
+	Collection<Course> findCoursesPublics();
 
 	@Query("select l from Lecturer l")
 	Collection<Lecturer> findAllLecturers();

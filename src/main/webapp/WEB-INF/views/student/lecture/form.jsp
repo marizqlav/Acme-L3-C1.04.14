@@ -21,7 +21,7 @@
 	<acme:input-textbox code="student.lecture.form.label.title" readonly="true" path="title"/>	
 	<acme:input-textarea code="student.lecture.form.label.resumen" readonly="true" path="resumen"/>
 	<acme:input-textbox code="student.lecture.form.lecture.type" readonly="true" path="lectureType"/>	
-	<acme:input-textbox code="student.lecture.form.estimated.time" readonly="true" path="estimatedTime"/>
+	<acme:input-double code="student.lecture.form.estimated.time" readonly="true" path="estimatedTime"/>
 	<jstl:if test="${!body.isEmpty()}">
 		<acme:input-textarea code="student.lecture.form.label.body" readonly="true" path="body"/>
 	</jstl:if>

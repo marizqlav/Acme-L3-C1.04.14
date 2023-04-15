@@ -16,10 +16,9 @@
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="student.enrolment.list.label.code" path="code" width="10%"/>
-	<acme:list-column code="student.enrolment.list.label.course.title" path="coursetitle" width="80%"/>
-	<acme:list-column code="student.enrolment.list.label.course.draftMode" path="draftMode" width="10%"/>
+	<acme:list-column code="student.enrolment.list.label.code" path="code"/>
+	<acme:list-column code="student.enrolment.list.label.course.title" path="coursetitle"/>
 </acme:list>
-	
-	
-
+<form>
+<acme:button code="student.course.form.button.enrolment" action="/student/enrolment/create"/>
+</form>

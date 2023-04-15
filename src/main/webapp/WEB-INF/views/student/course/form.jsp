@@ -32,13 +32,11 @@
 	<jstl:if test="${!lecturerlink.isEmpty()}">
 	<acme:input-url code="student.course.form.label.lecturer.link" readonly="true" path="lecturerlink"/>
 	</jstl:if>
+	
+	<h1><acme:message code="student.course.lectures.data"/></h1>
+  	<jstl:if test="${_command == 'show'}">
+		<acme:button code="student.course.lectures" action="/student/lecture/list?masterId=${id}"/>
+	<hr/>
+	</jstl:if>
 	</acme:form>
 	
-<h1><acme:message code="student.course.lectures.data"/></h1>
-  	<jstl:if test="${_command == 'show'}">
-		<acme:link code="student.course.lectures" action="/student/lecture/list?masterId=${id}"/>
-	</jstl:if>
-
-<jstl:if test="${enrolment.equals('no')}">
-<acme:submit code="student.course.form.button.enrolment" action="/student/enrolment/create"/>
-</jstl:if>

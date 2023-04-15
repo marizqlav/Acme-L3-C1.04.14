@@ -47,7 +47,7 @@ public class StudentCourseListService extends AbstractService<Student, Course> {
 	public void load() {
 		Collection<Course> objects;
 
-		objects = this.repository.findCourses();
+		objects = this.repository.findCoursesPublics();
 
 		super.getBuffer().setData(objects);
 	}

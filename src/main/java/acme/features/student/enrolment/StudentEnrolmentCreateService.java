@@ -12,10 +12,14 @@
 
 package acme.features.student.enrolment;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.courses.Course;
 import acme.entities.enrolments.Enrolment;
+import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
@@ -33,11 +37,8 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 
 	@Override
 	public void check() {
-		boolean status;
 
-		status = super.getRequest().hasData("id", int.class) && super.getRequest().getPrincipal().hasRole(Student.class);
-
-		super.getResponse().setChecked(status);
+		super.getResponse().setChecked(true);
 	}
 
 	@Override
@@ -52,13 +53,14 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 	@Override
 	public void load() {
 		Enrolment object;
+		int studentId;
+		Student student;
 
+		studentId = super.getRequest().getPrincipal().getActiveRoleId();
+		student = this.repository.findStudentById(studentId);
 		object = new Enrolment();
-		object.setCourse(this.repository.findCourseById(7));
-		object.setStudent(this.repository.findStudentById(super.getRequest().getPrincipal().getActiveRoleId()));
-		object.setCode("AAA500");
-		object.setMotivation("");
-		object.setSomeGoals("");
+		object.setDraftMode(true);
+		object.setStudent(student);
 
 		super.getBuffer().setData(object);
 	}
@@ -66,19 +68,54 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 	@Override
 	public void bind(final Enrolment object) {
 		assert object != null;
+		Integer courseId;
+		Course course;
 
-		super.bind(object, "code", "motivation", "someGoals");
+		courseId = super.getRequest().getData("course", int.class);
+		course = this.repository.findOneCourseById(courseId);
+		super.bind(object, "motivation", "someGoals");
+		object.setCourse(course);
+		object.setCode(this.newCode(this.repository.findFirstByOrderByCodeDesc().getCode()));
+
 	}
 
+	public String newCode(final String lastCode) {
+
+		String prefijo = lastCode.substring(0, 3);
+		final int numeroActual = Integer.parseInt(lastCode.substring(3));
+		int nuevoNumero = numeroActual + 1;
+		if (nuevoNumero > 999) {
+			int indiceLetra = prefijo.charAt(2) - 'A';
+			if (indiceLetra == 25)
+				throw new RuntimeException("Se alcanzó el límite de códigos posibles");
+			indiceLetra++;
+			final char nuevaLetra = (char) ('A' + indiceLetra);
+			prefijo = prefijo.substring(0, 2) + nuevaLetra;
+			nuevoNumero = 0;
+		}
+		final String nuevoCodigo = prefijo + String.format("%03d", nuevoNumero);
+		return nuevoCodigo;
+	}
 	@Override
 	public void validate(final Enrolment object) {
 		assert object != null;
+		int studentId;
+		studentId = super.getRequest().getPrincipal().getActiveRoleId();
+		Integer courseId;
+		Course course;
+		courseId = super.getRequest().getData("course", int.class);
+		course = this.repository.findOneCourseById(courseId);
+		if (!(course == null)) {
+			final Enrolment enrolmented = this.repository.findStudentCourse(studentId, course.getId());
+			if (enrolmented != null)
+				super.state(false, "course", "student.enrolment.error.enrolment.exist");
+		}
+
 	}
 
 	@Override
 	public void perform(final Enrolment object) {
 		assert object != null;
-
 		this.repository.save(object);
 	}
 
@@ -86,10 +123,16 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 	public void unbind(final Enrolment object) {
 		assert object != null;
 
+		Collection<Course> courses;
+		SelectChoices choices;
 		Tuple tuple;
 
-		tuple = super.unbind(object, "code", "motivation", "someGoals");
+		courses = this.repository.findCoursesPublics();
+		choices = SelectChoices.from(courses, "title", object.getCourse());
 
+		tuple = super.unbind(object, "motivation", "someGoals");
+		tuple.put("course", choices.getSelected().getKey());
+		tuple.put("courses", choices);
 		super.getResponse().setData(tuple);
 	}
 

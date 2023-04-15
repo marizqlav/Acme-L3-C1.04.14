@@ -45,7 +45,7 @@ public class StudentEnrolmentUpdateService extends AbstractService<Student, Enro
 		boolean status;
 
 		final Enrolment enrolment = this.repository.findOneEnrolmentById(super.getRequest().getData("id", int.class));
-		status = !enrolment.isDraftMode() && super.getRequest().getPrincipal().hasRole(Student.class);
+		status = enrolment.isDraftMode() && super.getRequest().getPrincipal().hasRole(Student.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -65,12 +65,16 @@ public class StudentEnrolmentUpdateService extends AbstractService<Student, Enro
 	public void bind(final Enrolment object) {
 		assert object != null;
 
-		super.bind(object, "code", "motivation", "someGoals", "draftMode");
+		super.bind(object, "code", "motivation", "someGoals");
 	}
 
 	@Override
 	public void validate(final Enrolment object) {
 		assert object != null;
+		final Enrolment original = this.repository.findOneEnrolmentById(super.getRequest().getData("id", int.class));
+
+		if (!super.getRequest().getData("code", String.class).equals(original.getCode()))
+			super.state(false, "code", "code.not.edit");
 	}
 
 	@Override
@@ -85,7 +89,7 @@ public class StudentEnrolmentUpdateService extends AbstractService<Student, Enro
 		assert object != null;
 		Tuple tuple;
 
-		tuple = super.unbind(object, "code", "motivation", "someGoals", "draftMode");
+		tuple = super.unbind(object, "code", "motivation", "someGoals");
 
 		super.getResponse().setData(tuple);
 	}

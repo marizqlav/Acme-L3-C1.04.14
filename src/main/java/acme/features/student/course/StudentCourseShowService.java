@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.courses.Course;
-import acme.entities.enrolments.Enrolment;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
@@ -69,18 +68,13 @@ public class StudentCourseShowService extends AbstractService<Student, Course> {
 		assert object != null;
 
 		Tuple tuple;
-		final Enrolment enrolmented = this.repository.findStudentCourse(super.getRequest().getPrincipal().getActiveRoleId(), object.getId());
+
 		tuple = super.unbind(object, "id", "code", "title", "resumen", "retailPrice", "link");
 		tuple.put("lecturerusername", object.getLecturer().getUserAccount().getUsername());
 		tuple.put("lectureralmamater", object.getLecturer().getAlmaMater());
 		tuple.put("lecturerresume", object.getLecturer().getResume());
 		tuple.put("lecturerqualifications", object.getLecturer().getQualifications());
 		tuple.put("lecturerlink", object.getLecturer().getLink());
-
-		if (enrolmented != null)
-			tuple.put("enrolment", "yes");
-		else
-			tuple.put("enrolment", "no");
 
 		super.getResponse().setData(tuple);
 
