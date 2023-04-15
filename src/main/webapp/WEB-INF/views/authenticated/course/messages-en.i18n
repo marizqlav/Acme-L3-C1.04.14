@@ -26,3 +26,5 @@ authenticated.course.form.label.lecturer.qualifications = Qualifications:
 authenticated.course.form.label.lecturer.link = Link: (Optional)
 authenticated.course.form.button.enrolment = Enrolment
 authenticated.course.lectures.data = Lectures data
+
+authenticated.practicum.form.button.list = List practicum

@@ -26,3 +26,5 @@ authenticated.course.form.label.lecturer.qualifications = Calificaciones:
 authenticated.course.form.label.lecturer.link = Enlace: (Opcional)
 authenticated.course.form.button.enrolment = Matricularse
 authenticated.course.lectures.data = Lecciones
+
+authenticated.practicum.form.button.list = Lista practicas

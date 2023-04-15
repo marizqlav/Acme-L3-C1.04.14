@@ -23,4 +23,5 @@ company.practicum.form.label.someGoals = Goals:
 company.practicum.form.button.create = Create
 company.practicum.form.button.update = Update
 company.practicum.form.button.delete = Delete
+company.practicum.form.button.publish = Publish
 company.practicum.form.button.listFromSessionPracticum = List Session Practicum  
