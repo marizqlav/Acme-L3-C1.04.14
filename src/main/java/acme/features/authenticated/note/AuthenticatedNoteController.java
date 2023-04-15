@@ -25,9 +25,9 @@ public class AuthenticatedNoteController extends AbstractController<Authenticate
 
 	@PostConstruct
 	protected void initialise() {
-		//		super.addBasicCommand("list", this.listService);
-		//		super.addBasicCommand("show", this.showService);
-		//		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("list", this.listService);
+		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("create", this.createService);
 
 	}
 
