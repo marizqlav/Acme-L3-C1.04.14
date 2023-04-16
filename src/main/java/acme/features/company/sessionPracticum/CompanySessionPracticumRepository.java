@@ -17,15 +17,11 @@ public interface CompanySessionPracticumRepository extends AbstractRepository {
 	Practicum findOnePracticumById(int companyId);
 
 	@Query("select s from SessionPracticum s where s.id = :id")
-	SessionPracticum findOneSessionPracticumById(int id);
-
-	@Query("select s.practicum from SessionPracticum s where s.id = :id")
-	Practicum findOnePracticumBySessionPracticumId(int id);
-
-	@Query("select s from SessionPracticum s where s.practicum.id = :practicumId")
-	Collection<SessionPracticum> findSessionPracticumsByPracticumId(int practicumId);
+	SessionPracticum findSessionPracticumById(int id);
 
 	@Query("select s.practicum from SessionPracticum s where s.id = :id")
 	Practicum findPracticumBySessionPracticumId(int id);
 
+	@Query("select s from SessionPracticum s where s.practicum.id = :practicumId")
+	Collection<SessionPracticum> findSessionPracticumsByPracticumId(int practicumId);
 }

@@ -1,12 +1,16 @@
 
 package acme.features.company.sessionPracticum;
 
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.practicum.Practicum;
 import acme.entities.sessionPracticum.SessionPracticum;
 import acme.framework.components.models.Tuple;
+import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Company;
 
@@ -56,6 +60,12 @@ public class CompanySessionPracticumCreateService extends AbstractService<Compan
 	@Override
 	public void validate(final SessionPracticum object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("finishDate") && !super.getBuffer().getErrors().hasErrors("startDate")) {
+			Date maximumPeriod;
+			maximumPeriod = MomentHelper.deltaFromMoment(object.getFinishDate(), 7, ChronoUnit.DAYS);
+			super.state(MomentHelper.isAfter(object.getFinishDate(), maximumPeriod) && object.getFinishDate().after(object.getStartDate()), "finishDate", "administrator.offer.form.error.finishDate");
+		}
 
 	}
 

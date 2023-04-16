@@ -9,14 +9,14 @@
 # they accept any liabilities with respect to them.
 
 company.session-practicum.list.label.title = Título
-company.session-practicum.list.label.overview = Resumen
+company.session-practicum.form.label.abstractSessionPracticum = Resumen Sesion Practica
 company.session-practicum.list.label.practicum.title = Título de la Práctica
 
 company.session-practicum.form.label.title = Título
-company.session-practicum.form.label.overview = Resumen
+company.session-practicum.form.label.abstractSessionPracticum = Resumen Sesion Practica
 company.session-practicum.form.label.startDate = Fecha Inicial
-company.session-practicum.form.label.endDate = Fecha Final
-company.session-practicum.form.label.moreInfo = Más Info
+company.session-practicum.form.label.finishDate = Fecha Final
+company.session-practicum.form.label.link = Enlace
 
 company.session-practicum.list.button.create = Crear Sesión
 

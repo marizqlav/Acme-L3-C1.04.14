@@ -1,8 +1,8 @@
 key,code,title,abstractPracticum,someGoals,draftMode,key:company,key:course
 practicum-01,A000,Calvo,Resumen Practica,Top cuarenta,true,company-01,course-01
 practicum-02,A001,ສະເໜີ,Resumen Practica,Top cuarenta,true,company-01,course-02
-practicum-03,A002,Calvo,ສະເໜີ,Top cuarenta,true,company-01,course-03
-practicum-04,A003,Calvo,Resumen Practica,ສະເໜີ,true,company-01,course-04
+practicum-03,A002,Calvo,ສະເໜີ,Top cuarenta,false,company-01,course-03
+practicum-04,A003,Calvo,Resumen Practica,ສະເໜີ,false,company-01,course-04
 practicum-05,A004,<h1>hola</h1>,Resumen Practica,Top cuarenta,true,company-01,course-05
 practicum-06,A005,Calvo,<h1>hola</h1>,Top cuarenta,true,company-01,course-06
 practicum-07,A006,Calvo,Resumen Practica,<h1>hola</h1>,true,company-01,course-07
@@ -13,6 +13,15 @@ practicum-11,A010,El titulo de esta practica va a ocupar setenta y seis caracter
 practicum-12,A011,Calvo,El abstract del Practicum va a ocupar ciento uno caracteres y para que se valide como maximo tiene101,Top cuarenta,true,company-01,course-12
 practicum-13,A012,Calvo,Resumen Practica,el someGoals del Practicum va a ocupar ciento uno caracteres para que se valide como maximo tiene 101,true,company-01,course-13
 practicum-14,A013,Calvo,Resumen Practica.,"Top",true,company-01,course-01
-practicum-15,A014,Calvo,Resumen Practica.,"Top",true,company-01,course-01
-practicum-16,A015,Calvo,專業實踐La,"Top",true,company-01,course-01
-practicum-17,A016,Calvo,περίληψη πρακτικής,"Top",true,company-01,course-01
+practicum-15,A014,Calvo,Resumen Practica.,"Top",false,company-01,course-01
+practicum-16,A015,Calvo,專業實踐La,"Top",false,company-02,course-02
+practicum-17,A016,Calvo,περίληψη πρακτικής,"Top",true,company-02,course-02
+practicum-18,A017,Calvo,Resumen Practica,Top cuarenta,true,company-01,course-03
+practicum-19,A018,Calvo,Resumen Practica,Top cuarenta,false,company-02,course-01
+practicum-20,A019,Calvo,Resumen Practica,Top cuarenta,false,company-01,course-02
+practicum-21,A020,Calvo,Resumen Practica,Top cuarenta,false,company-02,course-01
+practicum-22,A021,Calvo,Resumen Practica,Top cuarenta,false,company-01,course-01
+practicum-23,A022,Calvo,Resumen Practica,Top cuarenta,true,company-01,course-01
+practicum-24,A023,Calvo,Resumen Practica,Top cuarenta,true,company-02,course-01
+practicum-25,A024,Calvo,Resumen Practica,Top cuarenta,true,company-02,course-01
+practicum-26,A025,Calvo,Resumen Practica,Top cuarenta,true,company-02,course-02

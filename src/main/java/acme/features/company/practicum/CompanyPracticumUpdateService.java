@@ -56,7 +56,7 @@ public class CompanyPracticumUpdateService extends AbstractService<Company, Prac
 		object = this.repository.findPracticumById(practicumId);
 		principal = super.getRequest().getPrincipal();
 
-		status = object != null && object.getCompany().getId() == principal.getActiveRoleId() && object.getDraftMode();
+		status = object.getCompany().getId() == principal.getActiveRoleId();
 
 		super.getResponse().setAuthorised(status);
 	}

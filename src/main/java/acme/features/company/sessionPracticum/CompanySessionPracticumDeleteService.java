@@ -30,8 +30,8 @@ public class CompanySessionPracticumDeleteService extends AbstractService<Compan
 		int sessionPracticumId;
 		Practicum practicum;
 		sessionPracticumId = super.getRequest().getData("id", int.class);
-		practicum = this.repository.findOnePracticumBySessionPracticumId(sessionPracticumId);
-		status = practicum != null && practicum.getDraftMode() && super.getRequest().getPrincipal().hasRole(practicum.getCompany());
+		practicum = this.repository.findPracticumBySessionPracticumId(sessionPracticumId);
+		status = super.getRequest().getPrincipal().hasRole(practicum.getCompany());
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -40,7 +40,7 @@ public class CompanySessionPracticumDeleteService extends AbstractService<Compan
 		final SessionPracticum object;
 		int id;
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneSessionPracticumById(id);
+		object = this.repository.findSessionPracticumById(id);
 		super.getBuffer().setData(object);
 	}
 

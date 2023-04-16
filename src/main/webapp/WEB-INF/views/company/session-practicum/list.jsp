@@ -19,7 +19,7 @@
 
 <acme:list>
     <acme:list-column code="company.session-practicum.list.label.title" path="title" width="15%"/>
-    <acme:list-column code="company.session-practicum.list.label.overview" path="overview" width="60%"/>
+    <acme:list-column code="company.session-practicum.list.label.abstractSessionPracticum" path="abstractSessionPracticum" width="60%"/>
     <acme:list-column code="company.session-practicum.list.label.practicum.title" path="practicum.title" width="15%"/>
 </acme:list>
 
