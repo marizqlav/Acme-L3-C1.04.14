@@ -24,7 +24,11 @@ master.menu.anonymous.ale-favourite-link = 49852809X: Merino Palma, Alejandro
 master.menu.anonymous.alberto-favourite-link = 54181123T: Dominguez-Adame, Alberto
 master.menu.anonymous.marcos-favourite-link = 05934857Y: Olmedo Marin, Marcos
 master.menu.anonymous.mario-favourite-link = 76269995V: Izquierdo Lavado, Mario
+
+# master.menu.any #################################################################
+master.menu.any.course = Cursos
 master.menu.any.peeps = Publicaciones
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
@@ -43,6 +47,8 @@ master.menu.administrator.banner.list = Lista de banners
 master.menu.authenticated = Authenticated
 master.menu.authenticated.offer.list = Lista oferta
 master.menu.authenticated.practicum.list = Lista practicas 
+master.menu.authenticated.note.list = Lista notas
+master.menu.authenticated.course.list = Lista course
 
 # master.menu.provider ########################################################
 
@@ -65,7 +71,13 @@ master.menu.student.my.enrolments = Mis matriculaciones
 
 master.menu.company = Compañia
 master.menu.company.favourite-link = Enlace favorito
-master.menu.company.my-practica = Lista de practicas
+master.menu.company.practicum = Lista de practicas
+
+# master.menu.lecturer ##########################################################
+
+master.menu.lecturer = Profesor
+master.menu.lecturer.list.courses = Lista de Cursos
+master.menu.lecturer.list.lecture = Lista de Clases
 
 # master.menu.user-account ####################################################
 
@@ -88,3 +100,6 @@ master.menu.auditor.list.auditingRecords = Mis registros de auditorias
 
 master.menu.user-account.company = Datos del perfil de compañia
 master.menu.user-account.become-company = Convertirse compañia
+master.menu.user-account.become-lecturer = Conviertete en profesor
+master.menu.user-account.lecturer = Datos del Perfil de profesor
+

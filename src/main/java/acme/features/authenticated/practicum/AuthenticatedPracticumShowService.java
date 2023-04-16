@@ -15,8 +15,6 @@ public class AuthenticatedPracticumShowService extends AbstractService<Authentic
 	@Autowired
 	protected AuthenticatedPracticumRepository pracRepository;
 
-	// AbstractService interface ----------------------------------------------
-
 
 	@Override
 	public void check() {
@@ -29,17 +27,23 @@ public class AuthenticatedPracticumShowService extends AbstractService<Authentic
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int practicumId;
+		Practicum practicum;
+		practicumId = super.getRequest().getData("id", int.class);
+		practicum = this.pracRepository.findPracticumById(practicumId);
+		status = practicum != null && !practicum.getDraftMode();
+
+		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
 	public void load() {
 		Practicum object;
 		int id;
-
 		id = super.getRequest().getData("id", int.class);
 		object = this.pracRepository.findPracticumById(id);
-
 		super.getBuffer().setData(object);
 	}
 
@@ -50,7 +54,7 @@ public class AuthenticatedPracticumShowService extends AbstractService<Authentic
 
 		Tuple tuple;
 
-		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals");
+		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals", "company.name");
 		tuple.put("company", object.getCompany().getName());
 
 		super.getResponse().setData(tuple);

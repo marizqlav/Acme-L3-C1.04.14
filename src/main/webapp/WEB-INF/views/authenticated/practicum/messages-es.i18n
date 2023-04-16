@@ -12,7 +12,7 @@ authenticated.practicum.form.label.code = Codigo:
 authenticated.practicum.form.label.title = Titulo:
 authenticated.practicum.form.label.abstractPracticum = Resumen Practica:
 authenticated.practicum.form.label.someGoals = Algunos Objetivos:
-authenticated.practicum.form.label.company = Compañia:
+authenticated.practicum.form.label.company.name = Nombre Compañia:
 
-authenticated.practicum.form.label.code = Codigo
-authenticated.practicum.form.label.title = Titulo
+authenticated.practicum.list.label.code = Codigo
+authenticated.practicum.list.label.title = Titulo
