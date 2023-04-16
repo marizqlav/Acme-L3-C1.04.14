@@ -54,7 +54,9 @@ public class AdministratorBannerController extends AbstractController<Administra
 		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("delete", this.deleteService);
 
-		bannerUtility.loadAllBanners();
+		try {
+			bannerUtility.loadAllBanners();
+		} catch (Exception e) { }
 	}
 
 }

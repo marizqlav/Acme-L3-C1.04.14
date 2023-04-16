@@ -21,6 +21,8 @@ import lombok.Setter;
 @Setter
 public class Banner extends AbstractEntity {
     
+    protected static final long	serialVersionUID = 1L;
+
     @Past
     Date instantiationMoment;
 
