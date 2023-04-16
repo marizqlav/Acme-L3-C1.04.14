@@ -25,12 +25,14 @@ public class Banner extends AbstractEntity {
     Date instantiationMoment;
 
 	@NotNull
+	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	Date displayPeriodFirstDate;
+	Date firstDate;
 
 	@NotNull
+	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	Date displayPeriodLastDate;
+	Date lastDate;
 
     @URL
     String linkPicture;
@@ -40,6 +42,6 @@ public class Banner extends AbstractEntity {
     String slogan;
 
     @URL
-    String linkWeb;
+    String linkWeb; 
 
 }
