@@ -44,6 +44,8 @@
 			
 			<acme:menu-suboption code="master.menu.administrator.system-configuration" action="/administrator/system-configuration/show" access="isAuthenticated()"/>
 			<acme:menu-suboption code="master.menu.administrator.list-offers" action="/administrator/offer/list" access="isAuthenticated()"/>
+			<acme:menu-suboption code="master.menu.administrator.banner.list" action="/administrator/banner/list"/>
+
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">
