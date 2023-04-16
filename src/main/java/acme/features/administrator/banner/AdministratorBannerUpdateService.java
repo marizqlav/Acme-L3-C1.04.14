@@ -22,6 +22,9 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 	@Autowired
 	protected AdministratorBannerRepository	repo;
 
+	@Autowired
+	protected BannerUtility bannerUtility;
+
 	@Override
 	public void check() {
 		boolean status;
@@ -90,6 +93,8 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 		assert banner != null;
 
 		repo.save(banner);
+
+		bannerUtility.writeBannerData(banner);
 	}
 
 	@Override
