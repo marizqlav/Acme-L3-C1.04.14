@@ -20,7 +20,11 @@ public class AuditorAuditCreateService extends AbstractService<Auditor, Audit> {
 
 	@Override
 	public void check() {
-		super.getResponse().setChecked(true);
+		boolean status;
+
+		status = super.getRequest().hasData("courseId", int.class);
+
+		super.getResponse().setChecked(status);
 	}
 
 	@Override

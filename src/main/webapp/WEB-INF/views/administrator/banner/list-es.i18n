@@ -1,0 +1,7 @@
+administrator.banner.list.label.slogan = eslogan
+administrator.banner.list.label.displayPeriodFirstDate = fecha de inicio de presentación
+administrator.banner.list.label.displayPeriodLastDate = fecha de final de presentación
+administrator.banner.list.label.instantiationMoment = momento de instanciación
+administrator.banner.list.label.linkPicture = link de imagen
+administrator.banner.list.label.linkWeb = link web
+administrator.banner.list.button.create = Crear
