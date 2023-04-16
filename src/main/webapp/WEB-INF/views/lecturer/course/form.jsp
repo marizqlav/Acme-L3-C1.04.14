@@ -25,7 +25,7 @@
 	
 	<jstl:if test="${_command == 'show'}">
 		<acme:button code="lecturer.course.button.lectures" action="/lecturer/lecture/listFromCourse?id=${id}"/>
-		<acme:submit code="lecturer.course.button.courseLecture" action="/lecturer/courseLecture/create?id=${id}"/>
+		<acme:submit	 code="lecturer.course.button.courseLecture" action="/lecturer/courseLecture/create?id=${id}"/>
 		
 	</jstl:if>
 	

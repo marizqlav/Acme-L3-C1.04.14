@@ -62,7 +62,7 @@ public class LecturerLectureCreateService extends AbstractService<Lecturer, Lect
 	@Override
 	public void perform(final Lecture object) {
 		assert object != null;
-		object.setDraftmode(false);
+		object.setDraftmode(true);
 
 		this.repository.save(object);
 	}
