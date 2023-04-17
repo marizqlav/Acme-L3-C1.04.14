@@ -44,4 +44,6 @@ public interface LecturerCourseRepository extends AbstractRepository {
 	@Query("select l from Lecturer l where l.id = :id")
 	Lecturer findLecturerById(int id);
 
+	Course findFirstByOrderByCodeDesc();
+
 }

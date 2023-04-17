@@ -16,18 +16,26 @@
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="lecturer.course.form.label.code" path="code"/>
+	<jstl:if test="${!(_command == 'create')}">
+	<acme:input-textbox code="lecturer.course.form.label.code"  readonly="true" path="code"/>
+	<acme:input-textbox code="lecturer.course.form.label.courseType"  readonly="true" path="courseType"/>
+	</jstl:if>
 	<acme:input-textbox code="lecturer.course.form.label.title" path="title"/>
 	<acme:input-textarea code="lecturer.course.form.label.resumen" path="resumen"/>
 	<acme:input-textbox code="lecturer.course.form.label.retailPrice" path="retailPrice"/>
 	<acme:input-url code="lecturer.course.form.label.link" path="link"/>
-	<acme:input-textbox code="lecturer.course.form.label.courseType" path="courseType"/>
 	
-	<jstl:if test="${_command == 'show'}">
-		<acme:button code="lecturer.course.button.lectures" action="/lecturer/lecture/listFromCourse?id=${id}"/>
-		<acme:submit	 code="lecturer.course.button.courseLecture" action="/lecturer/courseLecture/create?id=${id}"/>
+	<jstl:choose>
+		<jstl:when test="${_command == 'show'}">
+			<acme:button code="lecturer.course.button.lectures" action="/lecturer/lecture/listFromCourse?id=${id}"/>
+			<acme:submit	 code="lecturer.course.button.courseLecture" action="/lecturer/courseLecture/create?id=${id}"/>	
+		</jstl:when>
+	
+		<jstl:when test="${_command == 'create'}">
+			<acme:submit code="lecturer.course.form.button.create" action="/lecturer/course/create"/>
+		</jstl:when>
 		
-	</jstl:if>
+	</jstl:choose>
 	
 
 </acme:form>
