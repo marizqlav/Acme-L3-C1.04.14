@@ -35,6 +35,9 @@ public class LecturerCourseController extends AbstractController<Lecturer, Cours
 	@Autowired
 	protected LecturerCourseCreateService	createService;
 
+	@Autowired
+	protected LecturerCourseUpdateService	updateService;
+
 	// Constructors -----------------------------------------------------------
 
 
@@ -43,6 +46,7 @@ public class LecturerCourseController extends AbstractController<Lecturer, Cours
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("update", this.updateService);
 	}
 
 }
