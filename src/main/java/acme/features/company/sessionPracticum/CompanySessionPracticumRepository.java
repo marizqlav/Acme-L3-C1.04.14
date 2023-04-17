@@ -14,7 +14,7 @@ import acme.framework.repositories.AbstractRepository;
 public interface CompanySessionPracticumRepository extends AbstractRepository {
 
 	@Query("select p from Practicum p where p.id = :companyId")
-	Practicum findOnePracticumById(int companyId);
+	Practicum findPracticumById(int companyId);
 
 	@Query("select s from SessionPracticum s where s.id = :id")
 	SessionPracticum findSessionPracticumById(int id);

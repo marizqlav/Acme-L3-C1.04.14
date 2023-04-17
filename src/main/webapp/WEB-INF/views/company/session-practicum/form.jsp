@@ -22,12 +22,16 @@
     <acme:input-moment code="company.session-practicum.form.label.finishDate" path="finishDate"/>
     <acme:input-url code="company.session-practicum.form.label.link" path="link"/>
     <jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == false}">
 			<acme:submit code="company.session-practicum.form.button.update" action="/company/session-practicum/update"/>
 			<acme:submit code="company.session-practicum.form.button.delete" action="/company/session-practicum/delete"/>
 		</jstl:when>
-		<jstl:when test="${_command == 'create'}">
+		<jstl:when test="${_command == 'create' && draftMode == false}">
 			<acme:submit code="company.session-practicum.form.button.create" action="/company/session-practicum/create?practicumId=${practicumId}"/>
+		</jstl:when>
+		<jstl:when test="${_command == 'create' && draftMode == true}">
+			<acme:input-checkbox code="company.session-practicum.form.button.confirmation" path="confirmation"/>
+			<acme:submit code="company.session-practicum.form.button.createAddendum" action="/company/session-practicum/create?practicumId=${practicumId}"/>
 		</jstl:when>		
 	</jstl:choose>
 </acme:form>

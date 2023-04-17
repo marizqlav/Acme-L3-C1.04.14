@@ -26,5 +26,6 @@ company.session-practicum.form.button.delete = Borrar
 company.session-practicum.form.button.create = Crear
 
 company.session-practicum.list.button.create = Crear
+company.session-practicum.form.error.finishDate = La Fecha Final debe ser como mínimo una semana despues de la Fecha Inicial
 
 

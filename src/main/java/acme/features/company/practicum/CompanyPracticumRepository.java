@@ -47,7 +47,8 @@ public interface CompanyPracticumRepository extends AbstractRepository {
 	@Query("select sum(TIME_TO_SEC(TIMEDIFF(sp.finishDate, sp.startDate)) / 3600) from SessionPracticum sp where sp.practicum.id= :practicumId")
 	Double findEstimatedTimeSessionsPerPracticum(int practicumId);
 
-	@Query("select p.code from Practicum p")
-	Collection<String> findAllCodes();
+	//	@Query("select p.code from Practicum p")
+	//	Collection<String> findAllCodes();
 
+	Practicum findFirstByOrderByCodeDesc();
 }

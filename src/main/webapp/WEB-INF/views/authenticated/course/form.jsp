@@ -24,6 +24,6 @@
 	<jstl:if test="${!link.isEmpty()}">
 		<acme:input-url code="authenticated.course.form.label.link" readonly="true" path="link"/>
 	</jstl:if>
-	<acme:button test="${_command == 'show'}" code="authenticated.practicum.form.button.list" action="/authenticated/practicum/list?courseId=${id}"/>
+	<acme:button test="${_command == 'show'}" code="authenticated.practicum.form.button.list" action="/authenticated/practicum/list?id=${id}"/>
 	
 </acme:form>

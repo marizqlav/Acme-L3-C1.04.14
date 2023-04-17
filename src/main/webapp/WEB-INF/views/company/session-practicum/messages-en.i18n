@@ -25,3 +25,6 @@ company.session-practicum.form.button.delete = Delete
 company.session-practicum.form.button.create = Create
 
 company.session-practicum.list.button.create = Create
+company.session-practicum.form.error.finishAfterStart=
+company.session-practicum.form.error.oneWeekAhead=
+company.session-practicum.form.error.finishDate = The Finish Date must be minimum a week after the availability Period Initial
