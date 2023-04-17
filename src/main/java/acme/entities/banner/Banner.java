@@ -21,18 +21,18 @@ import lombok.Setter;
 @Setter
 public class Banner extends AbstractEntity {
     
+    protected static final long	serialVersionUID = 1L;
+
     @Past
     Date instantiationMoment;
 
 	@NotNull
-	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	Date firstDate;
+	Date displayPeriodFirstDate;
 
 	@NotNull
-	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	Date lastDate;
+	Date displayPeriodLastDate;
 
     @URL
     String linkPicture;
@@ -42,6 +42,6 @@ public class Banner extends AbstractEntity {
     String slogan;
 
     @URL
-    String linkWeb; 
+    String linkWeb;
 
 }

@@ -31,3 +31,10 @@ mvnw
 
 mvnw\.cmd
 /.apt_generated_tests/
+
+
+# Custom
+
+src/main/webapp/META-INF/resources/banners-data/banner-*
+.classpath
+.settings/org.eclipse.wst.common.component

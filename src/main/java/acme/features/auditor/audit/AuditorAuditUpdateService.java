@@ -55,6 +55,10 @@ public class AuditorAuditUpdateService extends AbstractService<Auditor, Audit> {
 	public void validate(final Audit audit) {
 		assert audit != null;
 
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			super.state(repo.findByCode(audit.getCode()) == null, "code", "auditor.audit.form.code.repeated");
+		}
+
 	}
 
 	@Override
