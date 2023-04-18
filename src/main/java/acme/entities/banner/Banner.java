@@ -13,6 +13,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.URL;
 
 import acme.framework.data.AbstractEntity;
+import acme.framework.helpers.MomentHelper;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -43,5 +44,13 @@ public class Banner extends AbstractEntity {
 
     @URL
     String linkWeb;
+
+    public boolean isDisplayActive() {
+        boolean res = true;
+
+        res = getDisplayPeriodFirstDate().before(MomentHelper.getCurrentMoment());
+        res = res && getDisplayPeriodLastDate().after(MomentHelper.getCurrentMoment());
+        return res;
+    }
 
 }

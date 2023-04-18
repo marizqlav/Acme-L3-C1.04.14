@@ -29,7 +29,7 @@
 	</jstl:if>
 
 	<jstl:if test="${_command == 'show'}">
-		<acme:link code="auditor.audit.auditingRecords" action="/auditor/auditing-record/list?auditId=${id}"/>
+		<acme:button code="auditor.audit.auditingRecords" action="/auditor/auditing-record/list?auditId=${id}"/>
 	</jstl:if>
 
 	<br>

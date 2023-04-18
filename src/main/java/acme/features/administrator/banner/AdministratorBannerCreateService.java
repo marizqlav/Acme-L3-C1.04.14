@@ -21,9 +21,6 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 	@Autowired
 	protected AdministratorBannerRepository	repo;
 
-	@Autowired
-	protected BannerUtility bannerUtility;
-
 	@Override
 	public void check() {
 		super.getResponse().setChecked(true);
@@ -81,8 +78,6 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 		assert banner != null;
 
 		repo.save(banner);
-
-		bannerUtility.writeBannerData(banner);
 	}
 
 	@Override
