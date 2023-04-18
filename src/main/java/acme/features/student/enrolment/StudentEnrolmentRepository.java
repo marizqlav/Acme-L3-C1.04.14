@@ -17,6 +17,7 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.activities.Activity;
 import acme.entities.courses.Course;
 import acme.entities.enrolments.Enrolment;
 import acme.framework.repositories.AbstractRepository;
@@ -24,6 +25,12 @@ import acme.roles.Student;
 
 @Repository
 public interface StudentEnrolmentRepository extends AbstractRepository {
+
+	@Query("select c from Course c where c.draftMode = 0")
+	Collection<Course> findCoursesPublics();
+
+	@Query("select c from Course c where c.id = :id")
+	Course findOneCourseById(int id);
 
 	@Query("select e from Enrolment e where e.id = :id")
 	Enrolment findOneEnrolmentById(int id);
@@ -45,4 +52,12 @@ public interface StudentEnrolmentRepository extends AbstractRepository {
 
 	@Query("select s from Student s where s.id = :id")
 	Student findStudentById(int id);
+
+	@Query("select a from Activity a where a.enrolment.id = :enrolmentId")
+	Collection<Activity> findManyActivitiesByEnrolmentId(int enrolmentId);
+
+	@Query("select e from Enrolment e where e.student.id = :studentId and e.course.id = :courseId")
+	Enrolment findStudentCourse(int studentId, int courseId);
+
+	Enrolment findFirstByOrderByCodeDesc();
 }

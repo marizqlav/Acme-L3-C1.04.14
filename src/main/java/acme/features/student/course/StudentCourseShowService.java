@@ -12,14 +12,10 @@
 
 package acme.features.student.course;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.courses.Course;
-import acme.entities.enrolments.Enrolment;
-import acme.entities.lectures.Lecture;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
@@ -47,11 +43,13 @@ public class StudentCourseShowService extends AbstractService<Student, Course> {
 	@Override
 	public void authorise() {
 		boolean status;
-		int id;
+		int courseId;
+		Course course;
 
-		id = super.getRequest().getData("id", int.class);
+		courseId = super.getRequest().getData("id", int.class);
+		course = this.repository.findOneCourseById(courseId);
 
-		status = true;
+		status = course != null && !course.isDraftMode() && super.getRequest().getPrincipal().hasRole(Student.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -72,22 +70,13 @@ public class StudentCourseShowService extends AbstractService<Student, Course> {
 		assert object != null;
 
 		Tuple tuple;
-		final Collection<Lecture> lectures;
-		final Enrolment enrolmented = this.repository.findStudentCourse(super.getRequest().getPrincipal().getActiveRoleId(), object.getId());
-		lectures = this.repository.findLecturesByCourseId(object.getId());
-		tuple = super.unbind(object, "code", "title", "resumen", "retailPrice", "link");
+
+		tuple = super.unbind(object, "id", "code", "title", "resumen", "retailPrice", "link");
 		tuple.put("lecturerusername", object.getLecturer().getUserAccount().getUsername());
 		tuple.put("lectureralmamater", object.getLecturer().getAlmaMater());
 		tuple.put("lecturerresume", object.getLecturer().getResume());
 		tuple.put("lecturerqualifications", object.getLecturer().getQualifications());
 		tuple.put("lecturerlink", object.getLecturer().getLink());
-
-		if (enrolmented != null)
-			tuple.put("enrolment", "yes");
-		else
-			tuple.put("enrolment", "no");
-
-		tuple.put("lectures", lectures);
 
 		super.getResponse().setData(tuple);
 
