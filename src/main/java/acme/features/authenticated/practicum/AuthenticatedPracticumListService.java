@@ -20,10 +20,9 @@ public class AuthenticatedPracticumListService extends AbstractService<Authentic
 
 	@Override
 	public void check() {
-		//		boolean status;
-		//		status = super.getRequest().hasData("id", int.class);
-		//		super.getResponse().setChecked(status);
-		super.getResponse().setChecked(true);
+		boolean status;
+		status = super.getRequest().hasData("id", int.class);
+		super.getResponse().setChecked(status);
 	}
 
 	@Override

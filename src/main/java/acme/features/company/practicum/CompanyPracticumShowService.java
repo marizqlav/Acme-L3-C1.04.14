@@ -52,7 +52,7 @@ public class CompanyPracticumShowService extends AbstractService<Company, Practi
 		object = this.repository.findPracticumById(practicumId);
 		principal = super.getRequest().getPrincipal();
 
-		status = object.getCompany().getId() == principal.getActiveRoleId();
+		status = object != null && object.getCompany().getId() == principal.getActiveRoleId();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -71,18 +71,23 @@ public class CompanyPracticumShowService extends AbstractService<Company, Practi
 	@Override
 	public void unbind(final Practicum object) {
 		assert object != null;
+		Double estimatedTime;
 
 		Collection<Course> courses;
 		SelectChoices choices;
-		Tuple tuple;
 
 		courses = this.repository.findAllCourses();
 		choices = SelectChoices.from(courses, "code", object.getCourse());
 
+		estimatedTime = this.repository.findEstimatedTimeSessionsPerPracticum(object.getId());
+		if (estimatedTime == null)
+			estimatedTime = 0.0;
+
+		Tuple tuple;
 		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals", "draftMode");
+		tuple.put("estimatedTime", estimatedTime);
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
-
 		super.getResponse().setData(tuple);
 	}
 }

@@ -54,8 +54,6 @@ public class SessionPracticum extends AbstractEntity {
 		return (double) (MomentHelper.computeDuration(this.finishDate, this.startDate).toMinutes() / 60);
 	}
 
-	// Relationships ----------------------------------------------------------
-
 
 	@Valid
 	@NotNull

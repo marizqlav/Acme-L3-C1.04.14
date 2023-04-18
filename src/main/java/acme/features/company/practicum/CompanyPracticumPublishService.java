@@ -1,14 +1,3 @@
-/*
- * AuthenticatedAnnouncementController.java
- *
- * Copyright (C) 2012-2023 Rafael Corchuelo.
- *
- * In keeping with the traditional purpose of furthering education and research, it is
- * the policy of the copyright owner to permit non-commercial use and redistribution of
- * this software. It has been tested carefully, but it is not guaranteed for any particular
- * purposes. The copyright owner does not offer any warranties or representations, nor do
- * they accept any liabilities with respect to them.
- */
 
 package acme.features.company.practicum;
 
@@ -17,7 +6,6 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.components.AssistantService;
 import acme.entities.courses.Course;
 import acme.entities.practicum.Practicum;
 import acme.framework.components.accounts.Principal;
@@ -27,13 +15,10 @@ import acme.framework.services.AbstractService;
 import acme.roles.Company;
 
 @Service
-public class CompanyPracticumUpdateService extends AbstractService<Company, Practicum> {
+public class CompanyPracticumPublishService extends AbstractService<Company, Practicum> {
 
 	@Autowired
-	protected CompanyPracticumRepository	repository;
-
-	@Autowired
-	protected AssistantService				assistantService;
+	protected CompanyPracticumRepository repository;
 
 
 	@Override
@@ -82,7 +67,7 @@ public class CompanyPracticumUpdateService extends AbstractService<Company, Prac
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findCourseById(courseId);
 
-		super.bind(object, "title", "abstractPracticum", "someGoals");
+		super.bind(object, "code", "title", "abstractPracticum", "someGoals");
 		object.setCourse(course);
 	}
 
@@ -95,6 +80,7 @@ public class CompanyPracticumUpdateService extends AbstractService<Company, Prac
 	public void perform(final Practicum object) {
 		assert object != null;
 
+		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 
@@ -109,7 +95,7 @@ public class CompanyPracticumUpdateService extends AbstractService<Company, Prac
 		courses = this.repository.findAllCourses();
 		choices = SelectChoices.from(courses, "code", object.getCourse());
 
-		tuple = super.unbind(object, "title", "abstractPracticum", "someGoals");
+		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals");
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
 
