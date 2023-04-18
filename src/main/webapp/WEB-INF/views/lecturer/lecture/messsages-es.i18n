@@ -20,6 +20,7 @@ lecturer.lecture.list.button.create = Crear Clase
 lecturer.lecture.forms.button.create = Crear Clase
 lecturer.lecture.form.button.update = Actualizar Clase
 lecturer.lecture.form.button.delete = Borrar Clase
+lecturer.lecture.form.button.publish = Publicar Clase
 
 
 lecturer.lecture.form.error.estimatedTime = Debe ser mayor que 0.0

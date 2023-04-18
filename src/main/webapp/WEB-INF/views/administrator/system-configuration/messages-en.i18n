@@ -1,0 +1,18 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2023 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+administrator.config.form.label.currencies = Accepted currencies:
+administrator.config.form.label.currency = System currency: 
+administrator.config.form.label.currency.new = New currency:
+
+administrator.config.form.button.update = Update
+administrator.config.form.button.add = Add new currency
+
+administrator.config.form.error.unavailable = System currency unavailable

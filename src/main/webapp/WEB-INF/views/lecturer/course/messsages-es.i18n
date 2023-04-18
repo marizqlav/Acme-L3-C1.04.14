@@ -17,4 +17,10 @@ lecturer.course.form.label.link = Link
 lecturer.course.list.label.title = Titulo
 lecturer.course.form.label.courseType = Tipo de Curso
 
-lecturer.course.form.button.show = Clases del curso
+lecturer.course.button.lectures = Clases del curso
+
+
+lecturer.course.list.button.create = Crear curso
+lecturer.course.form.button.create = Crear curso
+
+lecturer.course.button.update = Actualizar curso

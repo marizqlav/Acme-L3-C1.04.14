@@ -22,3 +22,5 @@
 
 	<acme:button code="lecturer.lecture.list.button.create" action="/lecturer/lecture/create"/>
 	
+
+	

@@ -20,6 +20,7 @@ lecturer.lecture.list.button.create = Create Lecture
 lecturer.lecture.form.button.create = Create Lecture
 lecturer.lecture.form.button.update = Update Lecture
 lecturer.lecture.form.button.delete = Delete Lecture
+lecturer.lecture.form.button.publish = Publish Lecture
 
 
 

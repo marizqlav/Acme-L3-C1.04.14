@@ -81,6 +81,7 @@ public class LecturerLectureUpdateService extends AbstractService<Lecturer, Lect
 
 		tuple = super.unbind(object, "title", "resumen", "lectureType", "estimatedTime", "body");
 
+		tuple.put("id", object.getId());
 		tuple.put("lectureTypes", choices);
 
 		super.getResponse().setData(tuple);

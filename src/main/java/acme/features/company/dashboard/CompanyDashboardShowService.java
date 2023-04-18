@@ -29,7 +29,7 @@ public class CompanyDashboardShowService extends AbstractService<Company, Compan
 
 	@Override
 	public void load() {
-		final CompanyDashboard dashboard = new CompanyDashboard();
+		//		final CompanyDashboard dashboard = new CompanyDashboard();
 
 		super.getBuffer().setData(true);
 	}

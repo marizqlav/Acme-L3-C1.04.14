@@ -16,4 +16,11 @@ lecturer.course.form.label.link = Link
 lecturer.course.list.label.title = Title
 lecturer.course.form.label.courseType = Course Type
 
-lecturer.course.form.button.show = Lectures of course
+
+
+lecturer.course.button.lectures = Lectures of the course 
+
+lecturer.course.list.button.create = Create Course
+lecturer.course.form.button.create = Create Course
+
+lecturer.course.button.update = Update Course

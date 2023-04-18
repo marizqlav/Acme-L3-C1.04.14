@@ -28,6 +28,8 @@
 		</acme:menu-option>
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.offer.list" action="/authenticated/offer/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.note.list" action="/authenticated/note/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.course.list" action="/authenticated/course/list"/>
 		</acme:menu-option>
     <acme:menu-option code="master.menu.any.peeps" action="/any/peep/list"/>
     <acme:menu-option code="master.menu.any.course" action="/any/course/list" />
@@ -66,7 +68,7 @@
 		<acme:menu-option code="master.menu.company" access="hasRole('Company')">
 			<acme:menu-suboption code="master.menu.company.favourite-link" action="https://www.informatica.us.es/"/>
 			<acme:menu-separator/>	
-			<acme:menu-suboption code="master.menu.company.my-practica" action="/company/practicum/list"/>
+			<acme:menu-suboption code="master.menu.company.practicum" action="/company/practicum/list"/>
 		</acme:menu-option>
 
 		

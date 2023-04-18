@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import acme.entities.offer.Offer;
 import acme.framework.components.accounts.Administrator;
 import acme.framework.components.models.Tuple;
-import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 
 @Service
@@ -26,9 +25,6 @@ public class AdministratorOfferDeleteService extends AbstractService<Administrat
 
 	@Override
 	public void authorise() {
-		//		final int id = super.getRequest().getData("id", int.class);
-		//		final Offer object = this.offerRepository.findOfferById(id);
-		//		super.getResponse().setAuthorised(MomentHelper.getCurrentMoment().before(object.getAvailabilityPeriodInitial()));
 		super.getResponse().setAuthorised(true);
 	}
 
@@ -66,8 +62,6 @@ public class AdministratorOfferDeleteService extends AbstractService<Administrat
 		assert object != null;
 		Tuple tuple;
 		tuple = super.unbind(object, "instantiationMoment", "heading", "summary", "availabilityPeriodInitial", "availabilityPeriodFinal", "price", "link");
-		final boolean readonly = MomentHelper.getCurrentMoment().after(object.getAvailabilityPeriodInitial());
-		tuple.put("readonly", readonly);
 		super.getResponse().setData(tuple);
 	}
 }

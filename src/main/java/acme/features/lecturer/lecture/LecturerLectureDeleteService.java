@@ -6,7 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.courselectures.CourseLecture;
+import acme.entities.courseLectures.CourseLecture;
 import acme.entities.lectures.Lecture;
 import acme.entities.lectures.LectureType;
 import acme.framework.components.jsp.SelectChoices;

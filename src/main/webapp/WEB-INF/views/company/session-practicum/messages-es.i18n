@@ -1,0 +1,31 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2023 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+company.session-practicum.list.label.title = Título
+company.session-practicum.form.label.abstractSessionPracticum = Resumen Sesion Practica
+company.session-practicum.list.label.practicum.title = Título de la Práctica
+
+company.session-practicum.form.label.title = Título
+company.session-practicum.form.label.abstractSessionPracticum = Resumen Sesion Practica
+company.session-practicum.form.label.startDate = Fecha Inicial
+company.session-practicum.form.label.finishDate = Fecha Final
+company.session-practicum.form.label.link = Enlace
+
+company.session-practicum.list.button.create = Crear Sesión
+
+
+company.session-practicum.form.button.update = Actualizar
+company.session-practicum.form.button.delete = Borrar
+company.session-practicum.form.button.create = Crear
+
+company.session-practicum.list.button.create = Crear
+company.session-practicum.form.error.finishDate = La Fecha Final debe ser como mínimo una semana despues de la Fecha Inicial
+
+
