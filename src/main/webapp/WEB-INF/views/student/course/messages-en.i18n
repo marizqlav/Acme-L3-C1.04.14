@@ -26,3 +26,5 @@ student.course.form.label.lecturer.qualifications = Qualifications:
 student.course.form.label.lecturer.link = Link: (Optional)
 student.course.form.button.enrolment = Enrolment
 student.course.lectures.data = Lectures data
+student.course.lectures = View lectures
+student.course.title = Courses

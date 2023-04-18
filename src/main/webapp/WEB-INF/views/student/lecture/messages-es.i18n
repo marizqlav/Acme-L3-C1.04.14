@@ -1,0 +1,39 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2023 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+student.course.form.label.title = Título:
+student.course.form.label.resumen = Resumen:
+student.course.form.retail.price = Precio mínimo:
+student.course.form.label.link = Enlace: (Opcional)
+
+student.course.list.label.title = Título
+student.course.list.label.retail.price= Precio mínimo
+
+student.course.data = Datos del curso
+student.course.lecturer.data = Datos del profesor
+
+student.course.form.label.lecturer.username = Nombre de usuario:
+student.course.form.label.lecturer.alma.mater = Alma Mater:
+student.course.form.label.lecturer.resume = Resumen:
+student.course.form.label.lecturer.qualifications = Calificaciones:
+student.course.form.label.lecturer.link = Enlace: (Opcional)
+student.course.form.button.enrolment = Matricularse
+student.course.lectures.data = Lecciones
+student.lecture.list.label.title = Título
+student.lecture.list.label.resumen = Resumen
+student.lecture.list.label.lectureType = Tipo
+student.lecture.list.label.estimatedTime = Tiempo estimado
+student.lecture.data = Datos de la lección
+student.lecture.form.label.title = Título
+student.lecture.form.label.resumen = Resumen
+student.lecture.form.lecture.type = Tipo
+student.lecture.form.estimated.time = Tiempo estimado
+student.lecture.form.label.body = Descripción
+student.course.lectures.title = Lecciones
