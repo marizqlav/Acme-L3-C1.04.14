@@ -35,6 +35,6 @@ mvnw\.cmd
 
 # Custom
 
-src/main/webapp/META-INF/resources/banners-data/banner-*
+banner-*.txt
 .classpath
 .settings/org.eclipse.wst.common.component

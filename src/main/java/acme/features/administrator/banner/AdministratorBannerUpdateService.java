@@ -4,8 +4,6 @@ package acme.features.administrator.banner;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,9 +19,6 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 
 	@Autowired
 	protected AdministratorBannerRepository	repo;
-
-	@Autowired
-	protected BannerUtility bannerUtility;
 
 	@Override
 	public void check() {
@@ -94,7 +89,6 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 
 		repo.save(banner);
 
-		bannerUtility.writeBannerData(banner);
 	}
 
 	@Override
