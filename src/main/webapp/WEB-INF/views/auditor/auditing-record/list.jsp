@@ -23,7 +23,8 @@
 	<acme:list-column code="auditors.auditingRecord.list.label.mark" path="mark"/>
 </acme:list>
 
-<jstl:if test="${draftMode == true}">
+${draftMode}
+<jstl:if test="${draftMode != true}">
 	<acme:button code="auditors.auditingRecord.list.button.create" action="/auditor/auditing-record/create"/>
 </jstl:if>
 

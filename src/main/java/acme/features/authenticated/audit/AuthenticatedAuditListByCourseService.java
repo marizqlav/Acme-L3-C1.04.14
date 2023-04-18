@@ -14,9 +14,8 @@ import acme.framework.services.AbstractService;
 @Service
 public class AuthenticatedAuditListByCourseService extends AbstractService<Authenticated, Audit> {
 
-	@Autowired
-	AuthenticatedAuditRepository repo;
-
+    @Autowired
+    AuthenticatedAuditRepository repo;
 
 	@Override
 	public void check() {

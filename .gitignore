@@ -31,4 +31,14 @@ mvnw
 
 mvnw\.cmd
 /.apt_generated_tests/
+<<<<<<< HEAD
 /bin/
+=======
+
+
+# Custom
+
+src/main/webapp/META-INF/resources/banners-data/banner-*
+.classpath
+.settings/org.eclipse.wst.common.component
+>>>>>>> branch 'main' of https://github.com/marizqlav/Acme-L3-D01.git
