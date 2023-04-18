@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.courses.Course;
 import acme.entities.practicum.Practicum;
+import acme.entities.sessionPracticum.SessionPracticum;
 import acme.framework.components.accounts.Principal;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
@@ -71,17 +72,17 @@ public class CompanyPracticumShowService extends AbstractService<Company, Practi
 	@Override
 	public void unbind(final Practicum object) {
 		assert object != null;
-		Double estimatedTime;
 
-		Collection<Course> courses;
-		SelectChoices choices;
+		final Collection<Course> courses;
+		final SelectChoices choices;
 
 		courses = this.repository.findAllCourses();
 		choices = SelectChoices.from(courses, "code", object.getCourse());
 
-		estimatedTime = this.repository.findEstimatedTimeSessionsPerPracticum(object.getId());
-		if (estimatedTime == null)
-			estimatedTime = 0.0;
+		final Collection<SessionPracticum> sessionPracticum;
+
+		sessionPracticum = this.repository.findSessionPracticumByPracticumId(object.getId());
+		final Double estimatedTime = object.estimatedTime(sessionPracticum);
 
 		Tuple tuple;
 		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals", "draftMode");

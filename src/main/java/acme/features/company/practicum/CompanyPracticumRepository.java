@@ -51,4 +51,5 @@ public interface CompanyPracticumRepository extends AbstractRepository {
 	//	Collection<String> findAllCodes();
 
 	Practicum findFirstByOrderByCodeDesc();
+
 }

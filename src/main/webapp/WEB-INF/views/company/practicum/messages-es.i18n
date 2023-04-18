@@ -17,8 +17,9 @@ company.practicum.list.button.create = Crear
 company.practicum.form.label.course = Curso:
 company.practicum.form.label.code = Código de la práctica:
 company.practicum.form.label.title = Título de la práctica:
-company.practicum.form.label.estimatedTime = Tiempo estimado:
+company.practicum.form.label.estimatedTime = Tiempo estimado (en horas) (+-10%):
 company.practicum.form.label.abstractPracticum = Resumen:
+company.practicum.form.label.company.name = Nombre de la compañía
 company.practicum.form.label.someGoals = Objetivos:
 
 company.practicum.form.button.create = Crear
