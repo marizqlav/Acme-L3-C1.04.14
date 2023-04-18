@@ -36,7 +36,35 @@
 
 	<acme:footer-logo logo="images/logo.png">
 		<acme:footer-copyright code="master.company.name"/>
-	</acme:footer-logo>		
+	</acme:footer-logo>
 
 </acme:footer-panel>
 
+<br>
+<br>
+
+<jstl:if test="${banner != null}">
+
+	<div style="width: 100%; flex-direction: row; display: flex; justify-content: center;">
+		<div style="position: relative; width: 100%;">
+
+			<jstl:if test="${banner.linkPicture != null}">
+				<img id="banner-img" src="${banner.linkPicture}" style="width: 100%; min-height: 300px; object-fit: cover;"/>
+			</jstl:if>
+			<jstl:if test="${banner.linkPicture == null}">
+				<img id="banner-img" src="images/banner.png" style="width: 100%; min-height: 300px; object-fit: cover;"/>
+			</jstl:if>
+
+			<div style="position: absolute; bottom: 10%; width: 100%;">
+				<div id="banner-text-box" style="margin-left: 15%; width: 70%; background-color: rgba(0, 0, 0, 0.4);">
+					<h1 style='color: white; font-size: 30px; text-align: center; word-break: break-all;'>${banner.slogan}</h1>
+					<a style='color: white; font-size: 20px; text-align: center; display: block;' href='${banner.linkWeb}'><acme:message code="footer.banner.link"/></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</jstl:if>
+
+<br>
+<br>
