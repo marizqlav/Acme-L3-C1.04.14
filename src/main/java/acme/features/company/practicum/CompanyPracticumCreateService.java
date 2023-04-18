@@ -60,11 +60,13 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 
 		int courseId;
 		Course course;
-
+		Company company;
+		company = this.repository.findCompanyById(super.getRequest().getPrincipal().getActiveRoleId());
 		super.bind(object, "title", "abstractPracticum", "someGoals");
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findCourseById(courseId);
 		object.setCode(this.newCode(this.repository.findFirstByOrderByCodeDesc().getCode()));
+		object.setCompany(company);
 		object.setCourse(course);
 	}
 
