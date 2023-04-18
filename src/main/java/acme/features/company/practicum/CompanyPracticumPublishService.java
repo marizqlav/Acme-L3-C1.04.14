@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.courses.Course;
 import acme.entities.practicum.Practicum;
+import acme.entities.sessionPracticum.SessionPracticum;
 import acme.framework.components.accounts.Principal;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
@@ -33,15 +34,13 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 	@Override
 	public void authorise() {
 		boolean status;
-		Practicum object;
+		Practicum practicum;
 		Principal principal;
 		int practicumId;
-
 		practicumId = super.getRequest().getData("id", int.class);
-		object = this.repository.findPracticumById(practicumId);
+		practicum = this.repository.findPracticumById(practicumId);
 		principal = super.getRequest().getPrincipal();
-
-		status = object.getCompany().getId() == principal.getActiveRoleId();
+		status = practicum.getCompany().getId() == principal.getActiveRoleId();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -67,7 +66,7 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findCourseById(courseId);
 
-		super.bind(object, "code", "title", "abstractPracticum", "someGoals");
+		super.bind(object, "code", "title", "abstractPracticum", "someGoals", "estimatedTime");
 		object.setCourse(course);
 	}
 
@@ -80,7 +79,14 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 	public void perform(final Practicum object) {
 		assert object != null;
 
-		object.setDraftMode(false);
+		object.setDraftMode(true);
+
+		final Collection<SessionPracticum> sessions = this.repository.findSessionPracticumByPracticumId(object.getId());
+		for (final SessionPracticum s : sessions) {
+			s.setDraftMode(true);
+			this.repository.save(s);
+		}
+
 		this.repository.save(object);
 	}
 
