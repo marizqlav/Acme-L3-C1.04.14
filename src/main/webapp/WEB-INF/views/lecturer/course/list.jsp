@@ -18,3 +18,5 @@
 <acme:list>
 	<acme:list-column code="lecturer.course.list.label.title" path="title"/>
 </acme:list>
+
+<acme:button code="lecturer.course.list.button.create" action="/lecturer/course/create"/>

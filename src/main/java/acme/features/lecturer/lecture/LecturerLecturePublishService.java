@@ -74,7 +74,7 @@ public class LecturerLecturePublishService extends AbstractService<Lecturer, Lec
 	public void perform(final Lecture object) {
 		assert object != null;
 
-		object.setDraftmode(true);
+		object.setDraftmode(false);
 
 		this.repository.save(object);
 	}
