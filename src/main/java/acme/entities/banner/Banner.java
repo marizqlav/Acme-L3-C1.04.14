@@ -1,3 +1,4 @@
+
 package acme.entities.banner;
 
 import java.util.Date;
@@ -13,6 +14,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.URL;
 
 import acme.framework.data.AbstractEntity;
+import acme.framework.helpers.MomentHelper;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,28 +22,37 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Banner extends AbstractEntity {
-    
-    @Past
-    Date instantiationMoment;
+
+	protected static final long	serialVersionUID	= 1L;
+
+	@Past
+	Date						instantiationMoment;
 
 	@NotNull
-	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	Date firstDate;
+	Date						displayPeriodFirstDate;
 
 	@NotNull
-	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	Date lastDate;
+	Date						displayPeriodLastDate;
 
-    @URL
-    String linkPicture;
+	@URL
+	String						linkPicture;
 
-    @NotBlank
-    @Size(max = 76)
-    String slogan;
+	@NotBlank
+	@Size(max = 76)
+	String						slogan;
 
-    @URL
-    String linkWeb; 
+	@URL
+	String						linkWeb;
+
+
+	public boolean isDisplayActive() {
+		boolean res = true;
+
+		res = this.getDisplayPeriodFirstDate().before(MomentHelper.getCurrentMoment());
+		res = res && this.getDisplayPeriodLastDate().after(MomentHelper.getCurrentMoment());
+		return res;
+	}
 
 }

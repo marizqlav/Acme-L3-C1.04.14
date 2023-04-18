@@ -10,33 +10,37 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.lecturer.course;
+package acme.features.administrator.banner;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import acme.entities.courses.Course;
+import acme.entities.banner.Banner;
+import acme.framework.components.accounts.Administrator;
 import acme.framework.controllers.AbstractController;
-import acme.roles.Lecturer;
 
 @Controller
-public class LecturerCourseController extends AbstractController<Lecturer, Course> {
+public class AdministratorBannerController extends AbstractController<Administrator, Banner> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected LecturerCourseListService		listService;
+	protected AdministratorBannerListService listService;
 
 	@Autowired
-	protected LecturerCourseShowService		showService;
+	protected AdministratorBannerShowService showService;
 
 	@Autowired
-	protected LecturerCourseCreateService	createService;
+	protected AdministratorBannerCreateService createService;
 
 	@Autowired
-	protected LecturerCourseUpdateService	updateService;
+	protected AdministratorBannerUpdateService updateService;
+
+	@Autowired
+	protected AdministratorBannerDeleteService deleteService;
+
 
 	// Constructors -----------------------------------------------------------
 
@@ -47,6 +51,7 @@ public class LecturerCourseController extends AbstractController<Lecturer, Cours
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
+		super.addBasicCommand("delete", this.deleteService);
 	}
 
 }
