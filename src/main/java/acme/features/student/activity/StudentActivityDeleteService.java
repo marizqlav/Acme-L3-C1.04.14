@@ -1,5 +1,5 @@
 /*
- * AuthenticatedAnnouncementShowService.java
+ * EmployerJobDeleteService.java
  *
  * Copyright (C) 2012-2023 Rafael Corchuelo.
  *
@@ -10,23 +10,24 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.student.course;
+package acme.features.student.activity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.courses.Course;
+import acme.entities.activities.Activity;
+import acme.entities.enrolments.Enrolment;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
 
 @Service
-public class StudentCourseShowService extends AbstractService<Student, Course> {
+public class StudentActivityDeleteService extends AbstractService<Student, Activity> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected StudentCourseRepository repository;
+	protected StudentActivityRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -43,43 +44,55 @@ public class StudentCourseShowService extends AbstractService<Student, Course> {
 	@Override
 	public void authorise() {
 		boolean status;
-		int courseId;
-		Course course;
+		int activityId;
+		Enrolment enrolment;
 
-		courseId = super.getRequest().getData("id", int.class);
-		course = this.repository.findOneCourseById(courseId);
-
-		status = course != null && !course.isDraftMode() && super.getRequest().getPrincipal().hasRole(Student.class);
+		activityId = super.getRequest().getData("id", int.class);
+		enrolment = this.repository.findOneEnrolmentByActivityId(activityId);
+		status = enrolment != null && enrolment.isDraftMode() && super.getRequest().getPrincipal().hasRole(enrolment.getStudent());
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Course object;
-		int id;
+		Activity object;
+		int activityId;
 
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneCourseById(id);
+		activityId = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneActivityById(activityId);
 
 		super.getBuffer().setData(object);
 	}
 
 	@Override
-	public void unbind(final Course object) {
+	public void bind(final Activity object) {
+		assert object != null;
+
+		super.bind(object, "title", "abstractResumen", "activityType", "timePeriod", "link");
+	}
+
+	@Override
+	public void validate(final Activity object) {
+		assert object != null;
+	}
+
+	@Override
+	public void perform(final Activity object) {
+		assert object != null;
+
+		this.repository.delete(object);
+	}
+
+	@Override
+	public void unbind(final Activity object) {
 		assert object != null;
 
 		Tuple tuple;
 
-		tuple = super.unbind(object, "id", "code", "title", "resumen", "retailPrice", "link");
-		tuple.put("lecturerusername", object.getLecturer().getUserAccount().getUsername());
-		tuple.put("lectureralmamater", object.getLecturer().getAlmaMater());
-		tuple.put("lecturerresume", object.getLecturer().getResume());
-		tuple.put("lecturerqualifications", object.getLecturer().getQualifications());
-		tuple.put("lecturerlink", object.getLecturer().getLink());
+		tuple = super.unbind(object, "title", "abstractResumen", "activityType", "timePeriod", "link");
 
 		super.getResponse().setData(tuple);
-
 	}
 
 }

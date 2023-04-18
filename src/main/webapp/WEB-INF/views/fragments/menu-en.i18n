@@ -63,6 +63,7 @@ master.menu.student = Student
 master.menu.student.favourite-link = Favourite link
 master.menu.student.list.courses = Course list
 master.menu.student.my.enrolments = My enrolments
+master.menu.student.dashboard = My dashboard
 
 # master.menu.company ####################################################
 

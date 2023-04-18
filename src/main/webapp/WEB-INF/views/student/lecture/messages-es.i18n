@@ -36,3 +36,4 @@ student.lecture.form.label.resumen = Resumen
 student.lecture.form.lecture.type = Tipo
 student.lecture.form.estimated.time = Tiempo estimado
 student.lecture.form.label.body = Descripción
+student.course.lectures.title = Lecciones

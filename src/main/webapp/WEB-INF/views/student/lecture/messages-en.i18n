@@ -36,3 +36,4 @@ student.lecture.form.label.resumen = Resume
 student.lecture.form.lecture.type = Type
 student.lecture.form.estimated.time = Estimated time
 student.lecture.form.label.body = Body
+student.course.lectures.title = Lectures

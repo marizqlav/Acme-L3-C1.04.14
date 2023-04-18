@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.courses.Course;
 import acme.entities.lectures.Lecture;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Student;
@@ -22,5 +23,8 @@ public interface StudentLectureRepository extends AbstractRepository {
 
 	@Query("SELECT s FROM Student s WHERE s.id = :id")
 	Student findStudentById(@Param("id") Integer id);
+
+	@Query("select cl.course from CourseLecture cl where cl.lecture.id = :id")
+	Course findOneCourseByLectureId(int id);
 
 }

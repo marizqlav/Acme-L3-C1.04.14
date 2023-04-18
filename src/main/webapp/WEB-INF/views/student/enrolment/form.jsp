@@ -50,6 +50,11 @@
 		</form>		
 		</jstl:when>	
 	</jstl:choose>
+	<jstl:if test="${_command == 'show'}">
+	<hr/>
+		<acme:button code="student.course.activities" action="/student/activity/list?masterId=${id}"/>
+	<hr/>
+	</jstl:if>
 </acme:form>
 
 

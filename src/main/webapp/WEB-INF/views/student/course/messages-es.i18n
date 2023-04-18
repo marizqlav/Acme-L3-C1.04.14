@@ -27,3 +27,4 @@ student.course.form.label.lecturer.link = Enlace: (Opcional)
 student.course.form.button.enrolment = Matricularse
 student.course.lectures.data = Lecciones
 student.course.lectures = Ver lecciones
+student.course.title = Cursos

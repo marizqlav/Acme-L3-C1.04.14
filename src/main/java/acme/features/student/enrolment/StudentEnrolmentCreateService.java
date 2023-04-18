@@ -13,6 +13,7 @@
 package acme.features.student.enrolment;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -126,9 +127,18 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 		Collection<Course> courses;
 		SelectChoices choices;
 		Tuple tuple;
+		Iterator<Course> iterator;
 
 		courses = this.repository.findCoursesPublics();
-		choices = SelectChoices.from(courses, "title", object.getCourse());
+
+		iterator = courses.iterator();
+		choices = new SelectChoices();
+		choices.add("0", "---", object.getCourse() == null);
+		while (iterator.hasNext()) {
+			Course choice;
+			choice = iterator.next();
+			choices.add(String.valueOf(choice.getId()), choice.getCode() + ": " + choice.getTitle(), choice.equals(object.getCourse()));
+		}
 
 		tuple = super.unbind(object, "motivation", "someGoals");
 		tuple.put("course", choices.getSelected().getKey());

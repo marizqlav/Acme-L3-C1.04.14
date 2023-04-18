@@ -15,10 +15,11 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
+<h1><acme:message code="student.enrolments.title"/></h1>
 <acme:list>
 	<acme:list-column code="student.enrolment.list.label.code" path="code"/>
 	<acme:list-column code="student.enrolment.list.label.course.title" path="coursetitle"/>
 </acme:list>
 <form>
-<acme:button code="student.course.form.button.enrolment" action="/student/enrolment/create"/>
+<acme:button code="student.enrolment.form.button.enrolment" action="/student/enrolment/create"/>
 </form>

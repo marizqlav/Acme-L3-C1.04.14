@@ -63,6 +63,7 @@ master.menu.student = Estudiante
 master.menu.student.favourite-link = Enlace favorito
 master.menu.student.list.courses = Lista de cursos
 master.menu.student.my.enrolments = Mis matriculaciones
+master.menu.student.dashboard = Mi panel
 
 # master.menu.company ####################################################
 

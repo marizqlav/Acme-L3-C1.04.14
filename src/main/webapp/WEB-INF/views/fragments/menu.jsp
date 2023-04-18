@@ -56,7 +56,8 @@
 			<acme:menu-suboption code="master.menu.student.list.courses" action="/student/course/list"/>
 		<acme:menu-separator/>	
 		<acme:menu-suboption code="master.menu.student.my.enrolments" action="/student/enrolment/list-mine"/>
-		
+		<acme:menu-separator/>
+		<acme:menu-suboption code="master.menu.student.dashboard" action="/student/student-dashboard/show"/>
 		</acme:menu-option>
 		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
 			<acme:menu-suboption code="master.menu.auditor.list.audits" action="/auditor/audit/list"/>

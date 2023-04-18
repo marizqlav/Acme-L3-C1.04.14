@@ -15,7 +15,7 @@ import acme.roles.Student;
 public class StudentLectureListService extends AbstractService<Student, Lecture> {
 
 	@Autowired
-	StudentLectureRepository repo;
+	StudentLectureRepository repository;
 
 
 	@Override
@@ -29,12 +29,16 @@ public class StudentLectureListService extends AbstractService<Student, Lecture>
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+
+		status = super.getRequest().getPrincipal().hasRole(Student.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		final Collection<Lecture> lectures = this.repo.findAllLecturesFromCourseId(super.getRequest().getData("masterId", int.class));
+		final Collection<Lecture> lectures = this.repository.findAllLecturesFromCourseId(super.getRequest().getData("masterId", int.class));
 
 		super.getBuffer().setData(lectures);
 	}

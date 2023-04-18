@@ -17,26 +17,27 @@
 
 
 <acme:form>
-<h1><acme:message code="student.course.data"/></h1>
+	<h1><acme:message code="student.course.data"/></h1>
 	<acme:input-textbox code="student.course.form.label.title" readonly="true" path="title"/>	
 	<acme:input-textarea code="student.course.form.label.resumen" readonly="true" path="resumen"/>
 	<acme:input-money code="student.course.form.retail.price" readonly="true" path="retailPrice"/>
-	<jstl:if test="${!link.isEmpty()}">
+	<jstl:if test="${link != null}">
 		<acme:input-url code="student.course.form.label.link" readonly="true" path="link"/>
 	</jstl:if>
-<h1><acme:message code="student.course.lecturer.data"/></h1>
+	<h1><acme:message code="student.course.lecturer.data"/></h1>
 	<acme:input-textbox code="student.course.form.label.lecturer.username" readonly="true" path="lecturerusername"/>
 	<acme:input-textarea code="student.course.form.label.lecturer.alma.mater" readonly="true" path="lectureralmamater"/>
 	<acme:input-textarea code="student.course.form.label.lecturer.resume" readonly="true" path="lecturerresume"/>
 	<acme:input-textarea code="student.course.form.label.lecturer.qualifications" readonly="true" path="lecturerqualifications"/>
-	<jstl:if test="${!lecturerlink.isEmpty()}">
-	<acme:input-url code="student.course.form.label.lecturer.link" readonly="true" path="lecturerlink"/>
+	<jstl:if test="${lecturerlink != null}">
+		<acme:input-url code="student.course.form.label.lecturer.link" readonly="true" path="lecturerlink"/>
 	</jstl:if>
-	
-	<h1><acme:message code="student.course.lectures.data"/></h1>
-  	<jstl:if test="${_command == 'show'}">
-		<acme:button code="student.course.lectures" action="/student/lecture/list?masterId=${id}"/>
-	<hr/>
-	</jstl:if>
+	<jstl:choose>
+		<jstl:when test="${_command == 'show'}">
+			<h1><acme:message code="student.course.lectures.data"/></h1>
+			<acme:button code="student.course.lectures" action="/student/lecture/list?masterId=${id}"/>
+			<hr/>
+		</jstl:when>	
+	</jstl:choose>
 	</acme:form>
 	
