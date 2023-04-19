@@ -58,6 +58,8 @@ public class CompanySessionPracticumDeleteService extends AbstractService<Compan
 		practicum = this.repository.findPracticumById(practicumId);
 
 		super.bind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
+
+		object.setPracticum(practicum);
 	}
 
 	@Override
@@ -74,7 +76,6 @@ public class CompanySessionPracticumDeleteService extends AbstractService<Compan
 
 	@Override
 	public void unbind(final SessionPracticum object) {
-		assert object != null;
 		assert object != null;
 		final Collection<Practicum> practica;
 		final SelectChoices choices;

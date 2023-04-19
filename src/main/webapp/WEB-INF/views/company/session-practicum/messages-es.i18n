@@ -11,6 +11,7 @@
 company.session-practicum.list.label.title = Título
 company.session-practicum.form.label.abstractSessionPracticum = Resumen Sesion Practica
 company.session-practicum.list.label.practicum.title = Título de la Práctica
+company.session-practicum.list.button.createAddendum=Crear Addendum
 
 company.session-practicum.form.label.title = Título
 company.session-practicum.form.label.abstractSessionPracticum = Resumen Sesion Practica

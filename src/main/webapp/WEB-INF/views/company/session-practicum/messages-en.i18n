@@ -11,6 +11,7 @@
 company.session-practicum.list.label.title = Title
 company.session-practicum.list.label.abstractSessionPracticum = Abstract Session Practicum
 company.session-practicum.list.label.practicum.title = Practicum Title
+company.session-practicum.list.button.createAddendum=Create Addendum
 
 company.session-practicum.form.label.title = Title
 company.session-practicum.form.label.abstractSessionPracticum = Abstract Session Practicum

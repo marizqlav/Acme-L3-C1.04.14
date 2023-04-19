@@ -70,6 +70,7 @@ public class CompanySessionPracticumPublishService extends AbstractService<Compa
 		practicumId = super.getRequest().getData("practicum", int.class);
 		practicum = this.repository.findPracticumById(practicumId);
 		super.bind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
+		object.setPracticum(practicum);
 	}
 
 	@Override
@@ -90,7 +91,7 @@ public class CompanySessionPracticumPublishService extends AbstractService<Compa
 
 		if (!super.getBuffer().getErrors().hasErrors("finishDate") && !super.getBuffer().getErrors().hasErrors("startDate")) {
 			Date maximumPeriod;
-			maximumPeriod = MomentHelper.deltaFromMoment(object.getFinishDate(), 7, ChronoUnit.DAYS);
+			maximumPeriod = MomentHelper.deltaFromMoment(object.getStartDate(), 7, ChronoUnit.DAYS);
 			super.state(MomentHelper.isAfter(object.getFinishDate(), maximumPeriod) && object.getFinishDate().after(object.getStartDate()), "finishDate", "company.session-practicum.form.error.finishDate");
 		}
 
@@ -113,13 +114,12 @@ public class CompanySessionPracticumPublishService extends AbstractService<Compa
 	public void perform(final SessionPracticum object) {
 		assert object != null;
 
-		object.getPracticum().setDraftMode(false);
+		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 
 	@Override
 	public void unbind(final SessionPracticum object) {
-		assert object != null;
 		assert object != null;
 		final Collection<Practicum> practica;
 		final SelectChoices choices;

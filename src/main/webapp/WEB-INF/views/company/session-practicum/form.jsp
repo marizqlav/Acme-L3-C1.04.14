@@ -21,6 +21,7 @@
     <acme:input-moment code="company.session-practicum.form.label.startDate" path="startDate"/>
     <acme:input-moment code="company.session-practicum.form.label.finishDate" path="finishDate"/>
     <acme:input-url code="company.session-practicum.form.label.link" path="link"/>
+    
     <jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
 			<acme:submit code="company.session-practicum.form.button.update" action="/company/session-practicum/update"/>
@@ -35,7 +36,7 @@
 		</jstl:when>
 		<jstl:when test="${_command == 'create-addendum' && draftMode == false}">
 			<acme:input-checkbox code="company.session-practicum.form.label.confirmation" path="confirmation"/>
-			<acme:submit code="company.session-practicum.form.button.create" action="/company/session-practicum/create-addendum?practicumId=${practicumId}"/>
+			<acme:submit code="company.session-practicum.form.button.create-addendum" action="/company/session-practicum/create-addendum?practicumId=${practicumId}"/>
 		</jstl:when>
 	</jstl:choose>
 	<jstl:if test="${addendum == true}">

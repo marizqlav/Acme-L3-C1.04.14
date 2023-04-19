@@ -43,8 +43,8 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 		SessionPracticum object;
 
 		object = new SessionPracticum();
-		//		object.setDraftMode(true);
-		//		object.setAddendum(true);
+		object.setDraftMode(true);
+		object.setAddendum(true);
 
 		super.getBuffer().setData(object);
 	}
@@ -108,7 +108,7 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 	@Override
 	public void perform(final SessionPracticum object) {
 		assert object != null;
-		//		object.setDraftMode(false);
+		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 

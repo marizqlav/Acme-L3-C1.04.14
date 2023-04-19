@@ -44,12 +44,9 @@ public class CompanySessionPracticumCreateService extends AbstractService<Compan
 	@Override
 	public void load() {
 		final SessionPracticum object;
-		int practicumId;
-		Practicum practicum;
-		practicumId = super.getRequest().getData("practicumId", int.class);
-		practicum = this.repository.findPracticumById(practicumId);
 		object = new SessionPracticum();
-		object.setPracticum(practicum);
+		object.setDraftMode(true);
+		object.setAddendum(false);
 		super.getBuffer().setData(object);
 	}
 
@@ -57,7 +54,14 @@ public class CompanySessionPracticumCreateService extends AbstractService<Compan
 	public void bind(final SessionPracticum object) {
 		assert object != null;
 
+		int practicumId;
+		Practicum practicum;
+
+		practicumId = super.getRequest().getData("practicumId", int.class);
+		practicum = this.repository.findPracticumById(practicumId);
+
 		super.bind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
+		object.setPracticum(practicum);
 
 	}
 
@@ -98,8 +102,8 @@ public class CompanySessionPracticumCreateService extends AbstractService<Compan
 		Tuple tuple;
 		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link", "draftMode", "addendum");
 		tuple.put("practicumId", super.getRequest().getData("practicumId", int.class));
-		tuple.put("draftMode", object.getPracticum().getDraftMode());
-		tuple.put("confirmation", false);
+		//		tuple.put("draftMode", object.getPracticum().getDraftMode());
+		//		tuple.put("confirmation", false);
 		super.getResponse().setData(tuple);
 	}
 

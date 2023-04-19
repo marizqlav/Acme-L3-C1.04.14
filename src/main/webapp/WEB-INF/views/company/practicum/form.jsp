@@ -36,7 +36,7 @@
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="company.practicum.form.button.create" action="/company/practicum/create"/>
 		</jstl:when>
-		<jstl:when test="${_command == 'show' && draftMode == true}">
+		<jstl:when test="${_command == 'show'}">
 			<acme:button code="company.practicum.form.button.list" action="/company/session-practicum/list?practicumId=${id}"/>
 		</jstl:when>
 	</jstl:choose>
