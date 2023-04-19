@@ -28,3 +28,4 @@ student.course.form.button.enrolment = Enrolment
 student.course.lectures.data = Lectures data
 student.course.lectures = View lectures
 student.course.title = Courses
+student.course.form.label.retail.price.exchange.money = Retail price in System Currency:

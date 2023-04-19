@@ -21,6 +21,7 @@
 	<acme:input-textbox code="student.course.form.label.title" readonly="true" path="title"/>	
 	<acme:input-textarea code="student.course.form.label.resumen" readonly="true" path="resumen"/>
 	<acme:input-money code="student.course.form.retail.price" readonly="true" path="retailPrice"/>
+	<acme:input-money code="student.course.form.label.retail.price.exchange.money" readonly="true" path="exchangeMoney"/>
 	<jstl:if test="${link != null}">
 		<acme:input-url code="student.course.form.label.link" readonly="true" path="link"/>
 	</jstl:if>
