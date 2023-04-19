@@ -28,8 +28,8 @@
 <jstl:if test="${draftMode.equals(true)}">
 	<acme:submit code="student.enrolment.form.button.update" action="/student/enrolment/update"/>
 	<acme:submit code="student.enrolment.form.button.delete" action="/student/enrolment/delete"/>
-<hr/>
-<acme:button code="student.enrolment.finalise" action="/student/enrolment/finalise?id=${id}"/>
+	<hr/>
+	<acme:button code="student.enrolment.finalise" action="/student/enrolment/finalise?id=${id}"/>
 </jstl:if>
 </jstl:if>
 <jstl:choose>
@@ -37,7 +37,6 @@
 			<acme:submit code="student.enrolment.form.button.create" action="/student/enrolment/create"/>
 		</jstl:when>	
 	</jstl:choose>
-	
 	<jstl:choose>
 		<jstl:when test="${_command == 'finalise'}">
 		<form>
