@@ -1,3 +1,4 @@
+
 package acme.entities.banner;
 
 import java.util.Date;
@@ -21,36 +22,37 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Banner extends AbstractEntity {
-    
-    protected static final long	serialVersionUID = 1L;
 
-    @Past
-    Date instantiationMoment;
+	protected static final long	serialVersionUID	= 1L;
 
-	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
-	Date displayPeriodFirstDate;
+	@Past
+	Date						instantiationMoment;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	Date displayPeriodLastDate;
+	Date						displayPeriodFirstDate;
 
-    @URL
-    String linkPicture;
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	Date						displayPeriodLastDate;
 
-    @NotBlank
-    @Size(max = 76)
-    String slogan;
+	@URL
+	String						linkPicture;
 
-    @URL
-    String linkWeb;
+	@NotBlank
+	@Size(max = 76)
+	String						slogan;
 
-    public boolean isDisplayActive() {
-        boolean res = true;
+	@URL
+	String						linkWeb;
 
-        res = getDisplayPeriodFirstDate().before(MomentHelper.getCurrentMoment());
-        res = res && getDisplayPeriodLastDate().after(MomentHelper.getCurrentMoment());
-        return res;
-    }
+
+	public boolean isDisplayActive() {
+		boolean res = true;
+
+		res = this.getDisplayPeriodFirstDate().before(MomentHelper.getCurrentMoment());
+		res = res && this.getDisplayPeriodLastDate().after(MomentHelper.getCurrentMoment());
+		return res;
+	}
 
 }

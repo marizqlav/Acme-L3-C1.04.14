@@ -44,7 +44,7 @@ public class CompanySessionPracticumShowService extends AbstractService<Company,
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneSessionPracticumById(id);
+		object = this.repository.findSessionPracticumById(id);
 
 		super.getBuffer().setData(object);
 	}

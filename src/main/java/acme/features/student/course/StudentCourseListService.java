@@ -40,14 +40,18 @@ public class StudentCourseListService extends AbstractService<Student, Course> {
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+
+		status = super.getRequest().getPrincipal().hasRole(Student.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		Collection<Course> objects;
 
-		objects = this.repository.findCourses();
+		objects = this.repository.findCoursesPublics();
 
 		super.getBuffer().setData(objects);
 	}

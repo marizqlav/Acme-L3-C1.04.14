@@ -60,7 +60,12 @@ public class Activity extends AbstractEntity {
 
 	@Transient
 	public Double getTimePeriod() {
-		return (double) (MomentHelper.computeDuration(this.timePeriodFinal, this.timePeriodInitial).toMinutes() / 60);
+		final double minutes = MomentHelper.computeDuration(this.timePeriodInitial, this.timePeriodFinal).toMinutes();
+
+		//The integer part is the hours and the decimal part is the minutes
+		final double hours = Math.floor(minutes / 60);
+		final double remainingMinutes = minutes % 60;
+		return hours + remainingMinutes / 100;
 	}
 
 	// Relationships ----------------------------------------------------------

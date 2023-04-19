@@ -54,7 +54,7 @@ public class StudentEnrolmentController extends AbstractController<Student, Enro
 		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("delete", this.deleteService);
 		super.addCustomCommand("list-mine", "list", this.listMineService);
-		//super.addCustomCommand("finalise", "finalise", this.finaliseService);
+		super.addCustomCommand("finalise", "update", this.finaliseService);
 	}
 
 }

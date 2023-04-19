@@ -8,19 +8,22 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-company.practicum.list.label.practicum-code = Practicum code
+company.practicum.list.label.code = Practicum code
 company.practicum.list.label.title = Title
 company.practicum.list.label.course-code = Course code
 
 company.practicum.list.button.create = Create
 
 company.practicum.form.label.course = Course:
-company.practicum.form.label.practicum-code = Practicum code:
-company.practicum.form.label.practicum-title = Practicum title:
+company.practicum.form.label.code = Practicum code:
+company.practicum.form.label.title = Practicum title:
+company.practicum.form.label.estimatedTime = Estimated Time (in hours) (+-10%):
 company.practicum.form.label.abstractPracticum = Abstract:
+company.practicum.form.label.company.name = Company Name
 company.practicum.form.label.someGoals = Goals:
 
 company.practicum.form.button.create = Create
 company.practicum.form.button.update = Update
 company.practicum.form.button.delete = Delete
-company.practicum.form.button.listFromSessionPracticum = List Session Practicum  
+company.practicum.form.button.publish = Publish
+company.practicum.form.button.list = List Session Practicum  

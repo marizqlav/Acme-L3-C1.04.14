@@ -18,11 +18,11 @@
 <acme:form>
 	<acme:input-textarea code="administrator.config.form.label.currencies" path="listOfAcceptedCurrencies" readonly="true"/>
 	<jstl:if test="${_command!='add'}">
-		<acme:input-textarea code="administrator.config.form.label.currency" path="systemCurrency"/>
+		<acme:input-textbox code="administrator.config.form.label.currency" path="systemCurrency"/>
 	</jstl:if>
 	<jstl:if test="${_command=='add'}">
 		<acme:hidden-data path="systemCurrency"/>
-		<acme:input-textarea code="administrator.config.form.label.currency.new" path="newCurrency"/>
+		<acme:input-textbox code="administrator.config.form.label.currency.new" path="newCurrency"/>
 	</jstl:if>
 	
 	<acme:submit test="${_command!='add'}" code="administrator.config.form.button.update" action="/administrator/system-configuration/update"/>
