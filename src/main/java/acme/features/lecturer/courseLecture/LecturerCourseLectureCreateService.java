@@ -1,11 +1,14 @@
 
 package acme.features.lecturer.courseLecture;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.courseLectures.CourseLecture;
 import acme.entities.courses.Course;
+import acme.entities.lectures.Lecture;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -46,8 +49,14 @@ public class LecturerCourseLectureCreateService extends AbstractService<Lecturer
 	@Override
 	public void bind(final CourseLecture object) {
 		assert object != null;
+		Integer lectureId;
+		Lecture lecture;
+		lectureId = super.getRequest().getData("lecture", int.class);
+		lecture = this.repository.findLectureById(lectureId);
+		super.bind(object, "course");
 
-		super.bind(object, "course", "lecture");
+		object.setLecture(lecture);
+
 	}
 
 	@Override
@@ -72,12 +81,23 @@ public class LecturerCourseLectureCreateService extends AbstractService<Lecturer
 		Course course;
 		SelectChoices choices;
 
-		courseId = super.getRequest().getData("courseId", int.class);
 		lecturerId = super.getRequest().getPrincipal().getActiveRoleId();
-		course = this.repository.findCourseById(courseId);
-		choices = SelectChoices.from(this.repository.findLecturesAvailableForACourse(courseId, lecturerId), "title", object.getLecture());
+		final Collection<Lecture> l = this.repository.findAllLecturesByLecturer(lecturerId);
+		//		Iterator<Lecture> iterator;
+		//		iterator = l.iterator();
+		choices = new SelectChoices();
+		//		choices.add("0", "---", object.getLecture() == null);
+		//		while (iterator.hasNext()) {
+		//			Lecture choice;
+		//			choice = iterator.next();
+		//			choices.add(String.valueOf(choice.getId()), choice.getTitle(), choice.equals(object.getLecture()));
+		//		}
 
-		tuple = super.unbind(object, "course", "lecture");
+		courseId = super.getRequest().getData("id", int.class);
+		course = this.repository.findCourseById(courseId);
+		choices = SelectChoices.from(this.repository.findAllLecturesByLecturer(lecturerId), "title", object.getLecture());
+
+		tuple = super.unbind(object, "course");
 		tuple.put("lectures", choices);
 		tuple.put("lecture", choices.getSelected().getKey());
 		tuple.put("id", courseId);
