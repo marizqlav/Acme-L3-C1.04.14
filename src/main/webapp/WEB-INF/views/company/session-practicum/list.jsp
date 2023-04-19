@@ -23,4 +23,5 @@
     <acme:list-column code="company.session-practicum.list.label.practicum.title" path="practicum.title" width="15%"/>
 </acme:list>
 
-<acme:button test="${showCreate}" code="company.session-practicum.list.button.create" action="/company/session-practicum/create?practicumId=${practicumId}"/>
+<acme:button test="${showCreate && draftMode}" code="company.session-practicum.list.button.create" action="/company/session-practicum/create?practicumId=${practicumId}"/>
+<acme:button test="${showCreate && !draftMode}" code="company.session-practicum.list.button.createAddendum" action="/company/session-practicum/create?practicumId=${practicumId}"/>

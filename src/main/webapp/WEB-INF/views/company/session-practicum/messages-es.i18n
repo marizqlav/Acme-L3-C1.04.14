@@ -28,4 +28,10 @@ company.session-practicum.form.button.create = Crear
 company.session-practicum.list.button.create = Crear
 company.session-practicum.form.error.finishDate = La Fecha Final debe ser como mínimo una semana despues de la Fecha Inicial
 
+company.session-practicum.form.error.finishAfterStart=La fecha final debe ser después de fecha inicio
+company.session-practicum.form.error.oneWeekAhead = El tiempo para la sesión de practica debe ser como minimo de una semana
+company.session-practicum.validation.confirmation = Error: Tienes que confirmar el submit
+company.session-practicum.validation.practicum.error.AddendumAlreadyExists = Error: Una unica sesion addendum permitada por practica
+company.session-practicum.validation.practicum.error.Published = Error: Esta practica tiene que estar publicada
+
 

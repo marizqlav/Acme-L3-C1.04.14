@@ -13,6 +13,7 @@
 package acme.features.company.practicum;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -86,12 +87,21 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 	public void unbind(final Practicum object) {
 		assert object != null;
 
-		Collection<Course> courses;
+		final Collection<Course> courses;
 		SelectChoices choices;
 		Tuple tuple;
+		final Iterator<Course> iterator;
 
-		courses = this.repository.findAllCourses();
-		choices = SelectChoices.from(courses, "code", object.getCourse());
+		courses = this.repository.findCoursesPublics();
+
+		iterator = courses.iterator();
+		choices = new SelectChoices();
+		choices.add("0", "---", object.getCourse() == null);
+		while (iterator.hasNext()) {
+			Course choice;
+			choice = iterator.next();
+			choices.add(String.valueOf(choice.getId()), choice.getCode() + ": " + choice.getTitle(), choice.equals(object.getCourse()));
+		}
 
 		tuple = super.unbind(object, "title", "abstractPracticum", "someGoals", "draftMode");
 		tuple.put("course", choices.getSelected().getKey());

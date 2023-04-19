@@ -28,11 +28,10 @@ company.session-practicum.form.message.addendum = IMPORTANT!! THIS IS AN ADDENDU
 company.session-practicum.form.label.confirmation = Confirmation
 
 company.session-practicum.list.button.create = Create
-company.session-practicum.form.error.finishAfterStart=
-company.session-practicum.form.error.oneWeekAhead=
+company.session-practicum.form.error.finishAfterStart=The Finish Date must be after Start Date
+company.session-practicum.form.error.oneWeekAhead= The time for the Practicum Session must be minimun a week 
 company.session-practicum.form.error.finishDate = The Finish Date must be minimum a week after the availability Period Initial
 company.session-practicum.validation.confirmation = Error: You have to confirm the submit
 company.session-practicum.validation.practicum.error.AddendumAlreadyExists = Error: Only one addendum session allowed per practicum 
 company.session-practicum.validation.practicum.error.Published = Error: This Practicum has been already published
-
 

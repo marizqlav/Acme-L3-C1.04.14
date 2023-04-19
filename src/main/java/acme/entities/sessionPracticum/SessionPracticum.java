@@ -46,9 +46,9 @@ public class SessionPracticum extends AbstractEntity {
 	@URL
 	protected String			link;
 
-	boolean						draftMode;
+	Boolean						draftMode;
 
-	boolean						addendum;
+	Boolean						addendum;
 
 	@Valid
 	@NotNull

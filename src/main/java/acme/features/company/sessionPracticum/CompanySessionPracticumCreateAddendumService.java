@@ -43,8 +43,8 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 		SessionPracticum object;
 
 		object = new SessionPracticum();
-		object.setDraftMode(true);
-		object.setAddendum(true);
+		//		object.setDraftMode(true);
+		//		object.setAddendum(true);
 
 		super.getBuffer().setData(object);
 	}
@@ -69,8 +69,6 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 	public void validate(final SessionPracticum object) {
 		assert object != null;
 
-		//Date Validations
-
 		Date date;
 
 		if (!super.getBuffer().getErrors().hasErrors("finishDate"))
@@ -87,13 +85,11 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 			super.state(MomentHelper.isAfter(object.getFinishDate(), maximumPeriod) && object.getFinishDate().after(object.getStartDate()), "finishDate", "company.session-practicum.form.error.finishDate");
 		}
 
-		//Confirmation validation
 		boolean confirmation;
 
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "company.session.validation.confirmation");
 
-		//Unique addendum validation
 		final Collection<Practicum> practica;
 		Collection<SessionPracticum> addendums;
 		final SelectChoices choices;
@@ -112,7 +108,7 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 	@Override
 	public void perform(final SessionPracticum object) {
 		assert object != null;
-		object.setDraftMode(false);
+		//		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 

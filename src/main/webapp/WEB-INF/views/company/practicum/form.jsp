@@ -26,7 +26,7 @@
 	<acme:input-textarea code="company.practicum.form.label.someGoals" path="someGoals"/>
 	
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == false}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
 			<acme:input-textbox code="company.practicum.form.label.estimatedTime" path="estimatedTime" readonly = "true"/>
 			<acme:submit code="company.practicum.form.button.update" action="/company/practicum/update"/>
 			<acme:submit code="company.practicum.form.button.delete" action="/company/practicum/delete"/>
