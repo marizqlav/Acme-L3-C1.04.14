@@ -16,3 +16,7 @@ administrator.config.form.button.update = Update
 administrator.config.form.button.add = Add new currency
 
 administrator.config.form.error.unavailable = System currency unavailable
+new.currency.is.empty = New currency must not be empty
+new.currency.must.have.only.three.capital.letters = New currency must have only three capital letters
+new.currency.not.found.in.api = New currency not found in API
+new.currency.is.already.in.the.system = New currency is already in the system

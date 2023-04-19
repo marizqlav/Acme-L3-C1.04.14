@@ -16,3 +16,7 @@ administrator.config.form.button.update = Actualizar
 administrator.config.form.button.add = Añadir nueva divisa
 
 administrator.config.form.error.unavailable = Divisa no disponible
+new.currency.is.empty = La nueva moneda no debe estar vacía
+new.currency.must.have.only.three.capital.letters = La nueva moneda debe estar compuesta únicamente por tres letras mayúsculas
+new.currency.not.found.in.api = No se ha encontrado la nueva moneda en la base de datos de la API
+new.currency.is.already.in.the.system = Esta moneda ya está en el sistema
