@@ -50,11 +50,6 @@ public class SessionPracticum extends AbstractEntity {
 
 	boolean						addendum;
 
-	//	@Transient
-	//	public Double getTimePeriod() {
-	//		return (double) (MomentHelper.computeDuration(this.finishDate, this.startDate).toMinutes() / 60);
-	//	}
-
 	@Valid
 	@NotNull
 	@ManyToOne(optional = false)

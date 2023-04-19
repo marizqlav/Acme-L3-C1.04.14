@@ -63,20 +63,20 @@ public class CompanySessionPracticumListService extends AbstractService<Company,
 		super.getResponse().setData(tuple);
 	}
 
-	@Override
-	public void unbind(final Collection<SessionPracticum> objects) {
-		assert objects != null;
-		int practicumId;
-		Practicum practicum;
-		final boolean showCreate;
-		final boolean draftMode;
-		practicumId = super.getRequest().getData("practicumId", int.class);
-		practicum = this.repository.findPracticumById(practicumId);
-		showCreate = practicum.getDraftMode() && super.getRequest().getPrincipal().hasRole(practicum.getCompany());
-		draftMode = practicum.getDraftMode();
-		super.getResponse().setGlobal("practicumId", practicumId);
-		super.getResponse().setGlobal("showCreate", showCreate);
-		super.getResponse().setGlobal("draftMode", draftMode);
-	}
+	//	@Override
+	//	public void unbind(final Collection<SessionPracticum> objects) {
+	//		assert objects != null;
+	//		int practicumId;
+	//		Practicum practicum;
+	//		final boolean showCreate;
+	//		final boolean draftMode;
+	//		practicumId = super.getRequest().getData("practicumId", int.class);
+	//		practicum = this.repository.findPracticumById(practicumId);
+	//		showCreate = practicum.getDraftMode() && super.getRequest().getPrincipal().hasRole(practicum.getCompany());
+	//		draftMode = practicum.getDraftMode();
+	//		super.getResponse().setGlobal("practicumId", practicumId);
+	//		super.getResponse().setGlobal("showCreate", showCreate);
+	//		super.getResponse().setGlobal("draftMode", draftMode);
+	//	}
 
 }
