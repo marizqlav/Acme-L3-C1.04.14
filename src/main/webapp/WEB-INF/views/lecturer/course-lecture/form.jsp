@@ -18,13 +18,13 @@
 <acme:form>
 
 	
-	<acme:input-textbox code="lecturer.courseLecture.label.course" path="courseTitle" readonly="true"/>
+	<acme:input-textbox code="lecturer.courseLecture.label.course" path="courseTitle" readonly="true" />
 	<acme:input-select code="lecturer.courseLecture.label.lecture" path="lecture" choices="${lectures}"/>
 	
-	
-	<jstl:if test="${_command == 'create'}">
-		<acme:submit code="lecturer.courseLecture.button.create" action="/lecturer/course-lecture/create"/>
-	</jstl:if>
-	
+	<jstl:choose>
+		<jstl:when test="${_command == 'create'}">
+			<acme:submit code="lecturer.courseLecture.button.create" action="/lecturer/course-lecture/create"/>
+		</jstl:when>
+	</jstl:choose>
 
 </acme:form>

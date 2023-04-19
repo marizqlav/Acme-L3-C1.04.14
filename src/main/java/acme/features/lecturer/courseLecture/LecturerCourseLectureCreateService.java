@@ -31,7 +31,11 @@ public class LecturerCourseLectureCreateService extends AbstractService<Lecturer
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+
+		status = super.getRequest().getPrincipal().hasRole(Lecturer.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -51,17 +55,24 @@ public class LecturerCourseLectureCreateService extends AbstractService<Lecturer
 		assert object != null;
 		Integer lectureId;
 		Lecture lecture;
+		final int id = super.getRequest().getData("id", int.class);
+		final Course c = this.repository.findCourseById(id);
 		lectureId = super.getRequest().getData("lecture", int.class);
 		lecture = this.repository.findLectureById(lectureId);
 		super.bind(object, "course");
-
 		object.setLecture(lecture);
+		object.setCourse(c);
 
 	}
 
 	@Override
 	public void validate(final CourseLecture object) {
-
+		final int courseid = super.getRequest().getData("id", int.class);
+		final Collection<Lecture> lc = this.repository.findLecturesFromCourseLecture(courseid);
+		final int lectureId = super.getRequest().getData("lecture", int.class);
+		final Lecture lecture = this.repository.findLectureById(lectureId);
+		if (!super.getBuffer().getErrors().hasErrors("lecture"))
+			super.state(!lc.contains(lecture), "lecture", "lecturer.course-lecture.form.error.lecture");
 	}
 
 	@Override
@@ -83,15 +94,7 @@ public class LecturerCourseLectureCreateService extends AbstractService<Lecturer
 
 		lecturerId = super.getRequest().getPrincipal().getActiveRoleId();
 		final Collection<Lecture> l = this.repository.findAllLecturesByLecturer(lecturerId);
-		//		Iterator<Lecture> iterator;
-		//		iterator = l.iterator();
 		choices = new SelectChoices();
-		//		choices.add("0", "---", object.getLecture() == null);
-		//		while (iterator.hasNext()) {
-		//			Lecture choice;
-		//			choice = iterator.next();
-		//			choices.add(String.valueOf(choice.getId()), choice.getTitle(), choice.equals(object.getLecture()));
-		//		}
 
 		courseId = super.getRequest().getData("id", int.class);
 		course = this.repository.findCourseById(courseId);
@@ -103,6 +106,7 @@ public class LecturerCourseLectureCreateService extends AbstractService<Lecturer
 		tuple.put("id", courseId);
 		tuple.put("courseTitle", course.getTitle());
 		super.getResponse().setData(tuple);
+
 	}
 
 }
