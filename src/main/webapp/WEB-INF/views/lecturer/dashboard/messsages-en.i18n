@@ -8,10 +8,5 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-any.course.form.label.code = Code
-any.course.form.label.title = Title
-any.course.form.label.resumen= Abstract
-any.course.form.label.retailPrice= Retail Price
 
-any.course.list.label.title = Title
 

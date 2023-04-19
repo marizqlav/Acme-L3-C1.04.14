@@ -26,7 +26,7 @@
 	<acme:input-url code="lecturer.course.form.label.link" path="link"/>
 	
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show')}">
+		<jstl:when test="${acme:anyOf(_command, 'show') && draftmode==true}">
 			<acme:button code="lecturer.course.button.lectures" action="/lecturer/lecture/listFromCourse?id=${id}"/>
 			<acme:button code="lecturer.course.button.courseLecture" action="/lecturer/courseLecture/create?id=${id}"/>
 			<acme:button code="lecturer.course.button.update" action="/lecturer/course/update?id=${id}"/>	
