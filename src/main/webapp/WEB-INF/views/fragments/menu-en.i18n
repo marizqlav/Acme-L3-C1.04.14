@@ -78,6 +78,7 @@ master.menu.company.practicum = Practicum list
 master.menu.lecturer = Lecturer
 master.menu.lecturer.list.courses = Course List
 master.menu.lecturer.list.lecture = Lecture List
+master.menu.lecturer.form.lecturer-dashboard = My dashboard
 
 
 # master.menu.user-account ####################################################

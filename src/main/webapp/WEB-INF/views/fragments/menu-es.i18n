@@ -78,6 +78,7 @@ master.menu.company.practicum = Lista de practicas
 master.menu.lecturer = Profesor
 master.menu.lecturer.list.courses = Lista de Cursos
 master.menu.lecturer.list.lecture = Lista de Clases
+master.menu.lecturer.form.lecturer-dashboard = Mi panel
 
 # master.menu.user-account ####################################################
 
