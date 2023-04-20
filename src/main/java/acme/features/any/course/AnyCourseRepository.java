@@ -32,7 +32,7 @@ public interface AnyCourseRepository extends AbstractRepository {
 	@Query("select c from Course c where c.id = :id")
 	Course findCourseById(int id);
 
-	@Query("select c from Course c")
+	@Query("select c from Course c where c.draftMode = 0")
 	Collection<Course> findAllCourses();
 
 	@Query("select cl.lecture from CourseLecture cl where cl.course.id = :id")
