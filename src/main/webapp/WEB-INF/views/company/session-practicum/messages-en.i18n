@@ -30,6 +30,8 @@ company.session-practicum.form.message.addendum = IMPORTANT!! THIS IS AN ADDENDU
 company.session-practicum.form.label.confirmation = Confirmation
 
 company.session-practicum.list.button.create = Create
+company.session-practicum.form.button.create-addendum=Create Addendum
+company.session-practicum.form.message.addendum.indication=This Session Practicum is an addendum
 company.session-practicum.form.error.finishAfterStart=The Finish Date must be after Start Date
 company.session-practicum.form.error.oneWeekAhead= The time for the Practicum Session must be minimun a week 
 company.session-practicum.form.error.finishDate = The Finish Date must be minimum a week after the availability Period Initial

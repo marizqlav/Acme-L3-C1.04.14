@@ -1,8 +1,8 @@
 key,title,abstractSessionPracticum,startDate,finishDate,link,draftMode,addendum,key:practicum
 sessionPracticum-01,Calvo,Resumen Practica Sesion,2023/02/02 12:00,2023/02/05 13:00,null,true,false,practicum-01
 sessionPracticum-02,Calvo,Resumen Practica Sesion,2023/02/02 12:00,2023/02/05 13:00,https://www.youtube.com/watch?v=D0e7fkvE2os&ab_channel=Falbak,true,false,practicum-02
-sessionPracticum-03,<h1>hola</h1>,Resumen Practica Sesion,2023/02/01 12:00,2023/02/05 13:00,null,true,false,practicum-03
-sessionPracticum-04,Calvo,<h1>hola</h1>,2023/02/02 12:00,2023/02/12 13:00,null,true,false,practicum-04
+sessionPracticum-03,<h1>hola</h1>,Resumen Practica Sesion,2023/02/01 12:00,2023/02/05 13:00,null,true,true,practicum-03
+sessionPracticum-04,Calvo,<h1>hola</h1>,2023/02/02 12:00,2023/02/12 13:00,null,true,true,practicum-04
 sessionPracticum-05,<script>alert('Offer')</script>,Resumen Practica Sesion,2023/02/02 12:00,2023/02/07 13:00,null,false,false,practicum-05
 sessionPracticum-06,Calvo,<script>alert('Offer')</script>,2023/02/02 12:00,2023/02/07 13:00,null,true,false,practicum-06
 sessionPracticum-07,ຂໍ້ສະເໜີ,Resumen Practica Sesion,2023/02/02 12:00,2023/02/08 13:00,null,true,false,practicum-07
@@ -13,7 +13,7 @@ sessionPracticum-11,Calvo,Resumen Practica Sesion,2022/01/01 23:59,2022/02/02 13
 sessionPracticum-12,Calvo,Resumen Practica Sesion,2022/01/30 00:00,2022/02/07 13:00,null,true,false,practicum-12
 sessionPracticum-13,Calvo,Resumen Practica Sesion,2020/01/01 12:00,2022/02/02 13:00,null,true,false,practicum-13
 sessionPracticum-14,Calvo,Resumen Practica Sesion,2020/01/01 11:59,2022/02/02 13:00,null,true,false,practicum-14
-sessionPracticum-15,Calvo,Resumen Practica Sesion,2022/02/02 12:00,2022/02/08 00:00,null,true,false,practicum-15
-sessionPracticum-16,Calvo,Resumen Practica Sesion,2022/02/02 12:00,2022/07/30 00:00,null,true,false,practicum-16
+sessionPracticum-15,Calvo,Resumen Practica Sesion,2022/02/02 12:00,2022/02/08 00:00,null,true,true,practicum-15
+sessionPracticum-16,Calvo,Resumen Practica Sesion,2022/02/02 12:00,2022/07/30 00:00,null,true,true,practicum-16
 sessionPracticum-17,Calvo,Resumen Practica Sesion,2022/02/02 12:00,2022/02/08 11:59,null,true,false,practicum-17
 sessionPracticum-18,Calvo,Resumen Practica Sesion,2023/02/05 12:00,2023/02/10 13:00,null,true,false,practicum-18

@@ -24,22 +24,30 @@
     
     <jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
+			<jstl:if test="${addendum == true}">
+				<acme:message code="company.session-practicum.form.message.addendum.indication"/>
+			</jstl:if>
 			<acme:submit code="company.session-practicum.form.button.update" action="/company/session-practicum/update"/>
 			<acme:submit code="company.session-practicum.form.button.delete" action="/company/session-practicum/delete"/>
 			<acme:submit code="company.session-practicum.form.button.publish" action="/company/session-practicum/publish"/>
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == false}">
-			<acme:input-textbox code="company.session-practicum.form.label.practicum.code" path="practicum.code"/>			
+			<acme:input-textbox code="company.session-practicum.form.label.practicum.code" path="practicum.code"/>
+			<jstl:if test="${addendum == true}">
+				<acme:message code="company.session-practicum.form.message.addendum.indication"/>
+			</jstl:if>
+						
 		</jstl:when>
 		<jstl:when test="${_command == 'create' && draftMode == true}">
 			<acme:submit code="company.session-practicum.form.button.create" action="/company/session-practicum/create?practicumId=${practicumId}"/>
 		</jstl:when>
-		<jstl:when test="${_command == 'create-addendum' && draftMode == false}">
+		<jstl:when test="${_command == 'create-addendum'}">
+			<jstl:if test="${addendum == true}">
+				<acme:message code="company.session-practicum.form.message.addendum"/>
+			</jstl:if>
 			<acme:input-checkbox code="company.session-practicum.form.label.confirmation" path="confirmation"/>
 			<acme:submit code="company.session-practicum.form.button.create-addendum" action="/company/session-practicum/create-addendum?practicumId=${practicumId}"/>
 		</jstl:when>
 	</jstl:choose>
-	<jstl:if test="${addendum == true}">
-		<acme:message code="company.session-practicum.form.message.addendum"/>
-	</jstl:if>
+
 </acme:form>

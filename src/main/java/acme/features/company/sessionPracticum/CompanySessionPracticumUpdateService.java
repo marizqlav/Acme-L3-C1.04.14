@@ -3,7 +3,6 @@ package acme.features.company.sessionPracticum;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.practicum.Practicum;
 import acme.entities.sessionPracticum.SessionPracticum;
-import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
@@ -78,18 +76,18 @@ public class CompanySessionPracticumUpdateService extends AbstractService<Compan
 		}
 
 		//Practicum Validation
-		final Collection<Practicum> practica;
-		final SelectChoices choices;
-		final int companyId = super.getRequest().getPrincipal().getActiveRoleId();
+		//		final Collection<Practicum> practica;
+		//		final SelectChoices choices;
+		//		final int companyId = super.getRequest().getPrincipal().getActiveRoleId();
+		//
+		//		practica = this.repository.findManyPrivatePracticumByCompanyId(companyId);
+		//		choices = SelectChoices.from(practica, "code", object.getPracticum());
 
-		practica = this.repository.findManyPrivatePracticumByCompanyId(companyId);
-		choices = SelectChoices.from(practica, "code", object.getPracticum());
+		//		final int selectedId = Integer.parseInt(choices.getSelected().getKey());
+		//		final Practicum selectedPracticum = this.repository.findPracticumById(selectedId);
 
-		final int selectedId = Integer.parseInt(choices.getSelected().getKey());
-		final Practicum selectedPracticum = this.repository.findPracticumById(selectedId);
-
-		final boolean valid = selectedPracticum.getDraftMode();
-		super.state(valid, "practicum", "company.session.validation.practicum.error.Published");
+		//		final boolean valid = selectedPracticum.getDraftMode();
+		//				super.state(valid, "practicum", "company.session.validation.practicum.error.Published");
 
 	}
 
@@ -102,17 +100,17 @@ public class CompanySessionPracticumUpdateService extends AbstractService<Compan
 	@Override
 	public void unbind(final SessionPracticum object) {
 		assert object != null;
-		final Collection<Practicum> practica;
-		final SelectChoices choices;
-		final int companyId = super.getRequest().getPrincipal().getActiveRoleId();
+		//		final Collection<Practicum> practica;
+		//		final SelectChoices choices;
+		//		final int companyId = super.getRequest().getPrincipal().getActiveRoleId();
 
-		practica = this.repository.findManyPrivatePracticumByCompanyId(companyId);
-		choices = SelectChoices.from(practica, "code", object.getPracticum());
+		//		practica = this.repository.findManyPrivatePracticumByCompanyId(companyId);
+		//		choices = SelectChoices.from(practica, "code", object.getPracticum());
 		Tuple tuple;
 
 		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link", "draftMode", "addendum");
-		tuple.put("practicum", choices.getSelected().getKey());
-		tuple.put("practica", choices);
+		//		tuple.put("practicum", choices.getSelected().getKey());
+		//		tuple.put("practica", choices);
 
 		super.getResponse().setData(tuple);
 	}

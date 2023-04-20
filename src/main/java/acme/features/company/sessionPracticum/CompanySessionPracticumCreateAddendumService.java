@@ -3,7 +3,7 @@ package acme.features.company.sessionPracticum;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.Collection;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.practicum.Practicum;
 import acme.entities.sessionPracticum.SessionPracticum;
-import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
@@ -28,24 +27,24 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 
 	@Override
 	public void check() {
-		boolean status;
+		//		boolean status;
+		//
+		//		status = super.getRequest().hasData("practicumId", int.class);
 
-		status = super.getRequest().hasData("practicum", int.class);
-
-		super.getResponse().setChecked(status);
+		super.getResponse().setChecked(true);
 	}
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int practicumingRecordId;
-		Practicum practicum;
+		//		boolean status;
+		//		int practicumingRecordId;
+		//		Practicum practicum;
+		//
+		//		practicumingRecordId = super.getRequest().getData("practicumId", int.class);
+		//		practicum = this.repository.findPracticumById(practicumingRecordId);
+		//		status = super.getRequest().getPrincipal().hasRole(practicum.getCompany());
 
-		practicumingRecordId = super.getRequest().getData("practicum", int.class);
-		practicum = this.repository.findPracticumById(practicumingRecordId);
-		status = practicum != null && super.getRequest().getPrincipal().hasRole(practicum.getCompany());
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 
 	}
 
@@ -67,10 +66,10 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 		int practicumId;
 		Practicum practicum;
 
-		practicumId = super.getRequest().getData("practicum", int.class);
+		practicumId = super.getRequest().getData("practicumId", int.class);
 		practicum = this.repository.findPracticumById(practicumId);
 
-		super.bind(object, "title", "abstractThing", "info", "startDate", "finishDate");
+		super.bind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
 
 		object.setPracticum(practicum);
 
@@ -80,7 +79,7 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 	public void validate(final SessionPracticum object) {
 		assert object != null;
 
-		Date date;
+		final Date date;
 
 		if (!super.getBuffer().getErrors().hasErrors("finishDate"))
 			super.state(object.getStartDate().before(object.getFinishDate()), "finishDate", "company.session-practicum.form.error.finishAfterStart");
@@ -92,33 +91,34 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 
 		if (!super.getBuffer().getErrors().hasErrors("finishDate") && !super.getBuffer().getErrors().hasErrors("startDate")) {
 			Date maximumPeriod;
-			maximumPeriod = MomentHelper.deltaFromMoment(object.getFinishDate(), 7, ChronoUnit.DAYS);
+			maximumPeriod = MomentHelper.deltaFromMoment(object.getStartDate(), 7, ChronoUnit.DAYS);
 			super.state(MomentHelper.isAfter(object.getFinishDate(), maximumPeriod) && object.getFinishDate().after(object.getStartDate()), "finishDate", "company.session-practicum.form.error.finishDate");
 		}
 
 		boolean confirmation;
 
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "company.session.validation.confirmation");
+		super.state(confirmation, "confirmation", "company.session-practicum.validation.confirmation");
 
-		final Collection<Practicum> practica;
-		Collection<SessionPracticum> addendums;
-		final SelectChoices choices;
-		final int companyId = super.getRequest().getPrincipal().getActiveRoleId();
-
-		practica = this.repository.findManyPublishedPracticumByCompanyId(companyId);
-		choices = SelectChoices.from(practica, "code", object.getPracticum());
-
-		final int selectedId = Integer.parseInt(choices.getSelected().getKey());
-		addendums = this.repository.findAddendumSessionPracticumByPracticumId(selectedId);
-
-		final boolean valid = addendums.size() == 0;
-		super.state(valid, "practicum", "company.session.validation.practicum.error.AddendumAlreadyExists");
+		//		final Collection<Practicum> practica;
+		//		Collection<SessionPracticum> addendums;
+		//		final SelectChoices choices;
+		//		final int companyId = super.getRequest().getPrincipal().getActiveRoleId();
+		//
+		//		practica = this.repository.findManyPublishedPracticumByCompanyId(companyId);
+		//		choices = SelectChoices.from(practica, "code", object.getPracticum());
+		//
+		//		final int selectedId = Integer.parseInt(choices.getSelected().getKey());
+		//		addendums = this.repository.findAddendumSessionPracticumByPracticumId(selectedId);
+		//
+		//		final boolean valid = addendums.size() == 0;
+		//		super.state(valid, "practicum", "company.session.validation.practicum.error.AddendumAlreadyExists");
 	}
 
 	@Override
 	public void perform(final SessionPracticum object) {
 		assert object != null;
+		//		object.setDraftMode(false);
 		object.setDraftMode(true);
 		this.repository.save(object);
 	}
@@ -126,20 +126,30 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 	@Override
 	public void unbind(final SessionPracticum object) {
 		assert object != null;
-		final Collection<Practicum> practica;
-		final SelectChoices choices;
-		final int companyId = super.getRequest().getPrincipal().getActiveRoleId();
+		//		final Collection<Practicum> practica;
+		//		final SelectChoices choices;
+		//		final int companyId = super.getRequest().getPrincipal().getActiveRoleId();
 
-		practica = this.repository.findManyPublishedPracticumByCompanyId(companyId);
-		choices = SelectChoices.from(practica, "code", object.getPracticum());
+		//		practica = this.repository.findManyPublishedPracticumByCompanyId(companyId);
+		//		choices = SelectChoices.from(practica, "code", object.getPracticum());
 		Tuple tuple;
 
-		tuple = super.unbind(object, "title", "abstractThing", "startDate", "finishDate", "draftMode", "addendum", "info");
-		tuple.put("practicum", choices.getSelected().getKey());
-		tuple.put("practica", choices);
-		tuple.put("draftMode", object.getPracticum().getDraftMode());
+		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link", "draftMode", "addendum");
+		//		tuple.put("practicum", choices.getSelected().getKey());
+		//		tuple.put("practica", choices);
 		tuple.put("confirmation", false);
+		tuple.put("practicumId", super.getRequest().getData("practicumId", int.class));
 
 		super.getResponse().setData(tuple);
+		tuple.put("confirmation", false);
+
 	}
+
+	public static Date oneWeekLong(final Date date) {
+		final Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.add(Calendar.DAY_OF_YEAR, 7);
+		return calendar.getTime();
+	}
+
 }

@@ -25,19 +25,11 @@ public class CompanySessionPracticumCreateService extends AbstractService<Compan
 
 	@Override
 	public void check() {
-		//		boolean status;
-		//		status = super.getRequest().hasData("practicum", int.class);
 		super.getResponse().setChecked(true);
 	}
 
 	@Override
 	public void authorise() {
-		//		boolean status;
-		//		int practicumId;
-		//		Practicum practicum;
-		//		practicumId = super.getRequest().getData("practicum", int.class);
-		//		practicum = this.repository.findPracticumById(practicumId);
-		//		status = practicum != null && super.getRequest().getPrincipal().hasRole(practicum.getCompany());
 		super.getResponse().setAuthorised(true);
 	}
 
@@ -68,11 +60,11 @@ public class CompanySessionPracticumCreateService extends AbstractService<Compan
 	@Override
 	public void validate(final SessionPracticum object) {
 		assert object != null;
-		boolean confirmation;
+		//		final boolean confirmation;
 		Date date;
-
-		confirmation = object.getPracticum().getDraftMode() ? true : super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "company.session-practicum.form.error.confirmation");
+		//
+		//		confirmation = object.getPracticum().getDraftMode() ? true : super.getRequest().getData("confirmation", boolean.class);
+		//		super.state(confirmation, "confirmation", "company.session-practicum.form.error.confirmation");
 
 		if (!super.getBuffer().getErrors().hasErrors("finishDate"))
 			super.state(object.getStartDate().before(object.getFinishDate()), "finishDate", "company.session-practicum.form.error.finishAfterStart");

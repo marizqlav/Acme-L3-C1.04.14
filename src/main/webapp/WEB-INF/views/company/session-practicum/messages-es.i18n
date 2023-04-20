@@ -30,6 +30,8 @@ company.session-practicum.form.message.addendum = IMPORTANTE!! ESTA ES UNA SESI�
 company.session-practicum.form.label.confirmation = Confirmacion
 
 company.session-practicum.list.button.create = Crear
+company.session-practicum.form.button.create-addendum=Create Sesión Adicional
+company.session-practicum.form.message.addendum.indication = Esta Sesión practica es una Sesión adicional 
 company.session-practicum.form.error.finishDate = La Fecha Final debe ser como mínimo una semana despues de la Fecha Inicial
 company.session-practicum.form.error.finishAfterStart=La fecha final debe ser después de fecha inicio
 company.session-practicum.form.error.oneWeekAhead = El tiempo para la sesión de practica debe ser como minimo de una semana
