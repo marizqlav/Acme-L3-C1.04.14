@@ -56,7 +56,6 @@ public class CompanySessionPracticumUpdateService extends AbstractService<Compan
 		assert object != null;
 
 		super.bind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
-
 	}
 
 	@Override
