@@ -35,8 +35,7 @@
 			<acme:input-textbox code="company.session-practicum.form.label.practicum.code" path="practicum.code"/>
 			<jstl:if test="${addendum == true}">
 				<acme:message code="company.session-practicum.form.message.addendum.indication"/>
-			</jstl:if>
-						
+			</jstl:if>		
 		</jstl:when>
 		<jstl:when test="${_command == 'create' && draftMode == true}">
 			<acme:submit code="company.session-practicum.form.button.create" action="/company/session-practicum/create?practicumId=${practicumId}"/>
