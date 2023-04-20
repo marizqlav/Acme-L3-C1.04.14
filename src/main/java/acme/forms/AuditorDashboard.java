@@ -1,3 +1,4 @@
+
 package acme.forms;
 
 import java.util.Map;
@@ -9,10 +10,13 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AuditorDashboard extends AbstractForm {
-    
-    Integer nTheoryAudits;
-    Integer nHandsOnAudits;
-    Map<String, Double> averageDeviationMinMaxAuditingRecordsOfAudit;
-    Map<String, Double> averageDeviationMinMaxOfPeriodOfAudit;
+
+	// Serialisation identifier -----------------------------------------------
+	protected static final long	serialVersionUID	= 1L;
+
+	Integer						nTheoryAudits;
+	Integer						nHandsOnAudits;
+	Map<String, Double>			averageDeviationMinMaxAuditingRecordsOfAudit;
+	Map<String, Double>			averageDeviationMinMaxOfPeriodOfAudit;
 
 }
