@@ -4,8 +4,8 @@ package acme.features.lecturer.course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.components.AssistantService;
 import acme.entities.courses.Course;
-import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
@@ -15,7 +15,10 @@ public class LecturerCourseCreateService extends AbstractService<Lecturer, Cours
 
 	// Internal State ------------------------------------------
 	@Autowired
-	protected LecturerCourseRepository repository;
+	protected LecturerCourseRepository	repository;
+
+	@Autowired
+	protected AssistantService			assistentService;
 
 	//AbstractServiceInterface -------------------------------
 
@@ -57,8 +60,9 @@ public class LecturerCourseCreateService extends AbstractService<Lecturer, Cours
 	@Override
 	public void validate(final Course object) {
 		assert object != null;
+
 		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
-			super.state(object.getRetailPrice() != null, "retailPrice", "lecturer.course.form.error.retailPrice");
+			super.state(this.assistentService.validatePrice(object.getRetailPrice(), 0, 1000000), "retailPrice", "lecturer.course.form.error.retailPrice");
 		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
 			super.state(!object.getRetailPrice().toString().contains("-"), "retailPrice", "lecturer.course.form.error.retailPrice.negative");
 
@@ -74,8 +78,6 @@ public class LecturerCourseCreateService extends AbstractService<Lecturer, Cours
 	@Override
 	public void unbind(final Course object) {
 		assert object != null;
-
-		final SelectChoices choices;
 
 		Tuple tuple;
 

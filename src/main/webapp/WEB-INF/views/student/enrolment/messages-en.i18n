@@ -40,3 +40,4 @@ code.not.edit = Code cannot be edited
 student.course.activities = View activities
 student.enrolments.title = My enrolments
 student.enrolment.form.button.enrolment = New enrolment
+student.enrolment.error.course.not.public = The course is not published

@@ -93,7 +93,7 @@ public class LecturerCourseLectureCreateService extends AbstractService<Lecturer
 		SelectChoices choices;
 
 		lecturerId = super.getRequest().getPrincipal().getActiveRoleId();
-		//		final Collection<Lecture> l = this.repository.findPublishedLecturesFromLecturer(lecturerId);
+
 		choices = new SelectChoices();
 
 		courseId = super.getRequest().getData("id", int.class);

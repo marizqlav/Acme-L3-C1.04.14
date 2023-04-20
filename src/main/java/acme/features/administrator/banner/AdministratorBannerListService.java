@@ -1,7 +1,6 @@
 
 package acme.features.administrator.banner;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,7 @@ public class AdministratorBannerListService extends AbstractService<Administrato
 
 	@Override
 	public void load() {
-		List<Banner> banners = repo.findAllBanners();
+		final List<Banner> banners = this.repo.findAllBanners();
 		super.getBuffer().setData(banners);
 	}
 
