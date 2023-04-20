@@ -22,6 +22,7 @@
 	<acme:input-moment code="administrator.offer.form.label.availabilityPeriodInitial" path="availabilityPeriodInitial" />
 	<acme:input-moment code="administrator.offer.form.label.availabilityPeriodFinal" path="availabilityPeriodFinal" />
 	<acme:input-money code="administrator.offer.form.label.price" path="price"/>
+	<acme:input-money code="administrator.offer.form.label.retail.price.exchange.money" readonly="true" path="exchangeMoney"/>
 	<acme:input-url code="administrator.offer.form.label.link" path="link"/>
 	<jstl:choose>	 
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">

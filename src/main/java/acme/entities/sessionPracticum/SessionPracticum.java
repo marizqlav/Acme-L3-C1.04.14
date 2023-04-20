@@ -46,14 +46,9 @@ public class SessionPracticum extends AbstractEntity {
 	@URL
 	protected String			link;
 
-	boolean						draftMode;
+	Boolean						draftMode;
 
-	boolean						addendum;
-
-	//	@Transient
-	//	public Double getTimePeriod() {
-	//		return (double) (MomentHelper.computeDuration(this.finishDate, this.startDate).toMinutes() / 60);
-	//	}
+	Boolean						addendum;
 
 	@Valid
 	@NotNull

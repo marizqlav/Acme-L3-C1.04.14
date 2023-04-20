@@ -11,20 +11,30 @@
 company.session-practicum.list.label.title = Title
 company.session-practicum.list.label.abstractSessionPracticum = Abstract Session Practicum
 company.session-practicum.list.label.practicum.title = Practicum Title
+company.session-practicum.list.button.createAddendum=Create Addendum
 
 company.session-practicum.form.label.title = Title
 company.session-practicum.form.label.abstractSessionPracticum = Abstract Session Practicum
 company.session-practicum.form.label.startDate = Start Date
 company.session-practicum.form.label.finishDate = Finish Date
 company.session-practicum.form.label.link = Link
+company.session-practicum.form.label.practicum.code = Code Practicum
 
 company.session-practicum.list.button.create = Create Session
 
 company.session-practicum.form.button.update = Update
 company.session-practicum.form.button.delete = Delete
 company.session-practicum.form.button.create = Create
+company.session-practicum.form.button.publish= Publish
+company.session-practicum.form.message.addendum = IMPORTANT!! THIS IS AN ADDENDUM SESSION
+company.session-practicum.form.label.confirmation = Confirmation
 
 company.session-practicum.list.button.create = Create
-company.session-practicum.form.error.finishAfterStart=
-company.session-practicum.form.error.oneWeekAhead=
+company.session-practicum.form.button.create-addendum=Create Addendum
+company.session-practicum.form.message.addendum.indication=This Session Practicum is an addendum
+company.session-practicum.form.error.finishAfterStart=The Finish Date must be after Start Date
+company.session-practicum.form.error.oneWeekAhead= The time for the Practicum Session must be minimun a week 
 company.session-practicum.form.error.finishDate = The Finish Date must be minimum a week after the availability Period Initial
+company.session-practicum.validation.confirmation = Error: You have to confirm the submit
+company.session-practicum.validation.practicum.error.AddendumAlreadyExists = Error: Only one addendum session allowed per practicum 
+company.session-practicum.validation.practicum.error.Published = Error: This Practicum has been already published
