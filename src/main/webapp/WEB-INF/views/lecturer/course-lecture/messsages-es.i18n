@@ -12,8 +12,8 @@
 lecturer.courseLecture.form.label.lecture = Clase
 
 lecturer.course.button.courseLecture = Añadir clase
-
-
+lecturer.courseLecture.label.course = Curso
+lecturer.courseLecture.label.lecture = Clases
 lecturer.courseLecture.button.create = Añadir clase
 
 lecturer.course-lecture.form.error.lecture = Clase ya agregada al curso

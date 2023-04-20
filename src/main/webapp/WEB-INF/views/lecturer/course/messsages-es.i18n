@@ -26,3 +26,7 @@ lecturer.course.button.delete = Borrar Curso
 lecturer.course.button.update = Actualizar curso
 
 lecturer.course.form.error.retailPrice = Debe tener un valor
+
+lecturer.course.form.error.retailPrice.negative = No puede ser negativo
+
+lecturer.course.button.publish = Publicar curso

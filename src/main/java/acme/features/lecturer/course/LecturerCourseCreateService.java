@@ -59,6 +59,8 @@ public class LecturerCourseCreateService extends AbstractService<Lecturer, Cours
 		assert object != null;
 		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
 			super.state(object.getRetailPrice() != null, "retailPrice", "lecturer.course.form.error.retailPrice");
+		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
+			super.state(!object.getRetailPrice().toString().contains("-"), "retailPrice", "lecturer.course.form.error.retailPrice.negative");
 
 	}
 

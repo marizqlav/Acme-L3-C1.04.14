@@ -15,3 +15,7 @@ lecturer.course.button.courseLecture = Add lecture
 lecturer.courseLecture.button.create = Add lecture
 
 lecturer.course-lecture.form.error.lecture = Lecture already in course
+
+
+lecturer.courseLecture.label.course = Courses
+lecturer.courseLecture.label.lecture = Lectures

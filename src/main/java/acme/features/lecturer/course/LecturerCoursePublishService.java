@@ -2,6 +2,8 @@
 package acme.features.lecturer.course;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +21,7 @@ import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
 
 @Service
-public class LecturerCourseShowService extends AbstractService<Lecturer, Course> {
+public class LecturerCoursePublishService extends AbstractService<Lecturer, Course> {
 
 	// Internal State ------------------------------------------
 	@Autowired
@@ -50,6 +52,16 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 	}
 
 	@Override
+	public void validate(final Course object) {
+		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
+			super.state(object.getRetailPrice() != null, "retailPrice", "lecturer.course.form.error.retailPrice");
+		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
+			super.state(!object.getRetailPrice().toString().contains("-"), "retailPrice", "lecturer.course.form.error.retailPrice.negative");
+
+	}
+
+	@Override
 	public void load() {
 		Course object;
 		int id;
@@ -58,6 +70,27 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 		object = this.repository.findCourseById(id);
 
 		super.getBuffer().setData(object);
+	}
+
+	@Override
+	public void bind(final Course object) {
+		assert object != null;
+
+		super.bind(object, "title", "resumen", "retailPrice", "link");
+	}
+
+	@Override
+	public void perform(final Course object) {
+		assert object != null;
+
+		final Collection<Lecture> cl = this.repository.findAllLecturesByCourse(object.getId());
+		final List<Boolean> lb = cl.stream().map(x -> x.isDraftmode()).collect(Collectors.toList());
+		if (!lb.contains(true) && !lb.isEmpty())
+			object.setDraftMode(false);
+		else
+			object.setDraftMode(true);
+
+		this.repository.save(object);
 	}
 
 	@Override
@@ -132,4 +165,5 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 
 		return result;
 	}
+
 }
