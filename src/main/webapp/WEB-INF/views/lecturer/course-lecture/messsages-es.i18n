@@ -17,3 +17,19 @@ lecturer.courseLecture.label.lecture = Clases
 lecturer.courseLecture.button.create = Añadir clase
 
 lecturer.course-lecture.form.error.lecture = Clase ya agregada al curso
+
+lecturer.course-lecture.list.label.lecture = Título de la Clase
+
+lecturer.course-lecture.list.label.warning = Elige una clase a eliminar
+
+lecturer.course-lecture.form.label.lectureDelete = Eliminar clase
+
+lecturer.course-lecture.form.label.courseDelete = Del curso
+
+lecturer.course-lecture.form.label.lecture = con título
+
+lecturer.course-lecture.form.label.course =  con título
+
+lecturer.courseLecture.button.delete = Eliminar esta clase
+
+

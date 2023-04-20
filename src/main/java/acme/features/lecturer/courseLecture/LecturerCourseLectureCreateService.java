@@ -104,6 +104,7 @@ public class LecturerCourseLectureCreateService extends AbstractService<Lecturer
 		tuple.put("lectures", choices);
 		tuple.put("lecture", choices.getSelected().getKey());
 		tuple.put("id", courseId);
+		tuple.put("clid", object.getId());
 		tuple.put("courseTitle", course.getTitle());
 		super.getResponse().setData(tuple);
 

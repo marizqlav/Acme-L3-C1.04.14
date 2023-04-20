@@ -18,6 +18,8 @@ lecturer.course.form.label.courseType = Course Type
 
 lecturer.course.form.error.retailPrice.negative = Can't be negative
 
+lecturer.course.button.courseLecture.create = Add lecture
+lecturer.course.button.courseLecture.list = Remove lecture
 
 
 

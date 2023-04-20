@@ -17,13 +17,19 @@
 
 <acme:form>
 
-	
-	<acme:input-textbox code="lecturer.courseLecture.label.course" path="courseTitle" readonly="true" />
-	<acme:input-select code="lecturer.courseLecture.label.lecture" path="lecture" choices="${lectures}"/>
-	
 	<jstl:choose>
 		<jstl:when test="${_command == 'create'}">
+			<acme:input-textbox code="lecturer.courseLecture.label.course" path="courseTitle" readonly="true" />
+			<acme:input-select code="lecturer.courseLecture.label.lecture" path="lecture" choices="${lectures}"/>
 			<acme:submit code="lecturer.courseLecture.button.create" action="/lecturer/course-lecture/create"/>
+		</jstl:when>
+		<jstl:when test="${_command == 'show'}">
+			<h3><acme:message code="lecturer.course-lecture.form.label.lectureDelete"/></h3>
+			<acme:input-textbox code="lecturer.course-lecture.form.label.lecture" path="lecture" readonly="true"/>
+			<h3><acme:message code="lecturer.course-lecture.form.label.courseDelete"/></h3>
+			<acme:input-textbox code="lecturer.course-lecture.form.label.course" path="course" readonly="true"/>
+			<acme:submit code="lecturer.courseLecture.button.delete" action="/lecturer/course-lecture/delete"/>
+			
 		</jstl:when>
 	</jstl:choose>
 

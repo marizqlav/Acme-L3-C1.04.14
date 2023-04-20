@@ -19,3 +19,17 @@ lecturer.course-lecture.form.error.lecture = Lecture already in course
 
 lecturer.courseLecture.label.course = Courses
 lecturer.courseLecture.label.lecture = Lectures
+
+lecturer.course-lecture.list.label.lecture = Lecture Title
+
+lecturer.course-lecture.list.label.warning = Choose a lecture to remove
+
+lecturer.course-lecture.form.label.lectureDelete= Remove lecture
+
+lecturer.course-lecture.form.label.courseDelete = From course
+
+lecturer.course-lecture.form.label.lecture = with title
+
+lecturer.course-lecture.form.label.course = with title
+
+lecturer.courseLecture.button.delete = Remove this lecture
