@@ -24,5 +24,5 @@
 </acme:list>
 <form>
 
-<acme:button test="${draftMode}" code="student.activity.form.button.create" action="/student/activity/create?masterId=${masterId}"/>
+<acme:button test="${!draftMode}" code="student.activity.form.button.create" action="/student/activity/create?masterId=${masterId}"/>
 </form>
