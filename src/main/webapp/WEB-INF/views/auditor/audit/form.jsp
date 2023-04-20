@@ -19,17 +19,26 @@
 <acme:form>
 
 	<h1><acme:message code="auditor.audit.data"/></h1>
-	<acme:input-textbox code="auditor.audit.form.label.code" path="code"/>	
 	<acme:input-textarea code="auditor.audit.form.label.conclusion" path="conclusion"/>
 	<acme:input-textarea code="auditor.audit.form.label.strongPoints" path="strongPoints"/>
 	<acme:input-textarea code="auditor.audit.form.label.weakPoints" path="weakPoints"/>
+
+	<jstl:if test="${_command != 'create'}">
+		<h6><acme:message code="auditor.audit.form.label.code"/></h6>
+		<acme:print value="${code}"/>
+		<br>
+		<br>
+	</jstl:if>
 	
 	<jstl:if test="${_command == 'create'}">
-		<acme:input-double code="auditor.audit.form.chooseCourse" path="courseId"/>
+		<acme:input-select code="company.practicum.form.label.course" path="course" choices="${courses}"/>
 	</jstl:if>
 
 	<jstl:if test="${_command == 'show'}">
 		<acme:button code="auditor.audit.auditingRecords" action="/auditor/auditing-record/list?auditId=${id}"/>
+		<jstl:if test="${draftMode == true}">
+			<acme:button code="auditors.auditingRecord.list.button.create" action="/auditor/auditing-record/create"/>
+		</jstl:if>
 	</jstl:if>
 
 	<br>

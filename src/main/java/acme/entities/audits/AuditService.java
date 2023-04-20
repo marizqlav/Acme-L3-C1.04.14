@@ -19,7 +19,7 @@ public class AuditService extends AbstractService<Auditor, Audit> {
 	AuditRepository repo;
 
 
-	public String getAuditMark(final Audit audit) {
+	/*public String getAuditMark(final Audit audit) {
 		final Map<String, Long> marks = this.repo.getAuditingRecords(audit).stream().map(x -> x.mark).collect(Collectors.groupingBy(x -> x, Collectors.counting()));
 
 		final Long max = marks.values().stream().max(Long::compare).get();
@@ -29,5 +29,5 @@ public class AuditService extends AbstractService<Auditor, Audit> {
 		final Random random = new Random();
 		final Integer r = random.ints(0, finalMarks.size()).findFirst().getAsInt();
 		return finalMarks.get(r);
-	}
+	}*/
 }

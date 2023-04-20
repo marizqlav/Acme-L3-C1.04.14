@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.audits.Audit;
 import acme.entities.audits.AuditingRecord;
+import acme.entities.audits.MarkType;
+import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Auditor;
@@ -67,11 +69,6 @@ public class AuditorAuditingRecordCreateService extends AbstractService<Auditor,
 			super.state(auditingRecord.getAudit() != null, "audit", "auditor.auditingRecord.form.audit.nullError");
 		}
 
-		List<String> markList = Arrays.asList("A+", "A", "B", "C", "F", "F-");
-		if (!super.getBuffer().getErrors().hasErrors("mark")) {
-			super.state(markList.contains(auditingRecord.getMark()), "mark", "auditor.auditingRecord.form.mark.invalid");
-		}
-
 		//TODO Check dates
 
     }
@@ -90,9 +87,10 @@ public class AuditorAuditingRecordCreateService extends AbstractService<Auditor,
 		
 		tuple = super.unbind(auditingRecord, "subject", "assesment", "firstDate", "lastDate", "mark", "draftMode");
 
-		List<String> markList = Arrays.asList("A+", "A", "B", "C", "F", "F-");
+		SelectChoices choices = SelectChoices.from(MarkType.class, auditingRecord.getMark());
 
-        tuple.put("marks", markList);
+        tuple.put("marks", choices);
+        tuple.put("mark", auditingRecord.getMark());
 
 		super.getResponse().setData(tuple);
 	}

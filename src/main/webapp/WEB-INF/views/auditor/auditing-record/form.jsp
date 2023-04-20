@@ -23,7 +23,7 @@
 	<acme:input-textbox code="auditor.auditingRecord.form.label.assesment" path="assesment"/>
 	<acme:input-moment code="auditor.auditingRecord.form.label.firstDate" path="firstDate"/>
 	<acme:input-moment code="auditor.auditingRecord.form.label.lastDate" path="lastDate"/>
-	<acme:input-textbox code="auditor.auditingRecord.form.label.mark" path="mark"/>
+	<acme:input-select code="auditor.auditingRecord.form.label.mark" path="mark" choices="${marks}"/>
 	
 	
 	<jstl:if test="${draftMode}">
@@ -34,7 +34,7 @@
 			<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
 				<acme:submit code="auditor.auditingRecord.form.button.update" action="/auditor/auditing-record/update"/>
 				<acme:submit code="auditor.auditingRecord.form.button.delete" action="/auditor/auditing-record/delete"/>
-			</jstl:when>	
+			</jstl:when>
 		</jstl:choose>
 	</jstl:if>
 

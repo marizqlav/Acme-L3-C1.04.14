@@ -10,3 +10,4 @@ auditor.audit.form.chooseCourse = Select course id
 auditor.audit.form.course.nullError = The course must exist
 auditor.audit.form.code.repeated = The code must not repeat
 auditor.audit.auditingRecords = Show auditing records
+auditors.auditingRecord.list.button.create = Create auditing record

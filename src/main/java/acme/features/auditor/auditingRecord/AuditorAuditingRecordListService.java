@@ -34,7 +34,7 @@ public class AuditorAuditingRecordListService extends AbstractService<Auditor, A
 
 	@Override
 	public void load() {
-		final List<AuditingRecord> auditingRecords = this.repo.findAllAuditingRecordsFromAudit(super.getRequest().getData("auditId", int.class));
+		List<AuditingRecord> auditingRecords = repo.findAllAuditingRecordsFromAudit(super.getRequest().getData("auditId", int.class));
 
 		super.getBuffer().setData(auditingRecords);
 	}
@@ -45,11 +45,13 @@ public class AuditorAuditingRecordListService extends AbstractService<Auditor, A
 
 		Tuple tuple;
 
-		tuple = super.unbind(auditingRecord, "subject", "assesment", "firstDate", "lastDate", "mark");
+		tuple = super.unbind(auditingRecord, "subject", "assesment", "firstDate", "lastDate", "mark", "correction");
 
-		tuple.put("draftMode", this.repo.findAudit(super.getRequest().getData("auditId", int.class)).getDraftMode());
+		boolean draftMode = this.repo.findAudit(super.getRequest().getData("auditId", int.class)).getDraftMode();
 
-		super.getResponse().setData("data", tuple);
+		tuple.put("draftMode", draftMode);
+
+		super.getResponse().setData(tuple);
 	}
 
 }

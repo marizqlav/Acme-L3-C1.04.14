@@ -42,7 +42,9 @@ public class AuditingRecord extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	Date lastDate;
 	
-	String mark;
+	MarkType mark;
+
+	boolean correction;
 	
 	@ManyToOne
 	Audit audit;
