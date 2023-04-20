@@ -27,11 +27,13 @@
 	<acme:input-url code="lecturer.course.form.label.link" path="link"/>
 	
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show') && draftmode==true}">
+		<jstl:when test="${acme:anyOf(_command, 'show')}">
 			<acme:button code="lecturer.course.button.lectures" action="/lecturer/lecture/listFromCourse?id=${id}"/>
 			<acme:button code="lecturer.course.button.courseLecture" action="/lecturer/course-lecture/create?id=${id}"/>
-			<acme:button code="lecturer.course.button.update" action="/lecturer/course/update?id=${id}"/>	
-			<acme:submit code="lecturer.course.button.delete" action="/lecturer/course/delete"/>	
+			<jstl:if test="${draftmode==true}">
+				<acme:button code="lecturer.course.button.update" action="/lecturer/course/update?id=${id}"/>	
+				<acme:submit code="lecturer.course.button.delete" action="/lecturer/course/delete"/>
+			</jstl:if>
 		</jstl:when>
 	
 		<jstl:when test="${_command == 'create'}">
