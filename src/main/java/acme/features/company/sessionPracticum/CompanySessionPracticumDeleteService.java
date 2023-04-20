@@ -51,15 +51,15 @@ public class CompanySessionPracticumDeleteService extends AbstractService<Compan
 	public void bind(final SessionPracticum object) {
 		assert object != null;
 
-		int practicumId;
-		Practicum practicum;
-
-		practicumId = super.getRequest().getData("practicum", int.class);
-		practicum = this.repository.findPracticumById(practicumId);
+		//		int practicumId;
+		//		Practicum practicum;
+		//
+		//		practicumId = super.getRequest().getData("practicum", int.class);
+		//		practicum = this.repository.findPracticumById(practicumId);
 
 		super.bind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
 
-		object.setPracticum(practicum);
+		//		object.setPracticum(practicum);
 	}
 
 	@Override
@@ -88,6 +88,8 @@ public class CompanySessionPracticumDeleteService extends AbstractService<Compan
 		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link", "draftMode", "addendum");
 		tuple.put("practicum", choices.getSelected().getKey());
 		tuple.put("practica", choices);
+		tuple.put("practicumId", super.getRequest().getData("practicumId", int.class));
+		tuple.put("draftMode", object.getPracticum().getDraftMode());
 
 		super.getResponse().setData(tuple);
 

@@ -29,7 +29,7 @@
 			<acme:submit code="company.session-practicum.form.button.publish" action="/company/session-practicum/publish"/>
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == false}">
-			<acme:input-textbox code="company.session-practicum.form.label.practicum" path="practicum.code"/>			
+			<acme:input-textbox code="company.session-practicum.form.label.practicum.code" path="practicum.code"/>			
 		</jstl:when>
 		<jstl:when test="${_command == 'create' && draftMode == true}">
 			<acme:submit code="company.session-practicum.form.button.create" action="/company/session-practicum/create?practicumId=${practicumId}"/>

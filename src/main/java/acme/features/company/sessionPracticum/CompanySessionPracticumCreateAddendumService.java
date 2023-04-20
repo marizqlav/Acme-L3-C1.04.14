@@ -28,14 +28,25 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 
 	@Override
 	public void check() {
+		boolean status;
 
-		super.getResponse().setChecked(true);
+		status = super.getRequest().hasData("practicum", int.class);
+
+		super.getResponse().setChecked(status);
 	}
 
 	@Override
 	public void authorise() {
+		boolean status;
+		int practicumingRecordId;
+		Practicum practicum;
 
-		super.getResponse().setAuthorised(true);
+		practicumingRecordId = super.getRequest().getData("practicum", int.class);
+		practicum = this.repository.findPracticumById(practicumingRecordId);
+		status = practicum != null && super.getRequest().getPrincipal().hasRole(practicum.getCompany());
+
+		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
@@ -108,7 +119,7 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 	@Override
 	public void perform(final SessionPracticum object) {
 		assert object != null;
-		object.setDraftMode(false);
+		object.setDraftMode(true);
 		this.repository.save(object);
 	}
 
@@ -126,6 +137,7 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 		tuple = super.unbind(object, "title", "abstractThing", "startDate", "finishDate", "draftMode", "addendum", "info");
 		tuple.put("practicum", choices.getSelected().getKey());
 		tuple.put("practica", choices);
+		tuple.put("draftMode", object.getPracticum().getDraftMode());
 		tuple.put("confirmation", false);
 
 		super.getResponse().setData(tuple);

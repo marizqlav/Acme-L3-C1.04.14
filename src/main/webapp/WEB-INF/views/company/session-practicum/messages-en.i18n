@@ -18,6 +18,7 @@ company.session-practicum.form.label.abstractSessionPracticum = Abstract Session
 company.session-practicum.form.label.startDate = Start Date
 company.session-practicum.form.label.finishDate = Finish Date
 company.session-practicum.form.label.link = Link
+company.session-practicum.form.label.practicum.code = Code Practicum
 
 company.session-practicum.list.button.create = Create Session
 
@@ -35,4 +36,3 @@ company.session-practicum.form.error.finishDate = The Finish Date must be minimu
 company.session-practicum.validation.confirmation = Error: You have to confirm the submit
 company.session-practicum.validation.practicum.error.AddendumAlreadyExists = Error: Only one addendum session allowed per practicum 
 company.session-practicum.validation.practicum.error.Published = Error: This Practicum has been already published
-

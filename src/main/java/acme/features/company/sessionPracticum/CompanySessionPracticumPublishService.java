@@ -64,13 +64,13 @@ public class CompanySessionPracticumPublishService extends AbstractService<Compa
 	@Override
 	public void bind(final SessionPracticum object) {
 		assert object != null;
-		int practicumId;
-		Practicum practicum;
-
-		practicumId = super.getRequest().getData("practicum", int.class);
-		practicum = this.repository.findPracticumById(practicumId);
+		//		int practicumId;
+		//		Practicum practicum;
+		//
+		//		practicumId = super.getRequest().getData("practicum", int.class);
+		//		practicum = this.repository.findPracticumById(practicumId);
 		super.bind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
-		object.setPracticum(practicum);
+		//		object.setPracticum(practicum);
 	}
 
 	@Override
