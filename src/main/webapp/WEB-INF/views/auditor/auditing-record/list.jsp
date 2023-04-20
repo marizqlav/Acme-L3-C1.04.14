@@ -16,9 +16,17 @@
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
 <acme:list>
+	<acme:list-column code="auditors.auditingRecord.list.label.correction" path="correction"/>
 	<acme:list-column code="auditors.auditingRecord.list.label.subject" path="subject"/>
 	<acme:list-column code="auditors.auditingRecord.list.label.assesment" path="assesment"/>
-	<acme:list-column code="auditors.auditingRecord.list.label.firstDate" path="firstDate"/>
-	<acme:list-column code="auditors.auditingRecord.list.label.mark" path="lastDate"/>
+	<acme:list-column code="auditors.auditingRecord.list.label.firstDate" path="assesmentStartDate"/>
+	<acme:list-column code="auditors.auditingRecord.list.label.lastDate" path="assesmentEndDate"/>
 	<acme:list-column code="auditors.auditingRecord.list.label.mark" path="mark"/>
 </acme:list>
+
+<jstl:if test="${draftMode == true}">
+	<acme:button code="auditors.auditingRecord.list.button.create" action="/auditor/auditing-record/create?auditId=${auditId}"/>
+</jstl:if>
+<jstl:if test="${draftMode != true}">
+	<acme:button code="auditors.auditingRecord.list.button.correct" action="/auditor/auditing-record/correct?auditId=${auditId}"/>
+</jstl:if>

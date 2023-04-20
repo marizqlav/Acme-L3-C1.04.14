@@ -18,7 +18,7 @@ import acme.framework.services.AbstractService;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorAuditingRecordCreateService extends AbstractService<Auditor, AuditingRecord> {
+public class AuditorAuditingRecordCorrectService extends AbstractService<Auditor, AuditingRecord> {
 
 	@Autowired
 	protected AuditorAuditingRecordRepository repo;
@@ -38,11 +38,7 @@ public class AuditorAuditingRecordCreateService extends AbstractService<Auditor,
 		boolean status = true;
 
 		Audit audit = repo.findAudit(super.getRequest().getData("auditId", int.class));
-		if (audit != null) {
-			status = audit.getDraftMode();
-		} else if (audit == null) {
-			status = false;
-		}
+		status = audit != null;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -50,6 +46,8 @@ public class AuditorAuditingRecordCreateService extends AbstractService<Auditor,
 	@Override
 	public void load() {
 		AuditingRecord auditingRecord = new AuditingRecord();
+
+		auditingRecord.setCorrection(true);
 
 		super.getBuffer().setData(auditingRecord);
 	}
@@ -78,7 +76,7 @@ public class AuditorAuditingRecordCreateService extends AbstractService<Auditor,
 			if (auditingRecord.getAssesmentEndDate() != null) {
 				LocalDateTime firstDate = auditingRecord.getAssesmentStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
 				LocalDateTime lastDate = auditingRecord.getAssesmentEndDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-		  
+				
 				super.state(Duration.between(firstDate, lastDate).toHours() >= 1, "assesmentEndDate", "auditor.auditingRecord.form.assesmentEndDate.notAnHour");
 			}
 		}
@@ -88,7 +86,7 @@ public class AuditorAuditingRecordCreateService extends AbstractService<Auditor,
 	@Override
 	public void perform(final AuditingRecord auditingRecord) {
 		assert auditingRecord != null;
-		
+
 		repo.save(auditingRecord);
 	}
 

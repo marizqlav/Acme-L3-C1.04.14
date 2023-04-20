@@ -32,6 +32,7 @@ public class AuditorAuditCreateService extends AbstractService<Auditor, Audit> {
 
 	@Override
 	public void load() {
+		System.out.println("load");
 		Audit audit = new Audit();
 
         Auditor auditor = repo.findAuditor(super.getRequest().getPrincipal().getActiveRoleId());
@@ -48,24 +49,21 @@ public class AuditorAuditCreateService extends AbstractService<Auditor, Audit> {
 
 		super.bind(audit, "conclusion", "strongPoints", "weakPoints");
 
-		//Course course = super.getRequest().getData("course", Course.class);
+		System.out.println(super.getRequest().getData("courseId", int.class));
 		Course course = repo.findCourse(super.getRequest().getData("courseId", int.class));
+		System.out.println(course);
         audit.setCourse(course);
 
 	}
 
 	@Override
 	public void validate(final Audit audit) {
+		System.out.println("validate");
 		assert audit != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("course")) {
 			super.state(audit.getCourse() != null, "courseId", "auditor.audit.form.course.nullError");
 		}
-
-		// if (!super.getBuffer().getErrors().hasErrors("code")) {
-		// 	super.state(repo.findByCode(audit.getCode()) == null, "code", "auditor.audit.form.code.repeated");
-		// }
-
     }
 
 	@Override
@@ -76,6 +74,7 @@ public class AuditorAuditCreateService extends AbstractService<Auditor, Audit> {
 
 	@Override
 	public void unbind(final Audit audit) {
+		System.out.println("unbind");
 		assert audit != null;
 
 		Tuple tuple;

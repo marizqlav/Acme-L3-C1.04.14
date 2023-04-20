@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.audits.AuditingRecord;
+import acme.entities.audits.MarkType;
+import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Auditor;
@@ -46,9 +48,14 @@ public class AuditorAuditingRecordShowService extends AbstractService<Auditor, A
 
 		Tuple tuple;
 
-		tuple = super.unbind(auditingRecord, "subject", "assesment", "firstDate", "lastDate", "mark", "correction");
+		tuple = super.unbind(auditingRecord, "subject", "assesment", "assesmentStartDate", "assesmentEndDate");
 
+		tuple.put("correction", auditingRecord.isCorrection());
 		tuple.put("draftMode", auditingRecord.getAudit().getDraftMode());
+
+		SelectChoices choices = SelectChoices.from(MarkType.class, auditingRecord.getMark());
+		tuple.put("marks", choices);
+        tuple.put("mark", auditingRecord.getMark());
 
 		super.getResponse().setData(tuple);
 	}

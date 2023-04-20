@@ -1,6 +1,7 @@
 
 package acme.features.auditor.auditingRecord;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,13 +46,25 @@ public class AuditorAuditingRecordListService extends AbstractService<Auditor, A
 
 		Tuple tuple;
 
-		tuple = super.unbind(auditingRecord, "subject", "assesment", "firstDate", "lastDate", "mark", "correction");
+		tuple = super.unbind(auditingRecord, "subject", "assesment", "assesmentStartDate", "assesmentEndDate", "mark");
+
+		if (auditingRecord.isCorrection()) {
+			tuple.put("correction", "XXXXXX");
+		} else {
+			tuple.put("correction", "");
+		}
+
+		super.getResponse().setData(tuple);
+	}
+
+	@Override
+	public void unbind(final Collection<AuditingRecord> auditingRecords) {
+		assert auditingRecords != null;
 
 		boolean draftMode = this.repo.findAudit(super.getRequest().getData("auditId", int.class)).getDraftMode();
 
-		tuple.put("draftMode", draftMode);
-
-		super.getResponse().setData(tuple);
+		super.getResponse().setGlobal("draftMode", draftMode);
+		super.getResponse().setGlobal("auditId", super.getRequest().getData("auditId", int.class));
 	}
 
 }

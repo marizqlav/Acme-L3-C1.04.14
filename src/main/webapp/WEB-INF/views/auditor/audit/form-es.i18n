@@ -11,3 +11,6 @@ auditor.audit.form.course.nullError = El curso debe existir
 auditor.audit.form.code.repeated = El código no puede repetirse
 auditor.audit.auditingRecords = Ver registros de auditoria
 auditors.auditingRecord.list.button.create = Crear registro de auditoría
+auditors.auditingRecord.list.button.publish = Publicar auditoría
+auditor.audit.form.label.publish = Publicada
+auditor.audit.form.label.not-publish = No publicada

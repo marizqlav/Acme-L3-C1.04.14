@@ -19,9 +19,22 @@
 <acme:form>
 
 	<h1><acme:message code="auditor.audit.data"/></h1>
+
+	<jstl:if test="${draftMode}">
+		<h5><acme:message code="auditor.audit.form.label.not-publish"/></h5>
+	</jstl:if>
+	<jstl:if test="${!draftMode}">
+		<h5><acme:message code="auditor.audit.form.label.publish"/></h5>
+	</jstl:if>
+
 	<acme:input-textarea code="auditor.audit.form.label.conclusion" path="conclusion"/>
 	<acme:input-textarea code="auditor.audit.form.label.strongPoints" path="strongPoints"/>
 	<acme:input-textarea code="auditor.audit.form.label.weakPoints" path="weakPoints"/>
+
+	<jstl:if test="${_command == 'create'}">
+		<acme:input-select code="company.practicum.form.label.course" path="course" choices="${courses}"/>
+	</jstl:if>
+
 
 	<jstl:if test="${_command != 'create'}">
 		<h6><acme:message code="auditor.audit.form.label.code"/></h6>
@@ -29,20 +42,6 @@
 		<br>
 		<br>
 	</jstl:if>
-	
-	<jstl:if test="${_command == 'create'}">
-		<acme:input-select code="company.practicum.form.label.course" path="course" choices="${courses}"/>
-	</jstl:if>
-
-	<jstl:if test="${_command == 'show'}">
-		<acme:button code="auditor.audit.auditingRecords" action="/auditor/auditing-record/list?auditId=${id}"/>
-		<jstl:if test="${draftMode == true}">
-			<acme:button code="auditors.auditingRecord.list.button.create" action="/auditor/auditing-record/create"/>
-		</jstl:if>
-	</jstl:if>
-
-	<br>
-	<br>
 
 	<jstl:choose>
 		<jstl:when test="${_command == 'create'}">
@@ -55,5 +54,23 @@
 			</jstl:if>		
 		</jstl:when>	
 	</jstl:choose>
+
+	<br>
+	<br>
+
+	<jstl:if test="${draftMode == true}">
+		<acme:submit code="auditors.auditingRecord.list.button.publish" action="/auditor/audit/publish"/>
+	</jstl:if>
+
+	<br>
+	<br>
+	
+	<jstl:if test="${acme:anyOf(_command, 'show|update')}">
+		<acme:button code="auditor.audit.auditingRecords" action="/auditor/auditing-record/list?auditId=${id}"/>
+	</jstl:if>
+
+	<br>
+	<br>
+
 
 </acme:form>
