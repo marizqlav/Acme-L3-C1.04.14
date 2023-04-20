@@ -28,3 +28,4 @@ student.activity.form.time.timePeriodInitial = Momento de inicio:
 student.activity.form.time.timePeriodFinal = Momento de finalización:
 student.activities.title = Actividades
 student.activity.form.error.end.is.before.start = El momento de finalización no debe ser anterior al momento de inicio
+student.activity.form.button.create = Crear actividad

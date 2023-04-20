@@ -18,6 +18,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.datatypes.SystemConfiguration;
+import acme.entities.courseLectures.CourseLecture;
 import acme.entities.courses.Course;
 import acme.entities.lectures.Lecture;
 import acme.framework.components.accounts.UserAccount;
@@ -49,5 +50,8 @@ public interface LecturerCourseRepository extends AbstractRepository {
 
 	@Query("select sc from SystemConfiguration sc")
 	SystemConfiguration findSystemConfiguration();
+
+	@Query("select cl from CourseLecture cl where cl.course.id = :id")
+	Collection<CourseLecture> findCLfromCourse(int id);
 
 }
