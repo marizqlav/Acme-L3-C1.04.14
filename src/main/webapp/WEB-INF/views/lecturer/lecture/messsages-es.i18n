@@ -25,3 +25,6 @@ lecturer.lecture.form.button.publish = Publicar Clase
 
 lecturer.lecture.form.error.estimatedTime = Debe ser mayor que 0.0
 lecturer.lecture.form.error.lectureType = No se puede elegir esa opcion para clases
+lecturer.lecture.form.error.title = No se puede dejar en blanco
+lecturer.lecture.form.error.body = No se puede dejar en blanco
+lecturer.lecture.form.error.resumen = No se puede dejar en blanco

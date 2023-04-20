@@ -23,6 +23,7 @@
 	<acme:input-textbox code="lecturer.course.form.label.title" path="title"/>
 	<acme:input-textarea code="lecturer.course.form.label.resumen" path="resumen"/>
 	<acme:input-textbox code="lecturer.course.form.label.retailPrice" path="retailPrice"/>
+	<acme:input-money code="student.course.form.label.retail.price.exchange.money" readonly="true" path="exchangeMoney"/>
 	<acme:input-url code="lecturer.course.form.label.link" path="link"/>
 	
 	<jstl:choose>
