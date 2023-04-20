@@ -15,13 +15,9 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
+<h2><acme:message code="lecturer.course-lecture.list.label.warning"/></h2>
+
 <acme:list>
-	<acme:list-column code="lecturer.lecture.list.label.title" path="title"/>
+	<acme:list-column code="lecturer.course-lecture.list.label.lecture" path="lecture"/>
 </acme:list>
 
-	<jstl:if test="${_command != 'listFromCourse'}">
-	<acme:button code="lecturer.lecture.list.button.create" action="/lecturer/lecture/create"/>
-	</jstl:if>
-	
-
-	

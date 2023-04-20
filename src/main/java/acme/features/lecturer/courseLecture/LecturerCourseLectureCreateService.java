@@ -93,16 +93,18 @@ public class LecturerCourseLectureCreateService extends AbstractService<Lecturer
 		SelectChoices choices;
 
 		lecturerId = super.getRequest().getPrincipal().getActiveRoleId();
+
 		choices = new SelectChoices();
 
 		courseId = super.getRequest().getData("id", int.class);
 		course = this.repository.findCourseById(courseId);
-		choices = SelectChoices.from(this.repository.findAllLecturesByLecturer(lecturerId), "title", object.getLecture());
+		choices = SelectChoices.from(this.repository.findPublishedLecturesFromLecturer(lecturerId), "title", object.getLecture());
 
 		tuple = super.unbind(object, "course");
 		tuple.put("lectures", choices);
 		tuple.put("lecture", choices.getSelected().getKey());
 		tuple.put("id", courseId);
+		tuple.put("clid", object.getId());
 		tuple.put("courseTitle", course.getTitle());
 		super.getResponse().setData(tuple);
 
