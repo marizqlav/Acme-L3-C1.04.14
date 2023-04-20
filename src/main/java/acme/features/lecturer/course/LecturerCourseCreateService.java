@@ -57,6 +57,8 @@ public class LecturerCourseCreateService extends AbstractService<Lecturer, Cours
 	@Override
 	public void validate(final Course object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
+			super.state(object.getRetailPrice() != null, "retailPrice", "lecturer.course.form.error.retailPrice");
 
 	}
 

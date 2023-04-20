@@ -26,4 +26,7 @@ lecturer.lecture.form.button.publish = Publish Lecture
 
 lecturer.lecture.form.error.estimatedTime = Must be greater than 0.0
 lecturer.lecture.form.error.lectureType = Can't choose that option for lectures
+lecturer.lecture.form.error.title = Can not be blank
+lecturer.lecture.form.error.body = Can not be blank
+lecturer.lecture.form.error.resumen = Can not be blank
 

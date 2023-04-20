@@ -41,6 +41,7 @@ public class Lecture extends AbstractEntity {
 	@NotNull
 	protected Double			estimatedTime;
 
+	@NotBlank
 	@Length(max = 101)
 	protected String			body;
 
