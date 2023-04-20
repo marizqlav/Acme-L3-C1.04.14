@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.courses.Course;
-import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
@@ -72,8 +71,6 @@ public class LecturerCourseCreateService extends AbstractService<Lecturer, Cours
 	@Override
 	public void unbind(final Course object) {
 		assert object != null;
-
-		final SelectChoices choices;
 
 		Tuple tuple;
 

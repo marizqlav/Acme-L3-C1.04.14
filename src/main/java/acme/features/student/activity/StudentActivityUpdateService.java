@@ -52,7 +52,7 @@ public class StudentActivityUpdateService extends AbstractService<Student, Activ
 
 		activityId = super.getRequest().getData("id", int.class);
 		enrolment = this.repository.findOneEnrolmentByActivityId(activityId);
-		status = enrolment != null && enrolment.isDraftMode() && super.getRequest().getPrincipal().hasRole(enrolment.getStudent());
+		status = enrolment != null && !enrolment.isDraftMode() && super.getRequest().getPrincipal().hasRole(enrolment.getStudent());
 
 		super.getResponse().setAuthorised(status);
 	}

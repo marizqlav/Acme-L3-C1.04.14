@@ -28,3 +28,4 @@ student.activity.form.time.timePeriodInitial = Start time:
 student.activity.form.time.timePeriodFinal = End time:
 student.activities.title = Activities
 student.activity.form.error.end.is.before.start = End time cannot be later than the start time
+student.activity.form.button.create = Create activity

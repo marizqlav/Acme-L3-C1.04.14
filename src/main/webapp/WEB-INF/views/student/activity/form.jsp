@@ -30,9 +30,9 @@
 
 	<jstl:choose>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="student.enrolment.form.button.create" action="/student/activity/create?masterId=${masterId}"/>
+			<acme:submit code="student.activity.form.button.create" action="/student/activity/create?masterId=${masterId}"/>
 		</jstl:when>	
-		<jstl:when test="${draftMode.equals(true) && (_command == 'update' || _command == 'delete' || _command == 'show')}">
+		<jstl:when test="${draftMode.equals(false) && (_command == 'update' || _command == 'delete' || _command == 'show')}">
 			<acme:submit code="student.activity.form.button.update" action="/student/activity/update"/>
 			<acme:submit code="student.activity.form.button.delete" action="/student/activity/delete"/>
 		</jstl:when>

@@ -40,3 +40,4 @@ code.not.edit = El código no puede ser editado
 student.course.activities = Ver actividades
 student.enrolments.title = Mis matrículas
 student.enrolment.form.button.enrolment = Nueva matrícula
+student.enrolment.error.course.not.public = El curso no está publicado
