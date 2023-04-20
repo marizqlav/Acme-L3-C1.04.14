@@ -12,10 +12,7 @@ any.course.form.label.code = Code
 any.course.form.label.title = Title
 any.course.form.label.resumen= Abstract
 any.course.form.label.retailPrice= Retail Price
-<<<<<<< HEAD
 any.course.form.label.link = Link
-=======
-authenticated.course.form.label.link = Link
->>>>>>> branch 'albdomrui' of https://github.com/marizqlav/Acme-L3-D01.git
 any.course.list.label.title = Title
+any.course.form.label.courseType = Course Type
 

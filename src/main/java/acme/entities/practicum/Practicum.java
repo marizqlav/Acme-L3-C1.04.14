@@ -1,6 +1,8 @@
 
 package acme.entities.practicum;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -12,6 +14,7 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 
 import acme.entities.courses.Course;
+import acme.entities.sessionPracticum.SessionPracticum;
 import acme.framework.data.AbstractEntity;
 import acme.roles.Company;
 import lombok.Getter;
@@ -44,14 +47,29 @@ public class Practicum extends AbstractEntity {
 	@NotNull
 	protected Boolean			draftMode;
 
-	@Valid
-	@NotNull
-	@ManyToOne(optional = false)
-	protected Company			company;
+
+	public Double estimatedTime(final Collection<SessionPracticum> sessions) {
+		double estimatedTime = 0.;
+		if (sessions.size() > 0)
+			for (final SessionPracticum element : sessions) {
+				final long durationInMilliseconds = element.getFinishDate().getTime() - element.getStartDate().getTime();
+				final double durationInHours = durationInMilliseconds / (1000.0 * 60 * 60);
+				estimatedTime = estimatedTime + durationInHours;
+			}
+
+		return estimatedTime;
+
+	}
+
 
 	@Valid
 	@NotNull
 	@ManyToOne(optional = false)
-	protected Course			course;
+	protected Company	company;
+
+	@Valid
+	@NotNull
+	@ManyToOne(optional = false)
+	protected Course	course;
 
 }

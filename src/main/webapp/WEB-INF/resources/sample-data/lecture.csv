@@ -1,6 +1,6 @@
 key,title,resumen,lecture-type,estimated-time,body,key:lecturer
 lecture-01,Lecture Title,r,HANDSON,01.30,este es el cuerpo de la lecture,lecturer1
-lecture-02,L,resumen de la lectureeeeeeeeeeeee,THEORY,04.00,,lecturer1
+lecture-02,L,resumen de la lectureeeeeeeeeeeee,THEORY,04.00,g,lecturer1
 lecture-03,$%&/-´`+,resumen de la lecture,HANDSON,01.00,E,lecturer2
 lecture-04,eyi yɛ asɛmti,r,HANDSON,100.00,E,lecturer2
 lecture-05,Hacking,Aprende a hackear,THEORY,01.00,En esta lección se podrá aprender a hacer muchas cosas,lecturer1

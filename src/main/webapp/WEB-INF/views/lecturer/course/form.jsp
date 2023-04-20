@@ -23,13 +23,17 @@
 	<acme:input-textbox code="lecturer.course.form.label.title" path="title"/>
 	<acme:input-textarea code="lecturer.course.form.label.resumen" path="resumen"/>
 	<acme:input-textbox code="lecturer.course.form.label.retailPrice" path="retailPrice"/>
+	<acme:input-money code="student.course.form.label.retail.price.exchange.money" readonly="true" path="exchangeMoney"/>
 	<acme:input-url code="lecturer.course.form.label.link" path="link"/>
 	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show')}">
 			<acme:button code="lecturer.course.button.lectures" action="/lecturer/lecture/listFromCourse?id=${id}"/>
-			<acme:button code="lecturer.course.button.courseLecture" action="/lecturer/courseLecture/create?id=${id}"/>
-			<acme:button code="lecturer.course.button.update" action="/lecturer/course/update?id=${id}"/>	
+			<acme:button code="lecturer.course.button.courseLecture" action="/lecturer/course-lecture/create?id=${id}"/>
+			<jstl:if test="${draftmode==true}">
+				<acme:button code="lecturer.course.button.update" action="/lecturer/course/update?id=${id}"/>	
+				<acme:submit code="lecturer.course.button.delete" action="/lecturer/course/delete"/>
+			</jstl:if>
 		</jstl:when>
 	
 		<jstl:when test="${_command == 'create'}">
