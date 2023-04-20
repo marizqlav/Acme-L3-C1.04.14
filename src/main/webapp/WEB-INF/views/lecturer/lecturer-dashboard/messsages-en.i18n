@@ -1,0 +1,31 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2023 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+lecturer.dashboard.title = My dashboard
+lecturer.dashboard.form.total.numer.type= Total number of lectures per type
+
+lecturer.dashboard.form.label.total.number.theory = Total number of theoretical lectures
+lecturer.dashboard.form.label.total.number.handson = Total number of hands on lectures
+
+lecturer.dashboard.form.lecture.statistics = Lectures statistics
+lecturer.dashboard.form.lecture.statistics.avg = Average
+lecturer.dashboard.form.lecture.statistics.deviation =Deviation
+lecturer.dashboard.form.lecture.statistics.min = Minimum
+lecturer.dashboard.form.lecture.statistics.max = Maximum
+
+lecturer.dashboard.form.course.statistics = Courses statistics
+lecturer.dashboard.form.course.statistics.avg = Average
+lecturer.dashboard.form.course.statistics.deviation =Deviation
+lecturer.dashboard.form.course.statistics.min = Minimum
+lecturer.dashboard.form.course.statistics.max = Maximum
+
+
+
+
