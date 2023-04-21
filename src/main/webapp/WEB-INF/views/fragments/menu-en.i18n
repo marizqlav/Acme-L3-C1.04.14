@@ -84,7 +84,7 @@ master.menu.lecturer.form.lecturer-dashboard = My dashboard
 
 master.menu.assistant = Assistant
 master.menu.assistant.list.tutorial = Tutorial List
-master.menu.assistant.list.session = Session List
+master.menu.assistant.list.sessionTutorial = Session List
 
 # master.menu.user-account ####################################################
 

@@ -84,7 +84,7 @@ master.menu.lecturer.form.lecturer-dashboard = Mi panel
 
 master.menu.assistant = Assistente
 master.menu.assistant.list.tutorial = Lista de tutoriales
-master.menu.assistant.list.session = Lista de sesiones
+master.menu.assistant.list.sessionTutorial = Lista de sesiones
 
 # master.menu.user-account ####################################################
 

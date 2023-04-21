@@ -20,7 +20,7 @@ public interface AssistantTutorialRepository extends AbstractRepository {
 	@Query("SELECT t FROM Tutorial t WHERE t.draftMode = 1")
 	List<Tutorial> findTutorials();
 
-	@Query("SELECT t FROM Tutorial t WHERE t.draftMode = 1 AND t.assistant.id = :assistant_id")
+	@Query("SELECT t FROM Tutorial t WHERE t.assistant.id = :assistant_id")
 	List<Tutorial> findTutorialsOfAssistant(int assistant_id);
 
 	@Query("SELECT a FROM Assistant a WHERE a.id = :id")
