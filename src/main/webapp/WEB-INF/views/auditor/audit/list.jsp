@@ -16,7 +16,6 @@
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="auditors.audit.list.label.published" path="draftMode"/>
 	<acme:list-column code="auditors.audit.list.label.code" path="code"/>
 	<acme:list-column code="auditors.audit.list.label.conclusion" path="conclusion"/>
 	<acme:list-column code="auditors.audit.list.label.strongPoints" path="strongPoints"/>

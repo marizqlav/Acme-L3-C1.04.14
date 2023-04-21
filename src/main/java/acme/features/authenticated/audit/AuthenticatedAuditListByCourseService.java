@@ -1,55 +1,83 @@
-
 package acme.features.authenticated.audit;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.audits.Audit;
+import acme.entities.courses.Course;
 import acme.framework.components.accounts.Authenticated;
+import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 
 @Service
 public class AuthenticatedAuditListByCourseService extends AbstractService<Authenticated, Audit> {
 
-	@Autowired
-	AuthenticatedAuditRepository repo;
+    @Autowired
+    AuthenticatedAuditRepository repo;
 
+    @Override
+    public void check() {
+      super.getResponse().setChecked(true);
+    }
 
-	@Override
-	public void check() {
-		boolean status;
+    @Override
+    public void authorise() {
+      super.getResponse().setAuthorised(true);
+    }
 
-		status = super.getRequest().hasData("id", int.class);
+    @Override
+    public void load() {
+      List<Audit> audits = new ArrayList<>();
 
-		super.getResponse().setChecked(status);
-	}
+      if (super.getRequest().hasData("course")) {
+        final Integer courseId = super.getRequest().getData("course", int.class);
+  
+        audits = this.repo.findAllAuditsByCourse(courseId);
+      } else {
+        audits = this.repo.findAllAuditsByCourse(repo.findAllCourses().get(0).getId());
+      }
 
-	@Override
-	public void authorise() {
-		super.getResponse().setAuthorised(true);
-	}
+      super.getBuffer().setData(audits);
+    }
 
-	@Override
-	public void load() {
-		final Integer courseId = super.getRequest().getData("courseId", int.class);
+    @Override
+    public void unbind(final Audit audit) {
+      assert audit != null;
 
-		final List<Audit> audits = this.repo.findAllAuditsByCourse(courseId);
+      Tuple tuple;
 
-		super.getBuffer().setData(audits);
-	}
+      tuple = super.unbind(audit, "code", "conclusion", "strongPoints", "weakPoints");
 
-	@Override
-	public void unbind(final Audit audit) {
-		assert audit != null;
+      if (!audit.getDraftMode()) {
+        tuple.put("draftMode", "XXXXXX");
+      } else {
+        tuple.put("draftMode", "");
+      }
 
-		Tuple tuple;
+      super.getResponse().setData(tuple);
+    }
 
-		tuple = super.unbind(audit, "code", "conclusion", "strongPoints", "weakPoints");
+    @Override
+    public void unbind(final Collection<Audit> audits) {
+      assert audits != null;
 
-		super.getResponse().setData(tuple);
-	}
+      List<Course> courses = repo.findAllCourses();
+
+      Course course = courses.get(0);
+      if (super.getRequest().hasData("course")) {
+        course = repo.findCourse(super.getRequest().getData("course", int.class));
+      }
+
+      SelectChoices choices = SelectChoices.from(courses, "title", course);
+
+      super.getResponse().setGlobal("course", choices.getSelected().getKey());
+      super.getResponse().setGlobal("courses", choices);
+
+    }
 
 }

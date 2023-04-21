@@ -14,12 +14,24 @@
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
+<%@taglib prefix="custom" tagdir="/WEB-INF/tags"%>
+
+
+<custom:form-get>
+	<acme:input-select code="authenticated.audit.list.label.course" path="course" choices="${courses}"/>
+	<acme:submit method="get" code="authenticated.audit.list.button.search-by-course" action="/authenticated/audit/list-by-course"/>
+</custom:form-get>
+
+<br>
+<br>
+<br>
+<br>
 
 <acme:list>
-	<acme:list-column code="auditors.audit.list.label.code" path="code"/>
-	<acme:list-column code="auditors.audit.list.label.conclusion" path="conclusion"/>
-	<acme:list-column code="auditors.audit.list.label.strongPoints" path="strongPoints"/>
-	<acme:list-column code="auditors.audit.list.label.weakPoints" path="weakPoints"/>
+	<acme:list-column code="authenticated.audit.list.label.published" path="draftMode"/>
+	<acme:list-column code="authenticated.audit.list.label.code" path="code"/>
+	<acme:list-column code="authenticated.audit.list.label.conclusion" path="conclusion"/>
+	<acme:list-column code="authenticated.audit.list.label.strongPoints" path="strongPoints"/>
+	<acme:list-column code="authenticated.audit.list.label.weakPoints" path="weakPoints"/>
 </acme:list>
-
 
