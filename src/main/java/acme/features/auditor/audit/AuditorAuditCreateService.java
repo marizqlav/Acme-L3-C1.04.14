@@ -32,13 +32,7 @@ public class AuditorAuditCreateService extends AbstractService<Auditor, Audit> {
 
 	@Override
 	public void load() {
-		System.out.println("load");
 		Audit audit = new Audit();
-
-        Auditor auditor = repo.findAuditor(super.getRequest().getPrincipal().getActiveRoleId());
-        audit.setAuditor(auditor);
-		String code = CodeGenerator.newCode(repo.findFirstByOrderByCodeDesc().getCode());
-		audit.setCode(code);
 
 		super.getBuffer().setData(audit);
 	}
@@ -47,22 +41,25 @@ public class AuditorAuditCreateService extends AbstractService<Auditor, Audit> {
 	public void bind(final Audit audit) {
 		assert audit != null;
 
+		Auditor auditor = repo.findAuditor(super.getRequest().getPrincipal().getActiveRoleId());
+        audit.setAuditor(auditor);
+		String code = CodeGenerator.newCode(repo.findFirstByOrderByCodeDesc().getCode());
+		audit.setCode(code);
+
 		super.bind(audit, "conclusion", "strongPoints", "weakPoints");
 
-		System.out.println(super.getRequest().getData("courseId", int.class));
-		Course course = repo.findCourse(super.getRequest().getData("courseId", int.class));
-		System.out.println(course);
-        audit.setCourse(course);
+		Course course = repo.findCourse(super.getRequest().getData("course", int.class));
+
+		audit.setCourse(course);
 
 	}
 
 	@Override
 	public void validate(final Audit audit) {
-		System.out.println("validate");
 		assert audit != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("course")) {
-			super.state(audit.getCourse() != null, "courseId", "auditor.audit.form.course.nullError");
+			super.state(audit.getCourse() != null, "course", "auditor.audit.form.course.nullError");
 		}
     }
 
@@ -74,7 +71,6 @@ public class AuditorAuditCreateService extends AbstractService<Auditor, Audit> {
 
 	@Override
 	public void unbind(final Audit audit) {
-		System.out.println("unbind");
 		assert audit != null;
 
 		Tuple tuple;

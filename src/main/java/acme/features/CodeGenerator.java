@@ -4,6 +4,13 @@ public class CodeGenerator {
 
     public static String newCode(String lastCode) {
 
+		//TODO
+		/* This doesn't jump between jumps
+		 * Z999 -> AA000 works but AA000 -> AA001 doesn't since
+		 * we're using a weird repository function that doesn't return the last code
+		 * properly f you repository
+		 */
+
 		if (lastCode == "ZZZ999") {
 			throw new RuntimeException("Out of codes");
 		}
