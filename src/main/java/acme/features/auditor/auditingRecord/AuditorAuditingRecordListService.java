@@ -1,5 +1,6 @@
 package acme.features.auditor.auditingRecord;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,9 @@ public class AuditorAuditingRecordListService extends AbstractService<Auditor, A
         super.getResponse().setAuthorised(true);
     }
 
-    @Override
-    public void load() {
-        List<AuditingRecord> auditingRecords = repo.findAllAuditingRecordsFromAudit(super.getRequest().getData("auditId", int.class));
+	@Override
+	public void load() {
+		List<AuditingRecord> auditingRecords = repo.findAllAuditingRecordsFromAudit(super.getRequest().getData("auditId", int.class));
 
         super.getBuffer().setData(auditingRecords);
     }
@@ -43,11 +44,25 @@ public class AuditorAuditingRecordListService extends AbstractService<Auditor, A
 
 		Tuple tuple;
 
-		tuple = super.unbind(auditingRecord, "subject", "assesment", "firstDate", "lastDate", "mark");
-        
-		tuple.put("draftMode", repo.findAudit(super.getRequest().getData("auditId", int.class)).getDraftMode());
-        
-        super.getResponse().setData("data", tuple);
-    }
+		tuple = super.unbind(auditingRecord, "subject", "assesment", "assesmentStartDate", "assesmentEndDate", "mark");
+
+		if (auditingRecord.isCorrection()) {
+			tuple.put("correction", "XXXXXX");
+		} else {
+			tuple.put("correction", "");
+		}
+
+		super.getResponse().setData(tuple);
+	}
+
+	@Override
+	public void unbind(final Collection<AuditingRecord> auditingRecords) {
+		assert auditingRecords != null;
+
+		boolean draftMode = this.repo.findAudit(super.getRequest().getData("auditId", int.class)).getDraftMode();
+
+		super.getResponse().setGlobal("draftMode", draftMode);
+		super.getResponse().setGlobal("auditId", super.getRequest().getData("auditId", int.class));
+	}
 
 }

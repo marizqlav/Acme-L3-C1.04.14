@@ -1,0 +1,7 @@
+authenticated.audit.list.label.published = published
+authenticated.audit.list.label.code = code
+authenticated.audit.list.label.conclusion = conclusion
+authenticated.audit.list.label.strongPoints = strong points
+authenticated.audit.list.label.weakPoints = weak points
+authenticated.audit.list.label.course = Course
+authenticated.audit.list.button.search-by-course = Search by course

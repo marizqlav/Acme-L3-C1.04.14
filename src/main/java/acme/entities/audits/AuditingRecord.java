@@ -35,14 +35,16 @@ public class AuditingRecord extends AbstractEntity {
 	@NotNull
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	Date firstDate;
+	Date assesmentStartDate;
 
 	@NotNull
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	Date lastDate;
+	Date assesmentEndDate;
 	
-	String mark;
+	MarkType mark;
+
+	boolean correction = false;
 	
 	@ManyToOne
 	Audit audit;

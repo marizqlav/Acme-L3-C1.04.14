@@ -19,23 +19,37 @@
 <acme:form>
 
 	<h1><acme:message code="auditor.auditingRecord.data"/></h1>
+	<jstl:if test="${correction == true}">
+		<h5><acme:message code="auditor.auditingRecord.form.label.correction"/></h5>
+	</jstl:if>
 	<acme:input-textbox code="auditor.auditingRecord.form.label.subject" path="subject"/>	
 	<acme:input-textbox code="auditor.auditingRecord.form.label.assesment" path="assesment"/>
-	<acme:input-moment code="auditor.auditingRecord.form.label.firstDate" path="firstDate"/>
-	<acme:input-moment code="auditor.auditingRecord.form.label.lastDate" path="lastDate"/>
-	<acme:input-textbox code="auditor.auditingRecord.form.label.mark" path="mark"/>
-	
+	<acme:input-moment code="auditor.auditingRecord.form.label.firstDate" path="assesmentStartDate"/>
+	<acme:input-moment code="auditor.auditingRecord.form.label.lastDate" path="assesmentEndDate"/>
+	<acme:input-select code="auditor.auditingRecord.form.label.mark" path="mark" choices="${marks}"/>
 	
 	<jstl:if test="${draftMode}">
 		<jstl:choose>
 			<jstl:when test="${_command == 'create'}">
-				<acme:submit code="auditor.auditingRecord.form.button.create" action="/auditor/auditing-record/create"/>
+				<acme:submit code="auditor.auditingRecord.form.button.create" action="/auditor/auditing-record/create?auditId=${auditId}"/>
 			</jstl:when>	
 			<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
 				<acme:submit code="auditor.auditingRecord.form.button.update" action="/auditor/auditing-record/update"/>
 				<acme:submit code="auditor.auditingRecord.form.button.delete" action="/auditor/auditing-record/delete"/>
-			</jstl:when>	
+			</jstl:when>
 		</jstl:choose>
 	</jstl:if>
 
+	<jstl:if test="${_command == 'correct'}">
+		<div id="confirmation-button-1">
+			<button type="button" onclick="askConfirmation()"><acme:message code="auditor.auditingRecord.form.button.correct"/></button>
+		</div>
+		<div id="confirmation-button-2" style="display: none;">
+			<acme:submit code='auditor.auditingRecord.form.button.confirm' action='/auditor/auditing-record/correct?auditId=${auditId}'/>
+			<acme:button code='auditor.auditingRecord.form.button.decline' action='/auditor/auditing-record/list?auditId=${auditId}'/>
+		</div>
+	</jstl:if>
+
 </acme:form>
+
+<script src="js/confirmation.js"></script>

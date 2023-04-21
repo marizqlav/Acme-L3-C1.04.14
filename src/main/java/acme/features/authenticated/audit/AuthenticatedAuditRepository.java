@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.audits.Audit;
+import acme.entities.courses.Course;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Auditor;
 
@@ -21,4 +22,10 @@ public interface AuthenticatedAuditRepository extends AbstractRepository {
 
     @Query("SELECT a FROM Audit a WHERE a.id = :id")
     Audit findAudit(@Param("id") Integer id);
+
+    @Query("SELECT c FROM Course c")
+    List<Course> findAllCourses();
+
+    @Query("SELECT c FROM Course c WHERE c.id = :id")
+    Course findCourse(@Param("id") Integer id);
 }
