@@ -69,7 +69,12 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 		tuple.put("courseType", this.courseType(this.repository.findAllLecturesByCourse(object.getId())));
 		tuple.put("draftmode", object.isDraftMode());
 		tuple.put("exchangeMoney", this.computeMoneyExchange(object.getRetailPrice(), systemCurrency).getTarget());
+
+		final Collection<Lecture> cl = this.repository.findAllLecturesByCourse(object.getId());
+		final Boolean hasLectures = cl.isEmpty() ? false : true;
+		tuple.put("hasLectures", hasLectures);
 		super.getResponse().setData(tuple);
+
 	}
 
 	public LectureType courseType(final Collection<Lecture> lecturesCourse) {
