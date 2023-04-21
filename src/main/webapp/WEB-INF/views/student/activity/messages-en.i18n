@@ -1,0 +1,31 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2023 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+student.activity.list.label.title = Title
+student.activity.list.label.abstract = Abstract
+student.activity.list.label.activityType = Activity type
+student.activity.list.label.timePeriod = Time period (Hours.Minutes)
+student.activity.data = Activity data
+student.activity.form.label.title = Title:
+student.activity.form.label.abstract = Abstract:
+student.activity.form.activity.type = Activity type:
+student.activity.form.time.period = Time period(Hours.Minutes):
+student.activity.form.label.link = Link(Optional):
+student.activity.form.button.update = Update
+student.activity.form.button.delete = Delete
+student.activity.form.button.create = Create activity
+student.activity.form.error.time.period.initial = Start time format is invalid
+student.activity.form.error.time.period.final = End time format is invalid
+student.activity.form.error.start.is.after.end = Start time cannot be later than the end time
+student.activity.form.time.timePeriodInitial = Start time:
+student.activity.form.time.timePeriodFinal = End time:
+student.activities.title = Activities
+student.activity.form.error.end.is.before.start = End time cannot be later than the start time
+student.activity.form.button.create = Create activity

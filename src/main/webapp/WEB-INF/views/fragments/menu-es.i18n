@@ -39,7 +39,6 @@ master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema
 master.menu.administrator.system-configuration = Mostrar configuración del sistema
 master.menu.administrator.list-offers = Lista ofertas
-master.menu.administrator.banner.list = Lista de banners
 
 
 # master.menu.authenticated #######################################################
@@ -48,7 +47,7 @@ master.menu.authenticated = Authenticated
 master.menu.authenticated.offer.list = Lista oferta
 master.menu.authenticated.practicum.list = Lista practicas 
 master.menu.authenticated.note.list = Lista notas
-master.menu.authenticated.course.list = Lista course
+master.menu.authenticated.course.list = Lista cursos
 
 # master.menu.provider ########################################################
 
@@ -66,6 +65,7 @@ master.menu.student = Estudiante
 master.menu.student.favourite-link = Enlace favorito
 master.menu.student.list.courses = Lista de cursos
 master.menu.student.my.enrolments = Mis matriculaciones
+master.menu.student.dashboard = Mi panel
 
 # master.menu.company ####################################################
 
@@ -78,6 +78,7 @@ master.menu.company.practicum = Lista de practicas
 master.menu.lecturer = Profesor
 master.menu.lecturer.list.courses = Lista de Cursos
 master.menu.lecturer.list.lecture = Lista de Clases
+master.menu.lecturer.form.lecturer-dashboard = Mi panel
 
 # master.menu.user-account ####################################################
 

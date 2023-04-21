@@ -19,8 +19,9 @@
 	<acme:list-column code="lecturer.lecture.list.label.title" path="title"/>
 </acme:list>
 
-
+	<jstl:if test="${_command != 'listFromCourse'}">
 	<acme:button code="lecturer.lecture.list.button.create" action="/lecturer/lecture/create"/>
+	</jstl:if>
 	
 
 	

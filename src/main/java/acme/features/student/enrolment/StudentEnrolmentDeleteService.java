@@ -12,9 +12,12 @@
 
 package acme.features.student.enrolment;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.activities.Activity;
 import acme.entities.enrolments.Enrolment;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -43,8 +46,15 @@ public class StudentEnrolmentDeleteService extends AbstractService<Student, Enro
 	@Override
 	public void authorise() {
 		boolean status;
-		final Enrolment enrolment = this.repository.findOneEnrolmentById(super.getRequest().getData("id", int.class));
-		status = !enrolment.isDraftMode() && super.getRequest().getPrincipal().hasRole(Student.class);
+		int enrolmentId;
+		Enrolment enrolment;
+		Student student;
+
+		enrolmentId = super.getRequest().getData("id", int.class);
+		enrolment = this.repository.findOneEnrolmentById(enrolmentId);
+		student = enrolment == null ? null : enrolment.getStudent();
+		status = enrolment != null && enrolment.isDraftMode() && super.getRequest().getPrincipal().hasRole(student);
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -63,7 +73,7 @@ public class StudentEnrolmentDeleteService extends AbstractService<Student, Enro
 	public void bind(final Enrolment object) {
 		assert object != null;
 
-		super.bind(object, "code", "motivation", "someGoals", "draftMode");
+		super.bind(object, "code", "motivation", "someGoals");
 	}
 
 	@Override
@@ -74,7 +84,11 @@ public class StudentEnrolmentDeleteService extends AbstractService<Student, Enro
 	@Override
 	public void perform(final Enrolment object) {
 		assert object != null;
+		//Borrar todas las activities antes
+		Collection<Activity> activities;
 
+		activities = this.repository.findManyActivitiesByEnrolmentId(object.getId());
+		this.repository.deleteAll(activities);
 		this.repository.delete(object);
 	}
 
@@ -84,7 +98,7 @@ public class StudentEnrolmentDeleteService extends AbstractService<Student, Enro
 
 		Tuple tuple;
 
-		tuple = super.unbind(object, "code", "motivation", "someGoals", "draftMode");
+		tuple = super.unbind(object, "code", "motivation", "someGoals");
 
 		super.getResponse().setData(tuple);
 	}

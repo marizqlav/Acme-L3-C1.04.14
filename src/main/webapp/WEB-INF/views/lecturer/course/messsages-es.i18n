@@ -18,3 +18,18 @@ lecturer.course.list.label.title = Titulo
 lecturer.course.form.label.courseType = Tipo de Curso
 
 lecturer.course.button.lectures = Clases del curso
+
+lecturer.course.button.courseLecture.create = Añadir Clase
+lecturer.course.button.courseLecture.list = Quitar clase
+
+
+lecturer.course.list.button.create = Crear curso
+lecturer.course.form.button.create = Crear curso
+lecturer.course.button.delete = Borrar Curso
+lecturer.course.button.update = Actualizar curso
+
+lecturer.course.form.error.retailPrice = Debe tener un valor válido
+
+lecturer.course.form.error.retailPrice.negative = No puede ser negativo
+
+lecturer.course.button.publish = Publicar curso

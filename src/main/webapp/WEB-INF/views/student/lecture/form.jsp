@@ -15,16 +15,16 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
+
 <acme:form>
-
-	
-	<acme:input-textbox code="lecturer.courseLecture.label.course" path="courseTitle" readonly="true"/>
-	<acme:input-select code="lecturer.courseLecture.label.lecture" path="lecture" choices="${lectures}"/>
-	
-	
-	<jstl:if test="${_command == 'create'}">
-		<acme:submit code="lecturer.courseLecture.button.create" action="/lecturer/courseLecture/create"/>
+<h1><acme:message code="student.lecture.data"/></h1>
+	<acme:input-textbox code="student.lecture.form.label.title" readonly="true" path="title"/>	
+	<acme:input-textarea code="student.lecture.form.label.resumen" readonly="true" path="resumen"/>
+	<acme:input-textbox code="student.lecture.form.lecture.type" readonly="true" path="lectureType"/>	
+	<acme:input-double code="student.lecture.form.estimated.time" readonly="true" path="estimatedTime"/>
+	<jstl:if test="${!body.isEmpty()}">
+		<acme:input-textarea code="student.lecture.form.label.body" readonly="true" path="body"/>
 	</jstl:if>
-	
 
-</acme:form>
+	</acme:form>
+	

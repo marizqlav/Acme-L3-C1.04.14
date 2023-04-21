@@ -26,3 +26,6 @@ student.course.form.label.lecturer.qualifications = Calificaciones:
 student.course.form.label.lecturer.link = Enlace: (Opcional)
 student.course.form.button.enrolment = Matricularse
 student.course.lectures.data = Lecciones
+student.course.lectures = Ver lecciones
+student.course.title = Cursos
+student.course.form.label.retail.price.exchange.money = Precio mínimo convertido en la moneda del sistema:

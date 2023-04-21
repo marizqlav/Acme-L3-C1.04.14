@@ -21,24 +21,24 @@ public class CompanySessionPracticumListService extends AbstractService<Company,
 
 	@Override
 	public void check() {
-		//		boolean status;
-		//
-		//		status = super.getRequest().hasData("practicumId", int.class);
+		boolean status;
 
-		super.getResponse().setChecked(true);
+		status = super.getRequest().hasData("practicumId", int.class);
+
+		super.getResponse().setChecked(status);
 	}
 
 	@Override
 	public void authorise() {
-		//		boolean status;
-		//		int practicumId;
-		//		Practicum practicum;
-		//
-		//		practicumId = super.getRequest().getData("practicumId", int.class);
-		//		practicum = this.repository.findOnePracticumById(practicumId);
-		//		status = practicum != null && super.getRequest().getPrincipal().hasRole(practicum.getCompany());
+		boolean status;
+		int practicumId;
+		Practicum practicum;
 
-		super.getResponse().setAuthorised(true);
+		practicumId = super.getRequest().getData("practicumId", int.class);
+		practicum = this.repository.findPracticumById(practicumId);
+		status = practicum != null && super.getRequest().getPrincipal().hasRole(practicum.getCompany());
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class CompanySessionPracticumListService extends AbstractService<Company,
 
 		Tuple tuple;
 
-		tuple = super.unbind(object, "title", "abstractSessionPracticum", "practicum.title");
+		tuple = super.unbind(object, "title", "abstractSessionPracticum", "practicum.title", "draftMode", "addendum");
 
 		super.getResponse().setData(tuple);
 	}
@@ -68,12 +68,16 @@ public class CompanySessionPracticumListService extends AbstractService<Company,
 		assert objects != null;
 		int practicumId;
 		Practicum practicum;
-		boolean showCreate;
+		final boolean showCreate;
+		final boolean draftMode;
 		practicumId = super.getRequest().getData("practicumId", int.class);
-		practicum = this.repository.findOnePracticumById(practicumId);
-		showCreate = practicum.getDraftMode() && super.getRequest().getPrincipal().hasRole(practicum.getCompany());
+		practicum = this.repository.findPracticumById(practicumId);
+		showCreate = super.getRequest().getPrincipal().hasRole(practicum.getCompany());
+		draftMode = practicum.getDraftMode();
 		super.getResponse().setGlobal("practicumId", practicumId);
 		super.getResponse().setGlobal("showCreate", showCreate);
+		super.getResponse().setGlobal("draftMode", draftMode);
+
 	}
 
 }

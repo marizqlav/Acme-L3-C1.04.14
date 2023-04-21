@@ -1,12 +1,17 @@
 
 package acme.features.company.sessionPracticum;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.practicum.Practicum;
 import acme.entities.sessionPracticum.SessionPracticum;
 import acme.framework.components.models.Tuple;
+import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Company;
 
@@ -30,8 +35,8 @@ public class CompanySessionPracticumUpdateService extends AbstractService<Compan
 		int sessionPracticumId;
 		Practicum practicum;
 		sessionPracticumId = super.getRequest().getData("id", int.class);
-		practicum = this.repository.findOnePracticumBySessionPracticumId(sessionPracticumId);
-		status = practicum != null && practicum.getDraftMode() && super.getRequest().getPrincipal().hasRole(practicum.getCompany());
+		practicum = this.repository.findPracticumBySessionPracticumId(sessionPracticumId);
+		status = super.getRequest().getPrincipal().hasRole(practicum.getCompany());
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -40,19 +45,49 @@ public class CompanySessionPracticumUpdateService extends AbstractService<Compan
 		final SessionPracticum object;
 		int id;
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneSessionPracticumById(id);
+		object = this.repository.findSessionPracticumById(id);
 		super.getBuffer().setData(object);
 	}
 
 	@Override
 	public void bind(final SessionPracticum object) {
 		assert object != null;
+
 		super.bind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
 	}
 
 	@Override
 	public void validate(final SessionPracticum object) {
 		assert object != null;
+		Date date;
+
+		if (!super.getBuffer().getErrors().hasErrors("finishDate"))
+			super.state(object.getStartDate().before(object.getFinishDate()), "finishDate", "company.session-practicum.form.error.finishAfterStart");
+
+		if (!super.getBuffer().getErrors().hasErrors("startDate")) {
+			date = CompanySessionPracticumCreateService.oneWeekLong(Date.from(Instant.now()));
+			super.state(object.getStartDate().equals(date) || object.getStartDate().after(date), "startDate", "company.session-practicum.form.error.oneWeekAhead");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("finishDate") && !super.getBuffer().getErrors().hasErrors("startDate")) {
+			Date maximumPeriod;
+			maximumPeriod = MomentHelper.deltaFromMoment(object.getStartDate(), 7, ChronoUnit.DAYS);
+			super.state(MomentHelper.isAfter(object.getFinishDate(), maximumPeriod) && object.getFinishDate().after(object.getStartDate()), "finishDate", "company.session-practicum.form.error.finishDate");
+		}
+
+		//Practicum Validation
+		//		final Collection<Practicum> practica;
+		//		final SelectChoices choices;
+		//		final int companyId = super.getRequest().getPrincipal().getActiveRoleId();
+		//
+		//		practica = this.repository.findManyPrivatePracticumByCompanyId(companyId);
+		//		choices = SelectChoices.from(practica, "code", object.getPracticum());
+
+		//		final int selectedId = Integer.parseInt(choices.getSelected().getKey());
+		//		final Practicum selectedPracticum = this.repository.findPracticumById(selectedId);
+
+		//		final boolean valid = selectedPracticum.getDraftMode();
+		//				super.state(valid, "practicum", "company.session.validation.practicum.error.Published");
 
 	}
 
@@ -65,10 +100,19 @@ public class CompanySessionPracticumUpdateService extends AbstractService<Compan
 	@Override
 	public void unbind(final SessionPracticum object) {
 		assert object != null;
+		//		final Collection<Practicum> practica;
+		//		final SelectChoices choices;
+		//		final int companyId = super.getRequest().getPrincipal().getActiveRoleId();
+
+		//		practica = this.repository.findManyPrivatePracticumByCompanyId(companyId);
+		//		choices = SelectChoices.from(practica, "code", object.getPracticum());
 		Tuple tuple;
-		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
-		tuple.put("practicumId", super.getRequest().getData("practicumId", int.class));
-		tuple.put("draftMode", object.getPracticum().getDraftMode());
+
+		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link", "draftMode", "addendum");
+		//		tuple.put("practicum", choices.getSelected().getKey());
+		//		tuple.put("practica", choices);
+
+		super.getResponse().setData(tuple);
 	}
 
 }

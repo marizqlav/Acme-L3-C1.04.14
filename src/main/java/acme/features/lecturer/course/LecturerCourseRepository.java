@@ -17,6 +17,8 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.datatypes.SystemConfiguration;
+import acme.entities.courseLectures.CourseLecture;
 import acme.entities.courses.Course;
 import acme.entities.lectures.Lecture;
 import acme.framework.components.accounts.UserAccount;
@@ -35,7 +37,7 @@ public interface LecturerCourseRepository extends AbstractRepository {
 	@Query("select c from Course c")
 	Collection<Course> findAllCourses();
 
-	@Query("select c from Course c where c.lecturer.id =:id and c.draftMode = 1")
+	@Query("select c from Course c where c.lecturer.id =:id")
 	Collection<Course> findAllCoursesByLecturer(int id);
 
 	@Query("select cl.lecture from CourseLecture cl where cl.course.id = :id")
@@ -43,5 +45,13 @@ public interface LecturerCourseRepository extends AbstractRepository {
 
 	@Query("select l from Lecturer l where l.id = :id")
 	Lecturer findLecturerById(int id);
+
+	Course findFirstByOrderByCodeDesc();
+
+	@Query("select sc from SystemConfiguration sc")
+	SystemConfiguration findSystemConfiguration();
+
+	@Query("select cl from CourseLecture cl where cl.course.id = :id")
+	Collection<CourseLecture> findCLfromCourse(int id);
 
 }

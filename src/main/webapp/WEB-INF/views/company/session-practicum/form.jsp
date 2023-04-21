@@ -17,17 +17,36 @@
 
 <acme:form>
     <acme:input-textbox code="company.session-practicum.form.label.title" path="title"/>
-    <acme:input-textbox code="company.session-practicum.form.label.overview" path="overview"/>
+    <acme:input-textbox code="company.session-practicum.form.label.abstractSessionPracticum" path="abstractSessionPracticum"/>
     <acme:input-moment code="company.session-practicum.form.label.startDate" path="startDate"/>
-    <acme:input-moment code="company.session-practicum.form.label.endDate" path="endDate"/>
-    <acme:input-url code="company.session-practicum.form.label.moreInfo" path="moreInfo"/>
+    <acme:input-moment code="company.session-practicum.form.label.finishDate" path="finishDate"/>
+    <acme:input-url code="company.session-practicum.form.label.link" path="link"/>
+    
     <jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == true}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
+			<jstl:if test="${addendum == true}">
+				<acme:message code="company.session-practicum.form.message.addendum.indication"/>
+			</jstl:if>
 			<acme:submit code="company.session-practicum.form.button.update" action="/company/session-practicum/update"/>
 			<acme:submit code="company.session-practicum.form.button.delete" action="/company/session-practicum/delete"/>
+			<acme:submit code="company.session-practicum.form.button.publish" action="/company/session-practicum/publish"/>
 		</jstl:when>
-		<jstl:when test="${_command == 'create'}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == false}">
+			<acme:input-textbox code="company.session-practicum.form.label.practicum.code" path="practicum.code"/>
+			<jstl:if test="${addendum == true}">
+				<acme:message code="company.session-practicum.form.message.addendum.indication"/>
+			</jstl:if>		
+		</jstl:when>
+		<jstl:when test="${_command == 'create' && draftMode == true}">
 			<acme:submit code="company.session-practicum.form.button.create" action="/company/session-practicum/create?practicumId=${practicumId}"/>
-		</jstl:when>		
+		</jstl:when>
+		<jstl:when test="${_command == 'create-addendum'}">
+			<jstl:if test="${addendum == true}">
+				<acme:message code="company.session-practicum.form.message.addendum"/>
+			</jstl:if>
+			<acme:input-checkbox code="company.session-practicum.form.label.confirmation" path="confirmation"/>
+			<acme:submit code="company.session-practicum.form.button.create-addendum" action="/company/session-practicum/create-addendum?practicumId=${practicumId}"/>
+		</jstl:when>
 	</jstl:choose>
+
 </acme:form>

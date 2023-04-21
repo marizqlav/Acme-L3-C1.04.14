@@ -13,11 +13,11 @@
 package acme.features.company.practicum;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.components.AssistantService;
 import acme.entities.courses.Course;
 import acme.entities.practicum.Practicum;
 import acme.framework.components.jsp.SelectChoices;
@@ -29,10 +29,7 @@ import acme.roles.Company;
 public class CompanyPracticumCreateService extends AbstractService<Company, Practicum> {
 
 	@Autowired
-	protected CompanyPracticumRepository	repository;
-
-	@Autowired
-	protected AssistantService				assistantService;
+	protected CompanyPracticumRepository repository;
 
 
 	@Override
@@ -64,11 +61,13 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 
 		int courseId;
 		Course course;
-
+		Company company;
+		company = this.repository.findCompanyById(super.getRequest().getPrincipal().getActiveRoleId());
+		super.bind(object, "title", "abstractPracticum", "someGoals");
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findCourseById(courseId);
-
-		super.bind(object, "code", "title", "abstractPracticum", "someGoals");
+		object.setCode(this.newCode(this.repository.findFirstByOrderByCodeDesc().getCode()));
+		object.setCompany(company);
 		object.setCourse(course);
 	}
 
@@ -88,18 +87,45 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 	public void unbind(final Practicum object) {
 		assert object != null;
 
-		Collection<Course> courses;
+		final Collection<Course> courses;
 		SelectChoices choices;
 		Tuple tuple;
+		final Iterator<Course> iterator;
 
-		courses = this.repository.findAllCourses();
-		choices = SelectChoices.from(courses, "code", object.getCourse());
+		courses = this.repository.findCoursesPublics();
 
-		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals");
+		iterator = courses.iterator();
+		choices = new SelectChoices();
+		choices.add("0", "---", object.getCourse() == null);
+		while (iterator.hasNext()) {
+			Course choice;
+			choice = iterator.next();
+			choices.add(String.valueOf(choice.getId()), choice.getCode() + ": " + choice.getTitle(), choice.equals(object.getCourse()));
+		}
+
+		tuple = super.unbind(object, "title", "abstractPracticum", "someGoals", "draftMode");
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
 
 		super.getResponse().setData(tuple);
+	}
+
+	public String newCode(final String lastCode) {
+
+		String prefijo = lastCode.substring(0, 3);
+		final int numeroActual = Integer.parseInt(lastCode.substring(3));
+		int nuevoNumero = numeroActual + 1;
+		if (nuevoNumero > 999) {
+			int indiceLetra = prefijo.charAt(2) - 'A';
+			if (indiceLetra == 25)
+				throw new RuntimeException("Se alcanzó el límite de códigos posibles");
+			indiceLetra++;
+			final char nuevaLetra = (char) ('A' + indiceLetra);
+			prefijo = prefijo.substring(0, 2) + nuevaLetra;
+			nuevoNumero = 0;
+		}
+		final String nuevoCodigo = prefijo + String.format("%03d", nuevoNumero);
+		return nuevoCodigo;
 	}
 
 }

@@ -12,15 +12,11 @@
 
 package acme.features.student.enrolment;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.enrolments.Enrolment;
-import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
-import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
 
@@ -47,18 +43,17 @@ public class StudentEnrolmentShowService extends AbstractService<Student, Enrolm
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
+		int enrolmentId;
 		Enrolment enrolment;
-		final Student student;
-		Date currentMoment;
+		Student student;
 
-		masterId = super.getRequest().getData("id", int.class);
-		enrolment = this.repository.findOneEnrolmentById(masterId);
+		enrolmentId = super.getRequest().getData("id", int.class);
+		enrolment = this.repository.findOneEnrolmentById(enrolmentId);
 		student = enrolment == null ? null : enrolment.getStudent();
-		currentMoment = MomentHelper.getCurrentMoment();
-		status = super.getRequest().getPrincipal().hasRole(student) || enrolment != null && !enrolment.isDraftMode();
+		status = enrolment != null && super.getRequest().getPrincipal().hasRole(student);
 
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
@@ -76,8 +71,6 @@ public class StudentEnrolmentShowService extends AbstractService<Student, Enrolm
 	public void unbind(final Enrolment object) {
 		assert object != null;
 
-		final int studentId;
-		final SelectChoices choices;
 		Tuple tuple;
 
 		tuple = super.unbind(object, "code", "motivation", "someGoals", "draftMode");

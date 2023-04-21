@@ -45,15 +45,15 @@ public class CompanyPracticumDeleteService extends AbstractService<Company, Prac
 	@Override
 	public void authorise() {
 		final boolean status;
-		Practicum object;
+		Practicum practicum;
 		Principal principal;
 		int practicumId;
 
 		practicumId = super.getRequest().getData("id", int.class);
-		object = this.repository.findPracticumById(practicumId);
+		practicum = this.repository.findPracticumById(practicumId);
 		principal = super.getRequest().getPrincipal();
 
-		status = object != null && object.getCompany().getId() == principal.getActiveRoleId() && object.getDraftMode();
+		status = practicum != null && practicum.getCompany().getId() == principal.getActiveRoleId() && practicum.getDraftMode();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -78,7 +78,7 @@ public class CompanyPracticumDeleteService extends AbstractService<Company, Prac
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findCourseById(courseId);
 
-		super.bind(object, "code", "title", "abstractPracticum", "someGoals");
+		super.bind(object, "code", "title", "abstractPracticum", "someGoals", "estimatedTime");
 		object.setCourse(course);
 	}
 
@@ -109,7 +109,7 @@ public class CompanyPracticumDeleteService extends AbstractService<Company, Prac
 		courses = this.repository.findAllCourses();
 		choices = SelectChoices.from(courses, "code", object.getCourse());
 
-		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals");
+		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals", "estimatedTime", "draftMode");
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
 

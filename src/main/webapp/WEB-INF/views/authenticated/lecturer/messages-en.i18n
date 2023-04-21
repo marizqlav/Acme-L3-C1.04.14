@@ -8,6 +8,9 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-lecturer.courseLecture.form.label.lecture = Lecture
-
-lecturer.course.button.courseLecture = Add lecture
+authenticated.lecturer.form.label.almaMater = Alma Mater 
+authenticated.lecturer.form.label.resume = Resume
+authenticated.lecturer.form.label.qualifications = Qualifications
+authenticated.lecturer.form.label.link = Link
+authenticated.lecturer.form.button.create = Become Lecturer
+authenticated.lecturer.form.button.update = Update data

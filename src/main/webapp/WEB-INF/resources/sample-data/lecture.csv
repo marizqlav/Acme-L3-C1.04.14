@@ -1,5 +1,8 @@
-key,title,resumen,lecture-type,estimated-time,body,draftmode,key:lecturer
-lecture-01,Lecture Title,r,HANDSON,01.30,este es el cuerpo de la lecture,false,lecturer1
-lecture-02,L,resumen de la lectureeeeeeeeeeeee,THEORY,04.00,cuerpooo,false,lecturer1
-lecture-03,$%&/-´`+,resumen de la lecture,HANDSON,01.00,E,true,lecturer2
-lecture-04,eyi yɛ asɛmti,r,HANDSON,100.00,E,true,lecturer2
+key,title,resumen,lecture-type,estimated-time,body,key:lecturer,draftmode
+lecture-01,Lecture Title,r,HANDSON,01.30,este es el cuerpo de la lecture,lecturer1,true
+lecture-02,L,resumen de la lectureeeeeeeeeeeee,THEORY,04.00,g,lecturer1,true
+lecture-03,$%&/-´`+,resumen de la lecture,HANDSON,01.00,E,lecturer2,true
+lecture-04,eyi yɛ asɛmti,r,HANDSON,100.00,E,lecturer2,false
+lecture-05,Hacking,Aprende a hackear,THEORY,01.00,En esta lección se podrá aprender a hacer muchas cosas,lecturer1,false
+lecture-06,Triaje,Elige sabiamente,THEORY,02.00,Lección necesaria,lecturer1,false
+lecture-07,Fundamentos prácticos,Practicar y practicar,HANDSON,03.30,Hay que practicar hasta que salga solo,lecturer1,false

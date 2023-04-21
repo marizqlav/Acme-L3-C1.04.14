@@ -43,9 +43,6 @@ public class AuthenticatedCourseShowService extends AbstractService<Authenticate
 	@Override
 	public void authorise() {
 		boolean status;
-		int id;
-
-		id = super.getRequest().getData("id", int.class);
 
 		status = true;
 

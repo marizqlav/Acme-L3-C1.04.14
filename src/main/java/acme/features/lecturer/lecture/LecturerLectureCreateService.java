@@ -57,12 +57,18 @@ public class LecturerLectureCreateService extends AbstractService<Lecturer, Lect
 			super.state(object.getEstimatedTime() >= 0.01, "estimatedTime", "lecturer.lecture.form.error.estimatedTime");
 		if (!super.getBuffer().getErrors().hasErrors("lectureType"))
 			super.state(!object.getLectureType().equals(LectureType.BALANCED), "lectureType", "lecturer.lecture.form.error.lectureType");
+		if (!super.getBuffer().getErrors().hasErrors("title"))
+			super.state(!object.getTitle().isEmpty(), "title", "lecturer.lecture.form.error.title");
+		if (!super.getBuffer().getErrors().hasErrors("resumen"))
+			super.state(!object.getResumen().isEmpty(), "resumen", "lecturer.lecture.form.error.resumen");
+		if (!super.getBuffer().getErrors().hasErrors("body"))
+			super.state(!object.getBody().isEmpty(), "body", "lecturer.lecture.form.error.body");
 	}
 
 	@Override
 	public void perform(final Lecture object) {
 		assert object != null;
-		object.setDraftmode(false);
+		object.setDraftmode(true);
 
 		this.repository.save(object);
 	}
