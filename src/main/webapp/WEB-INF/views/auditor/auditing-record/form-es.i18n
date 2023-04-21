@@ -12,5 +12,7 @@ auditor.auditingRecord.form.course.nullError = El curso debe existir
 auditor.auditingRecord.form.code.repeated = El código no puede repetirse
 auditor.auditingRecord.form.label.correction = Corrección
 auditor.auditingRecord.form.button.correct = Corregir
+auditor.auditingRecord.form.button.confirm = Confirmar
+auditor.auditingRecord.form.button.decline = Declinar
 auditor.auditingRecord.form.assesmentEndDate.notPast = La fecha de fin debe ser posterior a la de inicio
 auditor.auditingRecord.form.assesmentEndDate.notAnHour = El período de evaluación debe ser almenos una hora

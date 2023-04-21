@@ -1,3 +1,14 @@
+<%--
+- form.tag
+-
+- Copyright (C) 2012-2023 Rafael Corchuelo.
+-
+- In keeping with the traditional purpose of furthering education and research, it is
+- the policy of the copyright owner to permit non-commercial use and redistribution of
+- this software. It has been tested carefully, but it is not guaranteed for any particular
+- purposes.  The copyright owner does not offer any warranties or representations, nor do
+- they accept any liabilities with respect to them.
+--%>
 
 <%@tag language="java" trimDirectiveWhitespaces="true"
 	import="java.util.Enumeration, acme.framework.helpers.StringHelper"%>
@@ -11,12 +22,15 @@
 	<jstl:set var="readonly" value="false"/>
 </jstl:if>
 
-<form id="form" method="get>
+<form id="form">
 	<acme:hidden-data path="id"/>
 	<acme:hidden-data path="version"/>
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	<acme:show-errors path="*"/>
 	<jsp:doBody/>
+	<div style="float: right">
+		<acme:button code="default.label.return" action="##"/>
+	</div>	
 </form>
 
 <script type="text/javascript">
