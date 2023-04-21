@@ -35,8 +35,9 @@
 			
 				<acme:submit code="lecturer.course.button.update" action="/lecturer/course/update?id=${id}"/>	
 				<acme:submit code="lecturer.course.button.delete" action="/lecturer/course/delete"/>
-				<acme:submit code="lecturer.course.button.publish" action="/lecturer/course/publish"/>
-				
+				<jstl:if test="${hasLectures==true}">
+					<acme:submit code="lecturer.course.button.publish" action="/lecturer/course/publish"/>
+				</jstl:if>
 				
 			</jstl:if>
 		</jstl:when>
