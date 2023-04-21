@@ -27,22 +27,12 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 
 	@Override
 	public void check() {
-		//		boolean status;
-		//
-		//		status = super.getRequest().hasData("practicumId", int.class);
 
 		super.getResponse().setChecked(true);
 	}
 
 	@Override
 	public void authorise() {
-		//		boolean status;
-		//		int practicumingRecordId;
-		//		Practicum practicum;
-		//
-		//		practicumingRecordId = super.getRequest().getData("practicumId", int.class);
-		//		practicum = this.repository.findPracticumById(practicumingRecordId);
-		//		status = super.getRequest().getPrincipal().hasRole(practicum.getCompany());
 
 		super.getResponse().setAuthorised(true);
 
@@ -100,25 +90,11 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "company.session-practicum.validation.confirmation");
 
-		//		final Collection<Practicum> practica;
-		//		Collection<SessionPracticum> addendums;
-		//		final SelectChoices choices;
-		//		final int companyId = super.getRequest().getPrincipal().getActiveRoleId();
-		//
-		//		practica = this.repository.findManyPublishedPracticumByCompanyId(companyId);
-		//		choices = SelectChoices.from(practica, "code", object.getPracticum());
-		//
-		//		final int selectedId = Integer.parseInt(choices.getSelected().getKey());
-		//		addendums = this.repository.findAddendumSessionPracticumByPracticumId(selectedId);
-		//
-		//		final boolean valid = addendums.size() == 0;
-		//		super.state(valid, "practicum", "company.session.validation.practicum.error.AddendumAlreadyExists");
 	}
 
 	@Override
 	public void perform(final SessionPracticum object) {
 		assert object != null;
-		//		object.setDraftMode(false);
 		object.setDraftMode(true);
 		this.repository.save(object);
 	}
@@ -126,17 +102,9 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 	@Override
 	public void unbind(final SessionPracticum object) {
 		assert object != null;
-		//		final Collection<Practicum> practica;
-		//		final SelectChoices choices;
-		//		final int companyId = super.getRequest().getPrincipal().getActiveRoleId();
-
-		//		practica = this.repository.findManyPublishedPracticumByCompanyId(companyId);
-		//		choices = SelectChoices.from(practica, "code", object.getPracticum());
 		Tuple tuple;
 
 		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link", "draftMode", "addendum");
-		//		tuple.put("practicum", choices.getSelected().getKey());
-		//		tuple.put("practica", choices);
 		tuple.put("confirmation", false);
 		tuple.put("practicumId", super.getRequest().getData("practicumId", int.class));
 

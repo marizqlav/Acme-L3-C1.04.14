@@ -83,7 +83,6 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 
 		final Collection<SessionPracticum> sessions = this.repository.findSessionPracticumByPracticumId(object.getId());
 		for (final SessionPracticum s : sessions)
-			//			s.setDraftMode(true);
 			this.repository.save(s);
 
 		this.repository.save(object);

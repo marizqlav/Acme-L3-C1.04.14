@@ -70,14 +70,18 @@ public class CompanySessionPracticumListService extends AbstractService<Company,
 		Practicum practicum;
 		final boolean showCreate;
 		final boolean draftMode;
+		boolean addendum = false;
 		practicumId = super.getRequest().getData("practicumId", int.class);
 		practicum = this.repository.findPracticumById(practicumId);
 		showCreate = super.getRequest().getPrincipal().hasRole(practicum.getCompany());
 		draftMode = practicum.getDraftMode();
+		for (final SessionPracticum p : objects)
+			if (p.getAddendum() == true)
+				addendum = true;
 		super.getResponse().setGlobal("practicumId", practicumId);
 		super.getResponse().setGlobal("showCreate", showCreate);
 		super.getResponse().setGlobal("draftMode", draftMode);
-
+		super.getResponse().setGlobal("addendum", addendum);
 	}
 
 }

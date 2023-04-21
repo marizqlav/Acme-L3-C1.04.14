@@ -56,6 +56,8 @@ public class Practicum extends AbstractEntity {
 				final double durationInHours = durationInMilliseconds / (1000.0 * 60 * 60);
 				estimatedTime = estimatedTime + durationInHours;
 			}
+		else
+			estimatedTime = 0.0;
 
 		return estimatedTime;
 
