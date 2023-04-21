@@ -9,7 +9,7 @@ import acme.framework.services.AbstractService;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorAuditUpdateService extends AbstractService<Auditor, Audit> {
+public class AuditorAuditPublishService extends AbstractService<Auditor, Audit> {
 
 	@Autowired
 	protected AuditorAuditRepository repo;
@@ -48,16 +48,12 @@ public class AuditorAuditUpdateService extends AbstractService<Auditor, Audit> {
 	public void bind(final Audit audit) {
 		assert audit != null;
 
-		super.bind(audit, "conclusion", "strongPoints", "weakPoints");
-	}
+        audit.setDraftMode(false);
+    }
 
 	@Override
 	public void validate(final Audit audit) {
 		assert audit != null;
-
-		// if (!super.getBuffer().getErrors().hasErrors("code")) {
-		// 	super.state(repo.findByCode(audit.getCode()) == null, "code", "auditor.audit.form.code.repeated");
-		// }
 
 	}
 
@@ -74,9 +70,7 @@ public class AuditorAuditUpdateService extends AbstractService<Auditor, Audit> {
 
 		Tuple tuple;
 
-		tuple = super.unbind(audit, "code", "conclusion", "strongPoints", "weakPoints");
-
-		tuple.put("draftMode", audit.getDraftMode());
+		tuple = super.unbind(audit, "code", "conclusion", "strongPoints", "weakPoints", "draftMode");
 
 		super.getResponse().setData(tuple);
 	}

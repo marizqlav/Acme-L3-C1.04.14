@@ -1,0 +1,7 @@
+authenticated.audit.list.label.published = publicado
+authenticated.audit.list.label.code = código
+authenticated.audit.list.label.conclusion = conclusión
+authenticated.audit.list.label.strongPoints = puntos fuertes
+authenticated.audit.list.label.weakPoints = puntos débiles
+authenticated.audit.list.label.course = Curso
+authenticated.audit.list.button.search-by-course = Buscar por curso

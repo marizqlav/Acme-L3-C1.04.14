@@ -1,3 +1,4 @@
+auditors.audit.list.label.published = published
 auditors.audit.list.label.code = code
 auditors.audit.list.label.conclusion = conclusion
 auditors.audit.list.label.strongPoints = strong points
