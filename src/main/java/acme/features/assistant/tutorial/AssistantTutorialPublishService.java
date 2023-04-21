@@ -12,13 +12,16 @@ import acme.framework.services.AbstractService;
 import acme.roles.Assistant;
 
 @Service
-public class AssistantTutorialShowService extends AbstractService<Assistant, Tutorial> {
+public class AssistantTutorialPublishService extends AbstractService<Assistant, Tutorial> {
 
+	// Internal State ------------------------------------------
 	@Autowired
-	protected AssistantTutorialRepository	repo;
+	protected AssistantTutorialRepository	repository;
 
 	@Autowired
 	protected LecturerCourseRepository		courseRepo;
+
+	//AbstractServiceInterface -------------------------------
 
 
 	@Override
@@ -34,10 +37,11 @@ public class AssistantTutorialShowService extends AbstractService<Assistant, Tut
 	public void authorise() {
 		boolean status;
 		int id;
+		Tutorial lecture;
 
 		id = super.getRequest().getData("id", int.class);
-
-		status = true;
+		lecture = this.repository.findTutorialById(id);
+		status = lecture != null;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -48,9 +52,32 @@ public class AssistantTutorialShowService extends AbstractService<Assistant, Tut
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.repo.findTutorialById(id);
+		object = this.repository.findTutorialById(id);
 
 		super.getBuffer().setData(object);
+	}
+
+	@Override
+	public void bind(final Tutorial object) {
+		assert object != null;
+
+		super.bind(object, "title", "description", "estimatedTime", "code");
+	}
+
+	@Override
+	public void validate(final Tutorial object) {
+		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("estimatedTime"))
+			super.state(object.getEstimatedTime() >= 0.01, "estimatedTime", "assistant.tutorial.form.error.estimatedTime");
+	}
+
+	@Override
+	public void perform(final Tutorial object) {
+		assert object != null;
+
+		object.setDraftMode(true);
+
+		this.repository.save(object);
 	}
 
 	@Override
@@ -64,11 +91,10 @@ public class AssistantTutorialShowService extends AbstractService<Assistant, Tut
 
 		choices = SelectChoices.from(this.courseRepo.findAllCourses(), "title", object.getCourse());
 
-		tuple = super.unbind(object, "code", "title", "description", "estimatedTime");
+		tuple = super.unbind(object, "title", "description", "estimatedTime");
 		tuple.put("courses", choices);
 		tuple.put("course", choices.getSelected().getKey());
-		tuple.put("draftMode", object.getDraftMode());
-		tuple.put("tutorialId", object.getId());
+		tuple.put("assistant", this.repository.findAssistantById(super.getRequest().getPrincipal().getActiveRoleId()));
 		super.getResponse().setData(tuple);
 	}
 }

@@ -1,5 +1,7 @@
 
-package acme.features.assistant.session;
+package acme.features.assistant.sessionTutorial;
+
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,10 +12,10 @@ import acme.framework.services.AbstractService;
 import acme.roles.Assistant;
 
 @Service
-public class AssistantSessionShowService extends AbstractService<Assistant, SessionTutorial> {
+public class AssistantSessionTutorialListService extends AbstractService<Assistant, SessionTutorial> {
 
 	@Autowired
-	protected AssistantSessionRepository repo;
+	protected AssistantSessionTutorialRepository repo;
 
 
 	@Override
@@ -22,30 +24,21 @@ public class AssistantSessionShowService extends AbstractService<Assistant, Sess
 
 		status = super.getRequest().hasData("id", int.class);
 
-		super.getResponse().setChecked(status);
+		super.getResponse().setChecked(true);
 	}
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int id;
-
-		id = super.getRequest().getData("id", int.class);
-
-		status = true;
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
-		SessionTutorial object;
-		int id;
+		Collection<SessionTutorial> objects;
 
-		id = super.getRequest().getData("id", int.class);
-		object = this.repo.findSessionById(id);
+		objects = this.repo.findSessionsOfTutorial(super.getRequest().getData("tutorialId", int.class));
 
-		super.getBuffer().setData(object);
+		super.getBuffer().setData(objects);
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-# messages-es.i18n
+# messages-en.i18n
 #
 # Copyright (C) 2012-2023 Rafael Corchuelo.
 #
@@ -8,5 +8,9 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-assistant.session.list.label.title = Título:
-assistant.session.list.label.sessionType = Tipo:
+assistant.sessionTutorial.form.label.title= Title
+assistant.sessionTutorial.form.label.description=Description
+assistant.sessionTutorial.form.label.sessionType= Type
+assistant.sessionTutorial.form.label.endDate= End date
+assistant.sessionTutorial.form.label.startDate= Start date
+assistant.sessionTutorial.form.label.link= Link
