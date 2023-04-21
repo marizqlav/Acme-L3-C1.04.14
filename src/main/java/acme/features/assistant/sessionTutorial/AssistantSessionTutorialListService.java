@@ -49,6 +49,7 @@ public class AssistantSessionTutorialListService extends AbstractService<Assista
 
 		tuple = super.unbind(object, "title", "description", "sessionType", "startDate", "endDate", "link");
 
+		tuple.put("id", super.getRequest().hasData("id", int.class));
 		super.getResponse().setData(tuple);
 	}
 }
