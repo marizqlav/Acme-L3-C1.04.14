@@ -61,20 +61,12 @@ public class CompanySessionPracticumPublishService extends AbstractService<Compa
 	@Override
 	public void bind(final SessionPracticum object) {
 		assert object != null;
-		//		int practicumId;
-		//		Practicum practicum;
-		//
-		//		practicumId = super.getRequest().getData("practicum", int.class);
-		//		practicum = this.repository.findPracticumById(practicumId);
 		super.bind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
-		//		object.setPracticum(practicum);
 	}
 
 	@Override
 	public void validate(final SessionPracticum object) {
 		assert object != null;
-
-		//Date Validations
 
 		Date date;
 
@@ -91,20 +83,6 @@ public class CompanySessionPracticumPublishService extends AbstractService<Compa
 			maximumPeriod = MomentHelper.deltaFromMoment(object.getStartDate(), 7, ChronoUnit.DAYS);
 			super.state(MomentHelper.isAfter(object.getFinishDate(), maximumPeriod) && object.getFinishDate().after(object.getStartDate()), "finishDate", "company.session-practicum.form.error.finishDate");
 		}
-
-		//		//Practicum Validation
-		//		final Collection<Practicum> practica;
-		//		final SelectChoices choices;
-		//		final int companyId = super.getRequest().getPrincipal().getActiveRoleId();
-		//
-		//		practica = this.repository.findManyPrivatePracticumByCompanyId(companyId);
-		//		choices = SelectChoices.from(practica, "code", object.getPracticum());
-		//
-		//		final int selectedId = Integer.parseInt(choices.getSelected().getKey());
-		//		final Practicum selectedPracticum = this.repository.findPracticumById(selectedId);
-		//
-		//		final boolean valid = selectedPracticum.getDraftMode();
-		//		super.state(valid, "practicum", "company.session.validation.practicum.error.Published");
 	}
 
 	@Override
@@ -118,16 +96,8 @@ public class CompanySessionPracticumPublishService extends AbstractService<Compa
 	@Override
 	public void unbind(final SessionPracticum object) {
 		assert object != null;
-		//		final Collection<Practicum> practica;
-		//		final SelectChoices choices;
-		//		final int companyId = super.getRequest().getPrincipal().getActiveRoleId();
-		//
-		//		practica = this.repository.findManyPrivatePracticumByCompanyId(companyId);
-		//		choices = SelectChoices.from(practica, "code", object.getPracticum());
 		Tuple tuple;
 		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link", "draftMode", "addendum");
-		//		tuple.put("practicum", choices.getSelected().getKey());
-		//		tuple.put("practica", choices);
 		super.getResponse().setData(tuple);
 	}
 

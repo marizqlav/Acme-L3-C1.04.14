@@ -52,4 +52,7 @@ public interface CompanyPracticumRepository extends AbstractRepository {
 
 	Practicum findFirstByOrderByCodeDesc();
 
+	@Query("select p from Practicum p where p.company.id = :companyId and p.course.id = :courseId")
+	Practicum findCompanyCourse(int companyId, int courseId);
+
 }

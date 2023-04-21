@@ -60,12 +60,7 @@ public class CompanySessionPracticumCreateService extends AbstractService<Compan
 	@Override
 	public void validate(final SessionPracticum object) {
 		assert object != null;
-		//		final boolean confirmation;
 		Date date;
-		//
-		//		confirmation = object.getPracticum().getDraftMode() ? true : super.getRequest().getData("confirmation", boolean.class);
-		//		super.state(confirmation, "confirmation", "company.session-practicum.form.error.confirmation");
-
 		if (!super.getBuffer().getErrors().hasErrors("finishDate"))
 			super.state(object.getStartDate().before(object.getFinishDate()), "finishDate", "company.session-practicum.form.error.finishAfterStart");
 
@@ -94,8 +89,6 @@ public class CompanySessionPracticumCreateService extends AbstractService<Compan
 		Tuple tuple;
 		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link", "draftMode", "addendum");
 		tuple.put("practicumId", super.getRequest().getData("practicumId", int.class));
-		//		tuple.put("draftMode", object.getPracticum().getDraftMode());
-		//		tuple.put("confirmation", false);
 		super.getResponse().setData(tuple);
 	}
 
