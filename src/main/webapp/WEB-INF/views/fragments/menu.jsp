@@ -71,6 +71,10 @@
 			<acme:menu-suboption code="master.menu.lecturer.form.lecturer-dashboard" action="/lecturer/lecturer-dashboard/show"/>
 		</acme:menu-option>
 		
+		<acme:menu-option code="master.menu.assistant" access="hasRole('Assistant')">
+			<acme:menu-suboption code="master.menu.assistant.list.tutorial" action="/assistant/tutorial/list"/>			
+			<acme:menu-suboption code="master.menu.assistant.list.session" action="/assistant/session/list"/>
+		</acme:menu-option>
 
 	</acme:menu-left>
 	
