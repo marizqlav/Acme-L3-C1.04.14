@@ -1,5 +1,8 @@
 package acme.features.auditor.auditingRecord;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.audits.Audit;
 import acme.entities.audits.AuditingRecord;
+import acme.entities.audits.MarkType;
+import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Auditor;
@@ -35,9 +40,9 @@ public class AuditorAuditingRecordCreateService extends AbstractService<Auditor,
 		Audit audit = repo.findAudit(super.getRequest().getData("auditId", int.class));
 		if (audit != null) {
 			status = audit.getDraftMode();
+		} else if (audit == null) {
+			status = false;
 		}
-
-		//TODO Añadir lo de la confirmacion y tal
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -53,7 +58,7 @@ public class AuditorAuditingRecordCreateService extends AbstractService<Auditor,
 	public void bind(final AuditingRecord auditingRecord) {
 		assert auditingRecord != null;
 
-		super.bind(auditingRecord, "subject", "assesment", "firstDate", "lastDate", "mark");
+		super.bind(auditingRecord, "subject", "assesment", "assesmentStartDate", "assesmentEndDate", "mark");
 
 		Audit audit = repo.findAudit(super.getRequest().getData("auditId", int.class));
         auditingRecord.setAudit(audit);
@@ -63,22 +68,27 @@ public class AuditorAuditingRecordCreateService extends AbstractService<Auditor,
 	public void validate(final AuditingRecord auditingRecord) {
 		assert auditingRecord != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("audit")) {
-			super.state(auditingRecord.getAudit() != null, "audit", "auditor.auditingRecord.form.audit.nullError");
+		if (!super.getBuffer().getErrors().hasErrors("assesmentEndDate")) {
+			if (auditingRecord.getAssesmentEndDate() != null) {
+				super.state(auditingRecord.getAssesmentEndDate().after(auditingRecord.getAssesmentStartDate()), "assesmentEndDate", "auditor.auditingRecord.form.assesmentEndDate.notPast");
+			}
 		}
 
-		List<String> markList = Arrays.asList("A+", "A", "B", "C", "F", "F-");
-		if (!super.getBuffer().getErrors().hasErrors("mark")) {
-			super.state(markList.contains(auditingRecord.getMark()), "mark", "auditor.auditingRecord.form.mark.invalid");
+		if (!super.getBuffer().getErrors().hasErrors("assesmentEndDate")) {
+			if (auditingRecord.getAssesmentEndDate() != null) {
+				LocalDateTime firstDate = auditingRecord.getAssesmentStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+				LocalDateTime lastDate = auditingRecord.getAssesmentEndDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+		  
+				super.state(Duration.between(firstDate, lastDate).toHours() >= 1, "assesmentEndDate", "auditor.auditingRecord.form.assesmentEndDate.notAnHour");
+			}
 		}
-
-		//TODO Check dates
 
     }
 
 	@Override
 	public void perform(final AuditingRecord auditingRecord) {
 		assert auditingRecord != null;
+		
 		repo.save(auditingRecord);
 	}
 
@@ -88,11 +98,18 @@ public class AuditorAuditingRecordCreateService extends AbstractService<Auditor,
 
 		Tuple tuple;
 		
-		tuple = super.unbind(auditingRecord, "subject", "assesment", "firstDate", "lastDate", "mark", "draftMode");
+		tuple = super.unbind(auditingRecord, "subject", "assesment", "assesmentStartDate", "assesmentEndDate");
 
-		List<String> markList = Arrays.asList("A+", "A", "B", "C", "F", "F-");
+		boolean draftMode = this.repo.findAudit(super.getRequest().getData("auditId", int.class)).getDraftMode();
 
-        tuple.put("marks", markList);
+		tuple.put("correction", auditingRecord.isCorrection());
+		tuple.put("draftMode", draftMode);
+
+		SelectChoices choices = SelectChoices.from(MarkType.class, auditingRecord.getMark());
+		tuple.put("marks", choices);
+        tuple.put("mark", auditingRecord.getMark());
+
+		tuple.put("auditId", super.getRequest().getData("auditId", int.class));
 
 		super.getResponse().setData(tuple);
 	}

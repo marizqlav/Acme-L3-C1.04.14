@@ -30,6 +30,7 @@
 			<acme:menu-suboption code="master.menu.authenticated.offer.list" action="/authenticated/offer/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.note.list" action="/authenticated/note/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.course.list" action="/authenticated/course/list"/>
+			<acme:menu-suboption code="master.menu.list.audits-by-course" action="/authenticated/audit/list-by-course"/>
 		</acme:menu-option>
     <acme:menu-option code="master.menu.any.peeps" action="/any/peep/list"/>
     <acme:menu-option code="master.menu.any.course" action="/any/course/list" />
@@ -71,6 +72,10 @@
 			<acme:menu-suboption code="master.menu.lecturer.form.lecturer-dashboard" action="/lecturer/lecturer-dashboard/show"/>
 		</acme:menu-option>
 		
+		<acme:menu-option code="master.menu.assistant" access="hasRole('Assistant')">
+			<acme:menu-suboption code="master.menu.assistant.list.tutorial" action="/assistant/tutorial/list"/>			
+			<acme:menu-suboption code="master.menu.assistant.list.session" action="/assistant/session/list"/>
+		</acme:menu-option>
 
 	</acme:menu-left>
 	
@@ -87,7 +92,6 @@
 			<acme:menu-suboption code="master.menu.user-account.auditor" action="/authenticated/auditor/update" access="hasRole('Auditor')"/>
 
 			<acme:menu-separator/>	
-			<acme:menu-suboption code="master.menu.list.audits-by-course" action="/auditor/audit/list-by-course"/>
 
 			<acme:menu-suboption code="master.menu.user-account.become-assistant" action="/authenticated/assistant/create" access="!hasRole('Assistant')"/>
 			<acme:menu-suboption code="master.menu.user-account.assistant" action="/authenticated/assistant/update" access="hasRole('Assistant')"/>

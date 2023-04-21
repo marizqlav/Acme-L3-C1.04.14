@@ -48,12 +48,16 @@ public class AuditorAuditUpdateService extends AbstractService<Auditor, Audit> {
 	public void bind(final Audit audit) {
 		assert audit != null;
 
-		super.bind(audit, "code", "conclusion", "strongPoints", "weakPoints");
+		super.bind(audit, "conclusion", "strongPoints", "weakPoints");
 	}
 
 	@Override
 	public void validate(final Audit audit) {
 		assert audit != null;
+
+		// if (!super.getBuffer().getErrors().hasErrors("code")) {
+		// 	super.state(repo.findByCode(audit.getCode()) == null, "code", "auditor.audit.form.code.repeated");
+		// }
 
 	}
 

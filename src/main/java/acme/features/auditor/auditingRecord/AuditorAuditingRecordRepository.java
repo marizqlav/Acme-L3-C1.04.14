@@ -14,7 +14,7 @@ import acme.framework.repositories.AbstractRepository;
 public interface AuditorAuditingRecordRepository extends AbstractRepository {
 
     @Query("SELECT a FROM AuditingRecord a WHERE a.audit.id = :auditId")
-    List<AuditingRecord> findAllAuditingRecordsFromAudit(@Param("auditId") Integer AuditId);
+    List<AuditingRecord> findAllAuditingRecordsFromAudit(@Param("auditId") Integer auditId);
 
     @Query("SELECT a FROM AuditingRecord a WHERE a.id = :id")
     AuditingRecord findAuditingRecord(@Param("id") Integer id);

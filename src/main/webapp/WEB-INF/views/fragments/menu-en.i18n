@@ -80,6 +80,11 @@ master.menu.lecturer.list.courses = Course List
 master.menu.lecturer.list.lecture = Lecture List
 master.menu.lecturer.form.lecturer-dashboard = My dashboard
 
+# master.menu.assistant ##########################################################
+
+master.menu.assistant = Assistant
+master.menu.assistant.list.tutorial = Tutorial List
+master.menu.assistant.list.session = Session List
 
 # master.menu.user-account ####################################################
 

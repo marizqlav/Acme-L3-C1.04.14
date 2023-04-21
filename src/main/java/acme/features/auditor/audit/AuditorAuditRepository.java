@@ -35,4 +35,6 @@ public interface AuditorAuditRepository extends AbstractRepository {
 
     @Query("SELECT a FROM Audit a WHERE a.code = :code")
     Audit findByCode(@Param("code") String code);
+
+    Audit findFirstByOrderByCodeDesc();
 }

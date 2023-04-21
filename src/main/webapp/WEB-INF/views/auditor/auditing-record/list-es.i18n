@@ -1,5 +1,8 @@
+auditors.auditingRecord.list.label.correction = corrección
 auditors.auditingRecord.list.label.subject = asignatura
 auditors.auditingRecord.list.label.assesment = evaluación
-auditors.auditingRecord.list.label.firstDate = fecha de evaluación
+auditors.auditingRecord.list.label.firstDate = fecha de inicio de evaluación
+auditors.auditingRecord.list.label.lastDate = fecha de fin de evaluación
 auditors.auditingRecord.list.label.mark = nota
 auditors.auditingRecord.list.button.create = Crear
+auditors.auditingRecord.list.button.correct = Corregir

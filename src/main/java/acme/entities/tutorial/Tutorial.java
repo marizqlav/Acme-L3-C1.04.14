@@ -13,6 +13,7 @@ import javax.validation.constraints.Size;
 
 import acme.entities.courses.Course;
 import acme.framework.data.AbstractEntity;
+import acme.roles.Assistant;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,7 +28,7 @@ public class Tutorial extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	Boolean						draftMode			= true;
+	Boolean						draftMode;
 
 	@Column(name = "title")
 	@NotBlank
@@ -55,4 +56,8 @@ public class Tutorial extends AbstractEntity {
 	@ManyToOne(optional = false)
 	protected Course			course;
 
+	@Valid
+	@NotNull
+	@ManyToOne(optional = false)
+	protected Assistant			assistant;
 }

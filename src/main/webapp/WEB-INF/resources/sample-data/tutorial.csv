@@ -1,2 +1,2 @@
-key,title,description,estimatedTime,code,key:course
-tutorial-01, titulo,descripción, 40.00,QWE890,course-01
+key,title,description,estimatedTime,code,key:course,key:assistant
+tutorial-01, titulo,descripción, 40.00,QWE890,course-01,assistant1
