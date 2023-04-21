@@ -20,4 +20,4 @@
 	<acme:list-column code="assistant.sessionTutorial.list.label.description" path="description" width="20%"/>
 </acme:list>
 
-<acme:button code="assistant.tutorial.list.button.create" action="/assistant/sessionTutorial/create"/>
+<acme:button code="assistant.tutorial.list.button.create" action="/assistant/session-tutorial/create"/>
