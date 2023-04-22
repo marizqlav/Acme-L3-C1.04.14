@@ -16,6 +16,8 @@
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="assistant.session.list.label.title" path="title" width="80%"/>
-	<acme:list-column code="assistant.session.list.label.sessionType" path="sessionType" width="20%"/>
+	<acme:list-column code="assistant.sessionTutorial.list.label.title" path="title" width="80%"/>
+	<acme:list-column code="assistant.sessionTutorial.list.label.description" path="description" width="20%"/>
 </acme:list>
+
+<acme:button code="assistant.tutorial.list.button.create" action="/assistant/session-tutorial/create?tutorialId=${id}"/>
