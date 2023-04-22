@@ -1,7 +1,6 @@
 
 package acme.forms;
 
-import java.util.Date;
 import java.util.Map;
 
 import acme.framework.data.AbstractForm;
@@ -15,7 +14,7 @@ public class CompanyDashboard extends AbstractForm {
 	private static final long		serialVersionUID	= 1L;
 
 	protected Map<String, Integer>	nPracticumByMonthLastYear;
-	protected Map<String, Date>		statisticsPeriodLengthOfTheSessionsInTheirPractica;
-	protected Map<String, Date>		statisticsPeriodLengthOfTheirPractica;
+	protected Map<String, Double>	statisticsPeriodLengthOfTheSessionsInTheirPractica;//average,deviation,min,max
+	protected Map<String, Double>	statisticsPeriodLengthOfTheirPractica;
 
 }

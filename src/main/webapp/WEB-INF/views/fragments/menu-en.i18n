@@ -72,6 +72,7 @@ master.menu.student.dashboard = My dashboard
 master.menu.company = Company
 master.menu.company.favourite-link = Favourite link
 master.menu.company.practicum = Practicum list
+master.menu.company.dashboard = My dashboard
 
 # master.menu.lecturer ##########################################################
 

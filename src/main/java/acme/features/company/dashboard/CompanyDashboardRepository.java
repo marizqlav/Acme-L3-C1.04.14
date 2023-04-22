@@ -1,6 +1,9 @@
 
 package acme.features.company.dashboard;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.framework.repositories.AbstractRepository;
@@ -8,27 +11,39 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface CompanyDashboardRepository extends AbstractRepository {
 
-	//	@Query("select count(distinct l)  from Lecture l inner join CourseLecture cl on l = cl.lecture inner join Course c on cl.course = c where c.lecturer = :lecturer and l.nature = :nature")
-	//	Optional<Integer> findNumOfLecturesByType(Lecturer lecturer, Nature nature);
-	//
-	//	@Query("select avg(l.estimatedLearningTime) from Lecture l inner join CourseLecture cl on l = cl.lecture inner join Course c on cl.course = c where c.lecturer = :lecturer")
-	//	Optional<Double> findAverageLectureLearningTime(Lecturer lecturer);
-	//
-	//	@Query("select max(l.estimatedLearningTime) from Lecture l inner join CourseLecture cl on l = cl.lecture inner join Course c on cl.course = c where c.lecturer = :lecturer")
-	//	Optional<Double> findMaxLectureLearningTime(Lecturer lecturer);
-	//
-	//	@Query("select min(l.estimatedLearningTime) from Lecture l inner join CourseLecture cl on l = cl.lecture inner join Course c on cl.course = c where c.lecturer = :lecturer")
-	//	Optional<Double> findMinLectureLearningTime(Lecturer lecturer);
-	//
-	//	@Query("select stddev(l.estimatedLearningTime) from Lecture l inner join CourseLecture cl on l = cl.lecture inner join Course c on cl.course = c where c.lecturer = :lecturer")
-	//	Optional<Double> findLinearDevLectureLearningTime(Lecturer lecturer);
-	//
-	//	@Query("select l from Lecturer l where l.userAccount.id = :id")
-	//	Lecturer findOneLecturerByUserAccountId(int id);
-	//
-	//	@Query("select ua from UserAccount ua where ua.id = :id")
-	//	UserAccount findOneUserAccountById(int id);
-	//
-	//	@Query("select sum(l.estimatedLearningTime) from Course c join CourseLecture cl on c = cl.course join Lecture l on cl.lecture = l where c.lecturer = :lecturer group by c")
-	//	Collection<Double> findEstimatedLearningTimeByCourse(Lecturer lecturer);
+	//	@Query("select c from Company c where c.userAccount.id = userAccountId")
+	//	Company findCompanyByUserAccountId(int userAccountId);
+
+	@Query("select count(sp) from SessionPracticum sp where sp.practicum.company.id = companyId")
+	Integer findCountSession(int companyId);
+
+	@Query("select avg(datediff(sp.finishDate,sp.startDate)) from SessionPracticum sp where sp.practicum.company.id = companyId")
+	Double findAverageSessionLength(int companyId);
+
+	@Query("select stddev(datediff(sp.finishDate,sp.startDate)) from SessionPracticum  sp where sp.practicum.company.id = companyId")
+	Double findDeviationSessionLength(int companyId);
+
+	@Query("select min(datediff(sp.finishDate,sp.startDate)) from SessionPracticum sp where sp.practicum.company.id = companyId")
+	Double findMinimumSessionLength(int companyId);
+
+	@Query("select max(datediff(sp.finishDate,sp.startDate)) from SessionPracticum sp where sp.practicum.company.id = companyId")
+	Double findMaximumSessionLength(int companyId);
+
+	@Query("select avg((select sum(datediff(sp.finishDate,sp.startDate)) from SessionPracticum sp where sp.practicum.company.id = companyId and sp.practicum.id = p.id)) from Practicum p where p.company.id = companyId")
+	Double findAveragePracticaLength(int companyId);
+
+	@Query("select stddev((select sum(datediff(sp.finishDate,sp.startDate)) from SessionPracticum sp where sp.practicum.company.id = companyId and sp.practicum.id = p.id)) from Practicum p where p.company.id = companyId")
+	Double findDeviationPracticaLength(int companyId);
+
+	@Query("select min((select sum(datediff(sp.finishDate,sp.startDate)) from SessionPracticum sp where sp.practicum.company.id = companyId and sp.practicum.id = p.id)) from Practicum p where p.company.id = companyId")
+	Double findMinimumPracticaLength(int companyId);
+
+	@Query("select max((select sum(datediff(sp.finishDate,sp.startDate)) from SessionPracticum sp where sp.practicum.company.id = companyId and sp.practicum.id = p.id)) from Practicum p where p.company.id = companyId")
+	Double findMaximumPracticaLength(int companyId);
+
+	@Query("select count(p) from Practicum p where p.company.id = companyId")
+	Integer findCountPractica(int companyId);
+
+	@Query("SELECT FUNCTION('MONTH', sp.startDate), COUNT(sp) FROM SessionPracticum sp WHERE sp.practicum.company.id = companyId GROUP BY FUNCTION('MONTH', sp.startDate) ORDER BY COUNT(sp) DESC")
+	List<Object[]> findTotalNumberOfPracticaByMonth(int companyId);
 }
