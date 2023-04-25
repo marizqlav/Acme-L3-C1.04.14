@@ -1,5 +1,5 @@
 
-package acme.features.company.dashboard;
+package acme.features.company.companyDashboard;
 
 import java.time.Month;
 import java.util.HashMap;
@@ -65,10 +65,10 @@ public class CompanyDashboardShowService extends AbstractService<Company, Compan
 		double minimumPracticaLength;
 		double maximumPracticaLength;
 
-		final Map<String, Integer> totalNumberOfPracticaByMonth;
+		final Map<String, Long> totalNumberOfPracticaByMonth;
 
-		//		userAccountId = principal.getAccountId();
-		//		company = this.repository.findCompanyByUserAccountId(userAccountId);
+		userAccountId = principal.getAccountId();
+		company = this.repository.findCompanyByUserAccountId(userAccountId);
 
 		averageSessionPracticumLength = this.repository.findAverageSessionLength(companyId);
 		deviationSessionPracticumLength = this.repository.findDeviationSessionLength(companyId);
@@ -78,8 +78,8 @@ public class CompanyDashboardShowService extends AbstractService<Company, Compan
 		final Map<String, Double> estatisticsPeriodLengthOfTheSessionsInTheirPractica = new HashMap<>();
 		estatisticsPeriodLengthOfTheSessionsInTheirPractica.put("AVERAGE", averageSessionPracticumLength);
 		estatisticsPeriodLengthOfTheSessionsInTheirPractica.put("DEVIATION", deviationSessionPracticumLength);
-		estatisticsPeriodLengthOfTheSessionsInTheirPractica.put("MAX", minimumSessionPracticumLength);
-		estatisticsPeriodLengthOfTheSessionsInTheirPractica.put("MIN", maximumSessionPracticumLength);
+		estatisticsPeriodLengthOfTheSessionsInTheirPractica.put("MIN", minimumSessionPracticumLength);
+		estatisticsPeriodLengthOfTheSessionsInTheirPractica.put("MAX", maximumSessionPracticumLength);
 
 		averagePracticaLength = this.repository.findAveragePracticaLength(companyId);
 		deviationPracticaLength = this.repository.findDeviationPracticaLength(companyId);
@@ -89,11 +89,10 @@ public class CompanyDashboardShowService extends AbstractService<Company, Compan
 		final Map<String, Double> estatisticsPeriodLengthOfTheirPractica = new HashMap<>();
 		estatisticsPeriodLengthOfTheirPractica.put("AVERAGE", averagePracticaLength);
 		estatisticsPeriodLengthOfTheirPractica.put("DEVIATION", deviationPracticaLength);
-		estatisticsPeriodLengthOfTheirPractica.put("MAX", minimumPracticaLength);
-		estatisticsPeriodLengthOfTheirPractica.put("MIN", maximumPracticaLength);
+		estatisticsPeriodLengthOfTheirPractica.put("MIN", minimumPracticaLength);
+		estatisticsPeriodLengthOfTheirPractica.put("MAX", maximumPracticaLength);
 
-		totalNumberOfPracticaByMonth = this.repository.findTotalNumberOfPracticaByMonth(companyId).stream().collect(Collectors.toMap(key -> Month.of((int) key[0]).toString(), value -> (int) value[1]));
-
+		totalNumberOfPracticaByMonth = this.repository.findTotalNumberOfPracticaByMonth(companyId).stream().collect(Collectors.toMap(key -> Month.of((int) key[0]).toString(), value -> (long) value[1]));
 		companyDashboard = new CompanyDashboard();
 
 		companyDashboard.setNPracticumByMonthLastYear(totalNumberOfPracticaByMonth);

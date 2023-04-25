@@ -28,25 +28,25 @@
 			<acme:message code="company.dashboard.form.label.statisticsPeriodLengthOfTheirPractica.average"/>
 		</th>
 		<td>
-			<acme:print value="${statisticsPeriodLengthOfTheirPractica.average}"/>
+			<acme:print value="${statisticsPeriodLengthOfTheirPractica.AVERAGE}"/>
 		</td>
 		<th scope="row">
 			<acme:message code="company.dashboard.form.label.statisticsPeriodLengthOfTheirPractica.minimum"/>
 		</th>
 		<td>
-			<acme:print value="${statisticsPeriodLengthOfTheirPractica.min}"/>
+			<acme:print value="${statisticsPeriodLengthOfTheirPractica.MIN}"/>
 		</td>
 		<th scope="row">
 			<acme:message code="company.dashboard.form.label.statisticsPeriodLengthOfTheirPractica.maximum"/>
 		</th>
 		<td>
-			<acme:print value="${statisticsPeriodLengthOfTheirPractica.max}"/>
+			<acme:print value="${statisticsPeriodLengthOfTheirPractica.MAX}"/>
 		</td>
 		<th scope="row">
 			<acme:message code="company.dashboard.form.label.statisticsPeriodLengthOfTheirPractica.deviation"/>
 		</th>
 		<td>
-			<acme:print value="${statisticsPeriodLengthOfTheirPractica.deviation}"/>
+			<acme:print value="${statisticsPeriodLengthOfTheirPractica.DEVIATION}"/>
 		</td>
 	</tr>
 </table>
@@ -60,25 +60,25 @@
 			<acme:message code="company.dashboard.form.label.statisticsPeriodLengthOfTheSessionsInTheirPractica.average"/>
 		</th>
 		<td>
-			<acme:print value="${statisticsPeriodLengthOfTheSessionsInTheirPractica.average}"/>
+			<acme:print value="${statisticsPeriodLengthOfTheSessionsInTheirPractica.AVERAGE}"/>
 		</td>
 		<th scope="row">
 			<acme:message code="company.dashboard.form.label.statisticsPeriodLengthOfTheSessionsInTheirPractica.minimum"/>
 		</th>
 		<td>
-			<acme:print value="${statisticsPeriodLengthOfTheSessionsInTheirPractica.min}"/>
+			<acme:print value="${statisticsPeriodLengthOfTheSessionsInTheirPractica.MIN}"/>
 		</td>
 		<th scope="row">
 			<acme:message code="company.dashboard.form.label.statisticsPeriodLengthOfTheSessionsInTheirPractica.maximum"/>
 		</th>
 		<td>
-			<acme:print value="${statisticsPeriodLengthOfTheSessionsInTheirPractica.max}"/>
+			<acme:print value="${statisticsPeriodLengthOfTheSessionsInTheirPractica.MAX}"/>
 		</td>
 		<th scope="row">
 			<acme:message code="company.dashboard.form.label.statisticsPeriodLengthOfTheSessionsInTheirPractica.deviation"/>
 		</th>
 		<td>
-			<acme:print value="${statisticsPeriodLengthOfTheSessionsInTheirPractica.deviation}"/>
+			<acme:print value="${statisticsPeriodLengthOfTheSessionsInTheirPractica.DEVIATION}"/>
 		</td>
 	</tr>
 </table>

@@ -72,7 +72,7 @@ master.menu.student.dashboard = Mi panel
 master.menu.company = Compañía
 master.menu.company.favourite-link = Enlace favorito
 master.menu.company.practicum = Lista de practicas
-master.menu.company.dashboard = Mi panel
+master.menu.company.companyDashboard = Mi panel
 
 # master.menu.lecturer ##########################################################
 
