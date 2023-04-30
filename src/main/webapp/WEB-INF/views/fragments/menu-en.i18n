@@ -104,6 +104,7 @@ master.menu.auditor = Auditor
 master.menu.auditor.list.audits = My audits
 master.menu.list.audits-by-course = List audits by course
 master.menu.auditor.list.auditingRecords = My auditing records
+master.menu.auditor.list.auditor-dashboard = My dashboard
 
 master.menu.user-account.become-assistant = Become an assistant
 master.menu.user-account.company = Company profile data
