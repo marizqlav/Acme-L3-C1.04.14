@@ -29,18 +29,18 @@ public class CompanyDashboardShowService extends AbstractService<Company, Compan
 
 	@Override
 	public void authorise() {
-		//		boolean status;
-		//		Company company;
-		//		Principal principal;
-		//		int userAccountId;
-		//
-		//		principal = super.getRequest().getPrincipal();
-		//		userAccountId = principal.getAccountId();
-		//		company = this.repository.findCompanyByUserAccountId(userAccountId);
-		//
-		//		status = company != null && principal.hasRole(Company.class);
+		boolean status;
+		Company company;
+		Principal principal;
+		int userAccountId;
 
-		super.getResponse().setAuthorised(true);
+		principal = super.getRequest().getPrincipal();
+		userAccountId = principal.getAccountId();
+		company = this.repository.findCompanyByUserAccountId(userAccountId);
+
+		status = company != null && principal.hasRole(Company.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
