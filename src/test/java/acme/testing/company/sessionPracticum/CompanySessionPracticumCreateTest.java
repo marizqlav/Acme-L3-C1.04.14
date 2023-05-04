@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.testing.company.practicum;
+package acme.testing.company.sessionPracticum;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,10 +18,10 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 
 import acme.testing.TestHarness;
 
-public class CompanyPracticumCreateTest extends TestHarness {
+public class CompanySessionPracticumCreateTest extends TestHarness {
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/company/practicum/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@CsvFileSource(resources = "/company/session-practicum/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	//	@Order(10)
 	public void positiveTest(final int recordIndex, final String code, final String title, final String abstractPracticum, final String someGoals, final String course) {
 
@@ -53,7 +53,7 @@ public class CompanyPracticumCreateTest extends TestHarness {
 	}
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/company/practicum/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@CsvFileSource(resources = "/company/session-practicum/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	//	@Order(20)
 	public void negativeTest(final int recordIndex, final String code, final String title, final String abstractPracticum, final String someGoals) {
 

@@ -1,5 +1,5 @@
 
-package acme.testing.company.practicum;
+package acme.testing.company.sessionPracticum;
 
 import java.util.Collection;
 
@@ -12,14 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.entities.practicum.Practicum;
 import acme.testing.TestHarness;
 
-public class CompanyPracticumUpdateTest extends TestHarness {
+public class CompanySessionPracticumUpdateTest extends TestHarness {
 
 	@Autowired
-	protected CompanyPracticumTestRepository repository;
+	protected CompanySessionPracticumTestRepository repository;
 
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/company/practicum/update-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@CsvFileSource(resources = "/company/session-practicum/update-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
 	public void positiveTest(final int recordIndex, final String code, final String title, final String abstractPracticum, final String someGoals) {
 		super.signIn("company1", "company1");
@@ -52,7 +52,7 @@ public class CompanyPracticumUpdateTest extends TestHarness {
 	}
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/company/practicum/update-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@CsvFileSource(resources = "/company/session-practicum/update-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(20)
 	public void negativeTest(final int recordIndex, final String code, final String title, final String abstractPracticum, final String someGoals) {
 		super.signIn("company1", "company1");
