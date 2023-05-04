@@ -46,8 +46,6 @@ public class CompanyDashboardShowService extends AbstractService<Company, Compan
 	@Override
 	public void load() {
 		CompanyDashboard companyDashboard;
-		final int userAccountId;
-		final Company company;
 
 		Principal principal;
 		int companyId;
@@ -66,9 +64,6 @@ public class CompanyDashboardShowService extends AbstractService<Company, Compan
 		double maximumPracticaLength;
 
 		final Map<String, Long> totalNumberOfPracticaByMonth;
-
-		userAccountId = principal.getAccountId();
-		company = this.repository.findCompanyByUserAccountId(userAccountId);
 
 		averageSessionPracticumLength = this.repository.findAverageSessionLength(companyId);
 		deviationSessionPracticumLength = this.repository.findDeviationSessionLength(companyId);
