@@ -12,34 +12,43 @@
 
 package acme.testing.company.sessionPracticum;
 
+import java.util.Collection;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.entities.sessionPracticum.SessionPracticum;
 import acme.testing.TestHarness;
 
 public class CompanySessionPracticumShowTest extends TestHarness {
 
+	@Autowired
+	protected CompanySessionPracticumTestRepository repository;
+
+
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/session-practicum/show-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test100Positive(final int recordIndex, final String code, final String title, final String abstractPracticum, final String someGoals, final String draftMode) {
+	public void test100Positive(final int recordIndex, final String title, final String abstractSessionPracticum, final String startDate, final String finishDate, final String link) {
 		// HINT: this test signs in as an employer, lists all of the jobs, click on  
 		// HINT+ one of them, and checks that the form has the expected data.
 
 		super.signIn("company1", "company1");
 		super.clickOnMenu("Company", "Practicum list");
 		super.checkListingExists();
-		super.sortListing(1, "asc");
+		super.sortListing(0, "asc");
 
-		super.checkColumnHasValue(recordIndex, 0, code);
-		super.checkColumnHasValue(recordIndex, 1, title);
+		super.checkColumnHasValue(recordIndex, 0, title);
+		super.checkColumnHasValue(recordIndex, 1, abstractSessionPracticum);
 		super.clickOnListingRecord(recordIndex);
 
 		super.checkFormExists();
-		super.checkInputBoxHasValue("code", code);
 		super.checkInputBoxHasValue("title", title);
-		super.checkInputBoxHasValue("abstractPracticum", abstractPracticum);
-		super.checkInputBoxHasValue("someGoals", someGoals);
+		super.checkInputBoxHasValue("abstractSessionPracticum", abstractSessionPracticum);
+		super.checkInputBoxHasValue("startDate", startDate);
+		super.checkInputBoxHasValue("finishDate", finishDate);
+		super.checkInputBoxHasValue("link", link);
 
 		super.checkButtonExists("List Session Practicum");
 		super.clickOnButton("List Session Practicum");
@@ -53,38 +62,30 @@ public class CompanySessionPracticumShowTest extends TestHarness {
 		// HINT+ that doesn't involve entering any data in any forms.
 	}
 
-	//	@Test
-	//	public void test300Hacking() {
-	//		// HINT: this test tries to show an unpublished job by someone who is not the principal.
-	// HINT+ a) estando logueado como companyX no poder ver los detalles de una recipe que no sea suyo;
+	@Test
+	public void test300Hacking() {
+		Collection<SessionPracticum> sessionPracticums;
+		String param;
 
-	//		Collection<Job> jobs;
-	//		String param;
-	//
-	//		jobs = this.repository.findManyJobsByEmployerUsername("employer1");
-	//		for (final Job job : jobs)
-	//			if (job.isDraftMode()) {
-	//				param = String.format("id=%d", job.getId());
-	//
-	//				super.checkLinkExists("Sign in");
-	//				super.request("/employer/job/show", param);
-	//				super.checkPanicExists();
-	//
-	//				super.signIn("administrator", "administrator");
-	//				super.request("/employer/job/show", param);
-	//				super.checkPanicExists();
-	//				super.signOut();
-	//
-	//				super.signIn("employer2", "employer2");
-	//				super.request("/employer/job/show", param);
-	//				super.checkPanicExists();
-	//				super.signOut();
-	//
-	//				super.signIn("worker1", "worker1");
-	//				super.request("/employer/job/show", param);
-	//				super.checkPanicExists();
-	//				super.signOut();
-	//			}
-	//	}
+		sessionPracticums = this.repository.findManySesionsPracticumByCompanyUsername("company1");
+		for (final SessionPracticum sessionPracticum : sessionPracticums)
+			if (sessionPracticum.getDraftMode()) {
+				param = String.format("id=%d", sessionPracticum.getId());
+
+				super.checkLinkExists("Sign in");
+				super.request("/company/session-practicum/show", param);
+				super.checkPanicExists();
+
+				super.signIn("administrator1", "administrator1");
+				super.request("/company/session-practicum/show", param);
+				super.checkPanicExists();
+				super.signOut();
+
+				super.signIn("company2", "company2");
+				super.request("/company/session-practicum/show", param);
+				super.checkPanicExists();
+				super.signOut();
+			}
+	}
 
 }

@@ -23,8 +23,4 @@ public interface CompanyPracticumTestRepository extends AbstractRepository {
 
 	@Query("select p from Practicum p where p.company.userAccount.username = :username")
 	Collection<Practicum> findManyPracticumsByCompanyUsername(String username);
-
-	//	@Query("select sp from SessionPracticum sp where sp.practicum.company.userAccount.username = :username")
-	//	Collection<SessionPracticum> findManySessionPracticumByCompanyUsername(String username);
-
 }

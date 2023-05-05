@@ -80,10 +80,6 @@ public class CompanyPracticumShowTest extends TestHarness {
 	//				super.checkPanicExists();
 	//				super.signOut();
 	//
-	//				super.signIn("worker1", "worker1");
-	//				super.request("/employer/job/show", param);
-	//				super.checkPanicExists();
-	//				super.signOut();
 	//			}
 	//	}
 

@@ -17,6 +17,7 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 
 import acme.entities.practicum.Practicum;
+import acme.entities.sessionPracticum.SessionPracticum;
 import acme.framework.repositories.AbstractRepository;
 
 public interface CompanySessionPracticumTestRepository extends AbstractRepository {
@@ -24,7 +25,7 @@ public interface CompanySessionPracticumTestRepository extends AbstractRepositor
 	@Query("select p from Practicum p where p.company.userAccount.username = :username")
 	Collection<Practicum> findManyPracticumsByCompanyUsername(String username);
 
-	//	@Query("select sp from SessionPracticum sp where sp.practicum.company.userAccount.username = :username")
-	//	Collection<SessionPracticum> findManySessionPracticumByCompanyUsername(String username);
+	@Query("select sp from SessionPracticum sp where sp.practicum.company.userAccount.username = :username")
+	Collection<SessionPracticum> findManySesionsPracticumByCompanyUsername(String username);
 
 }

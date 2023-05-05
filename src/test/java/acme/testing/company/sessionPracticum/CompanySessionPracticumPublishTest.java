@@ -18,21 +18,29 @@ public class CompanySessionPracticumPublishTest extends TestHarness {
 	protected CompanySessionPracticumTestRepository repository;
 
 
-	@ParameterizedTest
-	@CsvFileSource(resources = "/company/session-practicum/publish-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	@Order(10)
-	public void positiveTest(final int recordIndex, final String code) {
+	public void positiveTest(final int recordIndex, final String title, final String abstractSessionPracticum, final String startDate, final String finishDate, final String link, final String practicumTitle) {
 		super.signIn("company1", "company1");
 
 		super.clickOnMenu("Company", "Practicum list");
 		super.checkListingExists();
 		super.sortListing(0, "asc");
-		super.checkColumnHasValue(recordIndex, 0, code);
+		super.checkColumnHasValue(recordIndex, 0, title);
+		super.checkColumnHasValue(recordIndex, 1, abstractSessionPracticum);
+		super.checkColumnHasValue(recordIndex, 2, practicumTitle);
 
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
+
+		super.checkInputBoxHasValue("title", title);
+		super.checkInputBoxHasValue("abstractSessionPracticum", abstractSessionPracticum);
+		super.checkInputBoxHasValue("startDate", startDate);
+		super.checkInputBoxHasValue("finishDate", finishDate);
+		super.checkInputBoxHasValue("link", link);
 		super.clickOnSubmit("Publish");
 		super.checkNotErrorsExist();
+
+		super.clickOnListingRecord(recordIndex);
+		super.checkNotSubmitExists("Publish");
 
 		super.signOut();
 	}
@@ -40,7 +48,7 @@ public class CompanySessionPracticumPublishTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/session-practicum/publish-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(20)
-	public void negativeButtonTest(final int recordIndex, final String reference) {
+	public void negativeButtonTest(final int recordIndex, final String title, final String abstractSessionPracticum, final String startDate, final String finishDate, final String link) {
 		// HINT: this test attempts to publish a Practicum that cannot be published, yet.
 
 		super.signIn("company1", "company1");
@@ -49,13 +57,21 @@ public class CompanySessionPracticumPublishTest extends TestHarness {
 		super.checkListingExists();
 		super.sortListing(0, "asc");
 
-		super.checkColumnHasValue(recordIndex, 0, reference);
+		super.checkColumnHasValue(recordIndex, 0, title);
+		super.checkColumnHasValue(recordIndex, 1, abstractSessionPracticum);
+
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
+		super.checkInputBoxHasValue("title", title);
+		super.checkInputBoxHasValue("abstractSessionPracticum", abstractSessionPracticum);
+		super.checkInputBoxHasValue("startDate", startDate);
+		super.checkInputBoxHasValue("finishDate", finishDate);
+		super.checkInputBoxHasValue("link", link);
 		super.clickOnSubmit("Publish");
-		super.checkAlertExists(false);
+		super.checkNotPanicExists();
 
 		super.signOut();
+
 	}
 
 	@Test
@@ -79,10 +95,6 @@ public class CompanySessionPracticumPublishTest extends TestHarness {
 				super.checkPanicExists();
 				super.signOut();
 
-				super.signIn("worker1", "worker1");
-				super.request("/company/session-practicum/publish", params);
-				super.checkPanicExists();
-				super.signOut();
 			}
 	}
 

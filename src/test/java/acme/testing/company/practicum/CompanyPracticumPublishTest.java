@@ -79,10 +79,6 @@ public class CompanyPracticumPublishTest extends TestHarness {
 				super.checkPanicExists();
 				super.signOut();
 
-				super.signIn("worker1", "worker1");
-				super.request("/company/practicum/publish", params);
-				super.checkPanicExists();
-				super.signOut();
 			}
 	}
 

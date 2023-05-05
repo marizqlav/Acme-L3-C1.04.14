@@ -1,4 +1,4 @@
-recordIndex,code,title,abstractPracticum,someGoals,course
-3,AZA020,valid,tiburones,el someGoals del Practicum va a ocupar ciento uno caracteres para que se valide como maximo tiene 101,Courseeeeeeeeeeeeeeeeeeeeeee Title 9
-4,AZF020,El titulo de esta practica va a ocupar setenta y seis caracteres como maximo,abstract,Top cuarenta,Courseeeeeeeeeeeeeeeeeeeeeee Title 9
-5,AZV020,va,El abstract del Practicum va a ocupar ciento uno caracteres y para que se valide como maximo tiene101,vi,Courseeeeeeeeeeeeeeeeeeeeeee Title 9
+recordIndex,title,abstractPracticum,someGoals
+19,valid,tiburones,el someGoals del Practicum va a ocupar ciento uno caracteres para que se valide como maximo tiene101
+20,El titulo de esta practica va a ocupar setenta y seis caracteres como maximo,abstract,Top cuarenta
+21,va,El abstract del Practicum va a ocupar ciento uno caracteres y para que se valide como maximo tiene101,vi

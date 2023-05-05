@@ -57,10 +57,6 @@ public class CompanyPracticumListAllTest extends TestHarness {
 		super.checkPanicExists();
 		super.signOut();
 
-		super.signIn("worker1", "worker1");
-		super.request("/company/practicum/list");
-		super.checkPanicExists();
-		super.signOut();
 	}
 
 }

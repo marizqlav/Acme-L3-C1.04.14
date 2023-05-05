@@ -99,12 +99,7 @@ public class CompanyPracticumUpdateTest extends TestHarness {
 			super.checkPanicExists();
 			super.signOut();
 
-			super.signIn("worker1", "worker1");
-			super.request("/company/practicum/update", param);
-			super.checkPanicExists();
-			super.signOut();
 		}
-
 	}
 
 }

@@ -12,20 +12,24 @@ public class CompanySessionPracticumDeleteTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/session-practicum/delete-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void positiveTest(final int recordIndex, final String code, final String title, final String abstractPracticum, final String someGoals) {
+	public void positiveTest(final int recordIndex, final String title, final String abstractSessionPracticum, final String startDate, final String finishDate, final String link) {
 
 		super.signIn("company1", "company1");
-		super.clickOnMenu("Company", "Practicum list");
 
+		super.clickOnMenu("Company", "Practicum list");
 		super.checkListingExists();
-		super.sortListing(1, "asc");
+		super.sortListing(0, "asc");
+
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
+		super.clickOnButton("List Session Practicum");
 
-		super.checkInputBoxHasValue("code", code);
 		super.checkInputBoxHasValue("title", title);
-		super.checkInputBoxHasValue("abstractPracticum", abstractPracticum);
-		super.checkInputBoxHasValue("preparationNotes", someGoals);
+		super.checkInputBoxHasValue("abstractSessionPracticum", abstractSessionPracticum);
+		super.checkInputBoxHasValue("startDate", startDate);
+		super.checkInputBoxHasValue("finishDate", finishDate);
+		super.checkInputBoxHasValue("link", link);
+
 		super.clickOnSubmit("Delete");
 
 		super.checkListingExists();
