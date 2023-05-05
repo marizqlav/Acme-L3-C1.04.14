@@ -40,7 +40,7 @@ public class CompanyPracticumPublishTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/practicum/publish-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(20)
-	public void negativeButtonTest(final int recordIndex, final String reference) {
+	public void negativeButtonTest(final int recordIndex, final String code) {
 		// HINT: this test attempts to publish a Practicum that cannot be published, yet.
 
 		super.signIn("company1", "company1");
@@ -49,10 +49,11 @@ public class CompanyPracticumPublishTest extends TestHarness {
 		super.checkListingExists();
 		super.sortListing(0, "asc");
 
-		super.checkColumnHasValue(recordIndex, 0, reference);
+		super.checkColumnHasValue(recordIndex, 0, code);
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
 		super.clickOnSubmit("Publish");
+		//		Da error el checkAlertExists
 		super.checkAlertExists(false);
 
 		super.signOut();

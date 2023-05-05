@@ -12,17 +12,25 @@
 
 package acme.testing.company.practicum;
 
+import java.util.Collection;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.entities.practicum.Practicum;
 import acme.testing.TestHarness;
 
 public class CompanyPracticumShowTest extends TestHarness {
 
+	@Autowired
+	protected CompanyPracticumTestRepository repository;
+
+
 	@ParameterizedTest
-	@CsvFileSource(resources = "/company/practicum/show-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test100Positive(final int recordIndex, final String code, final String title, final String abstractPracticum, final String someGoals, final String draftMode) {
+	@CsvFileSource(resources = "/company/practicum/show.csv", encoding = "utf-8", numLinesToSkip = 1)
+	public void test100Positive(final int recordIndex, final String code, final String title, final String abstractPracticum, final String someGoals) {
 		// HINT: this test signs in as an employer, lists all of the jobs, click on  
 		// HINT+ one of them, and checks that the form has the expected data.
 
@@ -53,34 +61,34 @@ public class CompanyPracticumShowTest extends TestHarness {
 		// HINT+ that doesn't involve entering any data in any forms.
 	}
 
-	//	@Test
-	//	public void test300Hacking() {
-	//		// HINT: this test tries to show an unpublished job by someone who is not the principal.
-	// HINT+ a) estando logueado como companyX no poder ver los detalles de una recipe que no sea suyo;
+	@Test
+	public void test300Hacking() {
+		// HINT: this test tries to show an unpublished job by someone who is not the principal.
+		// HINT+ a) estando logueado como companyX no poder ver los detalles de una recipe que no sea suyo;
 
-	//		Collection<Job> jobs;
-	//		String param;
-	//
-	//		jobs = this.repository.findManyJobsByEmployerUsername("employer1");
-	//		for (final Job job : jobs)
-	//			if (job.isDraftMode()) {
-	//				param = String.format("id=%d", job.getId());
-	//
-	//				super.checkLinkExists("Sign in");
-	//				super.request("/employer/job/show", param);
-	//				super.checkPanicExists();
-	//
-	//				super.signIn("administrator", "administrator");
-	//				super.request("/employer/job/show", param);
-	//				super.checkPanicExists();
-	//				super.signOut();
-	//
-	//				super.signIn("employer2", "employer2");
-	//				super.request("/employer/job/show", param);
-	//				super.checkPanicExists();
-	//				super.signOut();
-	//
-	//			}
-	//	}
+		Collection<Practicum> practicums;
+		String param;
+
+		practicums = this.repository.findManyPracticumsByCompanyUsername("company1");
+		for (final Practicum practicum : practicums)
+			if (practicum.getDraftMode()) {
+				param = String.format("id=%d", practicum.getId());
+
+				super.checkLinkExists("Sign in");
+				super.request("/company/practicum/show", param);
+				super.checkPanicExists();
+
+				super.signIn("administrator1", "administrator1");
+				super.request("/company/practicum/show", param);
+				super.checkPanicExists();
+				super.signOut();
+
+				super.signIn("company2", "company2");
+				super.request("/company/practicum/show", param);
+				super.checkPanicExists();
+				super.signOut();
+
+			}
+	}
 
 }

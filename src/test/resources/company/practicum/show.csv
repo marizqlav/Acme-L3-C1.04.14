@@ -1,4 +1,5 @@
-recordIndex,code,title,abstractPracticum,someGoals,draftMode
-0,WWW987,Hello title,This practicum is used to say hello,no assemble-notes to shown,The Recipe is not draftMode equal to false
-1,CVS742,Hello title 2,This practicum is used to say hello to loud,first you must take experience,The Recipe is not draftMode equal to false
-2,MRD571,Hello title kit,This practicum is used to say hello in different ways,you should follow the instructions to prepare it,The Recipe is not draftMode equal to false
+recordIndex,code,title,abstractPracticum,someGoals
+0,AAA004,<h1>hola</h1>,Resumen Practica,Top cuarenta
+1,AAA007,<script>alert('Practicum')</script>,Resumen Practica,Top cuarenta
+2,AAA001,?????,Resumen Practica,Top cuarenta
+
