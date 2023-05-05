@@ -21,7 +21,7 @@
 	<acme:input-textbox code="authenticated.bulletin.form.label.title" readonly="true" path="title"/>	
 	<acme:input-textarea code="authenticated.bulletin.form.label.date" readonly="true" path="date"/>
 	<acme:input-textarea code="authenticated.bulletin.form.label.message" readonly="true" path="message"/>
-	<acme:input-money code="authenticated.bulletin.form.critical" readonly="true" path="critical"/>
+	<acme:input-textarea code="authenticated.bulletin.form.critical" readonly="true" path="critical"/>
 	<jstl:if test="${!link.isEmpty()}">
 		<acme:input-url code="authenticated.bulletin.form.label.link" readonly="true" path="link"/>
 	</jstl:if>
