@@ -25,7 +25,7 @@ public class CompanyPracticumDeleteTest extends TestHarness {
 		super.checkInputBoxHasValue("code", code);
 		super.checkInputBoxHasValue("title", title);
 		super.checkInputBoxHasValue("abstractPracticum", abstractPracticum);
-		super.checkInputBoxHasValue("preparationNotes", someGoals);
+		super.checkInputBoxHasValue("someGoals", someGoals);
 		super.clickOnSubmit("Delete");
 
 		super.checkListingExists();
