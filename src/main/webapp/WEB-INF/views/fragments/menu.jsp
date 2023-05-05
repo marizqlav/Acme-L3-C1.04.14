@@ -30,6 +30,7 @@
 			<acme:menu-suboption code="master.menu.authenticated.offer.list" action="/authenticated/offer/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.note.list" action="/authenticated/note/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.course.list" action="/authenticated/course/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.bulletin.list" action="/authenticated/bulletin/list"/>
 			<acme:menu-suboption code="master.menu.list.audits-by-course" action="/authenticated/audit/list-by-course"/>
 		</acme:menu-option>
     <acme:menu-option code="master.menu.any.peeps" action="/any/peep/list"/>

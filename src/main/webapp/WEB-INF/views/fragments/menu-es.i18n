@@ -48,6 +48,7 @@ master.menu.authenticated.offer.list = Lista oferta
 master.menu.authenticated.practicum.list = Lista practicas 
 master.menu.authenticated.note.list = Lista notas
 master.menu.authenticated.course.list = Lista cursos
+master.menu.authenticated.bulletin.list = Lista de boletines
 
 # master.menu.provider ########################################################
 
