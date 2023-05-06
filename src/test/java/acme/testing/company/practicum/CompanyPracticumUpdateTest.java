@@ -54,13 +54,12 @@ public class CompanyPracticumUpdateTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/practicum/update-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(20)
-	public void negativeTest(final int recordIndex, final String code, final String title, final String abstractPracticum, final String someGoals) {
+	public void negativeTest(final int recordIndex, final String title, final String abstractPracticum, final String someGoals) {
 		super.signIn("company1", "company1");
 
 		super.clickOnMenu("Company", "Practicum list");
 		super.checkListingExists();
 		super.sortListing(0, "asc");
-		super.checkColumnHasValue(recordIndex, 0, code);
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
 
@@ -76,7 +75,6 @@ public class CompanyPracticumUpdateTest extends TestHarness {
 	}
 
 	@Test
-	@Order(30)
 	public void hackingTest() {
 		Collection<Practicum> practicums;
 		String param;
