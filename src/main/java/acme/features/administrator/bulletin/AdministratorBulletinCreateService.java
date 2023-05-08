@@ -1,6 +1,8 @@
 
 package acme.features.administrator.bulletin;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +32,10 @@ public class AdministratorBulletinCreateService extends AbstractService<Administ
 	@Override
 	public void load() {
 		final Bulletin bulletin = new Bulletin();
+		Date moment;
 
+		moment = MomentHelper.getCurrentMoment();
+		bulletin.setDate(moment);
 		super.getBuffer().setData(bulletin);
 	}
 
@@ -47,12 +52,20 @@ public class AdministratorBulletinCreateService extends AbstractService<Administ
 	public void validate(final Bulletin bulletin) {
 		assert bulletin != null;
 
+		boolean confirmation;
+
+		confirmation = super.getRequest().getData("confirmation", boolean.class);
+		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
+
 	}
 
 	@Override
 	public void perform(final Bulletin bulletin) {
 		assert bulletin != null;
+		Date moment;
 
+		moment = MomentHelper.getCurrentMoment();
+		bulletin.setDate(moment);
 		this.repo.save(bulletin);
 	}
 
@@ -63,7 +76,7 @@ public class AdministratorBulletinCreateService extends AbstractService<Administ
 		Tuple tuple;
 
 		tuple = super.unbind(bulletin, "title", "date", "message", "critical", "link");
-
+		tuple.put("confirmation", false);
 		super.getResponse().setData(tuple);
 	}
 }

@@ -18,9 +18,11 @@
 
 <acme:form>
 <h1><acme:message code="administrator.bulletin.data"/></h1>
+
 	<acme:input-textbox code="administrator.bulletin.form.label.title"   path="title"/>	
 	<acme:input-textarea code="administrator.bulletin.form.label.message"   path="message"/>
-	<acme:input-textarea code="administrator.bulletin.form.critical"   path="critical"/>
+	<acme:input-checkbox code="administrator.bulletin.form.critical"   path="critical"/>
+	<acme:input-moment code="authenticated.note.form.label.instantiationMoment" path="date" readonly="true"/>	
 	<jstl:if test="${!link.isEmpty()}">
 		<acme:input-url code="administrator.bulletin.form.label.link"   path="link"/>
 	</jstl:if>
