@@ -43,12 +43,16 @@ public class CompanyPracticumCreateTest extends TestHarness {
 		super.checkListingExists();
 		super.sortListing(0, "asc");
 		super.checkColumnHasValue(recordIndex, 1, title);
-		super.clickOnListingRecord(recordIndex);
 
+		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
 		super.checkInputBoxHasValue("title", title);
 		super.checkInputBoxHasValue("abstractPracticum", abstractPracticum);
 		super.checkInputBoxHasValue("someGoals", someGoals);
+
+		super.clickOnButton("List Session Practicum");
+		super.checkListingExists();
+		super.checkListingEmpty();
 
 		super.signOut();
 	}
