@@ -78,7 +78,7 @@ public class CompanyPracticumDeleteService extends AbstractService<Company, Prac
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findCourseById(courseId);
 
-		super.bind(object, "code", "title", "abstractPracticum", "someGoals", "estimatedTime");
+		super.bind(object, "code", "title", "abstractPracticum", "someGoals", "estimatedTimeMenos", "estimatedTimeMas");
 		object.setCourse(course);
 	}
 
@@ -109,7 +109,7 @@ public class CompanyPracticumDeleteService extends AbstractService<Company, Prac
 		courses = this.repository.findAllCourses();
 		choices = SelectChoices.from(courses, "code", object.getCourse());
 
-		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals", "estimatedTime", "draftMode");
+		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals", "estimatedTimeMenos", "estimatedTimeMas", "draftMode");
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
 

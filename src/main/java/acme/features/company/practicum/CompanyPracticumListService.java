@@ -58,12 +58,15 @@ public class CompanyPracticumListService extends AbstractService<Company, Practi
 		final Collection<SessionPracticum> sessions;
 
 		sessions = this.repository.findSessionPracticumByPracticumId(object.getId());
-		final Double estimatedTime = object.estimatedTime(sessions);
+		final Double estimatedTimeMenos = object.estimatedTimeMenos(sessions);
+		final Double estimatedTimeMas = object.estimatedTimeMas(sessions);
+
 		Tuple tuple;
 
 		tuple = super.unbind(object, "code", "title");
 		tuple.put("courseCode", object.getCourse().getCode());
-		tuple.put("estimatedTime", estimatedTime);
+		tuple.put("estimatedTimeMenos", estimatedTimeMenos);
+		tuple.put("estimatedTimeMas", estimatedTimeMas);
 
 		super.getResponse().setData(tuple);
 	}
