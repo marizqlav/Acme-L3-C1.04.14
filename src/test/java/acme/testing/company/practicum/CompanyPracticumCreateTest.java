@@ -15,24 +15,21 @@ package acme.testing.company.practicum;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import org.openqa.selenium.By;
 
-import acme.framework.testing.BrowserDriver;
 import acme.testing.TestHarness;
 
 public class CompanyPracticumCreateTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/practicum/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void positiveTest(final int recordIndex, final String title, final String abstractPracticum, final String someGoals) {
+	public void positiveTest(final int recordIndex, final String course, final String title, final String abstractPracticum, final String someGoals) {
 
 		super.signIn("company1", "company1");
 		super.clickOnMenu("Company", "Practicum list");
 
 		super.checkListingExists();
 		super.clickOnButton("Create");
-		final BrowserDriver driver = super.getDriver();
-		driver.locateOne(By.xpath("/html/body/div[2]/div/form/div[2]/select/option[3]")).click();
+		super.fillInputBoxIn("course", course);
 		super.fillInputBoxIn("title", title);
 		super.fillInputBoxIn("abstractPracticum", abstractPracticum);
 		super.fillInputBoxIn("someGoals", someGoals);
@@ -58,16 +55,14 @@ public class CompanyPracticumCreateTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/practicum/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	//	@Order(20)
-	public void negativeTest(final int recordIndex, final String title, final String abstractPracticum, final String someGoals) {
+	public void negativeTest(final int recordIndex, final String course, final String title, final String abstractPracticum, final String someGoals) {
 
 		super.signIn("company1", "company1");
 		super.clickOnMenu("Company", "Practicum list");
 		super.clickOnButton("Create");
 		super.checkFormExists();
 
-		final BrowserDriver driver = super.getDriver();
-		driver.locateOne(By.xpath("/html/body/div[2]/div/form/div[2]/select/option[3]")).click();
+		super.fillInputBoxIn("course", course);
 		super.fillInputBoxIn("title", title);
 		super.fillInputBoxIn("abstractPracticum", abstractPracticum);
 		super.fillInputBoxIn("someGoals", someGoals);
@@ -77,7 +72,6 @@ public class CompanyPracticumCreateTest extends TestHarness {
 		super.signOut();
 	}
 
-	//	@Order(30)
 	@Test
 	public void test300Hacking() {
 		// HINT: this test tries to create a job using principals with
