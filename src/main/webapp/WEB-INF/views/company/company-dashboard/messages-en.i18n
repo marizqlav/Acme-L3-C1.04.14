@@ -1,0 +1,25 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2023 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+company.dashboard.form.title.general-indicators = General indicators
+
+company.dashboard.form.title.statisticsPeriodLengthOfTheirPractica = Statistics Period Length Of Their Practica
+company.dashboard.form.label.statisticsPeriodLengthOfTheirPractica.average = Statistics Period Length Of Their Practica Average
+company.dashboard.form.label.statisticsPeriodLengthOfTheirPractica.minimum = Statistics Period Length Of Their Practica Minimum
+company.dashboard.form.label.statisticsPeriodLengthOfTheirPractica.maximum = Statistics Period Length Of Their Practica Maximum
+company.dashboard.form.label.statisticsPeriodLengthOfTheirPractica.deviation = Statistics Period Length Of Their Practica Deviation
+
+company.dashboard.form.title.statisticsPeriodLengthOfTheSessionsInTheirPractica = Statistics Period Length Of The Sessions In Their Practica
+company.dashboard.form.label.statisticsPeriodLengthOfTheSessionsInTheirPractica.average = Statistics Period Length Of The Sessions In Their Practica Average
+company.dashboard.form.label.statisticsPeriodLengthOfTheSessionsInTheirPractica.minimum = Statistics Period Length Of The Sessions In Their Practica Minimum
+company.dashboard.form.label.statisticsPeriodLengthOfTheSessionsInTheirPractica.maximum = Statistics Period Length Of The Sessions In Their Practica Maximum
+company.dashboard.form.label.statisticsPeriodLengthOfTheSessionsInTheirPractica.deviation = Statistics Period Length Of The Sessions In Their Practica Deviation
+
+company.dashboard.form.title.nPracticumByMonthLastYear = Total number of practica by month last year

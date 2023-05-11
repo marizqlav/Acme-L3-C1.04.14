@@ -64,6 +64,7 @@
 			<acme:menu-suboption code="master.menu.company.favourite-link" action="https://www.informatica.us.es/"/>
 			<acme:menu-separator/>	
 			<acme:menu-suboption code="master.menu.company.practicum" action="/company/practicum/list"/>
+			<acme:menu-suboption code="master.menu.company.companyDashboard" action="/company/company-dashboard/show"/>
 		</acme:menu-option>
 
 		
