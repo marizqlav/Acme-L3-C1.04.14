@@ -47,9 +47,7 @@ public class AuditorAuditingRecordListService extends AbstractService<Auditor, A
 		tuple = super.unbind(auditingRecord, "subject", "assesment", "assesmentStartDate", "assesmentEndDate", "mark");
 
 		if (auditingRecord.isCorrection()) {
-			tuple.put("correction", "XXXXXX");
-		} else {
-			tuple.put("correction", "");
+			tuple.replace("subject", "* " + tuple.get("subject"));
 		}
 
 		super.getResponse().setData(tuple);
