@@ -88,7 +88,7 @@ public class CompanySessionPracticumUpdateService extends AbstractService<Compan
 		assert object != null;
 		Tuple tuple;
 
-		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link", "draftMode", "addendum");
+		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
 
 		super.getResponse().setData(tuple);
 	}
