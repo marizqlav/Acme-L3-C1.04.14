@@ -40,6 +40,7 @@ master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema
 master.menu.administrator.system-configuration = Mostrar configuración del sistema
 master.menu.administrator.list-offers = Lista ofertas
+master.menu.administrator.bulletin.create = Crear boletín
 
 
 # master.menu.authenticated #######################################################
@@ -48,6 +49,7 @@ master.menu.authenticated = Authenticated
 master.menu.authenticated.offer.list = Lista oferta
 master.menu.authenticated.note.list = Lista notas
 master.menu.authenticated.course.list = Lista cursos
+master.menu.authenticated.bulletin.list = Lista de boletines
 
 # master.menu.provider ########################################################
 
