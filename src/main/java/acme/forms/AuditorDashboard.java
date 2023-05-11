@@ -16,7 +16,7 @@ public class AuditorDashboard extends AbstractForm {
 
 	Integer						nTheoryAudits;
 	Integer						nHandsOnAudits;
-	Map<String, Double>			averageDeviationMinMaxAuditingRecordsOfAudit;
-	Map<String, Double>			averageDeviationMinMaxOfPeriodOfAudit;
+	Map<String, Double>			auditingRecordsStatistics;
+	Map<String, Double>			PeriodOfAuditingRecordsStatistics;
 
 }

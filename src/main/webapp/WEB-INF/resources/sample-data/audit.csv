@@ -4,3 +4,6 @@ audit-02,X999,eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 audit-03,TH335,a, texto normal, texto normal, true,course-02,auditor-01
 audit-04,R894,la causa del efecto causa efecto porque la causa del efecto es a su vez causa y efecto, abajo arriba y por ahi, texto normal, false,course-02,auditor-02
 audit-05,TGK785,concluyo que concluyo, esta duro, es mala idea, true,course-03,auditor-03
+audit-06,TH535,a, texto normal, texto normal, true,course-03,auditor-01
+audit-07,TH635,a, texto normal, texto normal, true,course-03,auditor-01
+audit-08,TH735,a, texto normal, texto normal, true,course-04,auditor-01
