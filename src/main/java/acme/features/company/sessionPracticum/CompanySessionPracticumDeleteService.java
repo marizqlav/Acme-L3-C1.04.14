@@ -1,11 +1,14 @@
 
 package acme.features.company.sessionPracticum;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.practicum.Practicum;
 import acme.entities.sessionPracticum.SessionPracticum;
+import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Company;
@@ -47,7 +50,9 @@ public class CompanySessionPracticumDeleteService extends AbstractService<Compan
 	@Override
 	public void bind(final SessionPracticum object) {
 		assert object != null;
+
 		super.bind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
+
 	}
 
 	@Override
@@ -65,11 +70,22 @@ public class CompanySessionPracticumDeleteService extends AbstractService<Compan
 	@Override
 	public void unbind(final SessionPracticum object) {
 		assert object != null;
+		final Collection<Practicum> practica;
+		final SelectChoices choices;
+		final int companyId = super.getRequest().getPrincipal().getActiveRoleId();
+
+		practica = this.repository.findManyPrivatePracticumByCompanyId(companyId);
+		choices = SelectChoices.from(practica, "code", object.getPracticum());
 		Tuple tuple;
-		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
+
+		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link", "draftMode", "addendum");
+		tuple.put("practicum", choices.getSelected().getKey());
+		tuple.put("practica", choices);
 		tuple.put("practicumId", super.getRequest().getData("practicumId", int.class));
 		tuple.put("draftMode", object.getPracticum().getDraftMode());
+
 		super.getResponse().setData(tuple);
+
 	}
 
 }

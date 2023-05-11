@@ -27,3 +27,5 @@ company.practicum.form.button.update = Actualizar
 company.practicum.form.button.delete = Eliminar
 company.practicum.form.button.publish = Publicar
 company.practicum.form.button.list = Lista de Sesiones de Practicas
+
+company.practicum.error.practicum.exist = El curso no puede estar vacío

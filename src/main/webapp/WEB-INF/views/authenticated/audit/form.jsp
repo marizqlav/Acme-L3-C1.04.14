@@ -17,11 +17,24 @@
 
 
 <acme:form>
-<h1><acme:message code="auditor.audit.data"/></h1>
-	<acme:input-textbox code="auditor.audit.form.label.code" path="code"/>	
-	<acme:input-textarea code="auditor.audit.form.label.conclusion" path="conclusions"/>
-	<acme:input-money code="auditor.audit.form.retail.strongPoints" path="strongPoints"/>
-	<acme:input-url code="auditor.audit.form.label.weakPoints" path="weakPoints"/>
+	<h1><acme:message code="auditor.audit.data"/></h1>
+
+	<jstl:if test="${draftMode}">
+		<h5><acme:message code="auditor.audit.form.label.not-publish"/></h5>
+	</jstl:if>
+	<jstl:if test="${!draftMode}">
+		<h5><acme:message code="auditor.audit.form.label.publish"/></h5>
+	</jstl:if>
+
+	<acme:input-textarea code="auditor.audit.form.label.conclusion" path="conclusion"/>
+	<acme:input-textarea code="auditor.audit.form.label.strongPoints" path="strongPoints"/>
+	<acme:input-textarea code="auditor.audit.form.label.weakPoints" path="weakPoints"/>
+
+	<h6><acme:message code="auditor.audit.form.label.code"/></h6>
+	<acme:print value="${code}"/>
+
+	<br>
+	<br>
 
 	<h1><acme:message code="auditor.audit.auditor.data"/></h1>
 	<acme:input-textbox code="auditor.audit.form.label.auditor.userName" path="userName"/>

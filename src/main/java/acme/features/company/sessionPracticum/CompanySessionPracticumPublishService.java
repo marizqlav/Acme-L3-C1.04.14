@@ -1,12 +1,17 @@
 
 package acme.features.company.sessionPracticum;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.sessionPracticum.SessionPracticum;
 import acme.framework.components.accounts.Principal;
 import acme.framework.components.models.Tuple;
+import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Company;
 
@@ -62,25 +67,37 @@ public class CompanySessionPracticumPublishService extends AbstractService<Compa
 	@Override
 	public void validate(final SessionPracticum object) {
 		assert object != null;
+
+		Date date;
+
+		if (!super.getBuffer().getErrors().hasErrors("finishDate"))
+			super.state(object.getStartDate().before(object.getFinishDate()), "finishDate", "company.session-practicum.form.error.finishAfterStart");
+
+		if (!super.getBuffer().getErrors().hasErrors("startDate")) {
+			date = CompanySessionPracticumCreateService.oneWeekLong(Date.from(Instant.now()));
+			super.state(object.getStartDate().equals(date) || object.getStartDate().after(date), "startDate", "company.session-practicum.form.error.oneWeekAhead");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("finishDate") && !super.getBuffer().getErrors().hasErrors("startDate")) {
+			Date maximumPeriod;
+			maximumPeriod = MomentHelper.deltaFromMoment(object.getStartDate(), 7, ChronoUnit.DAYS);
+			super.state(MomentHelper.isAfter(object.getFinishDate(), maximumPeriod) && object.getFinishDate().after(object.getStartDate()), "finishDate", "company.session-practicum.form.error.finishDate");
+		}
 	}
 
 	@Override
 	public void perform(final SessionPracticum object) {
 		assert object != null;
 
-		object.getPracticum().setDraftMode(false);
+		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 
 	@Override
 	public void unbind(final SessionPracticum object) {
 		assert object != null;
-
 		Tuple tuple;
-		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
-		tuple.put("practicumId", super.getRequest().getData("practicumId", int.class));
-		tuple.put("draftMode", object.getPracticum().getDraftMode());
-		tuple.put("confirmation", false);
+		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link", "draftMode", "addendum");
 		super.getResponse().setData(tuple);
 	}
 

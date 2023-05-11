@@ -52,6 +52,7 @@ public class CompanySessionPracticumUpdateService extends AbstractService<Compan
 	@Override
 	public void bind(final SessionPracticum object) {
 		assert object != null;
+
 		super.bind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
 	}
 
@@ -70,7 +71,7 @@ public class CompanySessionPracticumUpdateService extends AbstractService<Compan
 
 		if (!super.getBuffer().getErrors().hasErrors("finishDate") && !super.getBuffer().getErrors().hasErrors("startDate")) {
 			Date maximumPeriod;
-			maximumPeriod = MomentHelper.deltaFromMoment(object.getFinishDate(), 7, ChronoUnit.DAYS);
+			maximumPeriod = MomentHelper.deltaFromMoment(object.getStartDate(), 7, ChronoUnit.DAYS);
 			super.state(MomentHelper.isAfter(object.getFinishDate(), maximumPeriod) && object.getFinishDate().after(object.getStartDate()), "finishDate", "company.session-practicum.form.error.finishDate");
 		}
 
@@ -86,9 +87,10 @@ public class CompanySessionPracticumUpdateService extends AbstractService<Compan
 	public void unbind(final SessionPracticum object) {
 		assert object != null;
 		Tuple tuple;
-		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
-		tuple.put("practicumId", super.getRequest().getData("practicumId", int.class));
-		tuple.put("draftMode", object.getPracticum().getDraftMode());
+
+		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link", "draftMode", "addendum");
+
+		super.getResponse().setData(tuple);
 	}
 
 }

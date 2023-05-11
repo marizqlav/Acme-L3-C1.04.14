@@ -25,49 +25,42 @@ public class CompanySessionPracticumCreateService extends AbstractService<Compan
 
 	@Override
 	public void check() {
-		boolean status;
-		status = super.getRequest().hasData("practicumId", int.class);
-		super.getResponse().setChecked(status);
+		super.getResponse().setChecked(true);
 	}
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int practicumId;
-		Practicum practicum;
-		practicumId = super.getRequest().getData("practicumId", int.class);
-		practicum = this.repository.findPracticumById(practicumId);
-		status = practicum != null && super.getRequest().getPrincipal().hasRole(practicum.getCompany());
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
 		final SessionPracticum object;
-		int practicumId;
-		Practicum practicum;
-		practicumId = super.getRequest().getData("practicumId", int.class);
-		practicum = this.repository.findPracticumById(practicumId);
 		object = new SessionPracticum();
-		object.setPracticum(practicum);
+		object.setDraftMode(true);
+		object.setAddendum(false);
 		super.getBuffer().setData(object);
 	}
 
 	@Override
 	public void bind(final SessionPracticum object) {
 		assert object != null;
+
+		int practicumId;
+		Practicum practicum;
+
+		practicumId = super.getRequest().getData("practicumId", int.class);
+		practicum = this.repository.findPracticumById(practicumId);
+
 		super.bind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
+		object.setPracticum(practicum);
+
 	}
 
 	@Override
 	public void validate(final SessionPracticum object) {
 		assert object != null;
 		Date date;
-		boolean confirmation;
-
-		confirmation = object.getPracticum().getDraftMode() ? true : super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "company.practicum.form.error.confirmation");
-
 		if (!super.getBuffer().getErrors().hasErrors("finishDate"))
 			super.state(object.getStartDate().before(object.getFinishDate()), "finishDate", "company.session-practicum.form.error.finishAfterStart");
 
@@ -78,7 +71,7 @@ public class CompanySessionPracticumCreateService extends AbstractService<Compan
 
 		if (!super.getBuffer().getErrors().hasErrors("finishDate") && !super.getBuffer().getErrors().hasErrors("startDate")) {
 			Date maximumPeriod;
-			maximumPeriod = MomentHelper.deltaFromMoment(object.getFinishDate(), 7, ChronoUnit.DAYS);
+			maximumPeriod = MomentHelper.deltaFromMoment(object.getStartDate(), 7, ChronoUnit.DAYS);
 			super.state(MomentHelper.isAfter(object.getFinishDate(), maximumPeriod) && object.getFinishDate().after(object.getStartDate()), "finishDate", "company.session-practicum.form.error.finishDate");
 		}
 
@@ -94,10 +87,8 @@ public class CompanySessionPracticumCreateService extends AbstractService<Compan
 	public void unbind(final SessionPracticum object) {
 		assert object != null;
 		Tuple tuple;
-		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
+		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link", "draftMode", "addendum");
 		tuple.put("practicumId", super.getRequest().getData("practicumId", int.class));
-		tuple.put("draftMode", object.getPracticum().getDraftMode());
-		tuple.put("confirmation", false);
 		super.getResponse().setData(tuple);
 	}
 

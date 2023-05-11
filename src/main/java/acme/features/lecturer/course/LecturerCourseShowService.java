@@ -2,8 +2,6 @@
 package acme.features.lecturer.course;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,12 +56,6 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findCourseById(id);
-		final Collection<Lecture> cl = this.repository.findAllLecturesByCourse(id = super.getRequest().getData("id", int.class));
-		final List<Boolean> lb = cl.stream().map(x -> x.isDraftmode()).collect(Collectors.toList());
-		if (!lb.contains(true) && !lb.isEmpty())
-			object.setDraftMode(false);
-		else
-			object.setDraftMode(true);
 
 		super.getBuffer().setData(object);
 	}
@@ -77,7 +69,12 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 		tuple.put("courseType", this.courseType(this.repository.findAllLecturesByCourse(object.getId())));
 		tuple.put("draftmode", object.isDraftMode());
 		tuple.put("exchangeMoney", this.computeMoneyExchange(object.getRetailPrice(), systemCurrency).getTarget());
+
+		final Collection<Lecture> cl = this.repository.findAllLecturesByCourse(object.getId());
+		final Boolean hasLectures = cl.isEmpty() ? false : true;
+		tuple.put("hasLectures", hasLectures);
 		super.getResponse().setData(tuple);
+
 	}
 
 	public LectureType courseType(final Collection<Lecture> lecturesCourse) {

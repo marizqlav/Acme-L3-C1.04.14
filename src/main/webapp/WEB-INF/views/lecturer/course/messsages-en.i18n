@@ -16,6 +16,10 @@ lecturer.course.form.label.link = Link
 lecturer.course.list.label.title = Title
 lecturer.course.form.label.courseType = Course Type
 
+lecturer.course.form.error.retailPrice.negative = Can't be negative
+
+lecturer.course.button.courseLecture.create = Add lecture
+lecturer.course.button.courseLecture.list = Remove lecture
 
 
 
@@ -26,4 +30,6 @@ lecturer.course.form.button.create = Create Course
 lecturer.course.button.delete = Delete Course
 lecturer.course.button.update = Update Course
 
-lecturer.course.form.error.retailPrice = Must have a value
+lecturer.course.button.publish = Publish Course
+
+lecturer.course.form.error.retailPrice = Must have a valid value

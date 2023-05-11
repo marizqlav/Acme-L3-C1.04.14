@@ -76,14 +76,7 @@ public class CompanyPracticumUpdateService extends AbstractService<Company, Prac
 	public void bind(final Practicum object) {
 		assert object != null;
 
-		int courseId;
-		Course course;
-
-		courseId = super.getRequest().getData("course", int.class);
-		course = this.repository.findCourseById(courseId);
-
 		super.bind(object, "title", "abstractPracticum", "someGoals", "estimatedTime");
-		object.setCourse(course);
 	}
 
 	@Override

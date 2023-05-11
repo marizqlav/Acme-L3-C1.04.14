@@ -50,6 +50,8 @@ public class AuthenticatedAuditShowService extends AbstractService<Authenticated
 		final Auditor auditor = repo.findAuditorByAuditId(audit.getId());
 
 		tuple = super.unbind(audit, "code", "conclusion", "strongPoints", "weakPoints");
+
+		tuple.put("draftMode", audit.getDraftMode());
         
 		tuple.put("userName", auditor.getUserAccount().getUsername());
 		tuple.put("firm", auditor.getFirm());

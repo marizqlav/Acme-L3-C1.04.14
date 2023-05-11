@@ -79,13 +79,11 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 	public void perform(final Practicum object) {
 		assert object != null;
 
-		object.setDraftMode(true);
+		object.setDraftMode(false);
 
 		final Collection<SessionPracticum> sessions = this.repository.findSessionPracticumByPracticumId(object.getId());
-		for (final SessionPracticum s : sessions) {
-			s.setDraftMode(true);
+		for (final SessionPracticum s : sessions)
 			this.repository.save(s);
-		}
 
 		this.repository.save(object);
 	}
