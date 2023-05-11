@@ -17,7 +17,7 @@
 
 <acme:form>
 	<acme:input-textbox code="authenticated.company.form.label.name" path="name"/>
-	<acme:input-textbox code="authenticated.company.form.label.VATNumber" path="VATNumber" readonly="true"/>
+	<acme:input-textbox code="authenticated.company.form.label.VATNumber" path="VATNumber"/>
 	<acme:input-textbox code="authenticated.company.form.label.summary" path="summary"/>
 	<acme:input-textbox code="authenticated.company.form.label.link" path="link"/>
 	

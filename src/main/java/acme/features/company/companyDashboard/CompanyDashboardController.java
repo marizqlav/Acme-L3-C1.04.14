@@ -1,5 +1,5 @@
 
-package acme.features.company.dashboard;
+package acme.features.company.companyDashboard;
 
 import javax.annotation.PostConstruct;
 

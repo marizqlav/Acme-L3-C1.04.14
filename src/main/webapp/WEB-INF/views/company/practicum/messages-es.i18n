@@ -14,6 +14,9 @@ company.practicum.list.label.course-code = Código del curso
 
 company.practicum.list.button.create = Crear
 
+company.practicum.data = Datos practica
+company.practicum.company.data = Datos compañía
+
 company.practicum.form.label.course = Curso:
 company.practicum.form.label.code = Código de la práctica:
 company.practicum.form.label.title = Título de la práctica:
@@ -21,6 +24,11 @@ company.practicum.form.label.estimatedTime = Tiempo estimado (en horas) (+-10%):
 company.practicum.form.label.abstractPracticum = Resumen:
 company.practicum.form.label.company.name = Nombre de la compañía
 company.practicum.form.label.someGoals = Objetivos:
+company.practicum.form.label.company.username = Nombre de usuario:
+company.practicum.form.label.company.name = Nombre:
+company.practicum.form.label.company.VATNumber = Numero VAT:
+company.practicum.form.label.company.summary = Resumen:
+company.practicum.form.label.company.link = Enlace: (Optional)
 
 company.practicum.form.button.create = Crear
 company.practicum.form.button.update = Actualizar
