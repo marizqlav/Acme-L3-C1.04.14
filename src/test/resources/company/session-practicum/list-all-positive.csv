@@ -1,7 +1,6 @@
-recordIndex,code,title
-0,AAA000,Calvo
-1,AAA001,ສະເໜີ
-2,AAA002,Calvo
-3,AAA003,Calvo
-4,AAA004,<h1>hola</h1>
-5,AAA005,Calvo
+recordIndex,sesionRecordIndex,title,abstractSessionPracticum
+0,0,Calvo,Resumen Practica Sesion
+0,1,Calvo,Resumen Practica Sesion
+0,2,Calvo,Resumen Practica Sesion
+0,3,Calvo,Resumen Practica Sesion
+0,4,Calvo,Resumen Practica Sesion

@@ -22,7 +22,7 @@ public class CompanySessionPracticumListAllTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/session-practicum/list-all-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test100Positive(final int recordIndex, final String title, final String abstractSessionPracticum, final String practicumTitle) {
+	public void positiveTest(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum) {
 		// HINT: this test signs in as an employer, lists all of the jobs, 
 		// HINT+ and then checks that the listing shows the expected data.
 
@@ -32,34 +32,14 @@ public class CompanySessionPracticumListAllTest extends TestHarness {
 		super.checkListingExists();
 		super.sortListing(0, "asc");
 
-		super.checkColumnHasValue(recordIndex, 0, title);
-		super.checkColumnHasValue(recordIndex, 1, abstractSessionPracticum);
-		super.checkColumnHasValue(recordIndex, 2, practicumTitle);
 		super.clickOnListingRecord(recordIndex);
-		super.checkInputBoxHasValue("title", title);
-		super.checkInputBoxHasValue("abstractSessionPracticum", abstractSessionPracticum);
-		super.checkInputBoxHasValue("practicumTitle", practicumTitle);
 		super.clickOnButton("List Session Practicum");
 
-		super.signOut();
-
-		super.signIn("company1", "company1");
-
-		super.clickOnMenu("Company", "Practicum list");
 		super.checkListingExists();
 		super.sortListing(0, "asc");
 
-		super.clickOnListingRecord(recordIndex);
-		super.checkInputBoxHasValue("title", title);
-		super.checkInputBoxHasValue("abstractSessionPracticum", abstractSessionPracticum);
-		super.checkInputBoxHasValue("practicumTitle", practicumTitle);
-		super.clickOnButton("List Session Practicum");
-
-		super.checkListingExists();
-		super.checkColumnHasValue(recordIndex, 0, title);
-		super.checkColumnHasValue(recordIndex, 1, abstractSessionPracticum);
-		super.checkColumnHasValue(recordIndex, 2, practicumTitle);
-		super.clickOnListingRecord(recordIndex);
+		super.checkColumnHasValue(sesionRecordIndex, 0, title);
+		super.checkColumnHasValue(sesionRecordIndex, 1, abstractSessionPracticum);
 
 		super.signOut();
 

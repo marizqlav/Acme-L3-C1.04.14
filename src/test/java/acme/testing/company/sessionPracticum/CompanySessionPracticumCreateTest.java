@@ -26,7 +26,6 @@ public class CompanySessionPracticumCreateTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/session-practicum/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	//	@Order(10)
 	public void positiveTest(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum, final String startDate, final String finishDate, final String link) {
 
 		super.signIn("company1", "company1");

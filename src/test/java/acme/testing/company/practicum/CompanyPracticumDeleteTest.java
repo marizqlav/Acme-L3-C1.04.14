@@ -1,7 +1,6 @@
 
 package acme.testing.company.practicum;
 
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -11,7 +10,6 @@ public class CompanyPracticumDeleteTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/practicum/delete-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	@Order(10)
 	public void positiveTest(final int recordIndex, final String code, final String title, final String abstractPracticum, final String someGoals) {
 
 		super.signIn("company1", "company1");
