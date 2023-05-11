@@ -86,6 +86,12 @@ public class CompanyPracticumShowService extends AbstractService<Company, Practi
 
 		Tuple tuple;
 		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals", "draftMode");
+		tuple.put("companyusername", object.getCompany().getUserAccount().getUsername());
+		tuple.put("companyname", object.getCompany().getName());
+		tuple.put("companyVATNumber", object.getCompany().getVATNumber());
+		tuple.put("companysummary", object.getCompany().getSummary());
+		tuple.put("companylink", object.getCompany().getLink());
+
 		tuple.put("estimatedTime", estimatedTime);
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
