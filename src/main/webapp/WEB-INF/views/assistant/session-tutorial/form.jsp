@@ -29,7 +29,7 @@
 	
 	<jstl:choose>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="assistant.tutorial.list.button.create" action="/assistant/session-tutorial/create"/>
+			<acme:submit code="assistant.tutorial.list.button.create" action="/assistant/session-tutorial/create?tutorialId=${tutorialId}"/>
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
 			<acme:submit code="assistant.tutorial.form.button.update" action="/assistant/session-tutorial/update"/>
