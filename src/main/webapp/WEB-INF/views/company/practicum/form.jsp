@@ -28,12 +28,18 @@
 	<jstl:if test="${!(_command == 'create')}">
 		<acme:input-textbox code="company.practicum.form.label.code"  readonly="true" path="code"/>
 		<acme:input-select code="company.practicum.form.label.course" path="course" choices="${courses}" readonly = "true"/>
-		<acme:input-double code="company.practicum.form.label.estimatedTimeMenos" path="estimatedTimeMenos" readonly = "true"/>
-		<acme:input-double code="company.practicum.form.label.estimatedTimeMas" path="estimatedTimeMas" readonly = "true"/>
-		<acme:input-double code="company.practicum.form.label.fechaInicial" path="fechaInicial" readonly = "true"/>
-		<acme:input-double code="company.practicum.form.label.fechaFinal" path="fechaFinal" readonly = "true"/>
-		
-				
+		<jstl:if test="${estimatedTimeMenos != null}">
+			<acme:input-double code="company.practicum.form.label.estimatedTimeMenos" path="estimatedTimeMenos" readonly = "true"/>
+		</jstl:if>
+		<jstl:if test="${estimatedTimeMas!= null}">
+			<acme:input-double code="company.practicum.form.label.estimatedTimeMas" path="estimatedTimeMas" readonly = "true"/>
+		</jstl:if>
+		<jstl:if test="${estimatedTimeMas!= null}">
+			<acme:input-double code="company.practicum.form.label.fechaInicial" path="fechaInicial" readonly = "true"/>
+		</jstl:if>
+		<jstl:if test="${fechaFinal!= null}">
+			<acme:input-double code="company.practicum.form.label.fechaFinal" path="fechaFinal" readonly = "true"/>
+		</jstl:if>	
 		<h1><acme:message code="company.practicum.company.data"/></h1>
 		<acme:input-textbox code="company.practicum.form.label.company.username" readonly="true" path="companyusername"/>
 		<acme:input-textarea code="company.practicum.form.label.company.name" readonly="true" path="companyname"/>

@@ -81,12 +81,18 @@ public class CompanyPracticumShowService extends AbstractService<Company, Practi
 		choices = SelectChoices.from(courses, "code", object.getCourse());
 
 		final Collection<SessionPracticum> sessionPracticum;
+		Date fechaInicial = null;
+		Date fechaFinal = null;
+		Double estimatedTimeMenos = null;
+		Double estimatedTimeMas = null;
 
 		sessionPracticum = this.repository.findSessionPracticumByPracticumId(object.getId());
-		final Date fechaInicial = object.fechaInicial(sessionPracticum);
-		final Date fechaFinal = object.fechaFinal(sessionPracticum);
-		final Double estimatedTimeMenos = object.estimatedTimeMenos(sessionPracticum);
-		final Double estimatedTimeMas = object.estimatedTimeMas(sessionPracticum);
+		if (sessionPracticum != null && sessionPracticum.size() > 0) {
+			fechaInicial = object.fechaInicial(sessionPracticum);
+			fechaFinal = object.fechaFinal(sessionPracticum);
+			estimatedTimeMenos = object.estimatedTimeMenos(sessionPracticum);
+			estimatedTimeMas = object.estimatedTimeMas(sessionPracticum);
+		}
 
 		Tuple tuple;
 		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals", "draftMode");
