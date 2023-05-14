@@ -13,6 +13,8 @@ company.session-practicum.list.label.abstractSessionPracticum = Abstract Session
 company.session-practicum.list.label.practicum.title = Practicum Title
 company.session-practicum.list.button.createAddendum=Create Addendum
 
+company.session-practicum.data= Session Practicum data
+
 company.session-practicum.form.label.title = Title
 company.session-practicum.form.label.abstractSessionPracticum = Abstract Session Practicum
 company.session-practicum.form.label.startDate = Start Date
@@ -24,7 +26,7 @@ company.session-practicum.form.button.update =Update
 company.session-practicum.form.button.delete =Delete
 company.session-practicum.form.button.create =Create
 company.session-practicum.form.button.publish=Publish
-company.session-practicum.form.message.addendum = IMPORTANT!! THIS IS AN ADDENDUM SESSION
+company.session-practicum.form.message.addendum = IMPORTANT!! THIS IS AN ADDENDUM
 company.session-practicum.form.label.confirmation = Confirmation
 
 company.session-practicum.list.button.create =Create
@@ -36,3 +38,8 @@ company.session-practicum.form.error.finishDate = The Finish Date must be minimu
 company.session-practicum.validation.confirmation = Error: You have to confirm the submit
 company.session-practicum.validation.practicum.error.AddendumAlreadyExists = Error: Only one addendum session allowed per practicum 
 company.session-practicum.validation.practicum.error.Published = Error: This Practicum has been already published
+company.session-practicum.list.description = "*" means this session practicum is a addendum
+company.session-practicum.form.button.confirm = Confirm
+company.session-practicum.form.button.decline = Decline
+company.session-practicum.form.button.addendum = Create Addendum 
+company.practicum.error.practicum.exist = There is already an addendum on this practice 

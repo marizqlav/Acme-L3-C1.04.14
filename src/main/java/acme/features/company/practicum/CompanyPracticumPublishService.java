@@ -66,7 +66,7 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findCourseById(courseId);
 
-		super.bind(object, "code", "title", "abstractPracticum", "someGoals", "estimatedTime");
+		super.bind(object, "code", "title", "abstractPracticum", "someGoals");
 		object.setCourse(course);
 	}
 

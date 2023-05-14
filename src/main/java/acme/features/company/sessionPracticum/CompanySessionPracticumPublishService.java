@@ -89,7 +89,6 @@ public class CompanySessionPracticumPublishService extends AbstractService<Compa
 	public void perform(final SessionPracticum object) {
 		assert object != null;
 
-		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 
@@ -97,7 +96,12 @@ public class CompanySessionPracticumPublishService extends AbstractService<Compa
 	public void unbind(final SessionPracticum object) {
 		assert object != null;
 		Tuple tuple;
-		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link", "draftMode", "addendum");
+		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
+		final boolean draftMode = this.repository.findPracticumById(super.getRequest().getData("practicumId", int.class)).getDraftMode();
+
+		tuple.put("draftMode", draftMode);
+		tuple.put("practicumId", super.getRequest().getData("practicumId", int.class));
+
 		super.getResponse().setData(tuple);
 	}
 

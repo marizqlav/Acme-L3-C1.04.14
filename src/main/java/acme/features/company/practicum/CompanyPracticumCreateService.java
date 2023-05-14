@@ -103,7 +103,7 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 			choices.add(String.valueOf(choice.getId()), choice.getCode() + ": " + choice.getTitle(), choice.equals(object.getCourse()));
 		}
 
-		tuple = super.unbind(object, "title", "abstractPracticum", "someGoals", "draftMode");
+		tuple = super.unbind(object, "title", "abstractPracticum", "someGoals");
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
 
