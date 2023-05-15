@@ -65,8 +65,10 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findCourseById(courseId);
+		object.setDraftMode(false);
 
 		super.bind(object, "code", "title", "abstractPracticum", "someGoals");
+		object.setDraftMode(false);
 		object.setCourse(course);
 	}
 
@@ -79,12 +81,10 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 	public void perform(final Practicum object) {
 		assert object != null;
 
-		object.setDraftMode(false);
-
 		final Collection<SessionPracticum> sessions = this.repository.findSessionPracticumByPracticumId(object.getId());
 		for (final SessionPracticum s : sessions)
 			this.repository.save(s);
-
+		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 
@@ -99,7 +99,7 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 		courses = this.repository.findAllCourses();
 		choices = SelectChoices.from(courses, "code", object.getCourse());
 
-		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals");
+		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals", "draftMode");
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
 

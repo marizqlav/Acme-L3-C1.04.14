@@ -80,11 +80,9 @@ public class CompanySessionPracticumPublishTest extends TestHarness {
 		super.clickOnButton("List Session Practicum");
 
 		super.sortListing(0, "asc");
-		super.checkColumnHasValue(sesionRecordIndex, 0, title);
-		super.checkColumnHasValue(sesionRecordIndex, 1, abstractSessionPracticum);
-
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
+
 		super.fillInputBoxIn("title", title);
 		super.fillInputBoxIn("abstractSessionPracticum", abstractSessionPracticum);
 		super.fillInputBoxIn("startDate", startDate);

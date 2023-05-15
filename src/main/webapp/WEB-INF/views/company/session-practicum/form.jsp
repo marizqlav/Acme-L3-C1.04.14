@@ -24,7 +24,7 @@
     <acme:input-url code="company.session-practicum.form.label.link" path="link"/>
     
     <jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
+    	<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
 			<jstl:if test="${addendum == true}">
 				<acme:message code="company.session-practicum.form.message.addendum.indication"/>
 			</jstl:if>
