@@ -1,7 +1,6 @@
 
 package acme.features.auditor.auditorDashboard;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,16 +35,16 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 	@Override
 	public void load() {
 
-		Integer auditorId = super.getRequest().getPrincipal().getActiveRoleId();
+		final Integer auditorId = super.getRequest().getPrincipal().getActiveRoleId();
 
-		AuditorDashboard dashboard = new AuditorDashboard();
+		final AuditorDashboard dashboard = new AuditorDashboard();
 
-		dashboard.setNTheoryAudits(repo.totalNumberOfTheoryAudits(auditorId));
-		dashboard.setNHandsOnAudits(repo.totalNumberOfHandsOnAudits(auditorId));
+		dashboard.setNTheoryAudits(this.repo.totalNumberOfTheoryAudits(auditorId));
+		dashboard.setNHandsOnAudits(this.repo.totalNumberOfHandsOnAudits(auditorId));
 
-		Map<String, Double> auditingRecordsStatistics = repo.numberOfAuditingRecordsOfAuditStatistics(auditorId);
+		final Map<String, Double> auditingRecordsStatistics = this.repo.numberOfAuditingRecordsOfAuditStatistics(auditorId);
 
-		Map<String, Double> periodOfAuditingRecordsStatistics = repo.periodOfAuditingRecordsOfAuditorStatistics(auditorId);
+		final Map<String, Double> periodOfAuditingRecordsStatistics = this.repo.periodOfAuditingRecordsOfAuditorStatistics(auditorId);
 
 		dashboard.setAuditingRecordsStatistics(auditingRecordsStatistics);
 
