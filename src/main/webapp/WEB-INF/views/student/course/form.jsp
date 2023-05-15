@@ -37,6 +37,11 @@
 		<jstl:when test="${_command == 'show'}">
 			<h1><acme:message code="student.course.lectures.data"/></h1>
 			<acme:button code="student.course.lectures" action="/student/lecture/list?masterId=${id}"/>
+			<br>
+			<br>
+			<jstl:if test="${enrolmented == false}">
+			<acme:button code="student.enrolment.form.button.enrolment" action="/student/enrolment/create?masterId=${id}"/>
+			</jstl:if>
 			<hr/>
 		</jstl:when>	
 	</jstl:choose>

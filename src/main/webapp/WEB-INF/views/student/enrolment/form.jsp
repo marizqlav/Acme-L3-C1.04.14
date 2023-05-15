@@ -20,7 +20,7 @@
 	<jstl:if test="${!(_command == 'create')}">
 	<acme:input-textbox code="student.enrolment.form.label.code" readonly="true" path="code"/>
 	</jstl:if>
-	<jstl:if test="${_command == 'create'}">
+	<jstl:if test="${_command == 'create' && direct==false}">
 	<acme:input-select code="student.enrolment.form.label.course" path="course" choices="${courses}"/>
 	</jstl:if>
 	<acme:input-textarea code="student.enrolment.form.label.motivation" path="motivation"/>	
@@ -34,7 +34,7 @@
 </jstl:if>
 <jstl:choose>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="student.enrolment.form.button.create" action="/student/enrolment/create"/>
+			<acme:submit code="student.enrolment.form.button.create" action="/student/enrolment/create?masterId=${masterId}"/>
 		</jstl:when>	
 	</jstl:choose>
 	<jstl:choose>
@@ -49,7 +49,7 @@
 		</form>		
 		</jstl:when>	
 	</jstl:choose>
-	<jstl:if test="${_command == 'show'}">
+	<jstl:if test="${_command == 'show' || _command == 'update'}">
 	<hr/>
 		<acme:button code="student.course.activities" action="/student/activity/list?masterId=${id}"/>
 	<hr/>

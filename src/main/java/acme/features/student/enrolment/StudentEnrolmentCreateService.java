@@ -72,12 +72,22 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 		Integer courseId;
 		Course course;
 
-		courseId = super.getRequest().getData("course", int.class);
-		course = this.repository.findOneCourseById(courseId);
 		super.bind(object, "motivation", "someGoals");
-		object.setCourse(course);
-		object.setCode(this.newCode(this.repository.findFirstByOrderByCodeDesc().getCode()));
 
+		if (super.getRequest().getData("masterId", int.class) < 0) {
+			courseId = super.getRequest().getData("course", int.class);
+			course = this.repository.findOneCourseById(courseId);
+
+			object.setCourse(course);
+			object.setCode(this.newCode(this.repository.findFirstByOrderByCodeDesc().getCode()));
+		} else {
+			courseId = super.getRequest().getData("masterId", int.class);
+			course = this.repository.findOneCourseById(courseId);
+
+			object.setCourse(course);
+			object.setCode(this.newCode(this.repository.findFirstByOrderByCodeDesc().getCode()));
+
+		}
 	}
 
 	public String newCode(final String lastCode) {
@@ -104,16 +114,29 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 		studentId = super.getRequest().getPrincipal().getActiveRoleId();
 		Integer courseId;
 		Course course;
-		courseId = super.getRequest().getData("course", int.class);
-		course = this.repository.findOneCourseById(courseId);
-		if (!(course == null)) {
-			final Enrolment enrolmented = this.repository.findStudentCourse(studentId, course.getId());
-			if (enrolmented != null)
-				super.state(false, "course", "student.enrolment.error.enrolment.exist");
-			if (course.isDraftMode())
-				super.state(false, "course", "student.enrolment.error.course.not.public");
+		if (super.getRequest().getData("masterId", int.class) < 0) {
+			courseId = super.getRequest().getData("course", int.class);
+			course = this.repository.findOneCourseById(courseId);
+			if (!(course == null)) {
+				final Enrolment enrolmented = this.repository.findStudentCourse(studentId, course.getId());
+				if (enrolmented != null)
+					super.state(false, "course", "student.enrolment.error.enrolment.exist");
+				if (course.isDraftMode())
+					super.state(false, "course", "student.enrolment.error.course.not.public");
+			}
+		} else {
+			courseId = super.getRequest().getData("masterId", int.class);
+			course = this.repository.findOneCourseById(courseId);
+			if (!(course == null)) {
+				final Enrolment enrolmented = this.repository.findStudentCourse(studentId, course.getId());
+				if (enrolmented != null) {
+					super.state(false, "motivation", "student.enrolment.error.enrolment.exist");
+					super.state(false, "someGoals", "student.enrolment.error.enrolment.exist");
+				}
+				if (course.isDraftMode())
+					super.state(false, "motivation", "student.enrolment.error.course.not.public");
+			}
 		}
-
 	}
 
 	@Override
@@ -130,6 +153,7 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 		SelectChoices choices;
 		Tuple tuple;
 		Iterator<Course> iterator;
+		Boolean direct;
 
 		courses = this.repository.findCoursesPublics();
 
@@ -145,6 +169,10 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 		tuple = super.unbind(object, "motivation", "someGoals");
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
+
+		direct = super.getRequest().getData("masterId", int.class) >= 0 ? true : false;
+		tuple.put("direct", direct);
+		tuple.put("masterId", super.getRequest().getData("masterId", int.class));
 		super.getResponse().setData(tuple);
 	}
 

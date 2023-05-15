@@ -21,5 +21,5 @@
 	<acme:list-column code="student.enrolment.list.label.course.title" path="coursetitle"/>
 </acme:list>
 <form>
-<acme:button code="student.enrolment.form.button.enrolment" action="/student/enrolment/create"/>
+<acme:button code="student.enrolment.form.button.enrolment" action="/student/enrolment/create?masterId=${-1}"/>
 </form>
