@@ -37,8 +37,8 @@
 
 
 	<jstl:if test="${_command != 'create'}">
-		<h6><acme:message code="auditor.audit.form.label.code"/></h6>
-		<acme:print value="${code}"/>
+		<acme:input-textbox code="auditor.audit.form.label.code" readonly="true" path="code"/>
+		<acme:input-textbox code="auditor.audit.form.label.mark" readonly="true" path="mark"/>
 		<br>
 		<br>
 	</jstl:if>

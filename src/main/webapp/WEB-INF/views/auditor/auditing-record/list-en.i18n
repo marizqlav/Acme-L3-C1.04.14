@@ -6,3 +6,4 @@ auditors.auditingRecord.list.label.lastDate = assesment end date
 auditors.auditingRecord.list.label.mark = mark
 auditors.auditingRecord.list.button.create = Create
 auditors.auditingRecord.list.button.correct = Correct
+auditors.auditingRecord.list.description = "*" means this auditing record is a correction

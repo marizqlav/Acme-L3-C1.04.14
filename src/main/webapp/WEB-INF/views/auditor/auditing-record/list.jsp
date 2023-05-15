@@ -16,13 +16,14 @@
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="auditors.auditingRecord.list.label.correction" path="correction"/>
 	<acme:list-column code="auditors.auditingRecord.list.label.subject" path="subject"/>
 	<acme:list-column code="auditors.auditingRecord.list.label.assesment" path="assesment"/>
 	<acme:list-column code="auditors.auditingRecord.list.label.firstDate" path="assesmentStartDate"/>
 	<acme:list-column code="auditors.auditingRecord.list.label.lastDate" path="assesmentEndDate"/>
 	<acme:list-column code="auditors.auditingRecord.list.label.mark" path="mark"/>
 </acme:list>
+
+<h6><acme:message code="auditors.auditingRecord.list.description"/></h6>
 
 <jstl:if test="${draftMode == true}">
 	<acme:button code="auditors.auditingRecord.list.button.create" action="/auditor/auditing-record/create?auditId=${auditId}"/>

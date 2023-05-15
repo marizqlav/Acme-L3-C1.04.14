@@ -14,3 +14,4 @@ auditors.auditingRecord.list.button.create = Crear registro de auditoría
 auditors.auditingRecord.list.button.publish = Publicar auditoría
 auditor.audit.form.label.publish = Publicada
 auditor.audit.form.label.not-publish = No publicada
+auditor.audit.form.label.mark = Nota

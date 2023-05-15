@@ -13,14 +13,14 @@ company.session-practicum.form.label.abstractSessionPracticum = Resumen Sesion P
 company.session-practicum.list.label.practicum.title = Título de la Práctica
 company.session-practicum.list.button.createAddendum=Crear Addendum
 
+company.session-practicum.data= Datos de practica sesión
+
 company.session-practicum.form.label.title = Título
 company.session-practicum.form.label.abstractSessionPracticum = Resumen Sesion Practica
 company.session-practicum.form.label.startDate = Fecha Inicial
 company.session-practicum.form.label.finishDate = Fecha Final
 company.session-practicum.form.label.link = Enlace
 company.session-practicum.form.label.practicum.code = Codigo Practica
-
-company.session-practicum.list.button.create = Crear Sesión
 
 company.session-practicum.form.button.update = Actualizar
 company.session-practicum.form.button.delete = Borrar
@@ -30,11 +30,16 @@ company.session-practicum.form.message.addendum = IMPORTANTE!! ESTA ES UNA SESI�
 company.session-practicum.form.label.confirmation = Confirmacion
 
 company.session-practicum.list.button.create = Crear
-company.session-practicum.form.button.create-addendum=Create Sesión Adicional
-company.session-practicum.form.message.addendum.indication = Esta Sesión practica es una Sesión adicional 
-company.session-practicum.form.error.finishDate = La Fecha Final debe ser como mínimo una semana despues de la Fecha Inicial
+company.session-practicum.form.button.create-addendum = Create Sesión Adicional
+company.session-practicum.form.message.addendum.indication = Esta Sesión practica es una Sesión adicional
 company.session-practicum.form.error.finishAfterStart=La fecha final debe ser después de fecha inicio
 company.session-practicum.form.error.oneWeekAhead = El tiempo para la sesión de practica debe ser como minimo de una semana
+company.session-practicum.form.error.finishDate = La Fecha Final debe ser como mínimo una semana despues de la Fecha Inicial
 company.session-practicum.validation.confirmation = Error: Tienes que confirmar el submit
 company.session-practicum.validation.practicum.error.AddendumAlreadyExists = Error: Una unica sesion addendum permitada por practica
 company.session-practicum.validation.practicum.error.Published = Error: Esta practica tiene que estar publicada
+company.session-practicum.list.description = "*" significa que este registro de auditoria es una corrección
+company.session-practicum.form.button.confirm = Confirmar
+company.session-practicum.form.button.decline = Declinar
+company.session-practicum.form.button.addendum = Crear Sesión Adicional 
+company.practicum.error.practicum.exist = Ya existe un addendum en esta practica 

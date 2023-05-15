@@ -23,6 +23,12 @@
     <acme:list-column code="company.session-practicum.list.label.practicum.title" path="practicum.title" width="15%"/>
 </acme:list>
 
-<acme:button test="${showCreate && draftMode}" code="company.session-practicum.list.button.create" action="/company/session-practicum/create?practicumId=${practicumId}"/>
-<acme:button test="${showCreate && !draftMode && addendum == false}" code="company.session-practicum.list.button.createAddendum" action="/company/session-practicum/create-addendum?practicumId=${practicumId}"/>
+<h6><acme:message code="company.session-practicum.list.description"/></h6>
+
+<jstl:if test="${draftMode == true}">
+	<acme:button code="company.session-practicum.list.button.create" action="/company/session-practicum/create?practicumId=${practicumId}"/>
+</jstl:if>
+<jstl:if test="${draftMode != true && existAddendum == false}">
+	<acme:button code="company.session-practicum.list.button.createAddendum" action="/company/session-practicum/create-addendum?practicumId=${practicumId}"/>
+</jstl:if>
 

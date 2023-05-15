@@ -2,6 +2,10 @@
 package acme.entities.practicum;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,7 +52,7 @@ public class Practicum extends AbstractEntity {
 	protected Boolean			draftMode;
 
 
-	public Double estimatedTime(final Collection<SessionPracticum> sessions) {
+	public Double estimatedTimeMenos(final Collection<SessionPracticum> sessions) {
 		double estimatedTime = 0.;
 		if (sessions.size() > 0)
 			for (final SessionPracticum element : sessions) {
@@ -59,8 +63,39 @@ public class Practicum extends AbstractEntity {
 		else
 			estimatedTime = 0.0;
 
+		estimatedTime = estimatedTime - estimatedTime * 10 / 100;
+
 		return estimatedTime;
 
+	}
+
+	public Double estimatedTimeMas(final Collection<SessionPracticum> sessions) {
+		double estimatedTime = 0.;
+		if (sessions.size() > 0)
+			for (final SessionPracticum element : sessions) {
+				final long durationInMilliseconds = element.getFinishDate().getTime() - element.getStartDate().getTime();
+				final double durationInHours = durationInMilliseconds / (1000.0 * 60 * 60);
+				estimatedTime = estimatedTime + durationInHours;
+			}
+		else
+			estimatedTime = 0.0;
+
+		estimatedTime = estimatedTime + estimatedTime * 10 / 100;
+
+		return estimatedTime;
+
+	}
+
+	public Date fechaInicial(final Collection<SessionPracticum> sessions) {
+		final List<Date> listaFechasIniciales = sessions.stream().map(x -> x.getStartDate()).collect(Collectors.toList());
+		final Date res = Collections.min(listaFechasIniciales);
+		return res;
+	}
+
+	public Date fechaFinal(final Collection<SessionPracticum> sessions) {
+		final List<Date> listaFechasFinales = sessions.stream().map(x -> x.getFinishDate()).collect(Collectors.toList());
+		final Date res = Collections.max(listaFechasFinales);
+		return res;
 	}
 
 

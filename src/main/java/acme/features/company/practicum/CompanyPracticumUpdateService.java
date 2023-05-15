@@ -76,7 +76,7 @@ public class CompanyPracticumUpdateService extends AbstractService<Company, Prac
 	public void bind(final Practicum object) {
 		assert object != null;
 
-		super.bind(object, "title", "abstractPracticum", "someGoals", "estimatedTime");
+		super.bind(object, "title", "abstractPracticum", "someGoals", "estimatedTimeMenos", "estimatedTimeMas");
 	}
 
 	@Override
@@ -102,7 +102,7 @@ public class CompanyPracticumUpdateService extends AbstractService<Company, Prac
 		courses = this.repository.findAllCourses();
 		choices = SelectChoices.from(courses, "code", object.getCourse());
 
-		tuple = super.unbind(object, "title", "abstractPracticum", "someGoals", "estimatedTime", "draftMode");
+		tuple = super.unbind(object, "title", "abstractPracticum", "someGoals", "estimatedTimeMenos", "estimatedTimeMas", "draftMode");
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
 

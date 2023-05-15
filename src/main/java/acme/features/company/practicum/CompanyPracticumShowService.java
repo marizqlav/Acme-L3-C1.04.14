@@ -13,6 +13,7 @@
 package acme.features.company.practicum;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -80,9 +81,18 @@ public class CompanyPracticumShowService extends AbstractService<Company, Practi
 		choices = SelectChoices.from(courses, "code", object.getCourse());
 
 		final Collection<SessionPracticum> sessionPracticum;
+		Date fechaInicial = null;
+		Date fechaFinal = null;
+		Double estimatedTimeMenos = null;
+		Double estimatedTimeMas = null;
 
 		sessionPracticum = this.repository.findSessionPracticumByPracticumId(object.getId());
-		final Double estimatedTime = object.estimatedTime(sessionPracticum);
+		if (sessionPracticum != null && sessionPracticum.size() > 0) {
+			fechaInicial = object.fechaInicial(sessionPracticum);
+			fechaFinal = object.fechaFinal(sessionPracticum);
+			estimatedTimeMenos = object.estimatedTimeMenos(sessionPracticum);
+			estimatedTimeMas = object.estimatedTimeMas(sessionPracticum);
+		}
 
 		Tuple tuple;
 		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals", "draftMode");
@@ -92,7 +102,10 @@ public class CompanyPracticumShowService extends AbstractService<Company, Practi
 		tuple.put("companysummary", object.getCompany().getSummary());
 		tuple.put("companylink", object.getCompany().getLink());
 
-		tuple.put("estimatedTime", estimatedTime);
+		tuple.put("estimatedTimeMenos", estimatedTimeMenos);
+		tuple.put("estimatedTimeMas", estimatedTimeMas);
+		tuple.put("fechaInicial", fechaInicial);
+		tuple.put("fechaFinal", fechaFinal);
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
 		super.getResponse().setData(tuple);
