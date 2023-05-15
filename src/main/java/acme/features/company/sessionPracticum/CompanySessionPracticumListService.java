@@ -68,7 +68,7 @@ public class CompanySessionPracticumListService extends AbstractService<Company,
 	@Override
 	public void unbind(final Collection<SessionPracticum> objects) {
 		assert objects != null;
-		final boolean draftMode = this.repository.findPracticumById(super.getRequest().getData("practicumId", int.class)).getDraftMode();
+		final boolean draftMode = this.repository.findPracticumById(super.getRequest().getData("practicumId", int.class)).isDraftMode();
 		final boolean existAddendum;
 		final Practicum practicum = this.repository.findPracticumById(super.getRequest().getData("practicumId", int.class));
 		if (this.repository.findAddendumSessionPracticumByPracticumId(practicum.getId()) != null && this.repository.findAddendumSessionPracticumByPracticumId(practicum.getId()).size() != 0)

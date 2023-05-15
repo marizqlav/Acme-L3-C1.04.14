@@ -97,7 +97,7 @@ public class CompanySessionPracticumPublishService extends AbstractService<Compa
 		assert object != null;
 		Tuple tuple;
 		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
-		final boolean draftMode = this.repository.findPracticumById(super.getRequest().getData("practicumId", int.class)).getDraftMode();
+		final boolean draftMode = this.repository.findPracticumById(super.getRequest().getData("practicumId", int.class)).isDraftMode();
 
 		tuple.put("draftMode", draftMode);
 		tuple.put("practicumId", super.getRequest().getData("practicumId", int.class));

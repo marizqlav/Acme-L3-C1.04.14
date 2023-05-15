@@ -49,7 +49,7 @@ public class Practicum extends AbstractEntity {
 	protected String			someGoals;
 
 	@NotNull
-	protected Boolean			draftMode;
+	protected boolean			draftMode;
 
 
 	public Double estimatedTimeMenos(final Collection<SessionPracticum> sessions) {

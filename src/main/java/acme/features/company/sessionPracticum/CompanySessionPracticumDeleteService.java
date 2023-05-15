@@ -82,7 +82,7 @@ public class CompanySessionPracticumDeleteService extends AbstractService<Compan
 		tuple.put("practicum", choices.getSelected().getKey());
 		tuple.put("practica", choices);
 		tuple.put("practicumId", super.getRequest().getData("practicumId", int.class));
-		tuple.put("draftMode", object.getPracticum().getDraftMode());
+		tuple.put("draftMode", object.getPracticum().isDraftMode());
 
 		super.getResponse().setData(tuple);
 
