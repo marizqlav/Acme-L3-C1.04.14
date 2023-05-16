@@ -76,7 +76,7 @@ public class StudentCourseShowService extends AbstractService<Student, Course> {
 
 		Tuple tuple;
 		final String systemCurrency = this.repository.findSystemConfiguration().getSystemCurrency();
-
+		final Boolean enrolmented = this.repository.findStudentCourse(super.getRequest().getPrincipal().getActiveRoleId(), object.getId()) != null ? true : false;
 		tuple = super.unbind(object, "id", "code", "title", "resumen", "retailPrice", "link");
 		tuple.put("lecturerusername", object.getLecturer().getUserAccount().getUsername());
 		tuple.put("lectureralmamater", object.getLecturer().getAlmaMater());
@@ -84,6 +84,7 @@ public class StudentCourseShowService extends AbstractService<Student, Course> {
 		tuple.put("lecturerqualifications", object.getLecturer().getQualifications());
 		tuple.put("lecturerlink", object.getLecturer().getLink());
 		tuple.put("exchangeMoney", this.computeMoneyExchange(object.getRetailPrice(), systemCurrency).getTarget());
+		tuple.put("enrolmented", enrolmented);
 
 		super.getResponse().setData(tuple);
 
