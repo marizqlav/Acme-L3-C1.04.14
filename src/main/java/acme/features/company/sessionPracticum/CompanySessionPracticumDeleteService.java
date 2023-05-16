@@ -78,7 +78,7 @@ public class CompanySessionPracticumDeleteService extends AbstractService<Compan
 		choices = SelectChoices.from(practica, "code", object.getPracticum());
 		Tuple tuple;
 
-		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link", "draftMode", "addendum");
+		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link", "addendum");
 		tuple.put("practicum", choices.getSelected().getKey());
 		tuple.put("practica", choices);
 		tuple.put("practicumId", super.getRequest().getData("practicumId", int.class));

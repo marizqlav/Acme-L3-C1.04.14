@@ -28,7 +28,7 @@
 			<jstl:if test="${addendum == true}">
 				<acme:message code="company.session-practicum.form.message.addendum.indication"/>
 			</jstl:if>
-			<jstl:if test="${addendum == false}">
+			<jstl:if test="${addendum == false && draftModeSession == true}">
 				<acme:submit code="company.session-practicum.form.button.update" action="/company/session-practicum/update"/>
 				<acme:submit code="company.session-practicum.form.button.delete" action="/company/session-practicum/delete"/>
 				<acme:submit code="company.session-practicum.form.button.publish" action="/company/session-practicum/publish"/>

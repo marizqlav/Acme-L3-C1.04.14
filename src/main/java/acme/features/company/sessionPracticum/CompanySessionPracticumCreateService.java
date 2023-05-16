@@ -79,7 +79,7 @@ public class CompanySessionPracticumCreateService extends AbstractService<Compan
 	@Override
 	public void perform(final SessionPracticum object) {
 		assert object != null;
-
+		object.setDraftModeSession(true);
 		this.repository.save(object);
 	}
 

@@ -67,7 +67,7 @@ public class CompanySessionPracticumShowService extends AbstractService<Company,
 
 		tuple.put("addendum", object.isAddendum());
 		tuple.put("draftMode", object.getPracticum().isDraftMode());
-
+		tuple.put("draftModeSession", object.isDraftModeSession());
 		tuple.put("practicum", choices.getSelected().getKey());
 		tuple.put("practica", choices);
 
