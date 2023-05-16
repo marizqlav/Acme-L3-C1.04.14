@@ -51,6 +51,7 @@ public class CompanySessionPracticumCreateTest extends TestHarness {
 		super.checkColumnHasValue(sesionRecordIndex, 1, abstractSessionPracticum);
 
 		super.clickOnListingRecord(sesionRecordIndex);
+		super.checkFormExists();
 		super.checkInputBoxHasValue("title", title);
 		super.checkInputBoxHasValue("abstractSessionPracticum", abstractSessionPracticum);
 		super.checkInputBoxHasValue("startDate", startDate);
