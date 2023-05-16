@@ -78,12 +78,7 @@ public class AnyPeepCreateService extends AbstractService<Any, Peep> {
 
 		Tuple tuple;
 
-		//courses = this.repository.findAllCourses();
-		//choices = SelectChoices.from(courses, "code", object.getCourse());
-
 		tuple = super.unbind(object, "title", "nick", "message", "moreInfo", "link");
-		//tuple.put("course", choices.getSelected().getKey());
-		//tuple.put("courses", choices);
 
 		super.getResponse().setData(tuple);
 	}
