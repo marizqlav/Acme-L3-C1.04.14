@@ -76,12 +76,20 @@ public class CompanyPracticumUpdateService extends AbstractService<Company, Prac
 	public void bind(final Practicum object) {
 		assert object != null;
 
-		super.bind(object, "title", "abstractPracticum", "someGoals", "estimatedTimeMenos", "estimatedTimeMas");
+		super.bind(object, "title", "abstractPracticum", "someGoals");
 	}
 
 	@Override
 	public void validate(final Practicum object) {
 		assert object != null;
+
+		if (object.getTitle() == null || object.getTitle().isEmpty() || object.getTitle() == "")
+			super.state(false, "title", "title.not.null");
+		if (object.getAbstractPracticum() == null || object.getAbstractPracticum().isEmpty() || object.getAbstractPracticum() == "")
+			super.state(false, "abstractPracticum", "abstractPracticum.not.null");
+		if (object.getSomeGoals() == null || object.getSomeGoals().isEmpty() || object.getSomeGoals() == "")
+			super.state(false, "someGoals", "someGoals.not.null");
+
 	}
 
 	@Override
@@ -102,7 +110,7 @@ public class CompanyPracticumUpdateService extends AbstractService<Company, Prac
 		courses = this.repository.findAllCourses();
 		choices = SelectChoices.from(courses, "code", object.getCourse());
 
-		tuple = super.unbind(object, "title", "abstractPracticum", "someGoals", "estimatedTimeMenos", "estimatedTimeMas", "draftMode");
+		tuple = super.unbind(object, "title", "abstractPracticum", "someGoals", "draftMode");
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
 

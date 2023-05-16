@@ -32,7 +32,7 @@ public class AuthenticatedPracticumShowService extends AbstractService<Authentic
 		Practicum practicum;
 		practicumId = super.getRequest().getData("id", int.class);
 		practicum = this.pracRepository.findPracticumById(practicumId);
-		status = practicum != null && !practicum.getDraftMode();
+		status = practicum != null && !practicum.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 

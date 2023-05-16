@@ -60,14 +60,15 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 	public void bind(final Practicum object) {
 		assert object != null;
 
-		int courseId;
-		Course course;
-
-		courseId = super.getRequest().getData("course", int.class);
-		course = this.repository.findCourseById(courseId);
-
-		super.bind(object, "code", "title", "abstractPracticum", "someGoals");
-		object.setCourse(course);
+		//		int courseId;
+		//		Course course;
+		//
+		//		courseId = super.getRequest().getData("course", int.class);
+		//		course = this.repository.findCourseById(courseId);
+		//
+		//		super.bind(object, "code", "title", "abstractPracticum", "someGoals", "draftMode");
+		object.setDraftMode(false);
+		//		object.setCourse(course);
 	}
 
 	@Override
@@ -79,12 +80,10 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 	public void perform(final Practicum object) {
 		assert object != null;
 
-		object.setDraftMode(false);
-
 		final Collection<SessionPracticum> sessions = this.repository.findSessionPracticumByPracticumId(object.getId());
 		for (final SessionPracticum s : sessions)
 			this.repository.save(s);
-
+		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 

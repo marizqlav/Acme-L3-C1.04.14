@@ -1,3 +1,6 @@
 recordIndex,sesionRecordIndex,title,abstractSessionPracticum,startDate,finishDate,link
-1,1,Calvo,Resumen Practica Sesion,2023/02/02 12:00,2023/02/05 13:00,
-2,1,Calvo,Resumen Practica Sesion,2023/02/05 12:00,2023/02/10 13:00,
+1,1,Calvo,Resumen Practica Sesion,2024/02/02 12:00,2024/03/05 13:00,
+2,1,Calvo,Resumen Practica Sesion,2024/02/05 12:00,2024/03/10 13:00,
+3,0,Calvo,<h1>hola</h1>,2024/02/02 12:00,2024/02/12 13:00,
+4,0,<script>alert('Offer')</script>,Resumen Practica Sesion,2024/02/02 12:00,2024/02/09 13:00,
+5,0,Calvo,<script>alert('Offer')</script>,2024/02/02 12:00,2024/03/07 13:00,

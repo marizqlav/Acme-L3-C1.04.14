@@ -53,7 +53,7 @@ public class CompanyPracticumDeleteService extends AbstractService<Company, Prac
 		practicum = this.repository.findPracticumById(practicumId);
 		principal = super.getRequest().getPrincipal();
 
-		status = practicum != null && practicum.getCompany().getId() == principal.getActiveRoleId() && practicum.getDraftMode();
+		status = practicum != null && practicum.getCompany().getId() == principal.getActiveRoleId();
 		super.getResponse().setAuthorised(status);
 	}
 

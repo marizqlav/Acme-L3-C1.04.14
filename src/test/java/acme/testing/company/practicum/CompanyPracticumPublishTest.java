@@ -63,7 +63,7 @@ public class CompanyPracticumPublishTest extends TestHarness {
 
 		practicums = this.repository.findManyPracticumsByCompanyUsername("company1");
 		for (final Practicum practicum : practicums)
-			if (practicum.getDraftMode()) {
+			if (practicum.isDraftMode()) {
 				params = String.format("id=%d", practicum.getId());
 
 				super.checkLinkExists("Sign in");
@@ -88,7 +88,7 @@ public class CompanyPracticumPublishTest extends TestHarness {
 		super.signIn("company1", "company1");
 		practicums = this.repository.findManyPracticumsByCompanyUsername("company1");
 		for (final Practicum practicum : practicums)
-			if (!practicum.getDraftMode()) {
+			if (!practicum.isDraftMode()) {
 				params = String.format("id=%d", practicum.getId());
 				super.request("/company/practicum/publish", params);
 			}
