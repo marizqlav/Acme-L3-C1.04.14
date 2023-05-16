@@ -1,11 +1,14 @@
 key,code,motivation,someGoals,draftMode,holderName,lowerNibble,key:student,key:course
 enrolment-01,"AAA000","Ampliar conocimientos","Learn and learn",false,Ismael Herrera Ramirez,0004,student-01,course-01
-enrolment-02,"AAA001","<h1>Lorem ipsum</h1>","Aprender los conceptos básicos de programación",false,Ismael Herrera Ramirez,0004,student-01,course-02
+enrolment-02,"AAA001","<h1>Lorem ipsum</h1>","Aprender los conceptos básicos de programación",false,Ismael Herrera Ramirez,0004,student-01,course-03
 enrolment-03,"AAA002","Aumentar tu confianza: Aprender algo nuevo","Dominar el uso de lenguajes de programación populares como Python o JavaScript",true,null,null,student-01,course-13
-enrolment-04,"AAA003","تحفيز","Nice code bro",false,null,null,student-01,course-04
-enrolment-05,"AAA004","YES FULL MOTIVATION","YEY",true,null,null,student-01,course-12
-enrolment-06,"AAA005","中国酷迪罗","<h2>Get your goals</h2>",true,null,null,student-02,course-01
-enrolment-07,"AAA006","gogogogoogogo!!!!!","Conocer nuevas personas",false,Pepe Reina Rueda,5588,student-02,course-02
-enrolment-08,"AAA007","Descubrir nuevos intereses","<script>alert('goalllllls')</script>",false,Pepe Reina Rueda,5588,student-02,course-03
-enrolment-09,"AAA008","Aprender a utilizar herramientas de desarrollo como Git y JIRA","Flexibilidad de horarios",false,Pepe Reina Rueda,5588,student-02,course-12
-enrolment-10,"AAA009","<script>alert('motivation')</script>","OKEYYYYYYYYY!!!!!$$$$$===",true,null,null,student-02,course-07
+enrolment-04,"AAA003","EPICO","Nice code bro",false,null,null,student-01,course-07
+enrolment-05,"AAA004","YES FULL MOTIVATION","YEY",true,null,null,student-01,course-11
+enrolment-06,"AAA005","Me sirve para poder terminar la carrera","Ojalá terminarla",true,null,null,student-01,course-14
+enrolment-07,"AAA006","Podria ser util en el futuro","Asi es, lo será",true,null,null,student-01,course-15
+enrolment-08,"AAA007","Si apruebo este curso","Podre ir a ver ganar a mi Betis",true,null,null,student-01,course-16
+enrolment-09,"AAA008","Antes habian caracteres chinos","<h2>Get your goals</h2>",true,null,null,student-02,course-01
+enrolment-10,"AAA009","gogogogoogogo!!!!!","Conocer nuevas personas",false,Pepe Reina Rueda,5588,student-02,course-11
+enrolment-11,"AAA010","Descubrir nuevos intereses","<script>alert('goalllllls')</script>",false,Pepe Reina Rueda,5588,student-02,course-03
+enrolment-12,"AAA011","Aprender a utilizar herramientas de desarrollo como Git y JIRA","Flexibilidad de horarios",false,Pepe Reina Rueda,5588,student-02,course-13
+enrolment-13,"AAA012","<script>alert('motivation')</script>","OKEYYYYYYYYY",true,null,null,student-02,course-07

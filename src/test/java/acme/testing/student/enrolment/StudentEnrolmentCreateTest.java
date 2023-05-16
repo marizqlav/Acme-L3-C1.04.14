@@ -29,7 +29,7 @@ public class StudentEnrolmentCreateTest extends TestHarness {
 	@Order(10)
 	@ParameterizedTest
 	@CsvFileSource(resources = "/student/enrolment/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void positiveTest(final int recordIndex, final String motivation, final String someGoals) {
+	public void positiveTest(final int recordIndex, final String courseTitle, final String code, final String motivation, final String someGoals) {
 
 		super.signIn("student3", "student3");
 		super.clickOnMenu("Student", "My enrolments");
@@ -37,7 +37,7 @@ public class StudentEnrolmentCreateTest extends TestHarness {
 		super.checkListingExists();
 		super.clickOnButton("New enrolment");
 		final BrowserDriver driver = super.getDriver();
-		driver.locateOne(By.xpath("/html/body/div[2]/div/form/div[1]/select/option[" + (recordIndex + 1) + "]")).click();
+		driver.locateOne(By.xpath("/html/body/div[2]/div/form/div[1]/select/option[" + (recordIndex + 2) + "]")).click();
 		super.fillInputBoxIn("motivation", motivation);
 		super.fillInputBoxIn("someGoals", someGoals);
 		super.clickOnSubmit("Create enrolment");
@@ -45,8 +45,10 @@ public class StudentEnrolmentCreateTest extends TestHarness {
 		super.clickOnMenu("Student", "My enrolments");
 		super.checkListingExists();
 		super.sortListing(0, "asc");
+		super.checkColumnHasValue(recordIndex, 0, code);
+		super.checkColumnHasValue(recordIndex, 1, courseTitle);
 
-		super.clickOnListingRecord(recordIndex - 1);
+		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
 		super.checkInputBoxHasValue("motivation", motivation);
 		super.checkInputBoxHasValue("someGoals", someGoals);
@@ -81,8 +83,6 @@ public class StudentEnrolmentCreateTest extends TestHarness {
 	@Order(30)
 	@Test
 	public void test300Hacking() {
-		// HINT: this test tries to create a job using principals with
-		// HINT+ inappropriate roles.
 
 		super.checkLinkExists("Sign in");
 		super.request("/student/enrolment/create");
