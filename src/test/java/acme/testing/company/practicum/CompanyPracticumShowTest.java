@@ -71,7 +71,7 @@ public class CompanyPracticumShowTest extends TestHarness {
 
 		practicums = this.repository.findManyPracticumsByCompanyUsername("company1");
 		for (final Practicum practicum : practicums)
-			if (practicum.getDraftMode()) {
+			if (practicum.isDraftMode()) {
 				param = String.format("id=%d", practicum.getId());
 
 				super.checkLinkExists("Sign in");

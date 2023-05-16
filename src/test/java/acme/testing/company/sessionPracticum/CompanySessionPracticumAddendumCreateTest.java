@@ -129,7 +129,7 @@ public class CompanySessionPracticumAddendumCreateTest extends TestHarness {
 		super.signIn("company1", "company1");
 		practicums = this.repository.findManyPracticumsByCompanyUsername("company1");
 		for (final Practicum practicum : practicums)
-			if (!practicum.getDraftMode()) {
+			if (!practicum.isDraftMode()) {
 				param = String.format("masterId=%d", practicum.getId());
 				super.request("/company/session-practicum/create", param);
 				super.checkPanicExists();
