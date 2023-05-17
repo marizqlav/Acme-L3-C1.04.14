@@ -35,10 +35,12 @@ public class LecturerLectureShowService extends AbstractService<Lecturer, Lectur
 		boolean status;
 		int id;
 		Lecture lecture;
+		Lecturer lecturer;
 
 		id = super.getRequest().getData("id", int.class);
 		lecture = this.repository.findLectureById(id);
-		status = lecture != null;
+		lecturer = lecture.getLecturer();
+		status = lecture != null && super.getRequest().getPrincipal().hasRole(lecturer);
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -64,7 +66,7 @@ public class LecturerLectureShowService extends AbstractService<Lecturer, Lectur
 
 		tuple = super.unbind(object, "title", "resumen", "lectureType", "estimatedTime", "body");
 		tuple.put("lectureTypes", choices);
-		tuple.put("draftmode", object.isDraftmode());
+		tuple.put("draftmode", object.getDraftmode());
 
 		super.getResponse().setData(tuple);
 	}
