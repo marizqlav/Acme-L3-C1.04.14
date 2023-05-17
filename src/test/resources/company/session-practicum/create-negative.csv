@@ -1,8 +1,11 @@
-recordIndex,code,title,abstractPracticum,someGoals
-0,,valid,tiburones,el someGoals del Practicum va a ocupar ciento uno caracteres para que se valide como maximo tiene 101
-0,AZF820,,Top cuarenta,va
-0,AZV920,Titulo,,goal
-0,QWQ123,Titulo,Top cuarenta,
-0,REW432,estamos comprobando para que el title de fallo llegando hasta la el limite 78,Top,goal
-0,GDF432,titulo,estamos comprobando que el abstractPracticum de fallo llegando hasta la el limite que es cientodos102,goal
-0,REW354,Titulo,Top cuarenta,estamos comprobando que el someGoals de fallo llegando hasta la el limite que es ciento dos 102 ejmpo
+recordIndex, sesionRecordIndex,title,abstractSessionPracticum,startDate,finishDate,link
+0,1,,valid,2024/02/02 12:00,2024/03/05 13:00,
+0,1,titulo,,2024/02/02 12:00,2024/03/05 13:00,
+0,1,titulo,valid,,2024/03/05 13:00,
+0,1,titulo,valid,2024/02/02 12:00,,
+0,1,,,,,
+0,1,El titulo de esta practica va a ocupar setenta y seis caracteres como maximo 78,valid,2024/02/02 12:00,2024/03/05 13:00,
+0,1,titulo,El abstract del session Practicum va a ocupar ciento uno caracteres y se valide como maximo tiene 1011,2024/02/02 12:00,2024/03/05 13:00,
+0,1,titulo,valid,2000/02/02 12:00,2024/03/05 13:00,
+0,1,titulo,valid,2024/02/02 12:00,2000/03/05 13:00,
+0,1,titulo,valid,2024/02/02 12:00,2024/03/05 13:00,lolo
