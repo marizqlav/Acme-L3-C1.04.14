@@ -37,13 +37,14 @@ public class CompanySessionPracticumAddendumCreateTest extends TestHarness {
 		super.clickOnListingRecord(recordIndex);
 		super.clickOnButton("List Session Practicum");
 
-		super.clickOnButton("Create");
+		super.clickOnButton("Create Addendum");
 		super.fillInputBoxIn("title", title);
 		super.fillInputBoxIn("abstractSessionPracticum", abstractSessionPracticum);
 		super.fillInputBoxIn("startDate", startDate);
 		super.fillInputBoxIn("finishDate", finishDate);
 		super.fillInputBoxIn("link", link);
-		super.clickOnSubmit("Create");
+		super.clickOnButton("Create Addendum");
+		super.clickOnButton("Confirm");
 
 		super.checkListingExists();
 		super.sortListing(0, "asc");
@@ -75,14 +76,14 @@ public class CompanySessionPracticumAddendumCreateTest extends TestHarness {
 	//		super.clickOnListingRecord(recordIndex);
 	//		super.clickOnButton("Session Practicum");
 	//
-	//		super.clickOnButton("Create");
+	//		super.clickOnButton("Create Addendum");
 	//
 	//		super.fillInputBoxIn("title", title);
 	//		super.fillInputBoxIn("abstractSessionPracticum", abstractSessionPracticum);
 	//		super.fillInputBoxIn("startDate", startDate);
 	//		super.fillInputBoxIn("finishDate", finishDate);
 	//		super.fillInputBoxIn("link", link);
-	//		super.clickOnSubmit("Create");
+	//		super.clickOnSubmit("Create Addendum");
 	//
 	//		super.checkErrorsExist();
 	//		super.signOut();
