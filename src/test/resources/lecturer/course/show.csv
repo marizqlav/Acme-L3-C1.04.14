@@ -1,6 +1,6 @@
 indexRecord,code,courseType,title,resumen,retail-price,link
-0,A878,BALANCED,Course Title 1,resumen del curso,EUR 59.99,https://www.informatica.us.es/index.php/estudios
-1,AB324,BALANCED,Course Title 2,resumen del curso,EUR 39.99,https://
-2,ABC935,THEORY,Course Title 3,resumen del curso,EUR 40.00,
-3,DS136,BALANCED,Course Title 5,resumen del curso,USD 69.99,https://www.aaaa.com
-4,HYE138,BALANCED,Course Title 6,r,EUR 1.00,
+0,A000,BALANCED,Course Title 1,resumen del curso,EUR 59.99,https://www.informatica.us.es/index.php/estudios
+1,A001,BALANCED,Course Title 2,resumen del curso,EUR 39.99,https://
+2,A002,THEORY,Course Title 3,resumen del curso,EUR 40.00,
+3,A004,BALANCED,Course Title 5,resumen del curso,USD 69.99,https://www.aaaa.com
+4,A005,BALANCED,Course Title 6,r,EUR 1.00,
