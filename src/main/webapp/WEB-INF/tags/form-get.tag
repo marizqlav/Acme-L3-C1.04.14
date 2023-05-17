@@ -11,7 +11,7 @@
 	<jstl:set var="readonly" value="false"/>
 </jstl:if>
 
-<form id="form" method="get>
+<form id="form" method="get">
 	<acme:hidden-data path="id"/>
 	<acme:hidden-data path="version"/>
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">

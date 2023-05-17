@@ -76,7 +76,6 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 	public void bind(final Course object) {
 		assert object != null;
 
-		super.bind(object, "title", "resumen", "retailPrice", "link");
 	}
 
 	@Override
@@ -84,7 +83,7 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 		assert object != null;
 
 		final Collection<Lecture> cl = this.repository.findAllLecturesByCourse(object.getId());
-		final List<Boolean> lb = cl.stream().map(x -> x.isDraftmode()).collect(Collectors.toList());
+		final List<Boolean> lb = cl.stream().map(x -> x.getDraftmode()).collect(Collectors.toList());
 		if (!lb.contains(true) && !lb.isEmpty())
 			object.setDraftMode(false);
 		else
@@ -100,7 +99,7 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 		Tuple tuple;
 		tuple = super.unbind(object, "code", "title", "resumen", "retailPrice", "link");
 		tuple.put("courseType", this.courseType(this.repository.findAllLecturesByCourse(object.getId())));
-		tuple.put("draftmode", object.isDraftMode());
+		tuple.put("draftmode", object.getDraftMode());
 		tuple.put("exchangeMoney", this.computeMoneyExchange(object.getRetailPrice(), systemCurrency).getTarget());
 		super.getResponse().setData(tuple);
 	}

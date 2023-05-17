@@ -58,7 +58,6 @@ public class LecturerLecturePublishService extends AbstractService<Lecturer, Lec
 	public void bind(final Lecture object) {
 		assert object != null;
 
-		super.bind(object, "title", "resumen", "lectureType", "estimatedTime", "body");
 	}
 
 	@Override
