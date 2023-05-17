@@ -104,7 +104,7 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 
 		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
 		tuple.put("addendum", object.isAddendum());
-		final boolean draftMode = this.repository.findPracticumById(super.getRequest().getData("practicumId", int.class)).getDraftMode();
+		final boolean draftMode = this.repository.findPracticumById(super.getRequest().getData("practicumId", int.class)).isDraftMode();
 
 		tuple.put("draftMode", draftMode);
 		tuple.put("practicumId", super.getRequest().getData("practicumId", int.class));

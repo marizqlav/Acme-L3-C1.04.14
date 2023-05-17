@@ -121,7 +121,7 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 				final Enrolment enrolmented = this.repository.findStudentCourse(studentId, course.getId());
 				if (enrolmented != null)
 					super.state(false, "course", "student.enrolment.error.enrolment.exist");
-				if (course.isDraftMode())
+				if (course.getDraftMode())
 					super.state(false, "course", "student.enrolment.error.course.not.public");
 			}
 		} else {
@@ -133,7 +133,7 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 					super.state(false, "motivation", "student.enrolment.error.enrolment.exist");
 					super.state(false, "someGoals", "student.enrolment.error.enrolment.exist");
 				}
-				if (course.isDraftMode())
+				if (course.getDraftMode())
 					super.state(false, "motivation", "student.enrolment.error.course.not.public");
 			}
 		}
