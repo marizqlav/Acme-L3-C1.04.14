@@ -34,7 +34,16 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int id;
+		Course course;
+		Lecturer lecturer;
+
+		id = super.getRequest().getData("id", int.class);
+		course = this.repository.findCourseById(id);
+		lecturer = course.getLecturer();
+		status = course != null && super.getRequest().getPrincipal().hasRole(lecturer);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -58,10 +67,13 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 	@Override
 	public void validate(final Course object) {
 		assert object != null;
+		final Course course = this.repository.findCourseById(super.getRequest().getData("id", int.class));
 		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
 			super.state(this.assistentService.validatePrice(object.getRetailPrice(), 0, 1000000), "retailPrice", "lecturer.course.form.error.retailPrice");
 		if (!super.getBuffer().getErrors().hasErrors("retailPrice"))
 			super.state(!object.getRetailPrice().toString().contains("-"), "retailPrice", "lecturer.course.form.error.retailPrice.negative");
+		if (!super.getRequest().getData("code", String.class).equals(course.getCode()))
+			super.state(false, "code", "code.not.edit");
 
 	}
 

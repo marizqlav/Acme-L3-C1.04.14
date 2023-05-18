@@ -33,3 +33,5 @@ lecturer.course.form.error.retailPrice = Debe tener un valor válido
 lecturer.course.form.error.retailPrice.negative = No puede ser negativo
 
 lecturer.course.button.publish = Publicar curso
+
+code.not.edit = El código no puede ser editado
