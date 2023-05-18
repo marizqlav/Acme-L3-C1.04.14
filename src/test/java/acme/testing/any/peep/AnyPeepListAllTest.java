@@ -30,7 +30,6 @@ public class AnyPeepListAllTest extends TestHarness {
 
 		super.clickOnMenu("Peeps");
 		super.checkListingExists();
-		//		super.sortListing(0, "asc");
 
 		if (nick != null)
 			super.checkColumnHasValue(recordIndex, 1, nick);
