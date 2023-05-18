@@ -14,7 +14,7 @@ import acme.framework.repositories.AbstractRepository;
 public interface AssistantSessionTutorialRepository extends AbstractRepository {
 
 	@Query("SELECT t FROM Tutorial t WHERE t.id = :id")
-	Tutorial findAssistantById(int id);
+	Tutorial findTutorialById(int id);
 
 	@Query("SELECT s FROM SessionTutorial s WHERE s.id = :id")
 	SessionTutorial findSessionById(int id);

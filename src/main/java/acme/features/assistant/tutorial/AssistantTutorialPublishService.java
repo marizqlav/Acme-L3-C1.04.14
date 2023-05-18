@@ -60,8 +60,7 @@ public class AssistantTutorialPublishService extends AbstractService<Assistant, 
 	@Override
 	public void bind(final Tutorial object) {
 		assert object != null;
-
-		super.bind(object, "title", "description", "estimatedTime", "code");
+		super.bind(object, "title", "description", "estimatedTime");
 	}
 
 	@Override
@@ -75,7 +74,7 @@ public class AssistantTutorialPublishService extends AbstractService<Assistant, 
 	public void perform(final Tutorial object) {
 		assert object != null;
 
-		object.setDraftMode(true);
+		object.setDraftMode(false);
 
 		this.repository.save(object);
 	}
@@ -91,7 +90,7 @@ public class AssistantTutorialPublishService extends AbstractService<Assistant, 
 
 		choices = SelectChoices.from(this.courseRepo.findAllCourses(), "title", object.getCourse());
 
-		tuple = super.unbind(object, "title", "description", "estimatedTime");
+		tuple = super.unbind(object, "title", "description", "estimatedTime", "draftMode");
 		tuple.put("courses", choices);
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("assistant", this.repository.findAssistantById(super.getRequest().getPrincipal().getActiveRoleId()));
