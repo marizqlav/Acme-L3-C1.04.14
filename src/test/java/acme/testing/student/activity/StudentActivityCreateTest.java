@@ -127,7 +127,7 @@ public class StudentActivityCreateTest extends TestHarness {
 
 		super.checkLinkExists("Sign in");
 		super.signIn("student2", "student2");
-		enrolments = this.repository.findManyEnrolmentsByStudentUsername("student1");
+		enrolments = this.repository.findManyEnrolmentsByStudentUsername("student2");
 		for (final Enrolment enrolment : enrolments)
 			if (enrolment.isDraftMode()) {
 				param = String.format("masterId=%d", enrolment.getId());
