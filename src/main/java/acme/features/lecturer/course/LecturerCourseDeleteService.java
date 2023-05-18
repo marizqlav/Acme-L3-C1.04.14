@@ -86,6 +86,7 @@ public class LecturerCourseDeleteService extends AbstractService<Lecturer, Cours
 		for (final CourseLecture courseLecture : courseLectures)
 			this.repository.delete(courseLecture);
 		final Collection<Practicum> practicum = this.repository.findPracticumCourse(object.getId());
+
 		for (final Practicum p : practicum) {
 			Collection<SessionPracticum> practicumSessions;
 			practicumSessions = this.practRepo.findSessionPracticumByPracticumId(p.getId());
@@ -98,7 +99,6 @@ public class LecturerCourseDeleteService extends AbstractService<Lecturer, Cours
 			final Collection<AuditingRecord> ar = this.auditRepo.findRecordsFromAudit(audit.getId());
 			this.repository.deleteAll(ar);
 			this.repository.delete(audit);
-
 		}
 
 		this.repository.delete(object);
