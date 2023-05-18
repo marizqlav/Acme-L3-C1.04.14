@@ -1,27 +1,27 @@
 key,code,title,abstractPracticum,someGoals,draftMode,key:company,key:course
 practicum-01,AAA000,Calvo,Resumen Practica,Top cuarenta,true,company-01,course-01
-practicum-02,AAA001,Calvo,Resumen Practica,Top cuarenta,true,company-01,course-02
+practicum-02,AAA001,Calvo,Resumen Practica,Top cuarenta,true,company-01,course-01
 practicum-03,AAA002,Calvo,Bonjour,Top cuarenta,false,company-01,course-03
-practicum-04,AAA003,Calvo,Resumen Practica,Bonjour,false,company-01,course-04
-practicum-05,AAA004,<h1>hola</h1>,Resumen Practica,Top cuarenta,true,company-01,course-05
-practicum-06,AAA005,Calvo,<h1>hola</h1>,Top cuarenta,true,company-01,course-06
+practicum-04,AAA003,Calvo,Resumen Practica,Bonjour,false,company-01,course-01
+practicum-05,AAA004,<h1>hola</h1>,Resumen Practica,Top cuarenta,true,company-01,course-03
+practicum-06,AAA005,Calvo,<h1>hola</h1>,Top cuarenta,true,company-01,course-03
 practicum-07,AAA006,Calvo,Resumen Practica,<h1>hola</h1>,true,company-01,course-07
-practicum-08,AAA007,<script>alert('Practicum')</script>,Resumen Practica,Top cuarenta,true,company-01,course-08
+practicum-08,AAA007,<script>alert('Practicum')</script>,Resumen Practica,Top cuarenta,true,company-01,course-09
 practicum-09,AAA008,Calvo,<script>alert('Practicum')</script>,Top cuarenta,true,company-01,course-09
-practicum-10,AAA009,Calvo,Resumen Practica,<script>alert('Practicum')</script>,true,company-01,course-10
-practicum-11,AAA010,El titulo de esta practica va a ocupar setenta y seis caracteres como maximo,Resumen Practica,Top cuarenta,true,company-01,course-11
-practicum-12,AAA011,Calvo,El abstract del Practicum va a ocupar ciento uno caracteres y para que se valide como maximo tiene101,Top cuarenta,true,company-01,course-12
-practicum-13,AAA012,Calvo,Resumen Practica,el someGoals del Practicum va a ocupar ciento uno caracteres para que se valide como maximo tiene 101,true,company-01,course-13
+practicum-10,AAA009,Calvo,Resumen Practica,<script>alert('Practicum')</script>,true,company-01,course-9
+practicum-11,AAA010,El titulo de esta practica va a ocupar setenta y seis caracteres como maximo,Resumen Practica,Top cuarenta,true,company-01,course-10
+practicum-12,AAA011,Calvo,El abstract del Practicum va a ocupar ciento uno caracteres y para que se valide como maximo tiene101,Top cuarenta,true,company-01,course-11
+practicum-13,AAA012,Calvo,Resumen Practica,el someGoals del Practicum va a ocupar ciento uno caracteres para que se valide como maximo tiene 101,true,company-01,course-11
 practicum-14,AAA013,Calvo,Resumen Practica.,Top,true,company-01,course-01
 practicum-15,AAA014,Calvo,Resumen Practica.,Top,true,company-01,course-01
-practicum-16,AAA015,Calvo,專業實踐La,Top,true,company-02,course-02
-practicum-17,AAA016,Calvo,περίληψη πρακτικής,Top,true,company-02,course-02
+practicum-16,AAA015,Calvo,專業實踐La,Top,true,company-02,course-01
+practicum-17,AAA016,Calvo,περίληψη πρακτικής,Top,true,company-02,course-03
 practicum-18,AAA017,Calvo,Resumen Practica,Top cuarenta,true,company-01,course-03
 practicum-19,AAA018,Calvo,Resumen Practica,Top cuarenta,true,company-02,course-01
-practicum-20,AAA019,Calvo,Resumen Practica,Top cuarenta,true,company-01,course-02
+practicum-20,AAA019,Calvo,Resumen Practica,Top cuarenta,true,company-01,course-03
 practicum-21,AAA020,Calvo,Resumen Practica,Top cuarenta,true,company-02,course-01
 practicum-22,AAA021,Calvo,Resumen Practica,Top cuarenta,true,company-01,course-01
 practicum-23,AAA022,Calvo,Resumen Practica,Top cuarenta,true,company-01,course-01
 practicum-24,AAA023,Calvo,Resumen Practica,Top cuarenta,true,company-02,course-01
 practicum-25,AAA024,Calvo,Resumen Practica,Top cuarenta,true,company-02,course-01
-practicum-26,AAA025,Calvo,Resumen Practica,Top cuarenta,true,company-02,course-02
+practicum-26,AAA025,Calvo,Resumen Practica,Top cuarenta,true,company-02,course-03
