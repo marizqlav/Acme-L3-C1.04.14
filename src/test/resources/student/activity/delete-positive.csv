@@ -1,0 +1,6 @@
+recordIndex,activityRecordIndex,title,abstractResumen,activityType,timePeriodInitial,timePeriodFinal,link
+0,0,<h1>HTML</h1>,Resumen ejecutivo,HANDS_ON,2019/08/05 15:20,2019/08/05 16:30,https://www.google.com/
+0,0,Actividad 1,<script>alert('hacked++')</script>,THEORY,2010/02/03 07:00,2010/02/03 09:30,
+0,0,Clase de hacking,Aprenderemos conceptos de hacking,THEORY,2021/11/11 15:00,2021/11/11 17:25,https://modulosdepago.es/blog/numeros-de-tarjeta-de-credito-de-pruebas/
+0,0,Clase magistral,Buen resumen,HANDS_ON,2021/06/12 07:55,2021/06/12 09:45,
+0,0,Practica de hardware,Montar PCs,HANDS_ON,2022/09/10 10:00,2022/09/10 12:45,
