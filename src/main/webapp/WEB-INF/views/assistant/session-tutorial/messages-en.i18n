@@ -14,3 +14,5 @@ assistant.sessionTutorial.form.label.sessionType= Type
 assistant.sessionTutorial.form.label.endDate= End date
 assistant.sessionTutorial.form.label.startDate= Start date
 assistant.sessionTutorial.form.label.link= Link
+assistant.sessionTutorial.data= Session
+assistant.tutorial.list.button.create = Create

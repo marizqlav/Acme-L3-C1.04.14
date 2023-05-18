@@ -17,7 +17,9 @@ assistant.tutorial.data = Nuevo tutorial
 assistant.tutorial.form.label.title = Título:
 assistant.tutorial.form.label.estimatedTime = Tiempo estimado:
 assistant.tutorial.form.label.description = Descripción
-assistant.tutorial.form.button.update= Update
-assistant.tutorial.form.button.delete= Delete
+assistant.tutorial.form.button.update= Actualizar
+assistant.tutorial.form.button.delete= Borrar
 assistant.tutorial.form.button.publish= Publicar
-assistant.tutorial.form.label.course= Course
+assistant.tutorial.form.label.course= Curso
+
+assistant.sessionTutorial.data= Sesión
