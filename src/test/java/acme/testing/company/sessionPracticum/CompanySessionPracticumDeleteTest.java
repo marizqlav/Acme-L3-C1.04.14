@@ -10,7 +10,7 @@ public class CompanySessionPracticumDeleteTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/session-practicum/delete-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void positiveTest(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum, final String startDate, final String finishDate, final String link) {
+	public void test100Positive(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum, final String startDate, final String finishDate, final String link) {
 
 		super.signIn("company1", "company1");
 
@@ -41,7 +41,7 @@ public class CompanySessionPracticumDeleteTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/session-practicum/delete-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void negativeTest(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum, final String startDate, final String finishDate, final String link) {
+	public void test200Negative(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum, final String startDate, final String finishDate, final String link) {
 
 		super.signIn("company1", "company1");
 

@@ -21,7 +21,7 @@ public class CompanyPracticumUpdateTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/practicum/update-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void positiveTest(final int recordIndex, final String code, final String title, final String abstractPracticum, final String someGoals) {
+	public void test100Positive(final int recordIndex, final String code, final String title, final String abstractPracticum, final String someGoals) {
 		super.signIn("company1", "company1");
 
 		super.clickOnMenu("Company", "Practicum list");
@@ -54,7 +54,7 @@ public class CompanyPracticumUpdateTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/practicum/update-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(20)
-	public void negativeTest(final int recordIndex, final String title, final String abstractPracticum, final String someGoals) {
+	public void test200Negative(final int recordIndex, final String title, final String abstractPracticum, final String someGoals) {
 		super.signIn("company1", "company1");
 
 		super.clickOnMenu("Company", "Practicum list");
@@ -75,7 +75,7 @@ public class CompanyPracticumUpdateTest extends TestHarness {
 	}
 
 	@Test
-	public void hackingTest() {
+	public void test300Hacking() {
 		Collection<Practicum> practicums;
 		String param;
 

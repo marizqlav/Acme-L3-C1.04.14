@@ -21,7 +21,7 @@ public class AnyPeepCreateTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/any/peep/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void positiveTest(final int recordIndex, final String user, final String pass, final String title, final String nick, final String message, final String moreInfo, final String link) {
+	public void test100Positive(final int recordIndex, final String user, final String pass, final String title, final String nick, final String message, final String moreInfo, final String link) {
 
 		if (user != null && pass != null)
 			super.signIn(user, pass);
@@ -68,7 +68,7 @@ public class AnyPeepCreateTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/any/peep/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void negativeTest(final int recordIndex, final String user, final String pass, final String title, final String nick, final String message, final String moreInfo, final String link) {
+	public void test200Negative(final int recordIndex, final String user, final String pass, final String title, final String nick, final String message, final String moreInfo, final String link) {
 
 		if (user != null && pass != null)
 			super.signIn(user, pass);

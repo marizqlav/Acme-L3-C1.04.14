@@ -16,7 +16,7 @@ public class CompanySessionPracticumPublishTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/session-practicum/publish-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void positiveTest(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum) {
+	public void test100Positive(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum) {
 		super.signIn("company1", "company1");
 
 		super.clickOnMenu("Company", "Practicum list");
@@ -41,7 +41,7 @@ public class CompanySessionPracticumPublishTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/session-practicum/publish-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void negativeButtonTest(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum) {
+	public void test200Negative(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum) {
 		// HINT: this test attempts to publish a Practicum that cannot be published, yet.
 
 		super.signIn("company1", "company1");
@@ -65,7 +65,7 @@ public class CompanySessionPracticumPublishTest extends TestHarness {
 		super.signOut();
 	}
 	@Test
-	public void hackingTest() {
+	public void test300Hacking() {
 		super.request("/company/session-practicum/publish");
 		super.checkPanicExists();
 

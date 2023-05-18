@@ -19,7 +19,7 @@ public class CompanyPracticumPublishTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/practicum/publish-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void positiveTest(final int recordIndex, final String code) {
+	public void test100Positive(final int recordIndex, final String code) {
 		super.signIn("company1", "company1");
 
 		super.clickOnMenu("Company", "Practicum list");
@@ -37,7 +37,7 @@ public class CompanyPracticumPublishTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/practicum/publish-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void negativeButtonTest(final int recordIndex, final String code) {
+	public void test200Negative(final int recordIndex, final String code) {
 		// HINT: this test attempts to publish a Practicum that cannot be published, yet.
 
 		super.signIn("company1", "company1");
