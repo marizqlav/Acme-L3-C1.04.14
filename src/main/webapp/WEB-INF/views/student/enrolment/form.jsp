@@ -49,7 +49,7 @@
 		</form>		
 		</jstl:when>	
 	</jstl:choose>
-	<jstl:if test="${_command == 'show' || _command == 'update'}">
+	<jstl:if test="${draftMode.equals(false) && _command == 'show'}">
 	<hr/>
 		<acme:button code="student.course.activities" action="/student/activity/list?masterId=${id}"/>
 	<hr/>
