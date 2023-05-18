@@ -22,7 +22,7 @@ public class CompanyPracticumCreateTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/practicum/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void positiveTest(final int recordIndex, final String code, final String course, final String title, final String abstractPracticum, final String someGoals) {
+	public void test100Positive(final int recordIndex, final String code, final String course, final String title, final String abstractPracticum, final String someGoals) {
 
 		super.signIn("company1", "company1");
 
@@ -57,7 +57,7 @@ public class CompanyPracticumCreateTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/practicum/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void negativeTest(final int recordIndex, final String course, final String title, final String abstractPracticum, final String someGoals) {
+	public void test200Negative(final int recordIndex, final String course, final String title, final String abstractPracticum, final String someGoals) {
 
 		super.signIn("company1", "company1");
 		super.clickOnMenu("Company", "Practicum list");
