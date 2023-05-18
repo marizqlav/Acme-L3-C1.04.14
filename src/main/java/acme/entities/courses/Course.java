@@ -43,6 +43,7 @@ public class Course extends AbstractEntity {
 	protected String			resumen;
 
 	@Valid
+	@NotNull
 	protected Money				retailPrice;
 
 	@URL
