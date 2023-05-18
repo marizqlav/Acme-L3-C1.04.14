@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.courses.Course;
 import acme.entities.enrolments.Enrolment;
+import acme.features.codeGeneration.CodeGenerator;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -31,9 +32,12 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected StudentEnrolmentRepository repository;
+	protected StudentEnrolmentRepository	repository;
 
-	// AbstractService interface ----------------------------------------------
+	@Autowired
+	protected CodeGenerator					codeGenerator;
+
+	//  AbstractService interface ----------------------------------------------
 
 
 	@Override
@@ -85,7 +89,7 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 			course = this.repository.findOneCourseById(courseId);
 
 			object.setCourse(course);
-			object.setCode(this.newCode(this.repository.findFirstByOrderByCodeDesc().getCode()));
+			object.setCode(this.codeGenerator.newCode(Enrolment.class.getSimpleName()));
 
 		}
 	}
