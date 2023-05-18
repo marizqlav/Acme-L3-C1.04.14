@@ -37,7 +37,7 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 	@Autowired
 	protected CodeGenerator					codeGenerator;
 
-	// AbstractService interface ----------------------------------------------
+	//  AbstractService interface ----------------------------------------------
 
 
 	@Override
