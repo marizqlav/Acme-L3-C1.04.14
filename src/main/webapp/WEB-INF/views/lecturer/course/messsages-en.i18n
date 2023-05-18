@@ -33,3 +33,5 @@ lecturer.course.button.update = Update Course
 lecturer.course.button.publish = Publish Course
 
 lecturer.course.form.error.retailPrice = Must have a valid value
+
+code.not.edit = Code cannot be edited
