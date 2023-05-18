@@ -18,7 +18,7 @@
 <acme:form>
 	<h1><acme:message code="assistant.tutorial.data"/></h1>
 	<acme:input-textarea code="assistant.tutorial.form.label.title" path="title"/>
-	<acme:input-textarea code="assistant.tutorial.form.label.estimatedTime" path="estimatedTime"/>
+	<acme:input-double code="assistant.tutorial.form.label.estimatedTime" path="estimatedTime"/>
 	<acme:input-textarea code="assistant.tutorial.form.label.description" path="description"/>
 	<acme:input-select code="assistant.tutorial.form.label.course" path="course" choices="${courses}"/>
 

@@ -58,7 +58,7 @@
 	<br>
 	<br>
 
-	<jstl:if test="${draftMode == true}">
+	<jstl:if test="${draftMode == true && emptyRecords != true}">
 		<acme:submit code="auditors.auditingRecord.list.button.publish" action="/auditor/audit/publish"/>
 	</jstl:if>
 

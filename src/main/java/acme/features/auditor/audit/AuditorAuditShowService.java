@@ -69,6 +69,12 @@ public class AuditorAuditShowService extends AbstractService<Auditor, Audit> {
 			tuple.put("mark", mark);
 		}
 
+		if (repo.findRecordsFromAudit(audit.getId()).isEmpty()) {
+			tuple.put("emptyRecords", true);
+		} else {
+			tuple.put("emptyRecords", false);
+		}
+
 		super.getResponse().setData(tuple);
 	}
 

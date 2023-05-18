@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import acme.components.AssistantService;
 import acme.entities.courses.Course;
-import acme.features.CodeGenerator;
+import acme.features.codeGeneration.CodeGenerator;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
@@ -20,6 +20,9 @@ public class LecturerCourseCreateService extends AbstractService<Lecturer, Cours
 
 	@Autowired
 	protected AssistantService			assistentService;
+
+	@Autowired
+	protected CodeGenerator				codeGenerator;
 
 	//AbstractServiceInterface -------------------------------
 
@@ -54,7 +57,7 @@ public class LecturerCourseCreateService extends AbstractService<Lecturer, Cours
 	@Override
 	public void bind(final Course object) {
 		assert object != null;
-		object.setCode(CodeGenerator.newCode(this.repository.findFirstByOrderByCodeDesc().getCode()));
+		object.setCode(this.codeGenerator.newCode(Course.class.getSimpleName()));
 		super.bind(object, "title", "resumen", "retailPrice", "link");
 	}
 

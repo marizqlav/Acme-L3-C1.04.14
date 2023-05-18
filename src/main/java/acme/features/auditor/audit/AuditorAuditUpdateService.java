@@ -78,6 +78,12 @@ public class AuditorAuditUpdateService extends AbstractService<Auditor, Audit> {
 
 		tuple.put("draftMode", audit.getDraftMode());
 
+		if (repo.findRecordsFromAudit(audit.getId()).isEmpty()) {
+			tuple.put("emptyRecords", true);
+		} else {
+			tuple.put("emptyRecords", false);
+		}
+
 		super.getResponse().setData(tuple);
 	}
 

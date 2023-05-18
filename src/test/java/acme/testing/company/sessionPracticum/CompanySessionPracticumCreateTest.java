@@ -27,47 +27,47 @@ public class CompanySessionPracticumCreateTest extends TestHarness {
 	@Autowired
 	protected CompanySessionPracticumTestRepository repository;
 
-	//	@ParameterizedTest
-	//	@CsvFileSource(resources = "/company/session-practicum/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	//	public void positiveTest(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum, final String startDate, final String finishDate, final String link) {
-	//
-	//		super.signIn("company1", "company1");
-	//
-	//		super.clickOnMenu("Company", "Practicum list");
-	//		super.checkListingExists();
-	//		super.sortListing(0, "asc");
-	//
-	//		super.clickOnListingRecord(recordIndex);
-	//		super.clickOnButton("List Session Practicum");
-	//
-	//		super.clickOnButton("Create");
-	//		super.fillInputBoxIn("title", title);
-	//		super.fillInputBoxIn("abstractSessionPracticum", abstractSessionPracticum);
-	//		super.fillInputBoxIn("startDate", startDate);
-	//		super.fillInputBoxIn("finishDate", finishDate);
-	//		super.fillInputBoxIn("link", link);
-	//		super.clickOnSubmit("Create");
-	//
-	//		super.checkListingExists();
-	//		super.sortListing(0, "asc");
-	//		super.checkColumnHasValue(sesionRecordIndex, 0, title);
-	//		super.checkColumnHasValue(sesionRecordIndex, 1, abstractSessionPracticum);
-	//
-	//		super.clickOnListingRecord(sesionRecordIndex);
-	//		super.checkFormExists();
-	//		super.checkInputBoxHasValue("title", title);
-	//		super.checkInputBoxHasValue("abstractSessionPracticum", abstractSessionPracticum);
-	//		super.checkInputBoxHasValue("startDate", startDate);
-	//		super.checkInputBoxHasValue("finishDate", finishDate);
-	//		super.checkInputBoxHasValue("link", link);
-	//
-	//		super.signOut();
-	//	}
 
+	@ParameterizedTest
+	@CsvFileSource(resources = "/company/session-practicum/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
+	public void test100Positive(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum, final String startDate, final String finishDate, final String link) {
+
+		super.signIn("company1", "company1");
+
+		super.clickOnMenu("Company", "Practicum list");
+		super.checkListingExists();
+		super.sortListing(0, "asc");
+
+		super.clickOnListingRecord(recordIndex);
+		super.clickOnButton("List Session Practicum");
+
+		super.clickOnButton("Create");
+		super.fillInputBoxIn("title", title);
+		super.fillInputBoxIn("abstractSessionPracticum", abstractSessionPracticum);
+		super.fillInputBoxIn("startDate", startDate);
+		super.fillInputBoxIn("finishDate", finishDate);
+		super.fillInputBoxIn("link", link);
+		super.clickOnSubmit("Create");
+
+		super.checkListingExists();
+		super.sortListing(0, "asc");
+		super.checkColumnHasValue(sesionRecordIndex, 0, title);
+		super.checkColumnHasValue(sesionRecordIndex, 1, abstractSessionPracticum);
+
+		super.clickOnListingRecord(sesionRecordIndex);
+		super.checkFormExists();
+		super.checkInputBoxHasValue("title", title);
+		super.checkInputBoxHasValue("abstractSessionPracticum", abstractSessionPracticum);
+		super.checkInputBoxHasValue("startDate", startDate);
+		super.checkInputBoxHasValue("finishDate", finishDate);
+		super.checkInputBoxHasValue("link", link);
+
+		super.signOut();
+	}
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/session-practicum/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void negativeTest(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum, final String startDate, final String finishDate, final String link) {
+	public void test200Negative(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum, final String startDate, final String finishDate, final String link) {
 
 		super.signIn("company1", "company1");
 
