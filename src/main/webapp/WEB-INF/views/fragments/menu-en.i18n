@@ -46,10 +46,9 @@ master.menu.administrator.bulletin.create = Create bulletin
 
 master.menu.authenticated = Authenticated
 master.menu.authenticated.offer.list = List offer
-master.menu.authenticated.practicum.list = List practicum
 master.menu.authenticated.note.list = List notes
-master.menu.authenticated.course.list = Lista course
 master.menu.authenticated.bulletin.list = Bulletin listing
+master.menu.authenticated.course.list = List course
 
 # master.menu.provider ########################################################
 
@@ -74,6 +73,7 @@ master.menu.student.dashboard = My dashboard
 master.menu.company = Company
 master.menu.company.favourite-link = Favourite link
 master.menu.company.practicum = Practicum list
+master.menu.company.companyDashboard = My dashboard
 
 # master.menu.lecturer ##########################################################
 
@@ -106,6 +106,7 @@ master.menu.auditor = Auditor
 master.menu.auditor.list.audits = My audits
 master.menu.list.audits-by-course = List audits by course
 master.menu.auditor.list.auditingRecords = My auditing records
+master.menu.auditor.list.auditor-dashboard = My dashboard
 
 master.menu.user-account.become-assistant = Become an assistant
 master.menu.user-account.company = Company profile data

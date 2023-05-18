@@ -1,0 +1,11 @@
+recordIndex, sesionRecordIndex,title,abstractSessionPracticum,startDate,finishDate,link
+0,1,,valid,2024/02/02 12:00,2024/03/05 13:00,
+0,1,titulo,,2024/02/02 12:00,2024/03/05 13:00,
+0,1,titulo,valid,,2024/03/05 13:00,
+0,1,titulo,valid,2024/02/02 12:00,,
+0,1,,,,,
+0,1,El titulo de esta practica va a ocupar setenta y seis caracteres como maximo 78,valid,2024/02/02 12:00,2024/03/05 13:00,
+0,1,titulo,El abstract del session Practicum va a ocupar ciento uno caracteres y se valide como maximo tiene 1011,2024/02/02 12:00,2024/03/05 13:00,
+0,1,titulo,valid,2000/02/02 12:00,2024/03/05 13:00,
+0,1,titulo,valid,2024/02/02 12:00,2000/03/05 13:00,
+0,1,titulo,valid,2024/02/02 12:00,2024/03/05 13:00,lolo

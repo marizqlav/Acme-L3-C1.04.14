@@ -1,14 +1,17 @@
 key,code,title,resumen,retail-price,link,draftMode,key:lecturer
-course-01,A878,Course Title 1,resumen del curso,EUR 59.99,https://www.informatica.us.es/index.php/estudios,false,lecturer1
-course-02,AB324,Course Title 2,resumen del curso,EUR 39.99,https://,true,lecturer1
-course-03,ABC935,Course Title 3,resumen del curso,EUR 40.00,null,false,lecturer1
-course-04,CC564,Ñurso 4,resumen del curso,USD 59.99,https://www.informatica.us.es/index.php/estudios,true,lecturer1
-course-05,DS136,Course Title 5,resumen del curso,USD 69.99,https://www.ກສອນໃນຂ.com,true,lecturer1
-course-06,HYE138,Course Title 6,r,EUR 1.0,null,true,lecturer1
-course-07,KJ247,Course Title 7,----,USD 15.00,https:,false,lecturer2
-course-08,YWT648,Course Title 8,resumen del curso,EUR 59.99,https://www.informatica.us.es/index.php/estudios,true,lecturer2
-course-09,RR124,Courseeeeeeeeeeeeeeeeeeeeeee Title 9,resumen del curso,USD 15.50,null,false,lecturer2
-course-10,GN420,Course Title 10,resumen del curso,USD 20.60,https://www.informatica.us.es/index.php/estudios,false,lecturer2
-course-11,ER690,Course Title 11,resumen del curso,EUR 25.30,https://www.informatica.us.es/index.php/estudios,false,lecturer2
-course-12,QQ169,Course Title 12,resumen del curso,USD 40.50,null,true,lecturer2
-course-13,JX777,NC 13,resumen del curso,EUR 49.99,https://www.informatica.us.es/index.php/estudios,false,lecturer2
+course-01,A000,Course Title 1,resumen del curso,EUR 59.99,https://www.informatica.us.es/index.php/estudios,false,lecturer1
+course-02,A001,Course Title 2,resumen del curso,EUR 39.99,https://,true,lecturer1
+course-03,A002,Course Title 3,resumen del curso,EUR 40.00,null,false,lecturer1
+course-04,A003,Ñurso 4,resumen del curso,USD 59.99,https://www.informatica.us.es/index.php/estudios,true,lecturer1
+course-05,A004,Course Title 5,resumen del curso,USD 69.99,https://www.aaaa.com,true,lecturer1
+course-06,A005,Course Title 6,r,EUR 1.0,null,true,lecturer1
+course-07,A006,Course Title 7,----,USD 15.00,https:,false,lecturer2
+course-08,A007,Course Title 8,resumen del curso,EUR 59.99,https://www.informatica.us.es/index.php/estudios,true,lecturer2
+course-09,A008,Courseeeeeeeeeeeeeeeeeeeeeee Title 9,resumen del curso,USD 15.50,null,false,lecturer2
+course-10,A009,Course Title 10,resumen del curso,USD 20.60,https://www.informatica.us.es/index.php/estudios,false,lecturer2
+course-11,A010,Course Title 11,resumen del curso,EUR 25.30,https://www.informatica.us.es/index.php/estudios,false,lecturer2
+course-12,A011,Course Title 12,resumen del curso,USD 40.50,null,true,lecturer2
+course-13,A012,NC 13,resumen del curso,EUR 49.99,https://www.informatica.us.es/index.php/estudios,false,lecturer2
+course-14,A013,Curso nuevo,este curso va a ser muy epico papus,USD 44.99,null,false,lecturer2
+course-15,A014,Curso de moda,Mola mazo,EUR 55.00,null,false,lecturer1
+course-16,A015,Cursillo del INEM,Pa sacarse un dinerillo jejeje,EUR 70.00,null,false,lecturer1

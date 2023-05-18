@@ -20,7 +20,6 @@ public class AssistantSessionTutorialListService extends AbstractService<Assista
 
 	@Override
 	public void check() {
-		final boolean status;
 
 		super.getResponse().setChecked(true);
 	}

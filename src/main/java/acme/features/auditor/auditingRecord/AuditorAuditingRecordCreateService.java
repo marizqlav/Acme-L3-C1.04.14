@@ -1,10 +1,9 @@
+
 package acme.features.auditor.auditingRecord;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.Arrays;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,19 +36,18 @@ public class AuditorAuditingRecordCreateService extends AbstractService<Auditor,
 	public void authorise() {
 		boolean status = true;
 
-		Audit audit = repo.findAudit(super.getRequest().getData("auditId", int.class));
-		if (audit != null) {
+		final Audit audit = this.repo.findAudit(super.getRequest().getData("auditId", int.class));
+		if (audit != null)
 			status = audit.getDraftMode();
-		} else if (audit == null) {
+		else if (audit == null)
 			status = false;
-		}
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		AuditingRecord auditingRecord = new AuditingRecord();
+		final AuditingRecord auditingRecord = new AuditingRecord();
 
 		super.getBuffer().setData(auditingRecord);
 	}
@@ -60,36 +58,33 @@ public class AuditorAuditingRecordCreateService extends AbstractService<Auditor,
 
 		super.bind(auditingRecord, "subject", "assesment", "assesmentStartDate", "assesmentEndDate", "mark");
 
-		Audit audit = repo.findAudit(super.getRequest().getData("auditId", int.class));
-        auditingRecord.setAudit(audit);
+		final Audit audit = this.repo.findAudit(super.getRequest().getData("auditId", int.class));
+		auditingRecord.setAudit(audit);
 	}
 
 	@Override
 	public void validate(final AuditingRecord auditingRecord) {
 		assert auditingRecord != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("assesmentEndDate")) {
-			if (auditingRecord.getAssesmentEndDate() != null) {
+		if (!super.getBuffer().getErrors().hasErrors("assesmentEndDate"))
+			if (auditingRecord.getAssesmentEndDate() != null)
 				super.state(auditingRecord.getAssesmentEndDate().after(auditingRecord.getAssesmentStartDate()), "assesmentEndDate", "auditor.auditingRecord.form.assesmentEndDate.notPast");
-			}
-		}
 
-		if (!super.getBuffer().getErrors().hasErrors("assesmentEndDate")) {
+		if (!super.getBuffer().getErrors().hasErrors("assesmentEndDate"))
 			if (auditingRecord.getAssesmentEndDate() != null) {
-				LocalDateTime firstDate = auditingRecord.getAssesmentStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-				LocalDateTime lastDate = auditingRecord.getAssesmentEndDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-		  
+				final LocalDateTime firstDate = auditingRecord.getAssesmentStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+				final LocalDateTime lastDate = auditingRecord.getAssesmentEndDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+
 				super.state(Duration.between(firstDate, lastDate).toHours() >= 1, "assesmentEndDate", "auditor.auditingRecord.form.assesmentEndDate.notAnHour");
 			}
-		}
 
-    }
+	}
 
 	@Override
 	public void perform(final AuditingRecord auditingRecord) {
 		assert auditingRecord != null;
-		
-		repo.save(auditingRecord);
+
+		this.repo.save(auditingRecord);
 	}
 
 	@Override
@@ -97,17 +92,17 @@ public class AuditorAuditingRecordCreateService extends AbstractService<Auditor,
 		assert auditingRecord != null;
 
 		Tuple tuple;
-		
+
 		tuple = super.unbind(auditingRecord, "subject", "assesment", "assesmentStartDate", "assesmentEndDate");
 
-		boolean draftMode = this.repo.findAudit(super.getRequest().getData("auditId", int.class)).getDraftMode();
+		final boolean draftMode = this.repo.findAudit(super.getRequest().getData("auditId", int.class)).getDraftMode();
 
 		tuple.put("correction", auditingRecord.isCorrection());
 		tuple.put("draftMode", draftMode);
 
-		SelectChoices choices = SelectChoices.from(MarkType.class, auditingRecord.getMark());
+		final SelectChoices choices = SelectChoices.from(MarkType.class, auditingRecord.getMark());
 		tuple.put("marks", choices);
-        tuple.put("mark", auditingRecord.getMark());
+		tuple.put("mark", auditingRecord.getMark());
 
 		tuple.put("auditId", super.getRequest().getData("auditId", int.class));
 

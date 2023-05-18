@@ -58,12 +58,15 @@
 		</acme:menu-option>
 		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
 			<acme:menu-suboption code="master.menu.auditor.list.audits" action="/auditor/audit/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.auditor.list.auditor-dashboard" action="/auditor/auditor-dashboard/show"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.company" access="hasRole('Company')">
 			<acme:menu-suboption code="master.menu.company.favourite-link" action="https://www.informatica.us.es/"/>
 			<acme:menu-separator/>	
 			<acme:menu-suboption code="master.menu.company.practicum" action="/company/practicum/list"/>
+			<acme:menu-suboption code="master.menu.company.companyDashboard" action="/company/company-dashboard/show"/>
 		</acme:menu-option>
 
 		

@@ -42,10 +42,12 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 		boolean status;
 		int id;
 		Course course;
+		Lecturer lecturer;
 
 		id = super.getRequest().getData("id", int.class);
 		course = this.repository.findCourseById(id);
-		status = course != null;
+		lecturer = course.getLecturer();
+		status = course != null && super.getRequest().getPrincipal().hasRole(lecturer);
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -67,7 +69,7 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 		Tuple tuple;
 		tuple = super.unbind(object, "code", "title", "resumen", "retailPrice", "link");
 		tuple.put("courseType", this.courseType(this.repository.findAllLecturesByCourse(object.getId())));
-		tuple.put("draftmode", object.isDraftMode());
+		tuple.put("draftmode", object.getDraftMode());
 		tuple.put("exchangeMoney", this.computeMoneyExchange(object.getRetailPrice(), systemCurrency).getTarget());
 
 		final Collection<Lecture> cl = this.repository.findAllLecturesByCourse(object.getId());

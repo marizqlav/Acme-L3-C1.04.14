@@ -1,0 +1,31 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2023 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+auditor.dashboard.title = My dashboard
+auditor.dashboard.form.total.numer.type= Total number of audits per type
+
+auditor.dashboard.form.label.total.number.theory = Total number audits writen for theory courses
+auditor.dashboard.form.label.total.number.handson = Total number of audits writen for hands-on courses
+
+auditor.dashboard.form.auditingrecord.statistics = Statistics on numbers of auditing records in my audits
+auditor.dashboard.form.auditingrecord.statistics.avg = Average
+auditor.dashboard.form.auditingrecord.statistics.deviation = Deviation
+auditor.dashboard.form.auditingrecord.statistics.min = Minimum
+auditor.dashboard.form.auditingrecord.statistics.max = Maximum
+
+auditor.dashboard.form.auditingrecordtime.statistics = Statistics on time periods of my auditing records
+auditor.dashboard.form.auditingrecordtime.statistics.avg = Average
+auditor.dashboard.form.auditingrecordtime.statistics.deviation = Deviation
+auditor.dashboard.form.auditingrecordtime.statistics.min = Minimum
+auditor.dashboard.form.auditingrecordtime.statistics.max = Maximum
+
+
+
+

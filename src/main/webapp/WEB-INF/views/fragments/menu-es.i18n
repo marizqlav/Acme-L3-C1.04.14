@@ -26,6 +26,7 @@ master.menu.anonymous.marcos-favourite-link = 05934857Y: Olmedo Marin, Marcos
 master.menu.anonymous.mario-favourite-link = 76269995V: Izquierdo Lavado, Mario
 
 # master.menu.any #################################################################
+
 master.menu.any.course = Cursos
 master.menu.any.peeps = Publicaciones
 
@@ -46,7 +47,6 @@ master.menu.administrator.bulletin.create = Crear boletín
 
 master.menu.authenticated = Authenticated
 master.menu.authenticated.offer.list = Lista oferta
-master.menu.authenticated.practicum.list = Lista practicas 
 master.menu.authenticated.note.list = Lista notas
 master.menu.authenticated.course.list = Lista cursos
 master.menu.authenticated.bulletin.list = Lista de boletines
@@ -71,9 +71,10 @@ master.menu.student.dashboard = Mi panel
 
 # master.menu.company ####################################################
 
-master.menu.company = Compañia
+master.menu.company = Compañía
 master.menu.company.favourite-link = Enlace favorito
 master.menu.company.practicum = Lista de practicas
+master.menu.company.companyDashboard = Mi panel
 
 # master.menu.lecturer ##########################################################
 
@@ -106,6 +107,7 @@ master.menu.auditor = Auditor
 master.menu.auditor.list.audits = Mis auditorias
 master.menu.list.audits-by-course = Listar auditorias por curso
 master.menu.auditor.list.auditingRecords = Mis registros de auditorias
+master.menu.auditor.list.auditor-dashboard = Mi panel
 
 master.menu.user-account.company = Datos del perfil de compañia
 master.menu.user-account.become-company = Convertirse compañia

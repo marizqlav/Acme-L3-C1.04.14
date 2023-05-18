@@ -1,0 +1,6 @@
+recordIndex,activityRecordIndex,title,abstractResumen,activityType,timePeriod
+0,0,<h1>HTML</h1>,Resumen ejecutivo,HANDS_ON,1.10
+0,1,Actividad 1,<script>alert('hacked++')</script>,THEORY,2.30
+1,0,Activity 3,Mucho texto,THEORY,3.15
+1,1,Creación de un blog o sitio web de la clase,Recapitulación esencial!!!!,THEORY,1.10
+3,0,<script>alert('activity')</script>,Reseña abstracta,HANDS_ON,2.00

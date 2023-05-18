@@ -58,7 +58,9 @@ public class CompanySessionPracticumListService extends AbstractService<Company,
 
 		Tuple tuple;
 
-		tuple = super.unbind(object, "title", "abstractSessionPracticum", "practicum.title", "draftMode", "addendum");
+		tuple = super.unbind(object, "title", "abstractSessionPracticum", "practicum.title");
+		if (object.isAddendum())
+			tuple.replace("title", "* " + tuple.get("title"));
 
 		super.getResponse().setData(tuple);
 	}
@@ -66,22 +68,17 @@ public class CompanySessionPracticumListService extends AbstractService<Company,
 	@Override
 	public void unbind(final Collection<SessionPracticum> objects) {
 		assert objects != null;
-		int practicumId;
-		Practicum practicum;
-		final boolean showCreate;
-		final boolean draftMode;
-		boolean addendum = false;
-		practicumId = super.getRequest().getData("practicumId", int.class);
-		practicum = this.repository.findPracticumById(practicumId);
-		showCreate = super.getRequest().getPrincipal().hasRole(practicum.getCompany());
-		draftMode = practicum.getDraftMode();
-		for (final SessionPracticum p : objects)
-			if (p.getAddendum() == true)
-				addendum = true;
-		super.getResponse().setGlobal("practicumId", practicumId);
-		super.getResponse().setGlobal("showCreate", showCreate);
+		final boolean draftMode = this.repository.findPracticumById(super.getRequest().getData("practicumId", int.class)).isDraftMode();
+		final boolean existAddendum;
+		final Practicum practicum = this.repository.findPracticumById(super.getRequest().getData("practicumId", int.class));
+		if (this.repository.findAddendumSessionPracticumByPracticumId(practicum.getId()) != null && this.repository.findAddendumSessionPracticumByPracticumId(practicum.getId()).size() != 0)
+			existAddendum = true;
+		else
+			existAddendum = false;
+
+		super.getResponse().setGlobal("existAddendum", existAddendum);
 		super.getResponse().setGlobal("draftMode", draftMode);
-		super.getResponse().setGlobal("addendum", addendum);
+		super.getResponse().setGlobal("practicumId", super.getRequest().getData("practicumId", int.class));
 	}
 
 }

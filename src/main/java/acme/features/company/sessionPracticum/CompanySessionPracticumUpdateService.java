@@ -75,6 +75,15 @@ public class CompanySessionPracticumUpdateService extends AbstractService<Compan
 			super.state(MomentHelper.isAfter(object.getFinishDate(), maximumPeriod) && object.getFinishDate().after(object.getStartDate()), "finishDate", "company.session-practicum.form.error.finishDate");
 		}
 
+		if (object.getTitle() == null || object.getTitle().isEmpty() || object.getTitle() == "")
+			super.state(false, "title", "title.not.null");
+		if (object.getAbstractSessionPracticum() == null || object.getAbstractSessionPracticum().isEmpty() || object.getAbstractSessionPracticum() == "")
+			super.state(false, "abstractSessionPracticum", "abstractSessionPracticum.not.null");
+		if (object.getStartDate() == null)
+			super.state(false, "startDate", "startDate.not.null");
+		if (object.getFinishDate() == null)
+			super.state(false, "finishDate", "finishDate.not.null");
+
 	}
 
 	@Override
@@ -88,8 +97,10 @@ public class CompanySessionPracticumUpdateService extends AbstractService<Compan
 		assert object != null;
 		Tuple tuple;
 
-		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link", "draftMode", "addendum");
-
+		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
+		tuple.put("draftMode", object.getPracticum().isDraftMode());
+		tuple.put("draftModeSession", object.isDraftModeSession());
+		tuple.put("addendum", object.isAddendum());
 		super.getResponse().setData(tuple);
 	}
 

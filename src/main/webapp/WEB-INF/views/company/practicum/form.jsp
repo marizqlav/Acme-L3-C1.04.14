@@ -17,21 +17,54 @@
 
 
 <acme:form>
-	<jstl:if test="${!(_command == 'create')}">
-		<acme:input-textbox code="company.practicum.form.label.code"  readonly="true" path="code"/>
-		<acme:input-select code="company.practicum.form.label.course" path="course" choices="${courses}" readonly = "true"/>
-	</jstl:if>
+	<h1><acme:message code="company.practicum.data"/></h1>
 	<jstl:if test="${(_command == 'create')}">
-		<acme:input-textbox code="company.practicum.form.label.code"  readonly="true" path="code"/>
 		<acme:input-select code="company.practicum.form.label.course" path="course" choices="${courses}"/>
 	</jstl:if>
 	<acme:input-textbox code="company.practicum.form.label.title" path="title"/>
 	<acme:input-textarea code="company.practicum.form.label.abstractPracticum" path="abstractPracticum"/>
 	<acme:input-textarea code="company.practicum.form.label.someGoals" path="someGoals"/>
 	
+	<jstl:if test="${(_command == 'show')}">
+		<jstl:if test="${code != null}">
+			<acme:input-textbox code="company.practicum.form.label.code"  readonly="true" path="code"/>
+		</jstl:if>
+		<acme:input-select code="company.practicum.form.label.course" path="course" choices="${courses}" readonly = "true"/>
+		 <jstl:if test="${estimatedTimeMenos != null}">
+			<acme:input-double code="company.practicum.form.label.estimatedTimeMenos" path="estimatedTimeMenos" readonly = "true"/>
+		</jstl:if>
+		<jstl:if test="${estimatedTimeMas!= null}">
+			<acme:input-double code="company.practicum.form.label.estimatedTimeMas" path="estimatedTimeMas" readonly = "true"/>
+		</jstl:if>
+		<jstl:if test="${estimatedTimeMas!= null}">
+			<acme:input-double code="company.practicum.form.label.fechaInicial" path="fechaInicial" readonly = "true"/>
+		</jstl:if>
+		<jstl:if test="${fechaFinal!= null}">
+			<acme:input-double code="company.practicum.form.label.fechaFinal" path="fechaFinal" readonly = "true"/>
+		</jstl:if>
+		<jstl:if test="${companyusername != null && companyname != null && companyVATNumber != null && companysummary != null}">
+			<h1><acme:message code="company.practicum.company.data"/></h1>
+		</jstl:if>
+		<jstl:if test="${companyusername != null }">
+			<acme:input-textbox code="company.practicum.form.label.company.username" readonly="true" path="companyusername"/>
+		</jstl:if>
+		<jstl:if test="${companyname != null }">
+			<acme:input-textarea code="company.practicum.form.label.company.name" readonly="true" path="companyname"/>
+		</jstl:if>
+		<jstl:if test="${ companyVATNumber != null }">
+			<acme:input-textarea code="company.practicum.form.label.company.VATNumber" readonly="true" path="companyVATNumber"/>
+		</jstl:if>
+		<jstl:if test="${ companysummary != null }">
+			<acme:input-textarea code="company.practicum.form.label.company.summary" readonly="true" path="companysummary"/>
+		</jstl:if>
+	</jstl:if>
+		
+	<jstl:if test="${companylink != null}">
+		<acme:input-url code="company.practicum.form.label.company.link" readonly="true" path="companylink"/>
+	</jstl:if>
+	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
-			<acme:input-double code="company.practicum.form.label.estimatedTime" path="estimatedTime" readonly = "true"/>
 			<acme:submit code="company.practicum.form.button.update" action="/company/practicum/update"/>
 			<acme:submit code="company.practicum.form.button.delete" action="/company/practicum/delete"/>
 			<acme:submit code="company.practicum.form.button.publish" action="/company/practicum/publish"/>

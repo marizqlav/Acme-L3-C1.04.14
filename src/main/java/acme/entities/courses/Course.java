@@ -43,12 +43,14 @@ public class Course extends AbstractEntity {
 	protected String			resumen;
 
 	@Valid
+	@NotNull
 	protected Money				retailPrice;
 
 	@URL
 	protected String			link;
 
-	protected boolean			draftMode;
+	@NotNull
+	protected Boolean			draftMode;
 
 	// Derived attributes -----------------------------------------------------
 

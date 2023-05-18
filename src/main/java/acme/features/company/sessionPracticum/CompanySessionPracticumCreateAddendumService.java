@@ -27,39 +27,38 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 
 	@Override
 	public void check() {
+		boolean status;
 
-		super.getResponse().setChecked(true);
+		status = super.getRequest().hasData("practicumId", int.class);
+
+		super.getResponse().setChecked(status);
 	}
 
 	@Override
 	public void authorise() {
+		boolean status = true;
 
-		super.getResponse().setAuthorised(true);
+		final Practicum practicum = this.repository.findPracticumById(super.getRequest().getData("practicumId", int.class));
+		status = practicum != null;
 
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		SessionPracticum object;
+		final SessionPracticum sessionPracticum = new SessionPracticum();
 
-		object = new SessionPracticum();
-		object.setDraftMode(true);
-		object.setAddendum(true);
+		sessionPracticum.setAddendum(true);
 
-		super.getBuffer().setData(object);
+		super.getBuffer().setData(sessionPracticum);
 	}
 
 	@Override
 	public void bind(final SessionPracticum object) {
 		assert object != null;
 
-		int practicumId;
-		Practicum practicum;
-
-		practicumId = super.getRequest().getData("practicumId", int.class);
-		practicum = this.repository.findPracticumById(practicumId);
-
 		super.bind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
+		final Practicum practicum = this.repository.findPracticumById(super.getRequest().getData("practicumId", int.class));
 
 		object.setPracticum(practicum);
 
@@ -85,17 +84,16 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 			super.state(MomentHelper.isAfter(object.getFinishDate(), maximumPeriod) && object.getFinishDate().after(object.getStartDate()), "finishDate", "company.session-practicum.form.error.finishDate");
 		}
 
-		boolean confirmation;
-
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "company.session-practicum.validation.confirmation");
+		final Practicum practicum = this.repository.findPracticumById(super.getRequest().getData("practicumId", int.class));
+		if (this.repository.findAddendumSessionPracticumByPracticumId(practicum.getId()) != null && this.repository.findAddendumSessionPracticumByPracticumId(practicum.getId()).size() != 0)
+			super.state(false, "title", "company.practicum.error.practicum.exist");
 
 	}
 
 	@Override
 	public void perform(final SessionPracticum object) {
 		assert object != null;
-		object.setDraftMode(true);
+
 		this.repository.save(object);
 	}
 
@@ -104,12 +102,14 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 		assert object != null;
 		Tuple tuple;
 
-		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link", "draftMode", "addendum");
-		tuple.put("confirmation", false);
+		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "link");
+		tuple.put("addendum", object.isAddendum());
+		final boolean draftMode = this.repository.findPracticumById(super.getRequest().getData("practicumId", int.class)).isDraftMode();
+
+		tuple.put("draftMode", draftMode);
 		tuple.put("practicumId", super.getRequest().getData("practicumId", int.class));
 
 		super.getResponse().setData(tuple);
-		tuple.put("confirmation", false);
 
 	}
 

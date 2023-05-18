@@ -63,7 +63,11 @@ public class CompanySessionPracticumShowService extends AbstractService<Company,
 		choices = SelectChoices.from(practica, "code", object.getPracticum());
 		Tuple tuple;
 
-		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate", "draftMode", "addendum");
+		tuple = super.unbind(object, "title", "abstractSessionPracticum", "startDate", "finishDate");
+
+		tuple.put("addendum", object.isAddendum());
+		tuple.put("draftMode", object.getPracticum().isDraftMode());
+		tuple.put("draftModeSession", object.isDraftModeSession());
 		tuple.put("practicum", choices.getSelected().getKey());
 		tuple.put("practica", choices);
 
