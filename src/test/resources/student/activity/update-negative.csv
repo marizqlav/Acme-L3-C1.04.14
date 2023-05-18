@@ -1,0 +1,6 @@
+recordIndex,activityRecordIndex,title,abstractResumen,activityType,timePeriodInitial,timePeriodFinal,link
+0,2,Clase de hacking actualizada,Esto fallara en la fecha,HANDS_ON,2021/11/12 15:00,2020/11/12 17:27,https://modulosdepago.es/blog/numeros-de-tarjeta-de-credito-de-pruebas/
+0,3,,Esto fallará debido a que no tiene título,HANDS_ON,2021/06/12 07:55,2021/06/12 09:45,
+0,4,Practica de hardware nueva,Esto fallará por el activity type,---,2022/09/10 10:00,2022/09/10 19:23,
+1,2,la pongo el mismo esto fallara porque no tiene abstract,,HANDS_ON,2021/01/10 19:00,2021/01/10 21:30,https://www.youtube.com/
+3,1,,,HANDS_ON,,,https://www.instagram.com/
