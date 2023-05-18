@@ -48,7 +48,9 @@ public class AuditorAuditPublishService extends AbstractService<Auditor, Audit> 
 	public void bind(final Audit audit) {
 		assert audit != null;
 
-        audit.setDraftMode(false);
+		if (!repo.findRecordsFromAudit(audit.getId()).isEmpty()) {
+			audit.setDraftMode(false);
+		}
     }
 
 	@Override
@@ -71,7 +73,7 @@ public class AuditorAuditPublishService extends AbstractService<Auditor, Audit> 
 		Tuple tuple;
 
 		tuple = super.unbind(audit, "code", "conclusion", "strongPoints", "weakPoints", "draftMode");
-
+		
 		super.getResponse().setData(tuple);
 	}
 
