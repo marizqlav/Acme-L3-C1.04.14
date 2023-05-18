@@ -10,7 +10,7 @@ public class CompanyPracticumDeleteTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/practicum/delete-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void positiveTest(final int recordIndex, final String code, final String title, final String abstractPracticum, final String someGoals) {
+	public void test100Positive(final int recordIndex, final String code, final String title, final String abstractPracticum, final String someGoals) {
 
 		super.signIn("company1", "company1");
 		super.clickOnMenu("Company", "Practicum list");
