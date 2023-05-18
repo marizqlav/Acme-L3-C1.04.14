@@ -25,12 +25,12 @@
 	<acme:input-textarea code="company.practicum.form.label.abstractPracticum" path="abstractPracticum"/>
 	<acme:input-textarea code="company.practicum.form.label.someGoals" path="someGoals"/>
 	
-	<jstl:if test="${!(_command == 'create|update|publish')}">
+	<jstl:if test="${(_command == 'show')}">
 		<jstl:if test="${code != null}">
 			<acme:input-textbox code="company.practicum.form.label.code"  readonly="true" path="code"/>
 		</jstl:if>
 		<acme:input-select code="company.practicum.form.label.course" path="course" choices="${courses}" readonly = "true"/>
-		<jstl:if test="${estimatedTimeMenos != null}">
+		 <jstl:if test="${estimatedTimeMenos != null}">
 			<acme:input-double code="company.practicum.form.label.estimatedTimeMenos" path="estimatedTimeMenos" readonly = "true"/>
 		</jstl:if>
 		<jstl:if test="${estimatedTimeMas!= null}">
