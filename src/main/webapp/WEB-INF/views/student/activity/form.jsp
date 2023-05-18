@@ -24,7 +24,7 @@
 	<acme:input-moment code="student.activity.form.time.timePeriodInitial" path="timePeriodInitial"/>
 	<acme:input-moment code="student.activity.form.time.timePeriodFinal" path="timePeriodFinal"/>
 	<jstl:if test="${!(_command == 'create') && !(_command == 'update')}">
-		<acme:input-double code="student.activity.form.time.period" path="timePeriod"/>
+		<acme:input-double code="student.activity.form.time.period" readonly="true" path="timePeriod"/>
 	</jstl:if>
 	<acme:input-url code="student.activity.form.label.link" path="link"/>
 
