@@ -18,9 +18,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.datatypes.SystemConfiguration;
+import acme.entities.audits.Audit;
 import acme.entities.courseLectures.CourseLecture;
 import acme.entities.courses.Course;
 import acme.entities.lectures.Lecture;
+import acme.entities.practicum.Practicum;
 import acme.framework.components.accounts.UserAccount;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Lecturer;
@@ -53,5 +55,11 @@ public interface LecturerCourseRepository extends AbstractRepository {
 
 	@Query("select cl from CourseLecture cl where cl.course.id = :id")
 	Collection<CourseLecture> findCLfromCourse(int id);
+
+	@Query("select p from Practicum p where  p.course.id = :courseId")
+	Collection<Practicum> findPracticumCourse(int courseId);
+
+	@Query("select a from Audit a where  a.course.id = :courseId")
+	Collection<Audit> findAuditCourse(int courseId);
 
 }

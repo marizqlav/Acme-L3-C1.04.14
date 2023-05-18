@@ -5,7 +5,7 @@ lecture-03,TITULO,resumen de la lecture,HANDSON,01.00,E,lecturer2,true
 lecture-04,titulo 4,r,HANDSON,100.00,E,lecturer2,false
 lecture-05,Hacking,Aprende a hackear,THEORY,01.00,En esta lección se podrá aprender a hacer muchas cosas,lecturer1,false
 lecture-06,Triaje,Elige sabiamente,THEORY,02.00,Lección necesaria,lecturer1,false
-lecture-07,Fundamentos prácticos 0,Practicar y practicar,HANDSON,03.30,Hay que practicar hasta que salga solo,lecturer1,false
+lecture-07,Fundamentos prácticos 0,Practicar y practicar,HANDSON,03.30,Hay que practicar hasta que salga solo,lecturer1,true
 lecture-08,No Fundamentos prácticos 1,No Practicar y practicar,THEORY,03.30,NO Hay que practicar hasta que salga solo,lecturer1,false
-lecture-09,Fundamentos prácticos 2,Practicar y practicar,HANDSON,03.30,Hay que practicar hasta que salga solo,lecturer1,false
+lecture-09,Fundamentos prácticos 2,Practicar y practicar,HANDSON,03.30,Hay que practicar hasta que salga solo,lecturer1,true
 lecture-10,Fundamentos prácticos 3,Practicar y practicar,HANDSON,03.30,Hay que practicar hasta que salga solo,lecturer1,false

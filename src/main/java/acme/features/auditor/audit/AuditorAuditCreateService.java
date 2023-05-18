@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.audits.Audit;
 import acme.entities.courses.Course;
-import acme.features.CodeGenerator;
+import acme.features.codeGeneration.CodeGenerator;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -18,6 +18,8 @@ public class AuditorAuditCreateService extends AbstractService<Auditor, Audit> {
 
 	@Autowired
 	protected AuditorAuditRepository repo;
+	@Autowired
+	protected CodeGenerator codeGenerator;
 
 
 	@Override
@@ -43,7 +45,7 @@ public class AuditorAuditCreateService extends AbstractService<Auditor, Audit> {
 
 		Auditor auditor = repo.findAuditor(super.getRequest().getPrincipal().getActiveRoleId());
         audit.setAuditor(auditor);
-		String code = CodeGenerator.newCode(repo.findFirstByOrderByCodeDesc().getCode());
+		String code = codeGenerator.newCode(Audit.class.getSimpleName());
 		audit.setCode(code);
 
 		super.bind(audit, "conclusion", "strongPoints", "weakPoints");

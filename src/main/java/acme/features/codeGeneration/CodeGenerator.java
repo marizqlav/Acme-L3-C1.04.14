@@ -1,15 +1,21 @@
-package acme.features;
+package acme.features.codeGeneration;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component("CodeGenerator")
 public class CodeGenerator {
 
-    public static String newCode(String lastCode) {
+	@Autowired
+	protected CodeRepository repo;
 
-		//TODO
-		/* This doesn't jump between jumps
-		 * Z999 -> AA000 works but AA000 -> AA001 doesn't since
-		 * we're using a weird repository function that doesn't return the last code
-		 * properly f you repository
-		 */
+    public String newCode(String className) {
+
+		String lastCode = repo.getLastCode(className);
+
+		if (lastCode == null) {
+			return "A000";
+		}
 
 		if (lastCode == "ZZZ999") {
 			throw new RuntimeException("Out of codes");
@@ -56,6 +62,15 @@ public class CodeGenerator {
 				res += c;
 			}
 		}
+
+		
+		LastCode entry = repo.getEntry(className);
+		if (entry == null) {
+			entry = new LastCode();
+			entry.className = className;
+		}
+		entry.lastCode = res;
+		repo.save(entry);
 
 		return res;
 
