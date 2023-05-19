@@ -8,7 +8,7 @@ practicum-06,AAA005,Calvo,<h1>hola</h1>,Top cuarenta,true,company-01,course-03
 practicum-07,AAA006,Calvo,Resumen Practica,<h1>hola</h1>,true,company-01,course-07
 practicum-08,AAA007,<script>alert('Practicum')</script>,Resumen Practica,Top cuarenta,true,company-01,course-09
 practicum-09,AAA008,Calvo,<script>alert('Practicum')</script>,Top cuarenta,true,company-01,course-09
-practicum-10,AAA009,Calvo,Resumen Practica,<script>alert('Practicum')</script>,true,company-01,course-9
+practicum-10,AAA009,Calvo,Resumen Practica,<script>alert('Practicum')</script>,true,company-01,course-09
 practicum-11,AAA010,El titulo de esta practica va a ocupar setenta y seis caracteres como maximo,Resumen Practica,Top cuarenta,true,company-01,course-10
 practicum-12,AAA011,Calvo,El abstract del Practicum va a ocupar ciento uno caracteres y para que se valide como maximo tiene101,Top cuarenta,true,company-01,course-11
 practicum-13,AAA012,Calvo,Resumen Practica,el someGoals del Practicum va a ocupar ciento uno caracteres para que se valide como maximo tiene 101,true,company-01,course-11
