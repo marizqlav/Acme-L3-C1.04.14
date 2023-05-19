@@ -20,6 +20,10 @@ public class StudentEnrolmentFinaliseTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/student/enrolment/finalise-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void positiveTest(final int recordIndex, final String code, final String holderName, final String lowerNibble, final String expireDate, final String cvc) {
+
+		// This test authenticates as an student, lists his or her enrolments,
+		// then selects one of them, and finalise it.
+
 		super.signIn("student1", "student1");
 
 		super.clickOnMenu("Student", "My enrolments");
@@ -40,6 +44,7 @@ public class StudentEnrolmentFinaliseTest extends TestHarness {
 		super.clickOnSubmit("Finalise");
 		super.checkNotErrorsExist();
 
+		super.checkButtonExists("View activities");
 		super.clickOnButton("View activities");
 		super.checkListingExists();
 		super.checkListingEmpty();
@@ -50,6 +55,8 @@ public class StudentEnrolmentFinaliseTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/student/enrolment/finalise-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void negativeButtonTest(final int recordIndex, final String code, final String holderName, final String lowerNibble, final String expireDate, final String cvc) {
+
+		// HINT: this test attempts to finalise an enrolment that cannot be finalised, yet.
 
 		super.signIn("student1", "student1");
 
@@ -77,6 +84,9 @@ public class StudentEnrolmentFinaliseTest extends TestHarness {
 	@Test
 	public void test300Hacking() {
 
+		// This test tries to finalise an enrolment with a role other than "Student"
+		// or using an student who is not the owner.
+
 		final Collection<Enrolment> enrolments;
 		String params;
 
@@ -94,11 +104,23 @@ public class StudentEnrolmentFinaliseTest extends TestHarness {
 				super.checkPanicExists();
 				super.signOut();
 
+				super.signIn("student2", "student2");
+				super.request("/student/enrolment/finalise", params);
+				super.checkPanicExists();
+				super.signOut();
+
+				super.signIn("company1", "company1");
+				super.request("/student/enrolment/finalise", params);
+				super.checkPanicExists();
+				super.signOut();
+
 			}
 	}
 
 	@Test
 	public void test301Hacking() {
+
+		// HINT: this test tries to finalise a finalised enrolment that was registered by the principal.
 
 		Collection<Enrolment> enrolments;
 		String params;
@@ -116,6 +138,9 @@ public class StudentEnrolmentFinaliseTest extends TestHarness {
 	@Test
 	public void test302Hacking() {
 
+		// This test tries to finalise an enrolment that wasn't registered by the principal,
+		// be it finalised or not finalised.
+
 		Collection<Enrolment> enrolments;
 		String params;
 
@@ -123,7 +148,7 @@ public class StudentEnrolmentFinaliseTest extends TestHarness {
 		enrolments = this.repository.findManyEnrolmentsByStudentUsername("student1");
 		for (final Enrolment enrolment : enrolments) {
 			params = String.format("id=%d", enrolment.getId());
-			super.request("/company/practicum/publish", params);
+			super.request("/student/enrolment/finalise", params);
 		}
 		super.signOut();
 	}

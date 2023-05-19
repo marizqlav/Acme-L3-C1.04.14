@@ -21,6 +21,11 @@ public class StudentEnrolmentUpdateTest extends TestHarness {
 	@CsvFileSource(resources = "/student/enrolment/update-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	//@Order(10)
 	public void positiveTest(final int recordIndex, final String code, final String courseTitle, final String motivation, final String someGoals) {
+
+		// This test logs in as a student, lists his or her enrolments, 
+		// selects one of them, updates it, and then checks that 
+		// the update has actually been performed.
+
 		super.signIn("student1", "student1");
 
 		super.clickOnMenu("Student", "My enrolments");
@@ -54,6 +59,8 @@ public class StudentEnrolmentUpdateTest extends TestHarness {
 	public void negativeTest(final int recordIndex, final String code, final String motivation, final String someGoals) {
 		super.signIn("student1", "student1");
 
+		// HINT: this test attempts to update an enrolment with wrong data.
+
 		super.clickOnMenu("Student", "My enrolments");
 		super.checkListingExists();
 		super.sortListing(0, "asc");
@@ -72,6 +79,10 @@ public class StudentEnrolmentUpdateTest extends TestHarness {
 
 	@Test
 	public void hackingTest() {
+
+		// This test tries to update an enrolment with a role other than "Student",
+		// or using a student who is not the owner.
+
 		Collection<Enrolment> enrolments;
 		String param;
 
@@ -89,6 +100,11 @@ public class StudentEnrolmentUpdateTest extends TestHarness {
 			super.signOut();
 
 			super.signIn("student2", "student2");
+			super.request("/student/enrolment/update", param);
+			super.checkPanicExists();
+			super.signOut();
+
+			super.signIn("company1", "company1");
 			super.request("/student/enrolment/update", param);
 			super.checkPanicExists();
 			super.signOut();

@@ -33,6 +33,9 @@ public class StudentActivityCreateTest extends TestHarness {
 	@CsvFileSource(resources = "/student/activity/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void positiveTest(final int recordIndex, final int activityRecordIndex, final String title, final String abstractResumen, final String activityType, final String timePeriodInitial, final String timePeriodFinal, final String link) {
 
+		// This test authenticates as an student, list his or her jobs, navigates
+		// to their activities, and checks that they have the expected data.
+
 		super.signIn("student1", "student1");
 
 		super.clickOnMenu("Student", "My enrolments");
@@ -74,6 +77,7 @@ public class StudentActivityCreateTest extends TestHarness {
 	@CsvFileSource(resources = "/student/activity/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void negativeTest(final int recordIndex, final String title, final String abstractResumen, final String activityType, final String timePeriodInitial, final String timePeriodFinal, final String link) {
 
+		// This test attempts to create activities using wrong data.
 		super.signIn("student1", "student1");
 
 		super.clickOnMenu("Student", "My enrolments");
@@ -100,6 +104,8 @@ public class StudentActivityCreateTest extends TestHarness {
 
 	@Test
 	public void test300Hacking() {
+		// This test tries to create a activity for a enrolment as a principal without 
+		// the "Student" role.
 
 		final Collection<Activity> activities;
 		String param;
@@ -116,11 +122,20 @@ public class StudentActivityCreateTest extends TestHarness {
 			super.request("/student/activity/create", param);
 			super.checkPanicExists();
 			super.signOut();
+
+			super.signIn("company1", "company1");
+			super.request("/student/activity/create", param);
+			super.checkPanicExists();
+
+			super.signOut();
 		}
 	}
 
 	@Test
 	public void test301Hacking() {
+
+		// This test tries to create a activity for a not finalised enrolment created by 
+		// the principal.
 
 		Collection<Enrolment> enrolments;
 		String param;
@@ -138,6 +153,9 @@ public class StudentActivityCreateTest extends TestHarness {
 
 	@Test
 	public void test302Hacking() {
+
+		// This test tries to create activities for enrolments that weren't created 
+		// by the principal
 
 		Collection<Enrolment> enrolments;
 		String param;
