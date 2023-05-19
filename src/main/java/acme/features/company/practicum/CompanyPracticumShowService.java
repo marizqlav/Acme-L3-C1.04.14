@@ -108,6 +108,12 @@ public class CompanyPracticumShowService extends AbstractService<Company, Practi
 		tuple.put("fechaFinal", fechaFinal);
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
+
+		if (this.repository.findSessionPracticumByPracticumId(object.getId()).isEmpty())
+			tuple.put("emptySesions", true);
+		else
+			tuple.put("emptySesions", false);
+
 		super.getResponse().setData(tuple);
 	}
 }

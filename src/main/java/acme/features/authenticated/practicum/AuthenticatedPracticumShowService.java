@@ -54,8 +54,12 @@ public class AuthenticatedPracticumShowService extends AbstractService<Authentic
 
 		Tuple tuple;
 
-		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals", "company.name");
-		tuple.put("company", object.getCompany().getName());
+		tuple = super.unbind(object, "code", "title", "abstractPracticum", "someGoals");
+		tuple.put("companyusername", object.getCompany().getUserAccount().getUsername());
+		tuple.put("companyname", object.getCompany().getName());
+		tuple.put("companyVATNumber", object.getCompany().getVATNumber());
+		tuple.put("companysummary", object.getCompany().getSummary());
+		tuple.put("companylink", object.getCompany().getLink());
 
 		super.getResponse().setData(tuple);
 
