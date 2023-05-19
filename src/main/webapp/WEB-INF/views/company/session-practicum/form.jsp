@@ -43,13 +43,11 @@
 			<acme:submit code="company.session-practicum.form.button.create" action="/company/session-practicum/create?practicumId=${practicumId}"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create-addendum'}">
-		<div id="confirmation-button-1">
-			<button type="button" onclick="askConfirmation()"><acme:message code="company.session-practicum.form.button.addendum"/></button>
-		</div>
-		<div id="confirmation-button-2" style="display: none;">
-			<acme:submit code='company.session-practicum.form.button.confirm' action='/company/session-practicum/create-addendum?practicumId=${practicumId}'/>
-			<acme:button code='company.session-practicum.form.button.decline' action='/company/session-practicum/list?practicumId=${practicumId}'/>
-		</div>
+			<jstl:if test="${addendum == true}">
+				<acme:message code="company.session-practicum.form.message.addendum"/>
+			</jstl:if>
+			<acme:input-checkbox code="company.session-practicum.form.label.confirmation" path="confirmation"/>
+			<acme:submit code="company.session-practicum.form.button.create-addendum" action="/company/session-practicum/create-addendum?practicumId=${practicumId}"/>
 		</jstl:when>
 	</jstl:choose>
 
