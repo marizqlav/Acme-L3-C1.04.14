@@ -33,6 +33,9 @@ public class StudentActivityShowTest extends TestHarness {
 	public void test100Positive(final int recordIndex, final int activityRecordIndex, final String title, final String abstractResumen, final String activityType, final String timePeriodInitial, final String timePeriodFinal, final String timePeriod,
 		final String link) {
 
+		// This test signs in as an student, lists his or her activities, selects
+		// one of them and checks that it's as expected.
+
 		super.signIn("student1", "student1");
 		super.clickOnMenu("Student", "My enrolments");
 		super.checkListingExists();
@@ -57,11 +60,15 @@ public class StudentActivityShowTest extends TestHarness {
 
 	@Test
 	public void test200Negative() {
-
+		// There's no negative test case for this listing, since it doesn't
+		// involve filling in any forms.
 	}
 
 	@Test
 	public void test300Hacking() {
+
+		// This test tries to show an activity using a principal that didn't create it.
+
 		Collection<Activity> activities;
 		String param;
 
@@ -79,6 +86,11 @@ public class StudentActivityShowTest extends TestHarness {
 			super.signOut();
 
 			super.signIn("student2", "student2");
+			super.request("/student/activity/show", param);
+			super.checkPanicExists();
+			super.signOut();
+
+			super.signIn("company1", "company1");
 			super.request("/student/activity/show", param);
 			super.checkPanicExists();
 			super.signOut();

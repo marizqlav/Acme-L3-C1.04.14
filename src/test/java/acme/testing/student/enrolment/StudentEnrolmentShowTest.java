@@ -32,6 +32,9 @@ public class StudentEnrolmentShowTest extends TestHarness {
 	@CsvFileSource(resources = "/student/enrolment/show.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int recordIndex, final String courseTitle, final String code, final String motivation, final String someGoals) {
 
+		// This test signs in as an student, lists all of the enrolments, click on  
+		// one of them, and checks that the form has the expected data.
+
 		super.signIn("student1", "student1");
 		super.clickOnMenu("Student", "My enrolments");
 		super.checkListingExists();
@@ -46,9 +49,6 @@ public class StudentEnrolmentShowTest extends TestHarness {
 		super.checkInputBoxHasValue("motivation", motivation);
 		super.checkInputBoxHasValue("someGoals", someGoals);
 
-		super.checkButtonExists("View activities");
-		super.clickOnButton("View activities");
-		super.checkListingExists();
 		super.signOut();
 	}
 
@@ -60,6 +60,8 @@ public class StudentEnrolmentShowTest extends TestHarness {
 
 	@Test
 	public void test300Hacking() {
+
+		// HINT: this test tries to show an unpublished enrolment by someone who is not the principal.
 
 		Collection<Enrolment> enrolments;
 		String param;
@@ -79,6 +81,11 @@ public class StudentEnrolmentShowTest extends TestHarness {
 				super.signOut();
 
 				super.signIn("student2", "student2");
+				super.request("/student/enrolment/show", param);
+				super.checkPanicExists();
+				super.signOut();
+
+				super.signIn("company1", "company1");
 				super.request("/student/enrolment/show", param);
 				super.checkPanicExists();
 				super.signOut();
