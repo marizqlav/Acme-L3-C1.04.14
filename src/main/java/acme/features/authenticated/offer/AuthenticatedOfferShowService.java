@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.offer.Offer;
+import acme.features.rate.ComputeMoneyRate;
 import acme.framework.components.accounts.Authenticated;
 import acme.framework.components.models.Tuple;
-import acme.framework.helpers.BinderHelper;
 import acme.framework.services.AbstractService;
 
 @Service
@@ -18,10 +18,19 @@ public class AuthenticatedOfferShowService extends AbstractService<Authenticated
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AuthenticatedOfferRepository offerRepository;
+	protected AuthenticatedOfferRepository	offerRepository;
+
+	@Autowired
+	protected ComputeMoneyRate				computeMoneyRate;
+
 
 	// AbstractService interface ----------------------------------------------ç
-
+	@Override
+	public void check() {
+		boolean status;
+		status = super.getRequest().hasData("id", int.class);
+		super.getResponse().setChecked(status);
+	}
 
 	@Override
 	public void authorise() {
@@ -31,13 +40,6 @@ public class AuthenticatedOfferShowService extends AbstractService<Authenticated
 		offer = this.offerRepository.findOfferById(id);
 		final Date date = new Date();
 		super.getResponse().setAuthorised(date.compareTo(offer.getAvailabilityPeriodFinal()) < 0);
-	}
-
-	@Override
-	public void check() {
-		boolean status;
-		status = super.getRequest().hasData("id", int.class);
-		super.getResponse().setChecked(status);
 	}
 
 	@Override
@@ -54,8 +56,10 @@ public class AuthenticatedOfferShowService extends AbstractService<Authenticated
 		assert object != null;
 
 		Tuple tuple;
-
-		tuple = BinderHelper.unbind(object, "instantiationMoment", "heading", "summary", "availabilityPeriodInitial", "availabilityPeriodFinal", "price", "link");
+		final String systemCurrency = this.offerRepository.findSystemConfiguration().getSystemCurrency();
+		tuple = super.unbind(object, "instantiationMoment", "heading", "summary", "availabilityPeriodInitial", "availabilityPeriodFinal", "price", "link");
+		tuple.put("exchangeMoney", this.computeMoneyRate.computeMoneyExchange(object.getPrice(), systemCurrency).getTarget());
 		super.getResponse().setData(tuple);
 	}
+
 }
