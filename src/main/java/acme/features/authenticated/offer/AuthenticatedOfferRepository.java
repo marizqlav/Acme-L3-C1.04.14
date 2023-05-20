@@ -7,6 +7,7 @@ import java.util.Date;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.datatypes.SystemConfiguration;
 import acme.entities.offer.Offer;
 import acme.framework.repositories.AbstractRepository;
 
@@ -18,5 +19,8 @@ public interface AuthenticatedOfferRepository extends AbstractRepository {
 
 	@Query("select o from Offer o where o.availabilityPeriodFinal >= :date")
 	Collection<Offer> findAllOffer(Date date);
+
+	@Query("select sc from SystemConfiguration sc")
+	SystemConfiguration findSystemConfiguration();
 
 }

@@ -7,6 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 import acme.components.ExchangeRate;
 import acme.entities.offer.Offer;
+import acme.features.rate.ComputeMoneyRate;
 import acme.forms.MoneyExchange;
 import acme.framework.components.accounts.Administrator;
 import acme.framework.components.datatypes.Money;
@@ -20,7 +21,10 @@ public class AdministratorOfferShowService extends AbstractService<Administrator
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AdministratorOfferRepository offerRepository;
+	protected AdministratorOfferRepository	offerRepository;
+
+	@Autowired
+	protected ComputeMoneyRate				cmr;
 
 	// AbstractService interface ----------------------------------------------ç
 
@@ -72,7 +76,7 @@ public class AdministratorOfferShowService extends AbstractService<Administrator
 		final String systemCurrency = this.offerRepository.findSystemConfiguration().getSystemCurrency();
 		Tuple tuple;
 		tuple = super.unbind(object, "instantiationMoment", "heading", "summary", "availabilityPeriodInitial", "availabilityPeriodFinal", "price", "link");
-		tuple.put("exchangeMoney", this.computeMoneyExchange(object.getPrice(), systemCurrency).getTarget());
+		tuple.put("exchangeMoney", this.cmr.computeMoneyExchange(object.getPrice(), systemCurrency).getTarget());
 		super.getResponse().setData(tuple);
 
 	}

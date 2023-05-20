@@ -22,5 +22,6 @@
 	<acme:input-textbox code="authenticated.offer.form.label.availabilityPeriodInitial" path="availabilityPeriodInitial"/>
 	<acme:input-textbox code="authenticated.offer.form.label.availabilityPeriodFinal" path="availabilityPeriodFinal"/>
 	<acme:input-textbox code="authenticated.offer.form.label.price" path="price"/>
+	<acme:input-money code="authenticated.offer.form.label.retail.price.exchange.money" readonly="true" path="exchangeMoney"/>
 	<acme:input-textbox code="authenticated.offer.form.label.link" path="link"/>
 </acme:form>
