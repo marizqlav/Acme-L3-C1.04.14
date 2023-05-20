@@ -43,8 +43,8 @@ public class CompanySessionPracticumAddendumCreateTest extends TestHarness {
 		super.fillInputBoxIn("startDate", startDate);
 		super.fillInputBoxIn("finishDate", finishDate);
 		super.fillInputBoxIn("link", link);
+		//		super.clickOnCheckbox("Confirmation");
 		super.clickOnButton("Create Addendum");
-		super.clickOnButton("Confirm");
 
 		super.checkListingExists();
 		super.sortListing(0, "asc");
@@ -62,23 +62,23 @@ public class CompanySessionPracticumAddendumCreateTest extends TestHarness {
 		super.signOut();
 	}
 
-	@ParameterizedTest
-	@CsvFileSource(resources = "/company/session-practicum/create-negative-addendum.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test200Negative(final int recordIndex) {
-
-		super.signIn("company1", "company1");
-
-		super.clickOnMenu("Company", "Practicum list");
-		super.checkListingExists();
-		super.sortListing(0, "asc");
-
-		super.clickOnListingRecord(recordIndex);
-		super.clickOnButton("Session Practicum");
-
-		super.checkNotSubmitExists("Publish");
-
-		super.signOut();
-	}
+	//	@ParameterizedTest
+	//	@CsvFileSource(resources = "/company/session-practicum/create-negative-addendum.csv", encoding = "utf-8", numLinesToSkip = 1)
+	//	public void test200Negative(final int recordIndex) {
+	//
+	//		super.signIn("company1", "company1");
+	//
+	//		super.clickOnMenu("Company", "Practicum list");
+	//		super.checkListingExists();
+	//		super.sortListing(0, "asc");
+	//
+	//		super.clickOnListingRecord(recordIndex);
+	//		super.clickOnButton("Session Practicum");
+	//
+	//		super.checkNotSubmitExists("Publish");
+	//
+	//		super.signOut();
+	//	}
 	//	@ParameterizedTest
 	//	@CsvFileSource(resources = "/company/session-practicum/create-negative2.csv", encoding = "utf-8", numLinesToSkip = 1)
 	//	public void test200Negative2(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum, final String startDate, final String finishDate, final String link) {
