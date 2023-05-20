@@ -48,7 +48,7 @@ public class AssistantSessionTutorialShowService extends AbstractService<Assista
 
 		choices = SelectChoices.from(SessionType.class, object.getSessionType());
 
-		tuple = super.unbind(object, "title", "description", "sessionType", "startDate", "endDate", "link");
+		tuple = super.unbind(object, "title", "description", "sessionType", "startDate", "endDate", "link", "draftMode");
 
 		tuple.put("sessionTypes", choices);
 

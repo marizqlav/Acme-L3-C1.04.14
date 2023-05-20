@@ -67,7 +67,7 @@ public class AssistantSessionTutorialUpdateService extends AbstractService<Assis
 	public void bind(final SessionTutorial object) {
 		assert object != null;
 
-		super.bind(object, "title", "description", "sessionType", "startDate", "endDate", "link");
+		super.bind(object, "title", "description", "sessionType", "startDate", "endDate", "link", "draftMode");
 	}
 
 	@Override
@@ -78,7 +78,7 @@ public class AssistantSessionTutorialUpdateService extends AbstractService<Assis
 		SelectChoices choices;
 
 		choices = SelectChoices.from(SessionType.class, object.getSessionType());
-		tuple = super.unbind(object, "title", "description", "sessionType", "startDate", "endDate", "link");
+		tuple = super.unbind(object, "title", "description", "sessionType", "startDate", "endDate", "link", "draftMode");
 		tuple.put("sessionTypes", choices);
 		tuple.put("id", super.getRequest().getData("id", int.class));
 		super.getResponse().setData(tuple);

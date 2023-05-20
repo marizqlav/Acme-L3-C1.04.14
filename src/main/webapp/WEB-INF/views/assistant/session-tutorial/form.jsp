@@ -31,7 +31,7 @@
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="assistant.tutorial.list.button.create" action="/assistant/session-tutorial/create?tutorialId=${tutorialId}"/>
 		</jstl:when>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == true}">
 			<acme:submit code="assistant.tutorial.form.button.update" action="/assistant/session-tutorial/update"/>
 			<acme:submit code="assistant.tutorial.form.button.delete" action="/assistant/session-tutorial/delete"/>
 			<acme:submit code="assistant.tutorial.form.button.publish" action="/assistant/session-tutorial/publish"/>

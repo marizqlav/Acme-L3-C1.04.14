@@ -31,6 +31,8 @@ public class SessionTutorial extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
+	boolean						draftMode;
+
 	@Column(name = "title")
 	@NotBlank
 	@Size(max = 76)

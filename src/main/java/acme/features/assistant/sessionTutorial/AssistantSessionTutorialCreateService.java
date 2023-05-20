@@ -33,6 +33,7 @@ public class AssistantSessionTutorialCreateService extends AbstractService<Assis
 		final SessionTutorial object = new SessionTutorial();
 
 		final int tutorialId = super.getRequest().getData("tutorialId", int.class);
+		object.setDraftMode(true);
 		object.setTutorial(this.repo.findTutorialById(tutorialId));
 		super.getBuffer().setData(object);
 	}
@@ -42,7 +43,7 @@ public class AssistantSessionTutorialCreateService extends AbstractService<Assis
 
 		assert object != null;
 		final int tutorialId = super.getRequest().getData("tutorialId", int.class);
-
+		object.setDraftMode(true);
 		object.setTutorial(this.repo.findTutorialById(tutorialId));
 		super.bind(object, "title", "description", "sessionType", "startDate", "endDate", "link");
 	}
@@ -69,7 +70,6 @@ public class AssistantSessionTutorialCreateService extends AbstractService<Assis
 	@Override
 	public void perform(final SessionTutorial object) {
 		assert object != null;
-		//object.setDraftmode(true);
 
 		final int tutorialId = super.getRequest().getData("tutorialId", int.class);
 		object.setTutorial(this.repo.findTutorialById(tutorialId));
