@@ -39,6 +39,7 @@ public class CompanySessionPracticumUpdateTest extends TestHarness {
 
 		super.clickOnSubmit("Update");
 		super.clickOnListingRecord(sesionRecordIndex);
+		super.checkFormExists();
 		super.checkInputBoxHasValue("title", title);
 		super.checkInputBoxHasValue("abstractSessionPracticum", abstractSessionPracticum);
 		super.checkInputBoxHasValue("startDate", startDate);
