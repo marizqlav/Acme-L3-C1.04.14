@@ -19,3 +19,5 @@ authenticated.offer.form.label.availabilityPeriodInitial = Availability Period I
 authenticated.offer.form.label.availabilityPeriodFinal = Availability Period Final
 authenticated.offer.form.label.price = Price
 authenticated.offer.form.label.link = Link
+
+authenticated.offer.form.label.retail.price.exchange.money = Exchange Money
