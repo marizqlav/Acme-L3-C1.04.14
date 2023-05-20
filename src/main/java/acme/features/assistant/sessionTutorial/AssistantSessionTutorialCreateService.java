@@ -42,6 +42,7 @@ public class AssistantSessionTutorialCreateService extends AbstractService<Assis
 
 		assert object != null;
 		final int tutorialId = super.getRequest().getData("tutorialId", int.class);
+
 		object.setTutorial(this.repo.findTutorialById(tutorialId));
 		super.bind(object, "title", "description", "sessionType", "startDate", "endDate", "link");
 	}
@@ -56,6 +57,7 @@ public class AssistantSessionTutorialCreateService extends AbstractService<Assis
 		choices = SelectChoices.from(LectureType.class, object.getSessionType());
 		tuple = super.unbind(object, "title", "description", "sessionType", "startDate", "endDate", "link");
 		tuple.put("sessionTypes", choices);
+		tuple.put("tutorialId", super.getRequest().getData("tutorialId", int.class));
 		super.getResponse().setData(tuple);
 	}
 
