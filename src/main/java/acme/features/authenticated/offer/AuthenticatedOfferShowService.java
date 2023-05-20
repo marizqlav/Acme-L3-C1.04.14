@@ -21,7 +21,7 @@ public class AuthenticatedOfferShowService extends AbstractService<Authenticated
 	protected AuthenticatedOfferRepository	offerRepository;
 
 	@Autowired
-	protected ComputeMoneyRate				computeMoneyRate;
+	protected ComputeMoneyRate				cmr;
 
 
 	// AbstractService interface ----------------------------------------------ç
@@ -58,7 +58,7 @@ public class AuthenticatedOfferShowService extends AbstractService<Authenticated
 		Tuple tuple;
 		final String systemCurrency = this.offerRepository.findSystemConfiguration().getSystemCurrency();
 		tuple = super.unbind(object, "instantiationMoment", "heading", "summary", "availabilityPeriodInitial", "availabilityPeriodFinal", "price", "link");
-		tuple.put("exchangeMoney", this.computeMoneyRate.computeMoneyExchange(object.getPrice(), systemCurrency).getTarget());
+		tuple.put("exchangeMoney", this.cmr.computeMoneyExchange(object.getPrice(), systemCurrency).getTarget());
 		super.getResponse().setData(tuple);
 	}
 

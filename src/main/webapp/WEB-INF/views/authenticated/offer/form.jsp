@@ -16,14 +16,12 @@
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="authenticated.offer.form.label.instantiationMoment" readonly="true" path="instantiationMoment"/>	
-	<acme:input-textbox code="authenticated.offer.form.label.heading" readonly="true" path="heading"/>
-	<acme:input-textbox code="authenticated.offer.form.label.summary" readonly="true" path="summary"/>
-	<acme:input-textbox code="authenticated.offer.form.label.availabilityPeriodInitial" readonly="true" path="availabilityPeriodInitial"/>
-	<acme:input-textbox code="authenticated.offer.form.label.availabilityPeriodFinal" readonly="true" path="availabilityPeriodFinal"/>
-	<acme:input-textbox code="authenticated.offer.form.label.price"  readonly="true" path="price"/>
+	<acme:input-textbox code="authenticated.offer.form.label.instantiationMoment" path="instantiationMoment"/>	
+	<acme:input-textbox code="authenticated.offer.form.label.heading" path="heading"/>
+	<acme:input-textbox code="authenticated.offer.form.label.summary" path="summary"/>
+	<acme:input-textbox code="authenticated.offer.form.label.availabilityPeriodInitial" path="availabilityPeriodInitial"/>
+	<acme:input-textbox code="authenticated.offer.form.label.availabilityPeriodFinal" path="availabilityPeriodFinal"/>
+	<acme:input-textbox code="authenticated.offer.form.label.price" path="price"/>
 	<acme:input-money code="authenticated.offer.form.label.retail.price.exchange.money" readonly="true" path="exchangeMoney"/>
-	<jstl:if test="${link != null && !link.isEmpty()}">
-		<acme:input-url code="authenticated.offer.form.label.link" readonly="true" path="link"/>
-	</jstl:if>
+	<acme:input-textbox code="authenticated.offer.form.label.link" path="link"/>
 </acme:form>
