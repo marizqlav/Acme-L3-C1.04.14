@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.tutorial.SessionTutorial;
+import acme.entities.tutorial.SessionType;
+import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Assistant;
@@ -42,8 +44,13 @@ public class AssistantSessionTutorialShowService extends AbstractService<Assista
 		assert object != null;
 
 		Tuple tuple;
+		SelectChoices choices;
+
+		choices = SelectChoices.from(SessionType.class, object.getSessionType());
 
 		tuple = super.unbind(object, "title", "description", "sessionType", "startDate", "endDate", "link");
+
+		tuple.put("sessionTypes", choices);
 
 		super.getResponse().setData(tuple);
 	}

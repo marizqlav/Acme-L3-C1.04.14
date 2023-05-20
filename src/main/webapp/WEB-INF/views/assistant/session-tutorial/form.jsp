@@ -20,9 +20,9 @@
 	<acme:input-textarea code="assistant.sessionTutorial.form.label.title" path="title"/>
 	<acme:input-textarea code="assistant.sessionTutorial.form.label.description" path="description"/>
 	<acme:input-select code="assistant.sessionTutorial.form.label.sessionType" path="sessionType" choices="${sessionTypes}"/>
-	<acme:input-textarea code="assistant.sessionTutorial.form.label.startDate" path="startDate"/>
-	<acme:input-textarea code="assistant.sessionTutorial.form.label.endDate" path="endDate"/>
-	<acme:input-textarea code="assistant.sessionTutorial.form.label.link" path="link"/>
+	<acme:input-moment code="assistant.sessionTutorial.form.label.startDate" path="startDate"/>
+	<acme:input-moment code="assistant.sessionTutorial.form.label.endDate" path="endDate"/>
+	<acme:input-url code="assistant.sessionTutorial.form.label.link" path="link"/>
 
 	<br>
 	<br>

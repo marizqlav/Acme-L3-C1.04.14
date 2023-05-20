@@ -21,4 +21,3 @@
 </acme:list>
 
 <acme:button code="assistant.tutorial.list.button.create" action="/assistant/session-tutorial/create?tutorialId=${tutorialId}"/>
-<acme:button code="${tutorialId}" action="/assistant/session-tutorial/create?tutorialId=${tutorialId}"/>
