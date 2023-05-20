@@ -1,5 +1,5 @@
 /*
- * EmployerJobCreateTest.java
+ * EmployerJobShowTest.java
  *
  * Copyright (C) 2012-2023 Rafael Corchuelo.
  *
@@ -17,10 +17,10 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 
 import acme.testing.TestHarness;
 
-public class AnyPeepCreateTest extends TestHarness {
+public class AnyPeepShowTest extends TestHarness {
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/any/peep/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@CsvFileSource(resources = "/any/peep/show.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int recordIndex, final String user, final String pass, final String title, final String nick, final String message, final String moreInfo, final String link) {
 
 		if (user != null && pass != null)
@@ -28,33 +28,18 @@ public class AnyPeepCreateTest extends TestHarness {
 
 		super.clickOnMenu("Peeps");
 		super.checkListingExists();
+		super.sortListing(1, "asc");
 
-		super.clickOnButton("Create");
-		if (nick != null)
-			super.fillInputBoxIn("nick", nick);
-		super.fillInputBoxIn("title", title);
-		super.fillInputBoxIn("message", message);
-		if (moreInfo != null)
-			super.fillInputBoxIn("moreInfo", moreInfo);
-		if (link != null)
-			super.fillInputBoxIn("link", link);
-		super.clickOnSubmit("Create");
-
-		super.clickOnMenu("Peeps");
-		super.checkListingExists();
-		super.sortListing(0, "asc");
 		if (nick != null)
 			super.checkColumnHasValue(recordIndex, 1, nick);
 		else
 			super.checkColumnHasValue(recordIndex, 1, user);
 		super.checkColumnHasValue(recordIndex, 2, title);
-
 		super.clickOnListingRecord(recordIndex);
+
 		super.checkFormExists();
 		if (nick != null)
 			super.checkInputBoxHasValue("nick", nick);
-		else
-			super.checkInputBoxHasValue("nick", user);
 		super.checkInputBoxHasValue("title", title);
 		super.checkInputBoxHasValue("message", message);
 		if (moreInfo != null)
@@ -66,31 +51,9 @@ public class AnyPeepCreateTest extends TestHarness {
 			super.signOut();
 	}
 
-	@ParameterizedTest
-	@CsvFileSource(resources = "/any/peep/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test200Negative(final int recordIndex, final String user, final String pass, final String title, final String nick, final String message, final String moreInfo, final String link) {
-
-		if (user != null && pass != null)
-			super.signIn(user, pass);
-
-		super.clickOnMenu("Peeps");
-		super.checkListingExists();
-
-		super.clickOnButton("Create");
-		super.checkFormExists();
-		if (nick != null)
-			super.fillInputBoxIn("nick", nick);
-		super.fillInputBoxIn("title", title);
-		super.fillInputBoxIn("message", message);
-		if (moreInfo != null)
-			super.fillInputBoxIn("moreInfo", moreInfo);
-		if (link != null)
-			super.fillInputBoxIn("link", link);
-		super.clickOnSubmit("Create");
-
-		super.checkErrorsExist();
-		if (user != null && pass != null)
-			super.signOut();
-	}
-
+	//	@Test
+	//	public void test200Negative() {
+	//		// HINT: there aren't any negative tests for this feature because it's a listing
+	//		// HINT+ that doesn't involve entering any data in any forms.
+	//	}
 }

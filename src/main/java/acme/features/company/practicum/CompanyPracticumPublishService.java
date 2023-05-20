@@ -59,7 +59,8 @@ public class CompanyPracticumPublishService extends AbstractService<Company, Pra
 	@Override
 	public void bind(final Practicum object) {
 		assert object != null;
-		object.setDraftMode(false);
+		if (!this.repository.findSessionPracticumByPracticumId(object.getId()).isEmpty())
+			object.setDraftMode(false);
 	}
 
 	@Override
