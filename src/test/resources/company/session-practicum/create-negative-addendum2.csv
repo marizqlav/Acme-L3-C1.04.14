@@ -1,8 +1,9 @@
-recordIndex,code,title,abstractPracticum,someGoals
-0,,valid,tiburones,el someGoals del Practicum va a ocupar ciento uno caracteres para que se valide como maximo tiene 101
-0,AZF820,,Top cuarenta,va
-0,AZV920,Titulo,,goal
-0,QWQ123,Titulo,Top cuarenta,
-0,REW432,estamos comprobando para que el title de fallo llegando hasta la el limite 78,Top,goal
-0,GDF432,titulo,estamos comprobando que el abstractPracticum de fallo llegando hasta la el limite que es cientodos102,goal
-0,REW354,Titulo,Top cuarenta,estamos comprobando que el someGoals de fallo llegando hasta la el limite que es ciento dos 102 ejmpo
+recordIndex,sesionRecordIndex,title,abstractSessionPracticum,startDate,finishDate,link,confirmation
+0,1,valid,tiburones,el someGoals del Practicum va a ocupar ciento uno caracteres para que se valide como maximo,2024/02/02 12:00,2024/03/05 13:00,,false
+0,2,valid,tiburones,el someGoals del Practicum va a ocupar ciento uno caracteres para que se valide como maximo tiene 101,2024/02/02 12:00,2024/03/05 13:00,,true
+0,3,,Top cuarenta,va,2024/02/02 12:00,2024/03/05 13:00,,true
+0,4,Titulo,,goal
+0,5,Titulo,Top cuarenta,
+0,6,estamos comprobando para que el title de fallo llegando hasta la el limite 78,Top,goal
+0,7,titulo,estamos comprobando que el abstractPracticum de fallo llegando hasta la el limite que es cientodos102,goal
+0,8,Titulo,Top cuarenta,estamos comprobando que el someGoals de fallo llegando hasta la el limite que es ciento dos 102 ejmpo
