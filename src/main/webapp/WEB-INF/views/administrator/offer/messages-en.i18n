@@ -24,7 +24,7 @@ administrator.offer.form.button.create = Crear
 administrator.offer.form.button.update = Update
 administrator.offer.form.button.delete = Delete
 
-administrator.offer.form.label.retail.price.exchange.money=Exchange Money
+administrator.offer.form.label.price.exchange.money=Exchange Money
 administrator.offer.form.error.price = The price must be positive and smaller than 1000000
 administrator.offer.form.error.availabilityPeriodInitial = The availability Period Initial must be at least a day after the instantiation moment
 administrator.offer.form.error.availabilityPeriodFinal = The availability Period Final must be minimum a week after the availability Period Initial

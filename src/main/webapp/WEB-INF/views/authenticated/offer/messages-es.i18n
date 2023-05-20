@@ -19,4 +19,4 @@ authenticated.offer.form.label.availabilityPeriodInitial = Disponibilidad Perío
 authenticated.offer.form.label.availabilityPeriodFinal = Disponibilidad Período Final
 authenticated.offer.form.label.price = Precio
 authenticated.offer.form.label.link = Enlace
-authenticated.offer.form.label.retail.price.exchange.money = Cambio dinero
+authenticated.offer.form.label.price.exchange.money = Cambio dinero

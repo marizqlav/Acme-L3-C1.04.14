@@ -21,7 +21,7 @@ public class AdministratorOfferShowService extends AbstractService<Administrator
 	@Autowired
 	protected ComputeMoneyRate				cmr;
 
-	// AbstractService interface ----------------------------------------------ç
+	// AbstractService interface ----------------------------------------------
 
 
 	@Override
