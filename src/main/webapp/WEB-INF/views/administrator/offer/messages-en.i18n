@@ -17,6 +17,7 @@ administrator.offer.form.label.summary = Summary
 administrator.offer.form.label.availabilityPeriodInitial = Availability Period Initial
 administrator.offer.form.label.availabilityPeriodFinal = Availability Period Final
 administrator.offer.form.label.price = Price
+administrator.offer.form.label.retail.price.exchange.money=
 administrator.offer.form.label.link = Link (Optional)
 
 administrator.offer.form.button.create = Crear

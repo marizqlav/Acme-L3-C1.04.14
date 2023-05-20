@@ -23,9 +23,7 @@
 	<acme:input-moment code="administrator.offer.form.label.availabilityPeriodFinal" path="availabilityPeriodFinal" />
 	<acme:input-money code="administrator.offer.form.label.price" path="price"/>
 	<acme:input-money code="administrator.offer.form.label.retail.price.exchange.money" readonly="true" path="exchangeMoney"/>
-	<jstl:if test="${link != null && !link.isEmpty()}">
-		<acme:input-url code="authenticated.offer.form.label.link" path="link"/>
-	</jstl:if>
+	<acme:input-url code="administrator.offer.form.label.link" path="link"/>
 	<jstl:choose>	 
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
 			<acme:submit code="administrator.offer.form.button.update" action="/administrator/offer/update"/>

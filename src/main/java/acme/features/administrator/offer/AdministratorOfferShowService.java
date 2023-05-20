@@ -33,14 +33,14 @@ public class AdministratorOfferShowService extends AbstractService<Administrator
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int id;
-		Offer offer;
-
-		id = super.getRequest().getData("id", int.class);
-		offer = this.offerRepository.findOfferById(id);
-		status = offer != null;
-		super.getResponse().setAuthorised(status);
+		//		boolean status;
+		//		int id;
+		//		Offer offer;
+		//
+		//		id = super.getRequest().getData("id", int.class);
+		//		offer = this.offerRepository.findOfferById(id);
+		//		status = offer != null;
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -51,6 +51,25 @@ public class AdministratorOfferShowService extends AbstractService<Administrator
 		id = super.getRequest().getData("id", int.class);
 		object = this.offerRepository.findOfferById(id);
 		super.getBuffer().setData(object);
+	}
+
+	@Override
+	public void bind(final Offer object) {
+		assert object != null;
+
+		super.bind(object, "heading", "summary", "availabilityPeriodInitial", "availabilityPeriodFinal", "price", "link");
+	}
+
+	@Override
+	public void validate(final Offer object) {
+		assert object != null;
+	}
+
+	@Override
+	public void perform(final Offer object) {
+		assert object != null;
+
+		this.offerRepository.save(object);
 	}
 
 	@Override
