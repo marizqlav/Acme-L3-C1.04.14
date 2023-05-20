@@ -38,32 +38,35 @@ public class AssistantSessionTutorialListService extends AbstractService<Assista
 		super.getBuffer().setData(objects);
 	}
 
+	//	@Override
+	//	public void unbind(final SessionTutorial object) {
+	//		//assert object != null;
+	//
+	//		Tuple tuple;
+	//
+	//		tuple = super.unbind(object, "title", "description", "sessionType", "startDate", "endDate", "link");
+	//		super.getResponse().setGlobal("tutorialId", super.getRequest().getData("tutorialId", int.class));
+	//		super.getResponse().setData(tuple);
+	//
+	//	}
+
 	@Override
+
 	public void unbind(final SessionTutorial object) {
-		//assert object != null;
+		assert object != null;
 
 		Tuple tuple;
 
 		tuple = super.unbind(object, "title", "description", "sessionType", "startDate", "endDate", "link");
-		super.getResponse().setGlobal("tutorialId", super.getRequest().getData("tutorialId", int.class));
-		super.getResponse().setData(tuple);
 
+		super.getResponse().setData(tuple);
 	}
 
-	/*
-	 * @Override
-	 * public void unbind(final Collection<SessionTutorial> objects) {
-	 * assert objects != null;
-	 * 
-	 * int tutorialId;
-	 * Tutorial tutorial;
-	 * 
-	 * tutorialId = super.getRequest().getData("masterId", int.class);
-	 * tutorial = this.repo.findTutorialById(tutorialId);
-	 * 
-	 * //super.getResponse().setGlobal("draftMode", tutorial.isDraftMode());
-	 * super.getResponse().setGlobal("tutorialId", super.getRequest().getData("tutorialId", int.class));
-	 * }
-	 */
+	@Override
+	public void unbind(final Collection<SessionTutorial> objects) {
+		assert objects != null;
+
+		super.getResponse().setGlobal("tutorialId", super.getRequest().getData("tutorialId", int.class));
+	}
 
 }
