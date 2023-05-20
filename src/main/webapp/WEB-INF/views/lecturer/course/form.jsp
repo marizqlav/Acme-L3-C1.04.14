@@ -16,10 +16,9 @@
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
 <acme:form>
-	<jstl:if test="${!acme:anyOf(_command, 'create|update')}">
+
 	<acme:input-textbox code="lecturer.course.form.label.code"  readonly="true" path="code"/>
 	<acme:input-textbox code="lecturer.course.form.label.courseType"  readonly="true" path="courseType"/>
-	</jstl:if>
 	<acme:input-textbox code="lecturer.course.form.label.title" path="title"/>
 	<acme:input-textarea code="lecturer.course.form.label.resumen" path="resumen"/>
 	<acme:input-textbox code="lecturer.course.form.label.retailPrice" path="retailPrice"/>

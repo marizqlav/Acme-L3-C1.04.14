@@ -18,11 +18,14 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 
 import acme.testing.TestHarness;
 
-public class StudentEnrolmentListAllTest extends TestHarness {
+public class StudentEnrolmentListMineTest extends TestHarness {
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/student/enrolment/list-all-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@CsvFileSource(resources = "/student/enrolment/list-mine-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int recordIndex, final String code, final String curseTitle) {
+
+		// This test authenticates as an student, lists his or her enrolments only,
+		// and then checks that the listing has the expected data.
 
 		super.signIn("student1", "student1");
 
@@ -44,11 +47,19 @@ public class StudentEnrolmentListAllTest extends TestHarness {
 	@Test
 	public void test300Hacking() {
 
+		// This test tries to list enrolments using 
+		// inappropriate roles.
+
 		super.checkLinkExists("Sign in");
 		super.request("/student/enrolment/list-mine");
 		super.checkPanicExists();
 
 		super.signIn("administrator1", "administrator1");
+		super.request("/student/enrolment/list-mine");
+		super.checkPanicExists();
+		super.signOut();
+
+		super.signIn("company1", "company1");
 		super.request("/student/enrolment/list-mine");
 		super.checkPanicExists();
 		super.signOut();
