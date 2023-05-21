@@ -8,8 +8,6 @@ import acme.testing.TestHarness;
 
 public class LecturerCourseDeleteTest extends TestHarness {
 
-	//NO FUNFA
-
 	@ParameterizedTest
 	@CsvFileSource(resources = "/lecturer/course/delete-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void positiveTest(final int recordIndex, final String code, final String title, final String resumen, final String retailPrice, final String link) {
