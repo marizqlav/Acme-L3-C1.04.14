@@ -58,8 +58,12 @@ public class Offer extends AbstractEntity {
 
 
 	@Transient
-	public Long getAvailabilityPeriod() {
-		return MomentHelper.computeDuration(this.availabilityPeriodFinal, this.availabilityPeriodInitial).toMinutes() / 60;
+	public Double availabilityPeriod() {
+		final double minutes = MomentHelper.computeDuration(this.availabilityPeriodInitial, this.availabilityPeriodFinal).toMinutes();
+		final double hours = Math.floor(minutes / 60);
+		final double remainingMinutes = minutes % 60;
+		return hours + remainingMinutes / 100;
+
 	}
 
 }
