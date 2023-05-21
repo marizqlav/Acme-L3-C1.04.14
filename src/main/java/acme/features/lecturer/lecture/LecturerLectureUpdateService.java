@@ -32,7 +32,16 @@ public class LecturerLectureUpdateService extends AbstractService<Lecturer, Lect
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int id;
+		Lecture lecture;
+		Lecturer lecturer;
+
+		id = super.getRequest().getData("id", int.class);
+		lecture = this.repository.findLectureById(id);
+		lecturer = lecture.getLecturer();
+		status = lecture != null && super.getRequest().getPrincipal().hasRole(lecturer);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

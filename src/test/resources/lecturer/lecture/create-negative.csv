@@ -1,0 +1,6 @@
+indexRecord,title,resumen,estimated-time,body,lecture-type
+0,,a,4.30,Test de creacion,---
+1,Create test 2,,1.30,Test de creacion 2,THEORY
+2,Create test 3,Resumen,-2.00,BODYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY,HANDSON
+3,Create test 4,RESUMEN,1.00,,THEORY
+4,Create test 5,Test 5 resumen,4.00,me encanta hacer tests,BALANCED
