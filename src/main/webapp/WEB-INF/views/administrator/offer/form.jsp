@@ -16,11 +16,15 @@
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
 <acme:form>
+	<h1><acme:message code="administrator.offer.data"/></h1>
 	<acme:input-moment code="administrator.offer.form.label.instantiationMoment" path="instantiationMoment" readonly="true"/>	
 	<acme:input-textbox code="administrator.offer.form.label.heading" path="heading" />
 	<acme:input-textbox code="administrator.offer.form.label.summary" path="summary" />
 	<acme:input-moment code="administrator.offer.form.label.availabilityPeriodInitial" path="availabilityPeriodInitial" />
 	<acme:input-moment code="administrator.offer.form.label.availabilityPeriodFinal" path="availabilityPeriodFinal" />
+	<jstl:if test="${availabilityPeriod!= null}">
+		<acme:input-double code="administrator.offer.form.label.availabilityPeriod" path="availabilityPeriod" readonly = "true"/>
+	</jstl:if>
 	<acme:input-money code="administrator.offer.form.label.price" path="price"/>
 	<acme:input-money code="administrator.offer.form.label.price.exchange.money" readonly="true" path="exchangeMoney"/>
 	<acme:input-url code="administrator.offer.form.label.link" path="link"/>
