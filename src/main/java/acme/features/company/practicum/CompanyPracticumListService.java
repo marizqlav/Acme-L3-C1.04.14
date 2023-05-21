@@ -38,7 +38,11 @@ public class CompanyPracticumListService extends AbstractService<Company, Practi
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+
+		status = super.getRequest().getPrincipal().hasRole(Company.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
