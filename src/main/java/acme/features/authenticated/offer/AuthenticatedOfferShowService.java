@@ -56,9 +56,12 @@ public class AuthenticatedOfferShowService extends AbstractService<Authenticated
 		assert object != null;
 
 		Tuple tuple;
+		Double availabilityPeriod = null;
+		availabilityPeriod = object.availabilityPeriod();
 		final String systemCurrency = this.offerRepository.findSystemConfiguration().getSystemCurrency();
 		tuple = super.unbind(object, "instantiationMoment", "heading", "summary", "availabilityPeriodInitial", "availabilityPeriodFinal", "price", "link");
 		tuple.put("exchangeMoney", this.cmr.computeMoneyExchange(object.getPrice(), systemCurrency).getTarget());
+		tuple.put("availabilityPeriod", availabilityPeriod);
 		super.getResponse().setData(tuple);
 	}
 

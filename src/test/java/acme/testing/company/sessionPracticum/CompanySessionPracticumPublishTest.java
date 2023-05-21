@@ -58,12 +58,13 @@ public class CompanySessionPracticumPublishTest extends TestHarness {
 		super.checkColumnHasValue(sesionRecordIndex, 0, title);
 		super.checkColumnHasValue(sesionRecordIndex, 1, abstractSessionPracticum);
 
-		super.clickOnListingRecord(recordIndex);
+		super.clickOnListingRecord(sesionRecordIndex);
 		super.checkFormExists();
 		super.checkNotSubmitExists("Publish");
 
 		super.signOut();
 	}
+
 	@Test
 	public void test300Hacking() {
 		super.request("/company/session-practicum/publish");

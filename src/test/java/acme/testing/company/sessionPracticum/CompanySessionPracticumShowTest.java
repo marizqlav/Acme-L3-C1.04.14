@@ -12,10 +12,14 @@
 
 package acme.testing.company.sessionPracticum;
 
+import java.util.Collection;
+
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.entities.sessionPracticum.SessionPracticum;
 import acme.testing.TestHarness;
 
 public class CompanySessionPracticumShowTest extends TestHarness {
@@ -48,36 +52,36 @@ public class CompanySessionPracticumShowTest extends TestHarness {
 		super.signOut();
 	}
 
-	//	@Test
-	//	public void test200Negative() {
-	//		// HINT: there aren't any negative tests for this feature because it's a listing
-	//		// HINT+ that doesn't involve entering any data in any forms.
-	//	}
-	//
-	//	@Test
-	//	public void test300Hacking() {
-	//		Collection<SessionPracticum> sessionPracticums;
-	//		String param;
-	//
-	//		sessionPracticums = this.repository.findManySesionsPracticumByCompanyUsername("company1");
-	//		for (final SessionPracticum sessionPracticum : sessionPracticums)
-	//			if (sessionPracticum.getDraftMode()) {
-	//				param = String.format("id=%d", sessionPracticum.getId());
-	//
-	//				super.checkLinkExists("Sign in");
-	//				super.request("/company/session-practicum/show", param);
-	//				super.checkPanicExists();
-	//
-	//				super.signIn("administrator1", "administrator1");
-	//				super.request("/company/session-practicum/show", param);
-	//				super.checkPanicExists();
-	//				super.signOut();
-	//
-	//				super.signIn("company2", "company2");
-	//				super.request("/company/session-practicum/show", param);
-	//				super.checkPanicExists();
-	//				super.signOut();
-	//			}
-	//	}
+	@Test
+	public void test200Negative() {
+		// HINT: there aren't any negative tests for this feature because it's a listing
+		// HINT+ that doesn't involve entering any data in any forms.
+	}
+
+	@Test
+	public void test300Hacking() {
+		Collection<SessionPracticum> sessionPracticums;
+		String param;
+
+		sessionPracticums = this.repository.findManySesionsPracticumByCompanyUsername("company1");
+		for (final SessionPracticum sessionPracticum : sessionPracticums)
+			if (sessionPracticum.isDraftModeSession()) {
+				param = String.format("id=%d", sessionPracticum.getId());
+
+				super.checkLinkExists("Sign in");
+				super.request("/company/session-practicum/show", param);
+				super.checkPanicExists();
+
+				super.signIn("administrator1", "administrator1");
+				super.request("/company/session-practicum/show", param);
+				super.checkPanicExists();
+				super.signOut();
+
+				super.signIn("company2", "company2");
+				super.request("/company/session-practicum/show", param);
+				super.checkPanicExists();
+				super.signOut();
+			}
+	}
 
 }

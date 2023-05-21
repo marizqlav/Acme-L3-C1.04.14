@@ -11,14 +11,16 @@
 administrator.offer.list.label.heading = Heading
 administrator.offer.list.label.price = Price
 
-administrator.offer.form.label.instantiationMoment = Instantation Moment
-administrator.offer.form.label.heading = Heading
-administrator.offer.form.label.summary = Summary
-administrator.offer.form.label.availabilityPeriodInitial = Availability Period Initial
-administrator.offer.form.label.availabilityPeriodFinal = Availability Period Final
-administrator.offer.form.label.price = Price
-administrator.offer.form.label.retail.price.exchange.money=
-administrator.offer.form.label.link = Link (Optional)
+administrator.offer.data = Offer data
+administrator.offer.form.label.instantiationMoment = Instantation Moment:
+administrator.offer.form.label.heading = Heading:
+administrator.offer.form.label.summary = Summary:
+administrator.offer.form.label.availabilityPeriodInitial = Availability Period Initial:
+administrator.offer.form.label.availabilityPeriodFinal = Availability Period Final:
+administrator.offer.form.label.availabilityPeriod=Availability Period(Hours.Minutes):
+administrator.offer.form.label.price = Price:
+administrator.offer.form.label.retail.price.exchange.money=Exchange Money:
+administrator.offer.form.label.link = Link (Optional):
 
 administrator.offer.form.button.create = Crear
 administrator.offer.form.button.update = Update
