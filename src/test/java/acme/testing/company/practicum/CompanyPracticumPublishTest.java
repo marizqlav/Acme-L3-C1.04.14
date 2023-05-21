@@ -41,7 +41,6 @@ public class CompanyPracticumPublishTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/practicum/publish-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test200Negative(final int recordIndex, final String code) {
-		// HINT: this test attempts to publish a Practicum that cannot be published, yet.
 
 		super.signIn("company1", "company1");
 
@@ -59,7 +58,6 @@ public class CompanyPracticumPublishTest extends TestHarness {
 
 	@Test
 	public void test300Hacking() {
-		// HINT: this test tries to publish a Practicum with a role other than "Employer".
 
 		final Collection<Practicum> practicums;
 		String params;
@@ -83,7 +81,6 @@ public class CompanyPracticumPublishTest extends TestHarness {
 
 	@Test
 	public void test301Hacking() {
-		// HINT: this test tries to publish a published Practicum that was registered by the principal.
 
 		Collection<Practicum> practicums;
 		String params;
@@ -100,8 +97,6 @@ public class CompanyPracticumPublishTest extends TestHarness {
 
 	@Test
 	public void test302Hacking() {
-		// HINT: this test tries to publish a Practicum that wasn't registered by the principal,
-		// HINT+ be it published or unpublished.
 
 		Collection<Practicum> practicums;
 		String params;
