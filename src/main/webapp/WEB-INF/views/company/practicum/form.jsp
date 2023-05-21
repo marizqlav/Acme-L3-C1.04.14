@@ -67,7 +67,9 @@
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
 			<acme:submit code="company.practicum.form.button.update" action="/company/practicum/update"/>
 			<acme:submit code="company.practicum.form.button.delete" action="/company/practicum/delete"/>
-			<acme:submit code="company.practicum.form.button.publish" action="/company/practicum/publish"/>
+			<jstl:if test="${emptySesions != true}">
+				<acme:submit code="company.practicum.form.button.publish" action="/company/practicum/publish"/>
+			</jstl:if>
 			<acme:button code="company.practicum.form.button.list" action="/company/session-practicum/list?practicumId=${id}"/>
 		</jstl:when>		
 		<jstl:when test="${_command == 'create'}">

@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.courses.Course;
 import acme.entities.practicum.Practicum;
+import acme.features.codeGeneration.CodeGenerator;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -29,7 +30,10 @@ import acme.roles.Company;
 public class CompanyPracticumCreateService extends AbstractService<Company, Practicum> {
 
 	@Autowired
-	protected CompanyPracticumRepository repository;
+	protected CompanyPracticumRepository	repository;
+
+	@Autowired
+	protected CodeGenerator					codeGenerator;
 
 
 	@Override
@@ -66,7 +70,8 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 		super.bind(object, "title", "abstractPracticum", "someGoals");
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findCourseById(courseId);
-		object.setCode(this.newCode(this.repository.findFirstByOrderByCodeDesc().getCode()));
+		final String code = this.codeGenerator.newCode(Practicum.class.getSimpleName());
+		object.setCode(code);
 		object.setCompany(company);
 		object.setCourse(course);
 	}
@@ -109,23 +114,4 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 
 		super.getResponse().setData(tuple);
 	}
-
-	public String newCode(final String lastCode) {
-
-		String prefijo = lastCode.substring(0, 3);
-		final int numeroActual = Integer.parseInt(lastCode.substring(3));
-		int nuevoNumero = numeroActual + 1;
-		if (nuevoNumero > 999) {
-			int indiceLetra = prefijo.charAt(2) - 'A';
-			if (indiceLetra == 25)
-				throw new RuntimeException("Se alcanzó el límite de códigos posibles");
-			indiceLetra++;
-			final char nuevaLetra = (char) ('A' + indiceLetra);
-			prefijo = prefijo.substring(0, 2) + nuevaLetra;
-			nuevoNumero = 0;
-		}
-		final String nuevoCodigo = prefijo + String.format("%03d", nuevoNumero);
-		return nuevoCodigo;
-	}
-
 }
