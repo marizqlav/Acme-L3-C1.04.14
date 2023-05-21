@@ -35,6 +35,9 @@ public class CompanySessionPracticumPublishTest extends TestHarness {
 		super.checkFormExists();
 		super.clickOnSubmit("Publish");
 		super.checkNotErrorsExist();
+		super.clickOnListingRecord(sesionRecordIndex);
+		super.checkFormExists();
+		super.checkNotButtonExists("Publish");
 
 		super.signOut();
 	}
@@ -70,7 +73,7 @@ public class CompanySessionPracticumPublishTest extends TestHarness {
 		super.request("/company/session-practicum/publish");
 		super.checkPanicExists();
 
-		super.signIn("company1", "company1");
+		super.signIn("lecturer1", "lecturer1");
 		super.request("/company/session-practicum/publish");
 		super.checkPanicExists();
 		super.signOut();
