@@ -77,7 +77,7 @@ public class LecturerLectureDeleteTest extends TestHarness {
 			super.checkLinkExists("Sign in");
 			super.request("/lecturer/lecture/delete", param);
 			super.checkPanicExists();
-
+			//comentario
 			super.signIn("administrator1", "administrator1");
 			super.request("/lecturer/lecture/delete", param);
 			super.checkPanicExists();
