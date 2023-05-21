@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.entities.lectures.Lecture;
 import acme.testing.TestHarness;
 
-public class LectureLecturerUpdateTest extends TestHarness {
+public class LecturerLectureUpdateTest extends TestHarness {
 
 	@Autowired
 	protected LecturerLectureTestRepository repository;
