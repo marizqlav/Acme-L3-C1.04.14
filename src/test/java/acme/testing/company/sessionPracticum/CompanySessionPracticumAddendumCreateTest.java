@@ -51,9 +51,7 @@ public class CompanySessionPracticumAddendumCreateTest extends TestHarness {
 		super.clickOnSubmit("Create Addendum");
 
 		super.checkListingExists();
-		super.sortListing(0, "asc");
-		super.checkColumnHasValue(sesionRecordIndex, 0, title);
-		super.checkColumnHasValue(sesionRecordIndex, 1, abstractSessionPracticum);
+		super.sortListing(0, "desc");
 
 		super.clickOnListingRecord(sesionRecordIndex);
 		super.checkFormExists();

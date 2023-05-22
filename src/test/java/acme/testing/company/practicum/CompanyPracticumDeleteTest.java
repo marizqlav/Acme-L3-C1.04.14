@@ -65,8 +65,6 @@ public class CompanyPracticumDeleteTest extends TestHarness {
 
 	@Test
 	public void test300Hacking() {
-		// HINT: this test tries to show an unpublished job by someone who is not the principal.
-		// HINT+ a) estando logueado como companyX no poder ver los detalles de una recipe que no sea suyo;
 
 		Collection<Practicum> practicums;
 		String param;

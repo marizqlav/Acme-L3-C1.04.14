@@ -22,6 +22,7 @@ public class CompanyPracticumUpdateTest extends TestHarness {
 	@CsvFileSource(resources = "/company/practicum/update-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
 	public void test100Positive(final int recordIndex, final String code, final String title, final String abstractPracticum, final String someGoals) {
+
 		super.signIn("company1", "company1");
 
 		super.clickOnMenu("Company", "Practicum list");
@@ -48,7 +49,6 @@ public class CompanyPracticumUpdateTest extends TestHarness {
 		super.checkInputBoxHasValue("someGoals", someGoals);
 
 		super.signOut();
-
 	}
 
 	@ParameterizedTest
