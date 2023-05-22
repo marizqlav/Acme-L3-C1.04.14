@@ -54,6 +54,7 @@ public class StudentEnrolmentCreateTest extends TestHarness {
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
 		super.checkInputBoxHasValue("code", code);
+		super.checkInputBoxHasValue("workTime", "0.00");
 		super.checkInputBoxHasValue("motivation", motivation);
 		super.checkInputBoxHasValue("someGoals", someGoals);
 
@@ -91,6 +92,7 @@ public class StudentEnrolmentCreateTest extends TestHarness {
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
 		super.checkInputBoxHasValue("code", code);
+		super.checkInputBoxHasValue("workTime", "0.00");
 		super.checkInputBoxHasValue("motivation", motivation);
 		super.checkInputBoxHasValue("someGoals", someGoals);
 

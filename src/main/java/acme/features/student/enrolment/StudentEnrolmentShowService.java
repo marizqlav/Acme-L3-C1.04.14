@@ -12,9 +12,12 @@
 
 package acme.features.student.enrolment;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.activities.Activity;
 import acme.entities.enrolments.Enrolment;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -72,9 +75,16 @@ public class StudentEnrolmentShowService extends AbstractService<Student, Enrolm
 		assert object != null;
 
 		Tuple tuple;
+		Double workTime;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+
+		final Collection<Activity> activities = this.repository.findManyActivitiesByEnrolmentId(id);
+		workTime = activities.stream().mapToDouble(x -> x.getTimePeriod()).sum();
 
 		tuple = super.unbind(object, "code", "motivation", "someGoals", "draftMode");
-
+		tuple.put("workTime", workTime != null ? workTime : 0.00);
 		super.getResponse().setData(tuple);
 	}
 

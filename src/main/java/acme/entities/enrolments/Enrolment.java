@@ -48,11 +48,12 @@ public class Enrolment extends AbstractEntity {
 	@Length(max = 76)
 	protected String			holderName;
 
+	@Length(max = 30)
 	protected String			lowerNibble;
 
 	// Derived attributes -----------------------------------------------------
 
-	//workTime must be implemented on service
+	//workTime is implemented on service
 
 	// Relationships ----------------------------------------------------------
 
