@@ -31,8 +31,6 @@ public class CompanyPracticumShowTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/practicum/show.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int recordIndex, final String code, final String title, final String abstractPracticum, final String someGoals) {
-		// HINT: this test signs in as an employer, lists all of the jobs, click on  
-		// HINT+ one of them, and checks that the form has the expected data.
 
 		super.signIn("company1", "company1");
 		super.clickOnMenu("Company", "Practicum list");
@@ -57,14 +55,11 @@ public class CompanyPracticumShowTest extends TestHarness {
 
 	@Test
 	public void test200Negative() {
-		// HINT: there aren't any negative tests for this feature because it's a listing
-		// HINT+ that doesn't involve entering any data in any forms.
+
 	}
 
 	@Test
 	public void test300Hacking() {
-		// HINT: this test tries to show an unpublished job by someone who is not the principal.
-		// HINT+ a) estando logueado como companyX no poder ver los detalles de una recipe que no sea suyo;
 
 		Collection<Practicum> practicums;
 		String param;

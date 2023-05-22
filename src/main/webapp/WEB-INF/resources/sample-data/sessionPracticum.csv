@@ -1,8 +1,8 @@
 key,title,abstractSessionPracticum,startDate,finishDate,link,draftModeSession,addendum,key:practicum
 sessionPracticum-01,Calvo,Resumen Practica Sesion,2024/02/02 12:00,2024/03/05 13:00,null,true,false,practicum-01
 sessionPracticum-02,Calvo,Resumen Practica Sesion,2024/02/02 12:00,2024/03/05 13:00,https://www.youtube.com/watch?v=D0e7fkvE2os&ab_channel=Falbak,true,false,practicum-01
-sessionPracticum-03,<h1>hola</h1>,Resumen Practica Sesion,2024/02/01 12:00,2024/03/05 13:00,null,false,false,practicum-03
-sessionPracticum-04,Calvo,<h1>hola</h1>,2024/02/02 12:00,2024/02/12 13:00,null,false,false,practicum-04
+sessionPracticum-03,hola,Resumen Practica Sesion,2024/02/01 12:00,2024/03/05 13:00,null,false,false,practicum-03
+sessionPracticum-04,Calvo,hola,2024/02/02 12:00,2024/02/12 13:00,null,false,false,practicum-04
 sessionPracticum-05,<script>alert('Offer')</script>,Resumen Practica Sesion,2024/02/02 12:00,2024/02/09 13:00,null,true,false,practicum-05
 sessionPracticum-06,Calvo,<script>alert('Offer')</script>,2024/02/02 12:00,2024/03/07 13:00,null,true,false,practicum-06
 sessionPracticum-07,Bonjour,Resumen Practica Sesion,2024/02/02 12:00,2024/02/09 13:00,null,true,false,practicum-07

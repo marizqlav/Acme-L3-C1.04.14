@@ -1,0 +1,5 @@
+indexRecord,code,courseType,title,resumen,retail-price,link
+0,A000,Course Title 1,resumen del curso,EUR 59.99,https://www.informatica.us.es/index.php/estudios
+2,A002,Course Title 3,resumen del curso,EUR 40.00,
+5,A015,Cursillo del INEM,Pa sacarse un dinerillo jejeje,EUR 70.00,
+6,A014,Curso de moda,Mola mazo,EUR 55.00,

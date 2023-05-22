@@ -12,6 +12,7 @@
 
 package acme.testing.any.peep;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -51,9 +52,9 @@ public class AnyPeepShowTest extends TestHarness {
 			super.signOut();
 	}
 
-	//	@Test
-	//	public void test200Negative() {
-	//		// HINT: there aren't any negative tests for this feature because it's a listing
-	//		// HINT+ that doesn't involve entering any data in any forms.
-	//	}
+	@Test
+	public void test200Negative() {
+		// HINT: there aren't any negative tests for this feature because it's a listing
+		// HINT+ that doesn't involve entering any data in any forms.
+	}
 }

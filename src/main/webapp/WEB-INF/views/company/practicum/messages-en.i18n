@@ -31,7 +31,7 @@ company.practicum.form.label.company.username = Username:
 company.practicum.form.label.company.name = Name:
 company.practicum.form.label.company.VATNumber = VATNumber:
 company.practicum.form.label.company.summary = Summary:
-company.practicum.form.label.company.link = Link: (Optional)
+company.practicum.form.label.company.link = Link(Optional):
 	
 company.practicum.form.button.create = Create
 company.practicum.form.button.update = Update

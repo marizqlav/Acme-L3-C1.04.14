@@ -86,7 +86,7 @@ public class CompanySessionPracticumCreateAddendumService extends AbstractServic
 
 		final Practicum practicum = this.repository.findPracticumById(super.getRequest().getData("practicumId", int.class));
 		if (this.repository.findAddendumSessionPracticumByPracticumId(practicum.getId()) != null && this.repository.findAddendumSessionPracticumByPracticumId(practicum.getId()).size() != 0)
-			super.state(false, "title", "company.practicum.error.practicum.exist");
+			super.state(false, "title", "company.session-practicum.error.practicum.exist");
 
 		boolean confirmation;
 

@@ -40,13 +40,11 @@ public class CompanyPracticumListAllTest extends TestHarness {
 
 	@Test
 	public void test200Negative() {
-		// HINT: there aren't any negative tests for this feature because it's a listing
+
 	}
 
 	@Test
 	public void test300Hacking() {
-		// HINT: this test tries to list all of the practicums using 
-		// HINT+ inappropriate roles.
 
 		super.checkLinkExists("Sign in");
 		super.request("/company/practicum/list");
