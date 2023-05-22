@@ -19,7 +19,7 @@ public class LecturerCourseDeleteTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/lecturer/course/delete-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void positiveTest(final int recordIndex, final String code, final String title, final String resumen, final String retailPrice, final String link) {
+	public void test200positive(final int recordIndex, final String code, final String title, final String resumen, final String retailPrice, final String link) {
 
 		super.signIn("lecturer1", "lecturer1");
 		super.clickOnMenu("Lecturer", "Course List");
@@ -41,7 +41,7 @@ public class LecturerCourseDeleteTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/lecturer/course/delete-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test200Negative(final int recordIndex, final String code, final String title, final String resumen, final String retailPrice, final String link) {
+	public void test100Negative(final int recordIndex, final String code, final String title, final String resumen, final String retailPrice, final String link) {
 		super.signIn("lecturer1", "lecturer1");
 		super.clickOnMenu("Lecturer", "Course List");
 		super.checkListingExists();
