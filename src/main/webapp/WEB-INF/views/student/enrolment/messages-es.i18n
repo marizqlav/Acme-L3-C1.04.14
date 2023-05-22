@@ -41,3 +41,4 @@ student.course.activities = Ver actividades
 student.enrolments.title = Mis matrículas
 student.enrolment.form.button.enrolment = Nueva matrícula
 student.enrolment.error.course.not.public = El curso no está publicado
+student.enrolment.form.label.work.time = Tiempo de trabajo(Horas,Minutos):
