@@ -19,7 +19,7 @@ public class LecturerLectureDeleteTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/lecturer/lecture/delete-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test100Positive(final int recordIndex, final String title, final String resumen, final String estimatedTime, final String body, final String lectureType) {
+	public void test200Positive(final int recordIndex, final String title, final String resumen, final String estimatedTime, final String body, final String lectureType) {
 
 		super.signIn("lecturer1", "lecturer1");
 
@@ -43,7 +43,7 @@ public class LecturerLectureDeleteTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/lecturer/lecture/delete-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test200Negative(final int recordIndex, final String title, final String resumen, final String estimatedTime, final String body, final String lectureType) {
+	public void test100Negative(final int recordIndex, final String title, final String resumen, final String estimatedTime, final String body, final String lectureType) {
 
 		super.signIn("lecturer1", "lecturer1");
 
