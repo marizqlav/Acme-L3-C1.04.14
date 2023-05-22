@@ -19,6 +19,7 @@
 <jstl:if test="${!(_command == 'finalise')}">
 	<jstl:if test="${!(_command == 'create')}">
 	<acme:input-textbox code="student.enrolment.form.label.code" readonly="true" path="code"/>
+	<acme:input-double code="student.enrolment.form.label.work.time" readonly="true" path="workTime"/>
 	</jstl:if>
 	<jstl:if test="${_command == 'create' && direct==false}">
 	<acme:input-select code="student.enrolment.form.label.course" path="course" choices="${courses}"/>

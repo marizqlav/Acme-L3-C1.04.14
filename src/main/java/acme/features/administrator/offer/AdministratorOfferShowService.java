@@ -19,7 +19,7 @@ public class AdministratorOfferShowService extends AbstractService<Administrator
 	protected AdministratorOfferRepository	offerRepository;
 
 	@Autowired
-	protected ComputeMoneyRate				cmr;
+	protected ComputeMoneyRate				computeMoneyRate;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -73,7 +73,7 @@ public class AdministratorOfferShowService extends AbstractService<Administrator
 		availabilityPeriod = object.availabilityPeriod();
 		final String systemCurrency = this.offerRepository.findSystemConfiguration().getSystemCurrency();
 		tuple = super.unbind(object, "instantiationMoment", "heading", "summary", "availabilityPeriodInitial", "availabilityPeriodFinal", "price", "link");
-		tuple.put("exchangeMoney", this.cmr.computeMoneyExchange(object.getPrice(), systemCurrency).getTarget());
+		tuple.put("exchangeMoney", this.computeMoneyRate.computeMoneyExchange(object.getPrice(), systemCurrency).getTarget());
 		tuple.put("availabilityPeriod", availabilityPeriod);
 		super.getResponse().setData(tuple);
 
