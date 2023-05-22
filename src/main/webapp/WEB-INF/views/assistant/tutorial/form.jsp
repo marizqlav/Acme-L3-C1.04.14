@@ -35,8 +35,12 @@
 				<acme:submit code="assistant.tutorial.form.button.delete" action="/assistant/tutorial/delete"/>
 				<acme:submit code="assistant.tutorial.form.button.publish" action="/assistant/tutorial/publish"/>
 			</jstl:if>
-			<acme:button code="assistant.tutorial.form.button.sessions" action="/assistant/session-tutorial/list?tutorialId=${tutorialId}"/>	
-		</jstl:when>	
+		</jstl:when>
+		<jstl:when test="${acme:anyOf(_command, 'show') && draftMode == false}">
+			<jstl:if test="${draftMode==false}">
+				<acme:button code="assistant.tutorial.form.button.sessions" action="/assistant/session-tutorial/list?tutorialId=${tutorialId}"/>	
+			</jstl:if>
+		</jstl:when>			
 	</jstl:choose>
 
 </acme:form>
