@@ -84,7 +84,7 @@ public class CompanySessionPracticumAddendumCreateTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/session-practicum/create-negative-addendum2.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test200Negative2(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum, final String startDate, final String finishDate, final String link, final String confirmation) {
+	public void test000Negative2(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum, final String startDate, final String finishDate, final String link, final String confirmation) {
 
 		super.signIn("company1", "company1");
 
