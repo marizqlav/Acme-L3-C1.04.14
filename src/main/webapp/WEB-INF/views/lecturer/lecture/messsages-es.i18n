@@ -28,3 +28,5 @@ lecturer.lecture.form.error.lectureType = No se puede elegir esa opcion para cla
 lecturer.lecture.form.error.title = No se puede dejar en blanco
 lecturer.lecture.form.error.body = No se puede dejar en blanco
 lecturer.lecture.form.error.resumen = No se puede dejar en blanco
+
+lecturer.lecture.form.titulo.duplicated = Este título ya existe
