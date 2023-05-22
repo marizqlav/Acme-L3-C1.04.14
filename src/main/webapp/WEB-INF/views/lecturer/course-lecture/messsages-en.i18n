@@ -33,3 +33,5 @@ lecturer.course-lecture.form.label.lecture = with title
 lecturer.course-lecture.form.label.course = with title
 
 lecturer.courseLecture.button.delete = Remove this lecture
+
+lecturer.course-lecture.form.error.draftmode = Lecture must be published

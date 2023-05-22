@@ -11,19 +11,22 @@
 administrator.offer.list.label.heading = Heading
 administrator.offer.list.label.price = Price
 
-administrator.offer.form.label.instantiationMoment = Instantation Moment
-administrator.offer.form.label.heading = Heading
-administrator.offer.form.label.summary = Summary
-administrator.offer.form.label.availabilityPeriodInitial = Availability Period Initial
-administrator.offer.form.label.availabilityPeriodFinal = Availability Period Final
-administrator.offer.form.label.price = Price
-administrator.offer.form.label.link = Link (Optional)
+administrator.offer.data = Offer data
+administrator.offer.form.label.instantiationMoment = Instantation Moment:
+administrator.offer.form.label.heading = Heading:
+administrator.offer.form.label.summary = Summary:
+administrator.offer.form.label.availabilityPeriodInitial = Availability Period Initial:
+administrator.offer.form.label.availabilityPeriodFinal = Availability Period Final:
+administrator.offer.form.label.availabilityPeriod=Availability Period(Hours.Minutes):
+administrator.offer.form.label.price = Price:
+administrator.offer.form.label.retail.price.exchange.money=Exchange Money:
+administrator.offer.form.label.link = Link (Optional):
 
 administrator.offer.form.button.create = Crear
 administrator.offer.form.button.update = Update
 administrator.offer.form.button.delete = Delete
 
-administrator.offer.form.label.retail.price.exchange.money=Exchange Money
+administrator.offer.form.label.price.exchange.money=Exchange Money
 administrator.offer.form.error.price = The price must be positive and smaller than 1000000
 administrator.offer.form.error.availabilityPeriodInitial = The availability Period Initial must be at least a day after the instantiation moment
 administrator.offer.form.error.availabilityPeriodFinal = The availability Period Final must be minimum a week after the availability Period Initial

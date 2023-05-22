@@ -20,5 +20,19 @@
 	<acme:input-textbox code="authenticated.practicum.form.label.title" path="title"/>
 	<acme:input-textbox code="authenticated.practicum.form.label.abstractPracticum" path="abstractPracticum"/>
 	<acme:input-textbox code="authenticated.practicum.form.label.someGoals" path="someGoals"/>
-	<acme:input-textbox code="authenticated.practicum.form.label.company.name" path="company"/>
+		<jstl:if test="${companyusername != null && companyname != null && companyVATNumber != null && companysummary != null}">
+			<h1><acme:message code="company.practicum.company.data"/></h1>
+		</jstl:if>
+		<jstl:if test="${companyusername != null }">
+			<acme:input-textbox code="company.practicum.form.label.company.username" readonly="true" path="companyusername"/>
+		</jstl:if>
+		<jstl:if test="${companyname != null }">
+			<acme:input-textarea code="company.practicum.form.label.company.name" readonly="true" path="companyname"/>
+		</jstl:if>
+		<jstl:if test="${ companyVATNumber != null }">
+			<acme:input-textarea code="company.practicum.form.label.company.VATNumber" readonly="true" path="companyVATNumber"/>
+		</jstl:if>
+		<jstl:if test="${ companysummary != null }">
+			<acme:input-textarea code="company.practicum.form.label.company.summary" readonly="true" path="companysummary"/>
+		</jstl:if>
 </acme:form>

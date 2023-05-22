@@ -38,11 +38,12 @@ public class LecturerLectureDeleteService extends AbstractService<Lecturer, Lect
 		boolean status;
 		int id;
 		Lecture lecture;
+		Lecturer lecturer;
 
 		id = super.getRequest().getData("id", int.class);
 		lecture = this.repository.findLectureById(id);
-		status = lecture != null;
-
+		lecturer = lecture.getLecturer();
+		status = lecture != null && super.getRequest().getPrincipal().hasRole(lecturer);
 		super.getResponse().setAuthorised(status);
 	}
 

@@ -12,6 +12,7 @@
 
 package acme.testing.any.peep;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -41,24 +42,9 @@ public class AnyPeepListAllTest extends TestHarness {
 			super.signOut();
 	}
 
-	//	@Test
-	//	public void test200Negative() {
-	//		// HINT: there aren't any negative tests for this feature because it's a listing
-	//
-	//	@Test
-	//	public void test300Hacking() {
-	//		// HINT: this test tries to list all of the practicums using 
-	//		// HINT+ inappropriate roles.
-	//
-	//		super.checkLinkExists("Sign in");
-	//		super.request("/company/practicum/list");
-	//		super.checkPanicExists();
-	//
-	//		super.signIn("administrator1", "administrator1");
-	//		super.request("/company/practicum/list");
-	//		super.checkPanicExists();
-	//		super.signOut();
-	//
-	//	}
+	@Test
+	public void test200Negative() {
+		// HINT: there aren't any negative tests for this feature because it's a listing
+	}
 
 }

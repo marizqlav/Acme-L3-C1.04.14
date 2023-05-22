@@ -10,10 +10,7 @@ import acme.entities.audits.Audit;
 import acme.entities.audits.AuditingRecord;
 import acme.entities.courseLectures.CourseLecture;
 import acme.entities.courses.Course;
-import acme.entities.practicum.Practicum;
-import acme.entities.sessionPracticum.SessionPracticum;
 import acme.features.auditor.audit.AuditorAuditRepository;
-import acme.features.company.practicum.CompanyPracticumRepository;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
@@ -23,13 +20,10 @@ public class LecturerCourseDeleteService extends AbstractService<Lecturer, Cours
 
 	// Internal State ------------------------------------------
 	@Autowired
-	protected LecturerCourseRepository		repository;
+	protected LecturerCourseRepository	repository;
 
 	@Autowired
-	protected CompanyPracticumRepository	practRepo;
-
-	@Autowired
-	protected AuditorAuditRepository		auditRepo;
+	protected AuditorAuditRepository	auditRepo;
 	//AbstractServiceInterface -------------------------------
 
 
@@ -46,12 +40,13 @@ public class LecturerCourseDeleteService extends AbstractService<Lecturer, Cours
 	public void authorise() {
 		boolean status;
 		int id;
-		final Course course;
+		Course course;
+		Lecturer lecturer;
 
 		id = super.getRequest().getData("id", int.class);
 		course = this.repository.findCourseById(id);
-		status = course != null;
-
+		lecturer = course.getLecturer();
+		status = course != null && super.getRequest().getPrincipal().hasRole(lecturer);
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -85,20 +80,13 @@ public class LecturerCourseDeleteService extends AbstractService<Lecturer, Cours
 		final Collection<CourseLecture> courseLectures = this.repository.findCLfromCourse(object.getId());
 		for (final CourseLecture courseLecture : courseLectures)
 			this.repository.delete(courseLecture);
-		final Collection<Practicum> practicum = this.repository.findPracticumCourse(object.getId());
-		for (final Practicum p : practicum) {
-			Collection<SessionPracticum> practicumSessions;
-			practicumSessions = this.practRepo.findSessionPracticumByPracticumId(p.getId());
-			this.repository.deleteAll(practicumSessions);
-			this.repository.delete(p);
-		}
+
 		final Collection<Audit> audits = this.repository.findAuditCourse(object.getId());
 
 		for (final Audit audit : audits) {
 			final Collection<AuditingRecord> ar = this.auditRepo.findRecordsFromAudit(audit.getId());
 			this.repository.deleteAll(ar);
 			this.repository.delete(audit);
-
 		}
 
 		this.repository.delete(object);

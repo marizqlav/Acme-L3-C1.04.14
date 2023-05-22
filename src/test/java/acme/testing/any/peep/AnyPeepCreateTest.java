@@ -91,7 +91,6 @@ public class AnyPeepCreateTest extends TestHarness {
 		super.checkErrorsExist();
 		if (user != null && pass != null)
 			super.signOut();
-
 	}
 
 }
