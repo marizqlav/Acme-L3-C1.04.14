@@ -1,6 +1,9 @@
 
 package acme.features.lecturer.lecture;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +57,7 @@ public class LecturerLectureCreateService extends AbstractService<Lecturer, Lect
 	@Override
 	public void validate(final Lecture object) {
 		assert object != null;
+		final List<String> titulos = this.repository.findAllLectures().stream().map(x -> x.getTitle()).collect(Collectors.toList());
 		if (!super.getBuffer().getErrors().hasErrors("estimatedTime"))
 			super.state(object.getEstimatedTime() >= 0.01, "estimatedTime", "lecturer.lecture.form.error.estimatedTime");
 		if (!super.getBuffer().getErrors().hasErrors("lectureType"))
@@ -64,6 +68,8 @@ public class LecturerLectureCreateService extends AbstractService<Lecturer, Lect
 			super.state(!object.getResumen().isEmpty(), "resumen", "lecturer.lecture.form.error.resumen");
 		if (!super.getBuffer().getErrors().hasErrors("body"))
 			super.state(!object.getBody().isEmpty(), "body", "lecturer.lecture.form.error.body");
+		if (!super.getBuffer().getErrors().hasErrors("title"))
+			super.state(!titulos.contains(object.getTitle()), "title", "lecturer.lecture.form.titulo.duplicated");
 	}
 
 	@Override
