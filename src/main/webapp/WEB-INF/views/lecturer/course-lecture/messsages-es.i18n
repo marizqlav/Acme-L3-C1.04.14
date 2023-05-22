@@ -33,3 +33,4 @@ lecturer.course-lecture.form.label.course =  con título
 lecturer.courseLecture.button.delete = Eliminar esta clase
 
 
+lecturer.course-lecture.form.error.draftmode = La clase debe estar publicada
