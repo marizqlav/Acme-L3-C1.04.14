@@ -44,10 +44,12 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 		boolean status;
 		int id;
 		Course course;
+		Lecturer lecturer;
 
 		id = super.getRequest().getData("id", int.class);
 		course = this.repository.findCourseById(id);
-		status = course != null;
+		lecturer = course.getLecturer();
+		status = course != null && super.getRequest().getPrincipal().hasRole(lecturer);
 		super.getResponse().setAuthorised(status);
 	}
 

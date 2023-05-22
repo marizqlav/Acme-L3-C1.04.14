@@ -73,6 +73,9 @@ public class LecturerCourseLectureCreateService extends AbstractService<Lecturer
 		final Lecture lecture = this.repository.findLectureById(lectureId);
 		if (!super.getBuffer().getErrors().hasErrors("lecture"))
 			super.state(!lc.contains(lecture), "lecture", "lecturer.course-lecture.form.error.lecture");
+		if (!super.getBuffer().getErrors().hasErrors("lecture"))
+			super.state(!object.getLecture().getDraftmode(), "lecture", "lecturer.course-lecture.form.error.draftmode");
+
 	}
 
 	@Override
