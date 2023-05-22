@@ -30,3 +30,4 @@ lecturer.lecture.form.error.title = Can not be blank
 lecturer.lecture.form.error.body = Can not be blank
 lecturer.lecture.form.error.resumen = Can not be blank
 
+lecturer.lecture.form.titulo.duplicated = This title already exists
