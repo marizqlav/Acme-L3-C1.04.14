@@ -94,7 +94,7 @@ public class CompanySessionPracticumCreateTest extends TestHarness {
 	@Test
 	public void test300Hacking() {
 		// HINT: this test tries to create a duty for a Practicum as a principal without 
-		// HINT: the "Employer" role.
+		// HINT: the "Employer" role
 
 		Collection<Practicum> practicums;
 		String param;
