@@ -8,6 +8,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.practicum.Practicum;
 import acme.entities.sessionPracticum.SessionPracticum;
 import acme.framework.components.models.Tuple;
 import acme.framework.helpers.MomentHelper;
@@ -35,10 +36,12 @@ public class CompanySessionPracticumPublishService extends AbstractService<Compa
 		boolean status;
 		SessionPracticum sessionPracticum;
 		int sessionPracticumId;
+		Practicum practicum;
 
 		sessionPracticumId = super.getRequest().getData("id", int.class);
+		practicum = this.repository.findPracticumBySessionPracticumId(sessionPracticumId);
 		sessionPracticum = this.repository.findSessionPracticumById(sessionPracticumId);
-		status = sessionPracticum != null;
+		status = sessionPracticum != null && practicum.isDraftMode() && sessionPracticum.isDraftModeSession();
 
 		super.getResponse().setAuthorised(status);
 	}
