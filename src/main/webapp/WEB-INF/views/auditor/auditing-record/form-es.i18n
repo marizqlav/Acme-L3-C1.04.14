@@ -16,3 +16,5 @@ auditor.auditingRecord.form.button.confirm = Confirmar
 auditor.auditingRecord.form.button.decline = Declinar
 auditor.auditingRecord.form.assesmentEndDate.notPast = La fecha de fin debe ser posterior a la de inicio
 auditor.auditingRecord.form.assesmentEndDate.notAnHour = El período de evaluación debe ser almenos una hora
+auditor.auditingRecord.form.label.confirmation = Confirmación
+auditor.auditingRecord.validation.confirmation = Confirmación necesaria

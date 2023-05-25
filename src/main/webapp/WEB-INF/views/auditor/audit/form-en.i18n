@@ -15,3 +15,4 @@ auditors.auditingRecord.list.button.publish = Publish audit
 auditor.audit.form.label.publish = Published
 auditor.audit.form.label.not-publish = Not published
 auditor.audit.form.label.mark = Mark
+auditor.audit.form.label.course = Course

@@ -39,6 +39,7 @@
 	<jstl:if test="${_command != 'create'}">
 		<acme:input-textbox code="auditor.audit.form.label.code" readonly="true" path="code"/>
 		<acme:input-textbox code="auditor.audit.form.label.mark" readonly="true" path="mark"/>
+		<acme:input-textbox code="auditor.audit.form.label.course" readonly="true" path="course"/>
 		<br>
 		<br>
 	</jstl:if>

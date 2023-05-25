@@ -1,3 +1,4 @@
+
 package acme.features.auditor.audit;
 
 import java.util.HashMap;
@@ -16,9 +17,9 @@ import acme.roles.Auditor;
 @Service
 public class AuditorAuditShowService extends AbstractService<Auditor, Audit> {
 
-
 	@Autowired
 	protected AuditorAuditRepository repo;
+
 
 	@Override
 	public void check() {
@@ -31,7 +32,7 @@ public class AuditorAuditShowService extends AbstractService<Auditor, Audit> {
 
 	@Override
 	public void authorise() {
-        super.getResponse().setAuthorised(true);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -40,7 +41,7 @@ public class AuditorAuditShowService extends AbstractService<Auditor, Audit> {
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = repo.findAudit(id);
+		object = this.repo.findAudit(id);
 
 		super.getBuffer().setData(object);
 	}
@@ -55,28 +56,27 @@ public class AuditorAuditShowService extends AbstractService<Auditor, Audit> {
 
 		tuple.put("draftMode", audit.getDraftMode());
 
-		Map<MarkType, Integer> dic = new HashMap<>();
-		for (AuditingRecord ar : repo.findRecordsFromAudit(audit.getId())) {
-			if (!dic.containsKey(ar.getMark())) {
+		final Map<MarkType, Integer> dic = new HashMap<>();
+		for (final AuditingRecord ar : this.repo.findRecordsFromAudit(audit.getId())) {
+			if (!dic.containsKey(ar.getMark()))
 				dic.put(ar.getMark(), 0);
-			}
 			dic.replace(ar.getMark(), dic.get(ar.getMark()) + 1);
 		}
-		if (dic.entrySet().isEmpty()) {
+		if (dic.entrySet().isEmpty())
 			tuple.put("mark", "No mark");
-		} else {
-			MarkType mark = dic.entrySet().stream().max((x, y) -> x.getValue().compareTo(y.getValue())).get().getKey();
+		else {
+			final MarkType mark = dic.entrySet().stream().max((x, y) -> x.getValue().compareTo(y.getValue())).get().getKey();
 			tuple.put("mark", mark);
 		}
 
-		if (repo.findRecordsFromAudit(audit.getId()).isEmpty()) {
+		if (this.repo.findRecordsFromAudit(audit.getId()).isEmpty())
 			tuple.put("emptyRecords", true);
-		} else {
+		else
 			tuple.put("emptyRecords", false);
-		}
+
+		tuple.put("course", this.repo.findCourse(audit.getCourse().getId()).getTitle());
 
 		super.getResponse().setData(tuple);
 	}
-
 
 }
