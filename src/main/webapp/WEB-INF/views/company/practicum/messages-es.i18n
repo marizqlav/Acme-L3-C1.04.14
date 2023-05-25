@@ -44,3 +44,4 @@ company.practicum.error.practicum.exist = El curso no puede estar vacío
 title.not.null = El título no puede ser vacío
 abstractPracticum.not.null= El resumen no puede ser vacío
 someGoals.not.null= El objetivo no puede ser vacío
+company.practicum.error.course.not.public=Curso no público

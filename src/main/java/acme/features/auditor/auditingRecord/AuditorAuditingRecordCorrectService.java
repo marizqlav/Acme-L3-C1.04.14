@@ -77,11 +77,6 @@ public class AuditorAuditingRecordCorrectService extends AbstractService<Auditor
 				super.state(Duration.between(firstDate, lastDate).toHours() >= 1, "assesmentEndDate", "auditor.auditingRecord.form.assesmentEndDate.notAnHour");
 			}
 
-		if (!super.getBuffer().getErrors().hasErrors("confirmation")) {
-			boolean confirmation = super.getRequest().getData("confirmation", boolean.class);
-			super.state(confirmation, "confirmation", "auditor.auditingRecord.validation.confirmation");
-		}
-
 	}
 
 	@Override
@@ -109,8 +104,6 @@ public class AuditorAuditingRecordCorrectService extends AbstractService<Auditor
 		tuple.put("mark", auditingRecord.getMark());
 
 		tuple.put("auditId", super.getRequest().getData("auditId", int.class));
-		
-		tuple.put("confirmation", false);
 
 		super.getResponse().setData(tuple);
 	}
