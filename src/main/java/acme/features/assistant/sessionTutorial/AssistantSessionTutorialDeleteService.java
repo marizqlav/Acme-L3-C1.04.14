@@ -56,7 +56,7 @@ public class AssistantSessionTutorialDeleteService extends AbstractService<Assis
 	public void bind(final SessionTutorial object) {
 		assert object != null;
 
-		super.bind(object, "title", "description", "sessionType", "startDate", "endDate", "link", "draftMode");
+		super.bind(object, "title", "description", "sessionType", "startDate", "endDate", "link");
 	}
 
 	@Override
