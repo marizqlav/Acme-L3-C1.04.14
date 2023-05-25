@@ -76,7 +76,6 @@ public class CompanySessionPracticumAddendumCreateTest extends TestHarness {
 
 		super.clickOnListingRecord(recordIndex);
 		super.clickOnButton("List Session Practicum");
-
 		super.checkNotSubmitExists("Create Addendum");
 
 		super.signOut();
