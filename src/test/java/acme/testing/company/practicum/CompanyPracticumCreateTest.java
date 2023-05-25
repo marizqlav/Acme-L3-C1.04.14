@@ -25,7 +25,6 @@ public class CompanyPracticumCreateTest extends TestHarness {
 	public void test100Positive(final int recordIndex, final String code, final String course, final String title, final String abstractPracticum, final String someGoals) {
 
 		super.signIn("company1", "company1");
-
 		super.clickOnMenu("Company", "Practicum list");
 		super.checkListingExists();
 
