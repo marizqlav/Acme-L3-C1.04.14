@@ -5,17 +5,13 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
-import acme.components.ExchangeRate;
 import acme.entities.courses.Course;
 import acme.entities.lectures.Lecture;
 import acme.entities.lectures.LectureType;
-import acme.forms.MoneyExchange;
+import acme.features.rate.ComputeMoneyRate;
 import acme.framework.components.accounts.Any;
-import acme.framework.components.datatypes.Money;
 import acme.framework.components.models.Tuple;
-import acme.framework.helpers.StringHelper;
 import acme.framework.services.AbstractService;
 
 @Service
@@ -23,7 +19,10 @@ public class AnyCourseShowService extends AbstractService<Any, Course> {
 
 	// Internal State ------------------------------------------
 	@Autowired
-	protected AnyCourseRepository repository;
+	protected AnyCourseRepository	repository;
+
+	@Autowired
+	protected ComputeMoneyRate		cmr;
 
 	//AbstractServiceInterface -------------------------------
 
@@ -68,7 +67,7 @@ public class AnyCourseShowService extends AbstractService<Any, Course> {
 
 		tuple = super.unbind(object, "code", "title", "resumen", "retailPrice", "link");
 		tuple.put("courseType", this.courseType(this.repository.findAllLecturesByCourse(object.getId())));
-		tuple.put("exchangeMoney", this.computeMoneyExchange(object.getRetailPrice(), systemCurrency).getTarget());
+		tuple.put("exchangeMoney", this.cmr.computeMoneyExchange(object.getRetailPrice(), systemCurrency).getTarget());
 		super.getResponse().setData(tuple);
 	}
 
@@ -89,47 +88,4 @@ public class AnyCourseShowService extends AbstractService<Any, Course> {
 		return res;
 	}
 
-	public MoneyExchange computeMoneyExchange(final Money source, final String targetCurrency) {
-		assert source != null;
-		assert !StringHelper.isBlank(targetCurrency);
-
-		MoneyExchange result;
-		RestTemplate api;
-		ExchangeRate record;
-		String sourceCurrency;
-		Double sourceAmount, targetAmount, rate;
-		Money target;
-
-		try {
-			api = new RestTemplate();
-
-			sourceCurrency = source.getCurrency();
-			sourceAmount = source.getAmount();
-
-			record = api.getForObject( //
-				"https://api.exchangerate.host/latest?base={0}&symbols={1}", //
-				ExchangeRate.class, //
-				sourceCurrency, //
-				targetCurrency //
-			);
-
-			assert record != null;
-			rate = record.getRates().get(targetCurrency);
-			targetAmount = rate * sourceAmount;
-
-			target = new Money();
-			target.setAmount(targetAmount);
-			target.setCurrency(targetCurrency);
-
-			result = new MoneyExchange();
-			result.setSource(source);
-			result.setTargetCurrency(targetCurrency);
-			result.setDate(record.getDate());
-			result.setTarget(target);
-		} catch (final Throwable oops) {
-			result = null;
-		}
-
-		return result;
-	}
 }
