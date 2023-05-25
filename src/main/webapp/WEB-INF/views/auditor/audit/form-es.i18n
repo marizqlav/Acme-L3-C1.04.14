@@ -15,3 +15,4 @@ auditors.auditingRecord.list.button.publish = Publicar auditoría
 auditor.audit.form.label.publish = Publicada
 auditor.audit.form.label.not-publish = No publicada
 auditor.audit.form.label.mark = Nota
+auditor.audit.form.label.course = Curso

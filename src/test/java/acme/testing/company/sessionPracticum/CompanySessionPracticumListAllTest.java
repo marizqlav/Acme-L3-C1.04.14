@@ -25,7 +25,7 @@ public class CompanySessionPracticumListAllTest extends TestHarness {
 	public void test100Positive(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum) {
 		// HINT: this test signs in as an employer, lists all of the jobs, 
 		// HINT+ and then checks that the listing shows the expected data.
-
+		
 		super.signIn("company1", "company1");
 
 		super.clickOnMenu("Company", "Practicum list");
