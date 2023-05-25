@@ -43,7 +43,11 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+
+		status = super.getRequest().getPrincipal().hasRole(Company.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -79,6 +83,14 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 	@Override
 	public void validate(final Practicum object) {
 		assert object != null;
+		Integer courseId;
+		Course course;
+
+		courseId = super.getRequest().getData("course", int.class);
+		course = this.repository.findCourseById(courseId);
+		if (!(course == null))
+			if (course.getDraftMode())
+				super.state(false, "course", "company.practicum.error.course.not.public");
 	}
 
 	@Override
