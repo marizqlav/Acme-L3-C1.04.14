@@ -42,6 +42,7 @@ public class AuditingRecord extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	Date assesmentEndDate;
 	
+	@NotNull
 	MarkType mark;
 
 	boolean correction = false;

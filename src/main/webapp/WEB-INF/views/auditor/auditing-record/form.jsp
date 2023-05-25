@@ -41,15 +41,8 @@
 	</jstl:if>
 
 	<jstl:if test="${_command == 'correct'}">
-		<div id="confirmation-button-1">
-			<button type="button" onclick="askConfirmation()"><acme:message code="auditor.auditingRecord.form.button.correct"/></button>
-		</div>
-		<div id="confirmation-button-2" style="display: none;">
-			<acme:submit code='auditor.auditingRecord.form.button.confirm' action='/auditor/auditing-record/correct?auditId=${auditId}'/>
-			<acme:button code='auditor.auditingRecord.form.button.decline' action='/auditor/auditing-record/list?auditId=${auditId}'/>
-		</div>
+		<acme:input-checkbox code="auditor.auditingRecord.form.label.confirmation" path="confirmation"/>
+		<acme:submit code='auditor.auditingRecord.form.button.correct' action='/auditor/auditing-record/correct?auditId=${auditId}'/>
 	</jstl:if>
 
 </acme:form>
-
-<script src="js/confirmation.js"></script>
