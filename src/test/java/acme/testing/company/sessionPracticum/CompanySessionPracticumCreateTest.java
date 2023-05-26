@@ -93,8 +93,6 @@ public class CompanySessionPracticumCreateTest extends TestHarness {
 
 	@Test
 	public void test300Hacking() {
-		// HINT: this test tries to create a duty for a Practicum as a principal without 
-		// HINT: the "Employer" role
 
 		Collection<Practicum> practicums;
 		String param;
@@ -121,8 +119,6 @@ public class CompanySessionPracticumCreateTest extends TestHarness {
 
 	@Test
 	public void test301Hacking() {
-		// HINT: this test tries to create a duty for a published Practicum created by 
-		// HINT+ the principal.
 
 		Collection<Practicum> practicums;
 		String param;
@@ -140,8 +136,6 @@ public class CompanySessionPracticumCreateTest extends TestHarness {
 
 	@Test
 	public void test302Hacking() {
-		// HINT: this test tries to create duties for Practicums that weren't created 
-		// HINT+ by the principal.
 
 		Collection<Practicum> practicums;
 		String param;

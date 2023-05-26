@@ -46,7 +46,7 @@ public class LecturerCourseDeleteService extends AbstractService<Lecturer, Cours
 		id = super.getRequest().getData("id", int.class);
 		course = this.repository.findCourseById(id);
 		lecturer = course.getLecturer();
-		status = course != null && super.getRequest().getPrincipal().hasRole(lecturer);
+		status = course != null && super.getRequest().getPrincipal().hasRole(lecturer) && course.getDraftMode();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -99,6 +99,8 @@ public class LecturerCourseDeleteService extends AbstractService<Lecturer, Cours
 		Tuple tuple;
 
 		tuple = super.unbind(object, "title", "resumen", "retailPrice", "link");
+
+		tuple.put("draftmode", object.getDraftMode());
 
 		super.getResponse().setData(tuple);
 	}
