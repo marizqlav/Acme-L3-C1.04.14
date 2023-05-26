@@ -24,7 +24,7 @@ public class StudentEnrolmentListMineTest extends TestHarness {
 	@CsvFileSource(resources = "/student/enrolment/list-mine-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int recordIndex, final String code, final String curseTitle) {
 
-		// This test authenticates as an student, lists his or her enrolments only,
+		// This test authenticates as a student, lists his or her enrolments only,
 		// and then checks that the listing has the expected data.
 
 		super.signIn("student1", "student1");

@@ -32,7 +32,7 @@ public class StudentEnrolmentShowTest extends TestHarness {
 	@CsvFileSource(resources = "/student/enrolment/show.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int recordIndex, final String courseTitle, final String code, final String motivation, final String someGoals) {
 
-		// This test signs in as an student, lists all of the enrolments, click on  
+		// This test signs in as a student, lists all of the enrolments, click on  
 		// one of them, and checks that the form has the expected data.
 
 		super.signIn("student1", "student1");
@@ -54,14 +54,14 @@ public class StudentEnrolmentShowTest extends TestHarness {
 
 	@Test
 	public void test200Negative() {
-		// HINT: there aren't any negative tests for this feature because it's a listing
-		// HINT+ that doesn't involve entering any data in any forms.
+		// There aren't any negative tests for this feature because it's a listing
+		// that doesn't involve entering any data in any forms.
 	}
 
 	@Test
 	public void test300Hacking() {
 
-		// HINT: this test tries to show an unpublished enrolment by someone who is not the principal.
+		// This test tries to show an unpublished enrolment by someone who is not the principal.
 
 		Collection<Enrolment> enrolments;
 		String param;

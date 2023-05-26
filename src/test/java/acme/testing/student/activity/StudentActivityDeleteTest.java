@@ -55,7 +55,7 @@ public class StudentActivityDeleteTest extends TestHarness {
 	public void hackingTest() {
 
 		// This test tries to delete an activity with a role other than "Student",
-		// or using an student who is not the owner.
+		// or using a student who is not the owner.
 		Collection<Activity> activities;
 		String param;
 

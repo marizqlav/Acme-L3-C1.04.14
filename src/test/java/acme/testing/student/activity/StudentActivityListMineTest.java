@@ -32,6 +32,9 @@ public class StudentActivityListMineTest extends TestHarness {
 	@CsvFileSource(resources = "/student/activity/list-mine-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void positiveTest(final int recordIndex, final int activityRecordIndex, final String title, final String abstractResumen, final String activityType, final String timePeriod) {
 
+		// This test authenticates as a student, selects an enrolment and lists the activities of these enrolment only,
+		// and then checks that the listing has the expected data.
+
 		super.signIn("student1", "student1");
 
 		super.clickOnMenu("Student", "My enrolments");
@@ -56,12 +59,12 @@ public class StudentActivityListMineTest extends TestHarness {
 
 	@Test
 	public void test200Negative() {
-		// HINT: there aren't any negative tests for this feature because it's a listing
+		// There aren't any negative tests for this feature because it's a listing.
 	}
 
 	@Test
 	public void test300Hacking() {
-		// This test tries to list the activities of a enrolment that is not finalised
+		// This test tries to list the activities of an enrolment that is not finalised
 		// using a principal that didn't create it. 
 
 		Collection<Enrolment> enrolments;

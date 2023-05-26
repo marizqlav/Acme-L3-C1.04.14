@@ -31,7 +31,7 @@ public class StudentEnrolmentCreateTest extends TestHarness {
 	@CsvFileSource(resources = "/student/enrolment/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void positiveTest(final int recordIndex, final String courseTitle, final String code, final String motivation, final String someGoals) {
 
-		// This test authenticates as an student and then lists his or her
+		// This test authenticates as a student and then lists his or her
 		// enrolments, creates a new one, and check that it's been created properly.
 
 		super.signIn("student3", "student3");

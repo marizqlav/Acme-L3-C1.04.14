@@ -21,7 +21,7 @@ public class StudentEnrolmentFinaliseTest extends TestHarness {
 	@CsvFileSource(resources = "/student/enrolment/finalise-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void positiveTest(final int recordIndex, final String code, final String holderName, final String lowerNibble, final String expireDate, final String cvc) {
 
-		// This test authenticates as an student, lists his or her enrolments,
+		// This test authenticates as a student, lists his or her enrolments,
 		// then selects one of them, and finalise it.
 
 		super.signIn("student1", "student1");
@@ -56,7 +56,7 @@ public class StudentEnrolmentFinaliseTest extends TestHarness {
 	@CsvFileSource(resources = "/student/enrolment/finalise-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void negativeButtonTest(final int recordIndex, final String code, final String holderName, final String lowerNibble, final String expireDate, final String cvc) {
 
-		// HINT: this test attempts to finalise an enrolment that cannot be finalised, yet.
+		// This test attempts to finalise an enrolment that cannot be finalised, yet.
 
 		super.signIn("student1", "student1");
 
@@ -85,7 +85,7 @@ public class StudentEnrolmentFinaliseTest extends TestHarness {
 	public void test300Hacking() {
 
 		// This test tries to finalise an enrolment with a role other than "Student"
-		// or using an student who is not the owner.
+		// or using a student who is not the owner.
 
 		final Collection<Enrolment> enrolments;
 		String params;
@@ -120,7 +120,7 @@ public class StudentEnrolmentFinaliseTest extends TestHarness {
 	@Test
 	public void test301Hacking() {
 
-		// HINT: this test tries to finalise a finalised enrolment that was registered by the principal.
+		// This test tries to finalise a finalised enrolment that was registered by the principal.
 
 		Collection<Enrolment> enrolments;
 		String params;
