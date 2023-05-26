@@ -20,9 +20,9 @@
 	<acme:input-textarea code="assistant.sessionTutorial.form.label.title" path="title"/>
 	<acme:input-textarea code="assistant.sessionTutorial.form.label.description" path="description"/>
 	<acme:input-select code="assistant.sessionTutorial.form.label.sessionType" path="sessionType" choices="${sessionTypes}"/>
-	<acme:input-textarea code="assistant.sessionTutorial.form.label.startDate" path="startDate"/>
-	<acme:input-textarea code="assistant.sessionTutorial.form.label.endDate" path="endDate"/>
-	<acme:input-textarea code="assistant.sessionTutorial.form.label.link" path="link"/>
+	<acme:input-moment code="assistant.sessionTutorial.form.label.startDate" path="startDate"/>
+	<acme:input-moment code="assistant.sessionTutorial.form.label.endDate" path="endDate"/>
+	<acme:input-url code="assistant.sessionTutorial.form.label.link" path="link"/>
 
 	<br>
 	<br>
@@ -31,7 +31,7 @@
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="assistant.tutorial.list.button.create" action="/assistant/session-tutorial/create?tutorialId=${tutorialId}"/>
 		</jstl:when>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == true}">
 			<acme:submit code="assistant.tutorial.form.button.update" action="/assistant/session-tutorial/update"/>
 			<acme:submit code="assistant.tutorial.form.button.delete" action="/assistant/session-tutorial/delete"/>
 			<acme:submit code="assistant.tutorial.form.button.publish" action="/assistant/session-tutorial/publish"/>

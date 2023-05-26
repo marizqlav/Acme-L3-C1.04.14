@@ -16,7 +16,6 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
-import acme.entities.lectures.LectureType;
 import acme.framework.data.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,6 +31,8 @@ public class SessionTutorial extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
+	boolean						draftMode;
+
 	@Column(name = "title")
 	@NotBlank
 	@Size(max = 76)
@@ -42,7 +43,7 @@ public class SessionTutorial extends AbstractEntity {
 	protected String			description;
 
 	@NotNull
-	protected LectureType		sessionType;
+	protected SessionType		sessionType;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)

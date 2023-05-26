@@ -1,2 +1,11 @@
-key,title,description,estimatedTime,code,key:course,key:assistant
-tutorial-01, titulo,descripción, 40.00,QWE890,course-01,assistant1
+key,title,description,estimatedTime,code,key:course,key:assistant,draftMode
+tutorial-01,repaso de dp,descripción,40.00,QWE890,course-01,assistant1,true
+tutorial-02,ayuda,descripción,20.00,QWE891,course-02,assistant2,true
+tutorial-03,llamen,descripción,30.00,QWE892,course-03,assistant1,true
+tutorial-04,a,descripción,45.00,QWE893,course-04,assistant2,true
+tutorial-05,la,descripción,25.00,QWE894,course-05,assistant1,true
+tutorial-06,policía,descripción,32.00,QWE895,course-06,assistant2,false
+tutorial-07,me,descripción,44.00,QWE896,course-07,assistant1,false
+tutorial-08,están,descripción,23.00,QWE897,course-08,assistant2,false
+tutorial-09,matando,descripción,17.00,QWE898,course-09,assistant1,false
+tutorial-10,aaaaaaaaaaa,descripción,25.00,QWE899,course-10,assistant2,false
