@@ -1,8 +1,10 @@
 
 package acme.testing.assistant.sessionTutorial;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.springframework.core.annotation.Order;
 
 import acme.testing.TestHarness;
 
@@ -26,6 +28,28 @@ public class AssistantSessionTutorialListTest extends TestHarness {
 		super.checkColumnHasValue(indexRecord, 0, title);
 		super.checkColumnHasValue(indexRecord, 1, description);
 
+		super.signOut();
+	}
+
+	@Order(40)
+	@Test
+	public void test300Hacking() {
+
+		// This test tries to create an enrolment using principals with
+		// inappropriate roles.
+
+		super.checkLinkExists("Sign in");
+		super.request("/assistant/session-tutorial/list");
+		super.checkPanicExists();
+
+		super.signIn("administrator1", "administrator1");
+		super.request("/assistant/session-tutorial/list");
+		super.checkPanicExists();
+		super.signOut();
+
+		super.signIn("company1", "company1");
+		super.request("/assistant/session-tutorial/list");
+		super.checkPanicExists();
 		super.signOut();
 	}
 }

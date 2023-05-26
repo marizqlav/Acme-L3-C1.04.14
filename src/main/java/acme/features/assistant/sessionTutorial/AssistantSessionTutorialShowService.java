@@ -25,7 +25,17 @@ public class AssistantSessionTutorialShowService extends AbstractService<Assista
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int sessionId;
+		SessionTutorial session;
+		Assistant assistant;
+
+		sessionId = super.getRequest().getData("id", int.class);
+		session = this.repo.findSessionById(sessionId);
+		assistant = session == null ? null : session.getTutorial().getAssistant();
+		status = session != null && super.getRequest().getPrincipal().hasRole(assistant);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
