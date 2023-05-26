@@ -45,7 +45,6 @@ public class CompanySessionPracticumPublishTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/session-practicum/publish-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test000Negative(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum) {
-		// HINT: this test attempts to publish a Practicum that cannot be published, yet.
 
 		super.signIn("company1", "company1");
 
