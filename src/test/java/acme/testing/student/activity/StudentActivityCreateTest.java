@@ -155,7 +155,7 @@ public class StudentActivityCreateTest extends TestHarness {
 	public void test302Hacking() {
 
 		// This test tries to create activities for enrolments that weren't created 
-		// by the principal
+		// by the principal.
 
 		Collection<Enrolment> enrolments;
 		String param;

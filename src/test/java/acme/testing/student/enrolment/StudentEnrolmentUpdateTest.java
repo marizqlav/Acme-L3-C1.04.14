@@ -63,7 +63,7 @@ public class StudentEnrolmentUpdateTest extends TestHarness {
 	public void negativeTest(final int recordIndex, final String code, final String motivation, final String someGoals) {
 		super.signIn("student1", "student1");
 
-		// HINT: this test attempts to update an enrolment with wrong data.
+		// This test attempts to update an enrolment with wrong data.
 
 		super.clickOnMenu("Student", "My enrolments");
 		super.checkListingExists();

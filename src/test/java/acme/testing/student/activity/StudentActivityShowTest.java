@@ -33,7 +33,7 @@ public class StudentActivityShowTest extends TestHarness {
 	public void test100Positive(final int recordIndex, final int activityRecordIndex, final String title, final String abstractResumen, final String activityType, final String timePeriodInitial, final String timePeriodFinal, final String timePeriod,
 		final String link) {
 
-		// This test signs in as an student, lists his or her activities, selects
+		// This test signs in as a student, lists his or her activities, selects
 		// one of them and checks that it's as expected.
 
 		super.signIn("student1", "student1");
