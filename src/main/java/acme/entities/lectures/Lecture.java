@@ -1,6 +1,7 @@
 
 package acme.entities.lectures;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
@@ -28,6 +29,7 @@ public class Lecture extends AbstractEntity {
 
 	@NotBlank
 	@Length(max = 76)
+	@Column(unique = true)
 	protected String			title;
 
 	@NotBlank

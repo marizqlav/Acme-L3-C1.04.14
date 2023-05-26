@@ -23,8 +23,6 @@ public class CompanySessionPracticumListAllTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/session-practicum/list-all-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int recordIndex, final int sesionRecordIndex, final String title, final String abstractSessionPracticum) {
-		// HINT: this test signs in as an employer, lists all of the jobs, 
-		// HINT+ and then checks that the listing shows the expected data.
 
 		super.signIn("company1", "company1");
 
@@ -52,8 +50,6 @@ public class CompanySessionPracticumListAllTest extends TestHarness {
 
 	@Test
 	public void test300Hacking() {
-		// HINT: this test tries to list all of the session-practicums using 
-		// HINT+ inappropriate roles.
 
 		super.checkLinkExists("Sign in");
 		super.request("/company/session-practicum/list");

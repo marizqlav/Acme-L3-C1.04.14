@@ -69,14 +69,12 @@ public class CompanySessionPracticumAddendumCreateTest extends TestHarness {
 	public void test200Negative(final int recordIndex) {
 
 		super.signIn("company1", "company1");
-
 		super.clickOnMenu("Company", "Practicum list");
 		super.checkListingExists();
 		super.sortListing(0, "asc");
 
 		super.clickOnListingRecord(recordIndex);
 		super.clickOnButton("List Session Practicum");
-
 		super.checkNotSubmitExists("Create Addendum");
 
 		super.signOut();

@@ -35,6 +35,8 @@ public class StudentEnrolmentUpdateTest extends TestHarness {
 		super.checkColumnHasValue(recordIndex, 0, code);
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
+		super.checkInputBoxHasValue("code", code);
+		super.checkInputBoxHasValue("workTime", "0.00");
 		super.fillInputBoxIn("motivation", motivation);
 		super.fillInputBoxIn("someGoals", someGoals);
 		super.clickOnSubmit("Update");
@@ -46,8 +48,10 @@ public class StudentEnrolmentUpdateTest extends TestHarness {
 
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
-		super.fillInputBoxIn("motivation", motivation);
-		super.fillInputBoxIn("someGoals", someGoals);
+		super.checkInputBoxHasValue("code", code);
+		super.checkInputBoxHasValue("workTime", "0.00");
+		super.checkInputBoxHasValue("motivation", motivation);
+		super.checkInputBoxHasValue("someGoals", someGoals);
 
 		super.signOut();
 
@@ -59,7 +63,7 @@ public class StudentEnrolmentUpdateTest extends TestHarness {
 	public void negativeTest(final int recordIndex, final String code, final String motivation, final String someGoals) {
 		super.signIn("student1", "student1");
 
-		// HINT: this test attempts to update an enrolment with wrong data.
+		// This test attempts to update an enrolment with wrong data.
 
 		super.clickOnMenu("Student", "My enrolments");
 		super.checkListingExists();
@@ -68,6 +72,7 @@ public class StudentEnrolmentUpdateTest extends TestHarness {
 		super.checkFormExists();
 
 		super.checkFormExists();
+		super.checkInputBoxHasValue("workTime", "0.00");
 		super.fillInputBoxIn("motivation", motivation);
 		super.fillInputBoxIn("someGoals", someGoals);
 		super.clickOnSubmit("Update");

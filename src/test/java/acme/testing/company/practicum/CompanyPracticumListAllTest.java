@@ -23,8 +23,6 @@ public class CompanyPracticumListAllTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/company/practicum/list-all-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int recordIndex, final String code, final String title) {
-		// HINT: this test signs in as an employer, lists all of the jobs, 
-		// HINT+ and then checks that the listing shows the expected data.
 
 		super.signIn("company1", "company1");
 
@@ -40,7 +38,7 @@ public class CompanyPracticumListAllTest extends TestHarness {
 
 	@Test
 	public void test200Negative() {
-
+		// HINT: there aren't any negative tests for this feature because it's a listing
 	}
 
 	@Test
