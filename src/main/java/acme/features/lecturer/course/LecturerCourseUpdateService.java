@@ -42,7 +42,8 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 		id = super.getRequest().getData("id", int.class);
 		course = this.repository.findCourseById(id);
 		lecturer = course.getLecturer();
-		status = course != null && super.getRequest().getPrincipal().hasRole(lecturer);
+
+		status = course != null && super.getRequest().getPrincipal().hasRole(lecturer) && course.getDraftMode();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -74,6 +75,8 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 			super.state(!object.getRetailPrice().toString().contains("-"), "retailPrice", "lecturer.course.form.error.retailPrice.negative");
 		if (!super.getRequest().getData("code", String.class).equals(course.getCode()))
 			super.state(false, "code", "code.not.edit");
+		if (!super.getBuffer().getErrors().hasErrors("draftmode"))
+			super.state(object.getDraftMode(), "code", "code.draftmode");
 
 	}
 
@@ -91,6 +94,8 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 		Tuple tuple;
 
 		tuple = super.unbind(object, "code", "title", "resumen", "retailPrice", "link");
+
+		tuple.put("draftmode", object.getDraftMode());
 
 		super.getResponse().setData(tuple);
 	}

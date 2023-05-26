@@ -35,3 +35,5 @@ lecturer.course.button.publish = Publish Course
 lecturer.course.form.error.retailPrice = Must have a valid value
 
 code.not.edit = Code cannot be edited
+
+code.draftmode = Cannot update a published Course

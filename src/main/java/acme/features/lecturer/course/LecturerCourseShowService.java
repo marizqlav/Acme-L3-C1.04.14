@@ -74,6 +74,7 @@ public class LecturerCourseShowService extends AbstractService<Lecturer, Course>
 		final Collection<Lecture> cl = this.repository.findAllLecturesByCourse(object.getId());
 		final Boolean hasLectures = cl.isEmpty() ? false : true;
 		tuple.put("hasLectures", hasLectures);
+
 		super.getResponse().setData(tuple);
 
 	}
