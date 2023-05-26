@@ -35,3 +35,5 @@ lecturer.course.form.error.retailPrice.negative = No puede ser negativo
 lecturer.course.button.publish = Publicar curso
 
 code.not.edit = El código no puede ser editado
+
+code.draftmode = No se puede modificar un curso publicado
