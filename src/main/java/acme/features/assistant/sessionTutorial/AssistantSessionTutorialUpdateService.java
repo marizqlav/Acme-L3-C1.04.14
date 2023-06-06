@@ -9,6 +9,7 @@ import acme.entities.tutorial.SessionType;
 import acme.features.lecturer.course.LecturerCourseRepository;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
+import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Assistant;
 
@@ -63,7 +64,10 @@ public class AssistantSessionTutorialUpdateService extends AbstractService<Assis
 	@Override
 	public void validate(final SessionTutorial object) {
 		assert object != null;
-
+		if (MomentHelper.isAfter(object.getStartDate(), object.getEndDate())) {
+			super.state(false, "timePeriodInitial", "student.activity.form.error.start.is.after.end");
+			super.state(false, "timePeriodFinal", "student.activity.form.error.end.is.before.start");
+		}
 	}
 
 	@Override

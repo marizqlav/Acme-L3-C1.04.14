@@ -27,7 +27,7 @@ public class Tutorial extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
-
+	@NotNull
 	Boolean						draftMode;
 
 	@Column(name = "title")
